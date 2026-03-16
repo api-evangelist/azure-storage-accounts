@@ -1,106 +1,72 @@
+aid: azure-storage-accounts
 name: Azure Storage Accounts API
-description: Azure Storage is Microsoft's cloud storage solution for modern data storage scenarios. It offers highly available, massively scalable, durable, and secure storage for a variety of data objects in the cloud.
-image: https://azure.microsoft.com/svghandler/storage-accounts/
+description: >-
+  Azure Storage is Microsoft's cloud storage solution for modern data storage
+  scenarios offering highly available, massively scalable, durable, and secure
+  storage for blobs, files, queues, tables, and disks.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-- Storage
-- Cloud Storage
-- Blob Storage
-- File Storage
-- Queue Storage
-- Table Storage
-- Azure
-created: '2024-01-01'
-modified: '2024-01-01'
-url: https://azure.microsoft.com/en-us/services/storage/
-apis:
-- name: Azure Storage Blob Service API
-  description: REST API for operations on blobs in Azure Storage
-  image: https://azure.microsoft.com/svghandler/storage-accounts/
-  humanURL: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
-  baseURL: https://{accountName}.blob.core.windows.net
-  tags:
+  - Storage
+  - Cloud Storage
   - Blob Storage
-  - Object Storage
-  - Binary Data
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
-  - type: OpenAPI
-    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/storage/data-plane/Microsoft.BlobStorage/stable/2023-11-03/blob.json
-  - type: Swagger
-    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/storage/data-plane/Microsoft.BlobStorage/stable/2023-11-03/blob.json
-- name: Azure Storage Queue Service API
-  description: REST API for operations on queues in Azure Storage
-  image: https://azure.microsoft.com/svghandler/storage-accounts/
-  humanURL: https://learn.microsoft.com/en-us/rest/api/storageservices/queue-service-rest-api
-  baseURL: https://{accountName}.queue.core.windows.net
-  tags:
-  - Queue Storage
-  - Message Queue
-  - Async Processing
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/rest/api/storageservices/queue-service-rest-api
-  - type: OpenAPI
-    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/storage/data-plane/Microsoft.QueueStorage/stable/2018-03-28/queue.json
-- name: Azure Storage Table Service API
-  description: REST API for operations on tables in Azure Storage
-  image: https://azure.microsoft.com/svghandler/storage-accounts/
-  humanURL: https://learn.microsoft.com/en-us/rest/api/storageservices/table-service-rest-api
-  baseURL: https://{accountName}.table.core.windows.net
-  tags:
-  - Table Storage
-  - NoSQL
-  - Structured Data
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/rest/api/storageservices/table-service-rest-api
-  - type: OpenAPI
-    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/cosmos-db/data-plane/Microsoft.Tables/stable/2019-02-02/table.json
-- name: Azure Storage File Service API
-  description: REST API for operations on files in Azure Storage
-  image: https://azure.microsoft.com/svghandler/storage-accounts/
-  humanURL: https://learn.microsoft.com/en-us/rest/api/storageservices/file-service-rest-api
-  baseURL: https://{accountName}.file.core.windows.net
-  tags:
   - File Storage
-  - SMB
-  - File Shares
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/rest/api/storageservices/file-service-rest-api
-  - type: OpenAPI
-    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/storage/data-plane/Microsoft.FileStorage/stable/2023-11-03/file.json
-- name: Azure Storage Management API
-  description: REST API for managing Azure Storage accounts and resources
-  image: https://azure.microsoft.com/svghandler/storage-accounts/
-  humanURL: https://learn.microsoft.com/en-us/rest/api/storagerp/
-  baseURL: https://management.azure.com
-  tags:
-  - Management
-  - Resource Provider
-  - Azure Resource Manager
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/rest/api/storagerp/
-  - type: OpenAPI
-    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/storage/resource-manager/Microsoft.Storage/stable/2023-01-01/storage.json
+  - Queue Storage
+  - Table Storage
+  - Azure
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/apis.yml
+created: '2024-01-01'
+modified: '2026-03-16'
+specificationVersion: '0.19'
+apis:
+  - aid: azure-storage-accounts:azure-storage-blob-service-api
+    name: Azure Storage Blob Service API
+    description: REST API for operations on blobs in Azure Storage.
+    humanURL: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
+    baseURL: https://{accountName}.blob.core.windows.net
+    tags:
+      - Blob Storage
+      - Object Storage
+      - Binary Data
+    properties:
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/storage/data-plane/Microsoft.BlobStorage/stable/2023-11-03/blob.json
+  - aid: azure-storage-accounts:azure-storage-management-api
+    name: Azure Storage Management API
+    description: REST API for managing Azure Storage accounts and resources.
+    humanURL: https://learn.microsoft.com/en-us/rest/api/storagerp/
+    baseURL: https://management.azure.com
+    tags:
+      - Management
+      - Resource Provider
+      - Azure Resource Manager
+    properties:
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/rest/api/storagerp/
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/storage/resource-manager/Microsoft.Storage/stable/2023-01-01/storage.json
 common:
-- type: Portal
-  url: https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts
-- type: Getting Started
-  url: https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create
-- type: Pricing
-  url: https://azure.microsoft.com/en-us/pricing/details/storage/
-- type: Authentication
-  url: https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-requests-to-azure-storage
-- type: SDKs
-  url: https://learn.microsoft.com/en-us/azure/storage/common/storage-apis-and-sdks
-- type: Status
-  url: https://status.azure.com/
-- type: Support
-  url: https://azure.microsoft.com/en-us/support/
+  - type: Portal
+    url: https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/azure/storage/
+  - type: Getting Started
+    url: https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-requests-to-azure-storage
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/azure/storage/common/storage-apis-and-sdks
+  - type: Status
+    url: https://status.azure.com/
+  - type: Support
+    url: https://azure.microsoft.com/en-us/support/
+  - type: Terms of Service
+    url: https://azure.microsoft.com/en-us/support/legal/
+  - type: Privacy Policy
+    url: https://privacy.microsoft.com/en-us/privacystatement
 maintainers:
-- FN: Microsoft Azure
-  email: azuresupport@microsoft.com
-  url: https://azure.microsoft.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com
