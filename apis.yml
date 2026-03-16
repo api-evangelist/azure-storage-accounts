@@ -1,5 +1,5 @@
 aid: azure-storage-accounts
-name: Azure Storage Accounts API
+name: Azure Storage Accounts
 description: >-
   Azure Storage is Microsoft's cloud storage solution for modern data storage
   scenarios offering highly available, massively scalable, durable, and secure
