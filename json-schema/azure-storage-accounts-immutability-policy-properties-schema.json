@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-schema/azure-storage-accounts-immutability-policy-properties-schema.json",
+  "title": "ImmutabilityPolicyProperties",
+  "description": "The properties of an ImmutabilityPolicy of a blob container.",
+  "properties": {
+    "etag": {
+      "description": "ImmutabilityPolicy Etag.",
+      "readOnly": true,
+      "type": "string"
+    },
+    "properties": {
+      "$ref": "#/definitions/ImmutabilityPolicyProperty",
+      "description": "The properties of an ImmutabilityPolicy of a blob container.",
+      "x-ms-client-flatten": true
+    },
+    "updateHistory": {
+      "description": "The ImmutabilityPolicy update history of the blob container.",
+      "items": {
+        "$ref": "#/definitions/UpdateHistoryProperty"
+      },
+      "readOnly": true,
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

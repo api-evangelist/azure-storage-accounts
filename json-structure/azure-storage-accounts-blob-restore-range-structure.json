@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-structure/azure-storage-accounts-blob-restore-range-structure.json",
+  "description": "Blob range",
+  "properties": {
+    "endRange": {
+      "description": "Blob end range. Empty means account end.",
+      "type": "string"
+    },
+    "startRange": {
+      "description": "Blob start range. Empty means account start.",
+      "type": "string"
+    }
+  },
+  "type": "object",
+  "required": [
+    "startRange",
+    "endRange"
+  ],
+  "name": "BlobRestoreRange"
+}

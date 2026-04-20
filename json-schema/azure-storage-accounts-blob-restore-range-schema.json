@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-schema/azure-storage-accounts-blob-restore-range-schema.json",
+  "title": "BlobRestoreRange",
+  "description": "Blob range",
+  "properties": {
+    "endRange": {
+      "description": "Blob end range. Empty means account end.",
+      "type": "string"
+    },
+    "startRange": {
+      "description": "Blob start range. Empty means account start.",
+      "type": "string"
+    }
+  },
+  "type": "object",
+  "required": [
+    "startRange",
+    "endRange"
+  ]
+}

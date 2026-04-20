@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-structure/azure-storage-accounts-management-policy-definition-structure.json",
+  "description": "An object that defines the Lifecycle rule. Each definition is made up with a filters set and an actions set.",
+  "properties": {
+    "actions": {
+      "$ref": "#/definitions/ManagementPolicyAction",
+      "description": "An object that defines the action set."
+    },
+    "filters": {
+      "$ref": "#/definitions/ManagementPolicyFilter",
+      "description": "An object that defines the filter set."
+    }
+  },
+  "type": "object",
+  "required": [
+    "actions"
+  ],
+  "name": "ManagementPolicyDefinition"
+}

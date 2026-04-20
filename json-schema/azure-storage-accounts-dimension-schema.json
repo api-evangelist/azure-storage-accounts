@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-schema/azure-storage-accounts-dimension-schema.json",
+  "title": "Dimension",
+  "description": "Dimension of blobs, possibly be blob type or access tier.",
+  "properties": {
+    "displayName": {
+      "description": "Display name of dimension.",
+      "type": "string"
+    },
+    "name": {
+      "description": "Display name of dimension.",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

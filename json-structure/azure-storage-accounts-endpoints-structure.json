@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-structure/azure-storage-accounts-endpoints-structure.json",
+  "description": "The URIs that are used to perform a retrieval of a public blob, queue, table, web or dfs object.",
+  "properties": {
+    "blob": {
+      "description": "Gets the blob endpoint.",
+      "readOnly": true,
+      "type": "string"
+    },
+    "dfs": {
+      "description": "Gets the dfs endpoint.",
+      "readOnly": true,
+      "type": "string"
+    },
+    "file": {
+      "description": "Gets the file endpoint.",
+      "readOnly": true,
+      "type": "string"
+    },
+    "internetEndpoints": {
+      "$ref": "#/definitions/StorageAccountInternetEndpoints",
+      "description": "Gets the internet routing storage endpoints",
+      "x-ms-client-flatten": false
+    },
+    "microsoftEndpoints": {
+      "$ref": "#/definitions/StorageAccountMicrosoftEndpoints",
+      "description": "Gets the microsoft routing storage endpoints.",
+      "x-ms-client-flatten": false
+    },
+    "queue": {
+      "description": "Gets the queue endpoint.",
+      "readOnly": true,
+      "type": "string"
+    },
+    "table": {
+      "description": "Gets the table endpoint.",
+      "readOnly": true,
+      "type": "string"
+    },
+    "web": {
+      "description": "Gets the web endpoint.",
+      "readOnly": true,
+      "type": "string"
+    }
+  },
+  "type": "object",
+  "name": "Endpoints"
+}

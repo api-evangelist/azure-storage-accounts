@@ -1,0 +1,8 @@
+{
+  "blobTypes": [
+    "example-string"
+  ],
+  "prefixMatch": [
+    "example-string"
+  ]
+}

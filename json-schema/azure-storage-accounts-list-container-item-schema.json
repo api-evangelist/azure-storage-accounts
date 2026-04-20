@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-schema/azure-storage-accounts-list-container-item-schema.json",
+  "title": "ListContainerItem",
+  "description": "The blob container properties be listed out.",
+  "properties": {
+    "properties": {
+      "$ref": "#/definitions/ContainerProperties",
+      "description": "The blob container properties be listed out.",
+      "x-ms-client-flatten": true
+    }
+  },
+  "type": "object"
+}

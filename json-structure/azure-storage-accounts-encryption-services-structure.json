@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-structure/azure-storage-accounts-encryption-services-structure.json",
+  "description": "A list of services that support encryption.",
+  "properties": {
+    "blob": {
+      "$ref": "#/definitions/EncryptionService",
+      "description": "The encryption function of the blob storage service."
+    },
+    "file": {
+      "$ref": "#/definitions/EncryptionService",
+      "description": "The encryption function of the file storage service."
+    },
+    "queue": {
+      "$ref": "#/definitions/EncryptionService",
+      "description": "The encryption function of the queue storage service."
+    },
+    "table": {
+      "$ref": "#/definitions/EncryptionService",
+      "description": "The encryption function of the table storage service."
+    }
+  },
+  "type": "object",
+  "name": "EncryptionServices"
+}

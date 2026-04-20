@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-schema/azure-storage-accounts-management-policy-base-blob-schema.json",
+  "title": "ManagementPolicyBaseBlob",
+  "description": "Management policy action for base blob.",
+  "properties": {
+    "delete": {
+      "$ref": "#/definitions/DateAfterModification",
+      "description": "The function to delete the blob"
+    },
+    "tierToArchive": {
+      "$ref": "#/definitions/DateAfterModification",
+      "description": "The function to tier blobs to archive storage. Support blobs currently at Hot or Cool tier"
+    },
+    "tierToCool": {
+      "$ref": "#/definitions/DateAfterModification",
+      "description": "The function to tier blobs to cool storage. Support blobs currently at Hot tier"
+    }
+  },
+  "type": "object"
+}

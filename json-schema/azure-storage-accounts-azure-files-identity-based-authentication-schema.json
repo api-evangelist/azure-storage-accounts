@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-schema/azure-storage-accounts-azure-files-identity-based-authentication-schema.json",
+  "title": "AzureFilesIdentityBasedAuthentication",
+  "description": "Settings for Azure Files identity based authentication.",
+  "properties": {
+    "activeDirectoryProperties": {
+      "$ref": "#/definitions/ActiveDirectoryProperties",
+      "description": "Required if choose AD."
+    },
+    "directoryServiceOptions": {
+      "description": "Indicates the directory service used.",
+      "enum": [
+        "None",
+        "AADDS",
+        "AD"
+      ],
+      "type": "string",
+      "x-ms-enum": {
+        "modelAsString": true,
+        "name": "DirectoryServiceOptions"
+      }
+    }
+  },
+  "type": "object",
+  "required": [
+    "directoryServiceOptions"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "azureStorageSid": "example-string",
+  "domainGuid": "example-string",
+  "domainName": "example-string",
+  "domainSid": "example-string",
+  "forestName": "example-string",
+  "netBiosDomainName": "example-string"
+}

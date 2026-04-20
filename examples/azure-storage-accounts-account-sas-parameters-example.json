@@ -1,0 +1,10 @@
+{
+  "keyToSign": "example-string",
+  "signedExpiry": "2026-04-19T12:00:00Z",
+  "signedIp": "example-string",
+  "signedPermission": "r",
+  "signedProtocol": "https,http",
+  "signedResourceTypes": "s",
+  "signedServices": "b",
+  "signedStart": "2026-04-19T12:00:00Z"
+}

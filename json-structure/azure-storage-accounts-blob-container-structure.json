@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-structure/azure-storage-accounts-blob-container-structure.json",
+  "description": "Properties of the blob container, including Id, resource name, resource type, Etag.",
+  "properties": {
+    "properties": {
+      "$ref": "#/definitions/ContainerProperties",
+      "description": "Properties of the blob container.",
+      "x-ms-client-flatten": true,
+      "x-ms-client-name": "ContainerProperties"
+    }
+  },
+  "type": "object",
+  "name": "BlobContainer"
+}

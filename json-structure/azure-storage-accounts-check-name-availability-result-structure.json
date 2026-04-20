@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-structure/azure-storage-accounts-check-name-availability-result-structure.json",
+  "description": "The CheckNameAvailability operation response.",
+  "properties": {
+    "message": {
+      "description": "Gets an error message explaining the Reason value in more detail.",
+      "readOnly": true,
+      "type": "string"
+    },
+    "nameAvailable": {
+      "description": "Gets a boolean value that indicates whether the name is available for you to use. If true, the name is available. If false, the name has already been taken or is invalid and cannot be used.",
+      "readOnly": true,
+      "type": "boolean"
+    },
+    "reason": {
+      "description": "Gets the reason that a storage account name could not be used. The Reason element is only returned if NameAvailable is false.",
+      "enum": [
+        "AccountNameInvalid",
+        "AlreadyExists"
+      ],
+      "readOnly": true,
+      "type": "string",
+      "x-ms-enum": {
+        "modelAsString": false,
+        "name": "Reason"
+      }
+    }
+  },
+  "type": "object",
+  "name": "CheckNameAvailabilityResult"
+}

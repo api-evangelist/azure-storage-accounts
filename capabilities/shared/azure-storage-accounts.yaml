@@ -1,0 +1,168 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Azure Storage Accounts"
+  description: "Azure Storage Accounts REST API for Azure resource management."
+  tags:
+    - Azure
+    - Cloud
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+binds:
+  - namespace: env
+    keys:
+      AZURE_SUBSCRIPTION_ID: AZURE_SUBSCRIPTION_ID
+      AZURE_ACCESS_TOKEN: AZURE_ACCESS_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: azure-storage-accounts
+      baseUri: https://management.azure.com
+      description: "Azure Storage Accounts REST API"
+      authentication:
+        type: bearer
+        token: "{{AZURE_ACCESS_TOKEN}}"
+      resources:
+        - name: storage-account
+          path: /subscriptions/{subscriptionId}/providers/Microsoft.StorageAccount/StorageAccounts
+          description: "Manage StorageAccount resources"
+          operations:
+            - name: list-storage-accounts
+              method: GET
+              description: "List all StorageAccount resources"
+              inputParameters:
+                - name: subscriptionId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Azure subscription ID"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: blob-container
+          path: /subscriptions/{subscriptionId}/providers/Microsoft.BlobContainer/BlobContainers
+          description: "Manage BlobContainer resources"
+          operations:
+            - name: list-blob-containers
+              method: GET
+              description: "List all BlobContainer resources"
+              inputParameters:
+                - name: subscriptionId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Azure subscription ID"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: file-share
+          path: /subscriptions/{subscriptionId}/providers/Microsoft.FileShare/FileShares
+          description: "Manage FileShare resources"
+          operations:
+            - name: list-file-shares
+              method: GET
+              description: "List all FileShare resources"
+              inputParameters:
+                - name: subscriptionId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Azure subscription ID"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: queue
+          path: /subscriptions/{subscriptionId}/providers/Microsoft.Queue/Queues
+          description: "Manage Queue resources"
+          operations:
+            - name: list-queues
+              method: GET
+              description: "List all Queue resources"
+              inputParameters:
+                - name: subscriptionId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Azure subscription ID"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8150
+      namespace: azure-storage-accounts-api
+      resources:
+        - path: /v1/resources
+          name: resources
+          description: "Resource management"
+          operations:
+            - method: GET
+              name: list-resources
+              description: "List resources"
+              call: "azure-storage-accounts.list-storage-accounts"
+              with:
+                subscriptionId: "rest.subscriptionId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9150
+      namespace: azure-storage-accounts-mcp
+      transport: http
+      tools:
+        - name: list-storage-accounts
+          description: "List StorageAccount resources in Azure"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "azure-storage-accounts.list-storage-accounts"
+          with:
+            subscriptionId: "tools.subscriptionId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-blob-containers
+          description: "List BlobContainer resources in Azure"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "azure-storage-accounts.list-blob-containers"
+          with:
+            subscriptionId: "tools.subscriptionId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-file-shares
+          description: "List FileShare resources in Azure"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "azure-storage-accounts.list-file-shares"
+          with:
+            subscriptionId: "tools.subscriptionId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-queues
+          description: "List Queue resources in Azure"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "azure-storage-accounts.list-queues"
+          with:
+            subscriptionId: "tools.subscriptionId"
+          outputParameters:
+            - type: object
+              mapping: "$."

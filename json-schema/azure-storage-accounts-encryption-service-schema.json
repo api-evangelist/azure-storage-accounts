@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-schema/azure-storage-accounts-encryption-service-schema.json",
+  "title": "EncryptionService",
+  "description": "A service that allows server-side encryption to be used.",
+  "properties": {
+    "enabled": {
+      "description": "A boolean indicating whether or not the service encrypts the data as it is stored.",
+      "type": "boolean"
+    },
+    "keyType": {
+      "description": "Encryption key type to be used for the encryption service. 'Account' key type implies that an account-scoped encryption key will be used. 'Service' key type implies that a default service key is used.",
+      "enum": [
+        "Service",
+        "Account"
+      ],
+      "type": "string",
+      "x-ms-enum": {
+        "modelAsString": true,
+        "name": "KeyType"
+      },
+      "x-ms-mutability": [
+        "create",
+        "read"
+      ]
+    },
+    "lastEnabledTime": {
+      "description": "Gets a rough estimate of the date/time when the encryption was last enabled by the user. Only returned when encryption is enabled. There might be some unencrypted blobs which were written after this time, as it is just a rough estimate.",
+      "format": "date-time",
+      "readOnly": true,
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

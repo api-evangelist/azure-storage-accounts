@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-structure/azure-storage-accounts-blob-restore-status-structure.json",
+  "description": "Blob restore status.",
+  "properties": {
+    "failureReason": {
+      "description": "Failure reason when blob restore is failed.",
+      "readOnly": true,
+      "type": "string"
+    },
+    "parameters": {
+      "$ref": "#/definitions/BlobRestoreParameters",
+      "description": "Blob restore request parameters.",
+      "readOnly": true
+    },
+    "restoreId": {
+      "description": "Id for tracking blob restore request.",
+      "readOnly": true,
+      "type": "string"
+    },
+    "status": {
+      "description": "The status of blob restore progress. Possible values are: - InProgress: Indicates that blob restore is ongoing. - Complete: Indicates that blob restore has been completed successfully. - Failed: Indicates that blob restore is failed.",
+      "enum": [
+        "InProgress",
+        "Complete",
+        "Failed"
+      ],
+      "readOnly": true,
+      "type": "string",
+      "x-ms-enum": {
+        "modelAsString": true,
+        "name": "BlobRestoreProgressStatus"
+      }
+    }
+  },
+  "type": "object",
+  "name": "BlobRestoreStatus"
+}

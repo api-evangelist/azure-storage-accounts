@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-structure/azure-storage-accounts-immutability-policy-property-structure.json",
+  "description": "The properties of an ImmutabilityPolicy of a blob container.",
+  "properties": {
+    "immutabilityPeriodSinceCreationInDays": {
+      "description": "The immutability period for the blobs in the container since the policy creation, in days.",
+      "type": "integer"
+    },
+    "state": {
+      "description": "The ImmutabilityPolicy state of a blob container, possible values include: Locked and Unlocked.",
+      "enum": [
+        "Locked",
+        "Unlocked"
+      ],
+      "readOnly": true,
+      "type": "string",
+      "x-ms-enum": {
+        "modelAsString": true,
+        "name": "ImmutabilityPolicyState"
+      }
+    }
+  },
+  "type": "object",
+  "required": [
+    "immutabilityPeriodSinceCreationInDays"
+  ],
+  "name": "ImmutabilityPolicyProperty"
+}

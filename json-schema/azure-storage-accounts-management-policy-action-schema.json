@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-schema/azure-storage-accounts-management-policy-action-schema.json",
+  "title": "ManagementPolicyAction",
+  "description": "Actions are applied to the filtered blobs when the execution condition is met.",
+  "properties": {
+    "baseBlob": {
+      "$ref": "#/definitions/ManagementPolicyBaseBlob",
+      "description": "The management policy action for base blob"
+    },
+    "snapshot": {
+      "$ref": "#/definitions/ManagementPolicySnapShot",
+      "description": "The management policy action for snapshot"
+    }
+  },
+  "type": "object"
+}

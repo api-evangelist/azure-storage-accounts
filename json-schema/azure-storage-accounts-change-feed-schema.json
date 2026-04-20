@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-schema/azure-storage-accounts-change-feed-schema.json",
+  "title": "ChangeFeed",
+  "description": "The blob service properties for change feed events.",
+  "properties": {
+    "enabled": {
+      "description": "Indicates whether change feed event logging is enabled for the Blob service.",
+      "type": "boolean"
+    }
+  },
+  "type": "object"
+}

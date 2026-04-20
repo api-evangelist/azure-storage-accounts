@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-schema/azure-storage-accounts-identity-schema.json",
+  "title": "Identity",
+  "description": "Identity for the resource.",
+  "properties": {
+    "principalId": {
+      "description": "The principal ID of resource identity.",
+      "readOnly": true,
+      "type": "string"
+    },
+    "tenantId": {
+      "description": "The tenant ID of resource.",
+      "readOnly": true,
+      "type": "string"
+    },
+    "type": {
+      "description": "The identity type.",
+      "enum": [
+        "SystemAssigned"
+      ],
+      "type": "string",
+      "x-ms-enum": {
+        "modelAsString": false,
+        "name": "IdentityType"
+      }
+    }
+  },
+  "type": "object",
+  "required": [
+    "type"
+  ]
+}

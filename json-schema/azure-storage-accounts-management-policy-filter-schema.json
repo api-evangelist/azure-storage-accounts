@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-schema/azure-storage-accounts-management-policy-filter-schema.json",
+  "title": "ManagementPolicyFilter",
+  "description": "Filters limit rule actions to a subset of blobs within the storage account. If multiple filters are defined, a logical AND is performed on all filters. ",
+  "properties": {
+    "blobTypes": {
+      "description": "An array of predefined enum values. Only blockBlob is supported.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "prefixMatch": {
+      "description": "An array of strings for prefixes to be match.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object",
+  "required": [
+    "blobTypes"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-structure/azure-storage-accounts-active-directory-properties-structure.json",
+  "description": "Settings properties for Active Directory (AD).",
+  "properties": {
+    "azureStorageSid": {
+      "description": "Specifies the security identifier (SID) for Azure Storage.",
+      "type": "string"
+    },
+    "domainGuid": {
+      "description": "Specifies the domain GUID.",
+      "type": "string"
+    },
+    "domainName": {
+      "description": "Specifies the primary domain that the AD DNS server is authoritative for.",
+      "type": "string"
+    },
+    "domainSid": {
+      "description": "Specifies the security identifier (SID).",
+      "type": "string"
+    },
+    "forestName": {
+      "description": "Specifies the Active Directory forest to get.",
+      "type": "string"
+    },
+    "netBiosDomainName": {
+      "description": "Specifies the NetBIOS domain name.",
+      "type": "string"
+    }
+  },
+  "type": "object",
+  "required": [
+    "domainName",
+    "netBiosDomainName",
+    "forestName",
+    "domainGuid",
+    "domainSid",
+    "azureStorageSid"
+  ],
+  "name": "ActiveDirectoryProperties"
+}

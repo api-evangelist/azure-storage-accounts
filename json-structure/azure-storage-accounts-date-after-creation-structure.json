@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-structure/azure-storage-accounts-date-after-creation-structure.json",
+  "description": "Object to define the number of days after creation.",
+  "properties": {
+    "daysAfterCreationGreaterThan": {
+      "description": "Value indicating the age in days after creation",
+      "minimum": 0,
+      "multipleOf": 1,
+      "type": "number"
+    }
+  },
+  "type": "object",
+  "required": [
+    "daysAfterCreationGreaterThan"
+  ],
+  "name": "DateAfterCreation"
+}

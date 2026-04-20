@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-structure/azure-storage-accounts-immutability-policy-structure.json",
+  "description": "The ImmutabilityPolicy property of a blob container, including Id, resource name, resource type, Etag.",
+  "properties": {
+    "properties": {
+      "$ref": "#/definitions/ImmutabilityPolicyProperty",
+      "description": "The properties of an ImmutabilityPolicy of a blob container.",
+      "x-ms-client-flatten": true
+    }
+  },
+  "type": "object",
+  "required": [
+    "properties"
+  ],
+  "name": "ImmutabilityPolicy"
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-schema/azure-storage-accounts-key-vault-properties-schema.json",
+  "title": "KeyVaultProperties",
+  "description": "Properties of key vault.",
+  "properties": {
+    "keyname": {
+      "description": "The name of KeyVault key.",
+      "type": "string",
+      "x-ms-client-name": "KeyName"
+    },
+    "keyvaulturi": {
+      "description": "The Uri of KeyVault.",
+      "type": "string",
+      "x-ms-client-name": "KeyVaultUri"
+    },
+    "keyversion": {
+      "description": "The version of KeyVault key.",
+      "type": "string",
+      "x-ms-client-name": "KeyVersion"
+    }
+  },
+  "type": "object"
+}

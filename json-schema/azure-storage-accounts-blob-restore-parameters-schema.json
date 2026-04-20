@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-schema/azure-storage-accounts-blob-restore-parameters-schema.json",
+  "title": "BlobRestoreParameters",
+  "description": "Blob restore parameters",
+  "properties": {
+    "blobRanges": {
+      "description": "Blob ranges to restore.",
+      "items": {
+        "$ref": "#/definitions/BlobRestoreRange"
+      },
+      "type": "array"
+    },
+    "timeToRestore": {
+      "description": "Restore blob to the specified time.",
+      "format": "date-time",
+      "type": "string"
+    }
+  },
+  "type": "object",
+  "required": [
+    "timeToRestore",
+    "blobRanges"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-structure/azure-storage-accounts-management-policy-rule-structure.json",
+  "description": "An object that wraps the Lifecycle rule. Each rule is uniquely defined by name.",
+  "properties": {
+    "definition": {
+      "$ref": "#/definitions/ManagementPolicyDefinition",
+      "description": "An object that defines the Lifecycle rule."
+    },
+    "enabled": {
+      "description": "Rule is enabled if set to true.",
+      "type": "boolean"
+    },
+    "name": {
+      "description": "A rule name can contain any combination of alpha numeric characters. Rule name is case-sensitive. It must be unique within a policy.",
+      "type": "string"
+    },
+    "type": {
+      "description": "The valid value is Lifecycle",
+      "enum": [
+        "Lifecycle"
+      ],
+      "type": "string",
+      "x-ms-enum": {
+        "modelAsString": true,
+        "name": "type"
+      }
+    }
+  },
+  "type": "object",
+  "required": [
+    "name",
+    "type",
+    "definition"
+  ],
+  "name": "ManagementPolicyRule"
+}

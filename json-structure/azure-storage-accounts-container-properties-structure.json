@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-structure/azure-storage-accounts-container-properties-structure.json",
+  "description": "The properties of a container.",
+  "properties": {
+    "hasImmutabilityPolicy": {
+      "description": "The hasImmutabilityPolicy public property is set to true by SRP if ImmutabilityPolicy has been created for this container. The hasImmutabilityPolicy public property is set to false by SRP if ImmutabilityPolicy has not been created for this container.",
+      "readOnly": true,
+      "type": "boolean"
+    },
+    "hasLegalHold": {
+      "description": "The hasLegalHold public property is set to true by SRP if there are at least one existing tag. The hasLegalHold public property is set to false by SRP if all existing legal hold tags are cleared out. There can be a maximum of 1000 blob containers with hasLegalHold=true for a given account.",
+      "readOnly": true,
+      "type": "boolean"
+    },
+    "immutabilityPolicy": {
+      "$ref": "#/definitions/ImmutabilityPolicyProperties",
+      "description": "The ImmutabilityPolicy property of the container.",
+      "readOnly": true,
+      "x-ms-client-name": "ImmutabilityPolicy"
+    },
+    "lastModifiedTime": {
+      "description": "Returns the date and time the container was last modified.",
+      "format": "date-time",
+      "readOnly": true,
+      "type": "string"
+    },
+    "leaseDuration": {
+      "description": "Specifies whether the lease on a container is of infinite or fixed duration, only when the container is leased.",
+      "enum": [
+        "Infinite",
+        "Fixed"
+      ],
+      "readOnly": true,
+      "type": "string",
+      "x-ms-enum": {
+        "modelAsString": true,
+        "name": "LeaseDuration"
+      }
+    },
+    "leaseState": {
+      "description": "Lease state of the container.",
+      "enum": [
+        "Available",
+        "Leased",
+        "Expired",
+        "Breaking",
+        "Broken"
+      ],
+      "readOnly": true,
+      "type": "string",
+      "x-ms-enum": {
+        "modelAsString": true,
+        "name": "LeaseState"
+      }
+    },
+    "leaseStatus": {
+      "description": "The lease status of the container.",
+      "enum": [
+        "Locked",
+        "Unlocked"
+      ],
+      "readOnly": true,
+      "type": "string",
+      "x-ms-enum": {
+        "modelAsString": true,
+        "name": "LeaseStatus"
+      }
+    },
+    "legalHold": {
+      "$ref": "#/definitions/LegalHoldProperties",
+      "description": "The LegalHold property of the container.",
+      "readOnly": true
+    },
+    "metadata": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "A name-value pair to associate with the container as metadata.",
+      "type": "object"
+    },
+    "publicAccess": {
+      "description": "Specifies whether data in the container may be accessed publicly and the level of access.",
+      "enum": [
+        "Container",
+        "Blob",
+        "None"
+      ],
+      "type": "string",
+      "x-ms-enum": {
+        "modelAsString": false,
+        "name": "PublicAccess"
+      }
+    }
+  },
+  "type": "object",
+  "name": "ContainerProperties"
+}

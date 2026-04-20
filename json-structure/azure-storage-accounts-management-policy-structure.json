@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-structure/azure-storage-accounts-management-policy-structure.json",
+  "description": "The Get Storage Account ManagementPolicies operation response.",
+  "properties": {
+    "properties": {
+      "$ref": "#/definitions/ManagementPolicyProperties",
+      "description": "Returns the Storage Account Data Policies Rules.",
+      "x-ms-client-flatten": true
+    }
+  },
+  "type": "object",
+  "name": "ManagementPolicy"
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-structure/azure-storage-accounts-encryption-structure.json",
+  "description": "The encryption settings on the storage account.",
+  "properties": {
+    "keySource": {
+      "default": "Microsoft.Storage",
+      "description": "The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Storage, Microsoft.Keyvault",
+      "enum": [
+        "Microsoft.Storage",
+        "Microsoft.Keyvault"
+      ],
+      "type": "string",
+      "x-ms-enum": {
+        "modelAsString": true,
+        "name": "KeySource"
+      }
+    },
+    "keyvaultproperties": {
+      "$ref": "#/definitions/KeyVaultProperties",
+      "description": "Properties provided by key vault.",
+      "x-ms-client-name": "KeyVaultProperties"
+    },
+    "services": {
+      "$ref": "#/definitions/EncryptionServices",
+      "description": "List of services which support encryption."
+    }
+  },
+  "type": "object",
+  "required": [
+    "keySource"
+  ],
+  "name": "Encryption"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-schema/azure-storage-accounts-lease-container-response-schema.json",
+  "title": "LeaseContainerResponse",
+  "description": "Lease Container response schema.",
+  "properties": {
+    "leaseId": {
+      "description": "Returned unique lease ID that must be included with any request to delete the container, or to renew, change, or release the lease.",
+      "type": "string"
+    },
+    "leaseTimeSeconds": {
+      "description": "Approximate time remaining in the lease period, in seconds.",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,17 @@
+{
+  "properties": {
+    "automaticSnapshotPolicyEnabled": true,
+    "cors": {
+      "corsRules": {}
+    },
+    "defaultServiceVersion": "example-string",
+    "deleteRetentionPolicy": {
+      "days": {},
+      "enabled": {}
+    }
+  },
+  "sku": {
+    "name": "Standard_LRS",
+    "tier": "Standard"
+  }
+}

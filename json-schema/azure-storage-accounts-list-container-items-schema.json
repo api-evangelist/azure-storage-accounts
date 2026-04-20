@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-schema/azure-storage-accounts-list-container-items-schema.json",
+  "title": "ListContainerItems",
+  "description": "Response schema. Contains list of blobs returned, and if paging is requested or required, a URL to next page of containers.",
+  "properties": {
+    "nextLink": {
+      "description": "Request URL that can be used to query next page of containers. Returned when total number of requested containers exceed maximum page size.",
+      "readOnly": true,
+      "type": "string"
+    },
+    "value": {
+      "description": "List of blobs containers returned.",
+      "items": {
+        "$ref": "#/definitions/ListContainerItem"
+      },
+      "readOnly": true,
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

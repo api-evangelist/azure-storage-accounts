@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-structure/azure-storage-accounts-date-after-modification-structure.json",
+  "description": "Object to define the number of days after last modification.",
+  "properties": {
+    "daysAfterModificationGreaterThan": {
+      "description": "Value indicating the age in days after last modification",
+      "minimum": 0,
+      "multipleOf": 1,
+      "type": "number"
+    }
+  },
+  "type": "object",
+  "required": [
+    "daysAfterModificationGreaterThan"
+  ],
+  "name": "DateAfterModification"
+}

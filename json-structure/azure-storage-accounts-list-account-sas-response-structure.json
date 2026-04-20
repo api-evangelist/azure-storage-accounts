@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-structure/azure-storage-accounts-list-account-sas-response-structure.json",
+  "description": "The List SAS credentials operation response.",
+  "properties": {
+    "accountSasToken": {
+      "description": "List SAS credentials of storage account.",
+      "readOnly": true,
+      "type": "string"
+    }
+  },
+  "type": "object",
+  "name": "ListAccountSasResponse"
+}

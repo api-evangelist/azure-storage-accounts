@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-structure/azure-storage-accounts-ip-rule-structure.json",
+  "description": "IP rule with specific IP or IP range in CIDR format.",
+  "properties": {
+    "action": {
+      "default": "Allow",
+      "description": "The action of IP ACL rule.",
+      "enum": [
+        "Allow"
+      ],
+      "type": "string",
+      "x-ms-enum": {
+        "modelAsString": false,
+        "name": "Action"
+      }
+    },
+    "value": {
+      "description": "Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed.",
+      "type": "string",
+      "x-ms-client-name": "IPAddressOrRange"
+    }
+  },
+  "type": "object",
+  "required": [
+    "value"
+  ],
+  "name": "IPRule"
+}

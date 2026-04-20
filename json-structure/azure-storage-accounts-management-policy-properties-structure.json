@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-structure/azure-storage-accounts-management-policy-properties-structure.json",
+  "description": "The Storage Account ManagementPolicy properties.",
+  "properties": {
+    "lastModifiedTime": {
+      "description": "Returns the date and time the ManagementPolicies was last modified.",
+      "format": "date-time",
+      "readOnly": true,
+      "type": "string"
+    },
+    "policy": {
+      "$ref": "#/definitions/ManagementPolicySchema",
+      "description": "The Storage Account ManagementPolicy, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts."
+    }
+  },
+  "type": "object",
+  "required": [
+    "policy"
+  ],
+  "name": "ManagementPolicyProperties"
+}

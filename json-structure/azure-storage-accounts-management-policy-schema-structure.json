@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-structure/azure-storage-accounts-management-policy-schema-structure.json",
+  "description": "The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.",
+  "properties": {
+    "rules": {
+      "description": "The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.",
+      "items": {
+        "$ref": "#/definitions/ManagementPolicyRule"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object",
+  "required": [
+    "rules"
+  ],
+  "name": "ManagementPolicySchema"
+}

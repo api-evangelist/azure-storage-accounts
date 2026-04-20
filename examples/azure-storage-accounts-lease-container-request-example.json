@@ -1,0 +1,7 @@
+{
+  "action": "Acquire",
+  "breakPeriod": 1,
+  "leaseDuration": 1,
+  "leaseId": "example-string",
+  "proposedLeaseId": "example-string"
+}

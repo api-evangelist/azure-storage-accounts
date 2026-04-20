@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-structure/azure-storage-accounts-custom-domain-structure.json",
+  "description": "The custom domain assigned to this storage account. This can be set via Update.",
+  "properties": {
+    "name": {
+      "description": "Gets or sets the custom domain name assigned to the storage account. Name is the CNAME source.",
+      "type": "string"
+    },
+    "useSubDomainName": {
+      "description": "Indicates whether indirect CName validation is enabled. Default value is false. This should only be set on updates.",
+      "type": "boolean"
+    }
+  },
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "name": "CustomDomain"
+}
