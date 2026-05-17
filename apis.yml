@@ -53,19 +53,19 @@ common:
   url: https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts
 - type: Documentation
   url: https://learn.microsoft.com/en-us/azure/storage/
-- type: Getting Started
+- type: GettingStarted
   url: https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create
 - type: Authentication
   url: https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-requests-to-azure-storage
 - type: SDKs
   url: https://learn.microsoft.com/en-us/azure/storage/common/storage-apis-and-sdks
-- type: Status
+- type: StatusPage
   url: https://status.azure.com/
 - type: Support
   url: https://azure.microsoft.com/en-us/support/
-- type: Terms of Service
+- type: TermsOfService
   url: https://azure.microsoft.com/en-us/support/legal/
-- type: Privacy Policy
+- type: PrivacyPolicy
   url: https://privacy.microsoft.com/en-us/privacystatement
 - type: SpectralRules
   url: https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/rules/azure-storage-accounts-spectral-rules.yml
