@@ -1,0 +1,91 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: StorageManagementClient — LocationUsage
+  description: 'StorageManagementClient — LocationUsage. 1 operations. Lead operation: Azure Storage Accounts Usages_ List
+    by Location. Self-contained Naftiko capability covering one Azure Storage Accounts business surface.'
+  tags:
+  - Azure Storage Accounts
+  - LocationUsage
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AZURE_STORAGE_ACCOUNTS_API_KEY: AZURE_STORAGE_ACCOUNTS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: management-locationusage
+    baseUri: https://management.azure.com
+    description: StorageManagementClient — LocationUsage business capability. Self-contained, no shared references.
+    resources:
+    - name: subscriptions-subscriptionId-providers-Microsoft.Storage-locations-location-usag
+      path: /subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/usages
+      operations:
+      - name: usageslistbylocation
+        method: GET
+        description: Azure Storage Accounts Usages_ List by Location
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+        - name: location
+          in: path
+          type: string
+          description: The location of the Azure Storage resource.
+          required: true
+  exposes:
+  - type: rest
+    namespace: management-locationusage-rest
+    port: 8080
+    description: REST adapter for StorageManagementClient — LocationUsage. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/subscriptions/{subscriptionid}/providers/microsoft-storage/locations/{location}/usages
+      name: subscriptions-subscriptionid-providers-microsoft-storage-locations-location-usag
+      description: REST surface for subscriptions-subscriptionId-providers-Microsoft.Storage-locations-location-usag.
+      operations:
+      - method: GET
+        name: usageslistbylocation
+        description: Azure Storage Accounts Usages_ List by Location
+        call: management-locationusage.usageslistbylocation
+        with:
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+          location: rest.location
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: management-locationusage-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for StorageManagementClient — LocationUsage. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: azure-storage-accounts-usages-list
+      description: Azure Storage Accounts Usages_ List by Location
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-locationusage.usageslistbylocation
+      with:
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+        location: tools.location
+      outputParameters:
+      - type: object
+        mapping: $.

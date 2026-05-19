@@ -1,0 +1,771 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: StorageManagementClient — StorageAccounts
+  description: 'StorageManagementClient — StorageAccounts. 14 operations. Lead operation: Azure Storage Accounts Storage Accounts_
+    Check Name Availability. Self-contained Naftiko capability covering one Azure Storage Accounts business surface.'
+  tags:
+  - Azure Storage Accounts
+  - StorageAccounts
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AZURE_STORAGE_ACCOUNTS_API_KEY: AZURE_STORAGE_ACCOUNTS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: management-storageaccounts
+    baseUri: https://management.azure.com
+    description: StorageManagementClient — StorageAccounts business capability. Self-contained, no shared references.
+    resources:
+    - name: subscriptions-subscriptionId-providers-Microsoft.Storage-checkNameAvailability
+      path: /subscriptions/{subscriptionId}/providers/Microsoft.Storage/checkNameAvailability
+      operations:
+      - name: storageaccountschecknameavailability
+        method: POST
+        description: Azure Storage Accounts Storage Accounts_ Check Name Availability
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountName
+          in: body
+          type: string
+          description: The name of the storage account within the specified resource group. Storage account names must be
+            between 3 and 24 characters in length and use numbers and low
+          required: true
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+    - name: subscriptions-subscriptionId-providers-Microsoft.Storage-storageAccounts
+      path: /subscriptions/{subscriptionId}/providers/Microsoft.Storage/storageAccounts
+      operations:
+      - name: storageaccountslist
+        method: GET
+        description: Azure Storage Accounts Storage Accounts_ List
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+    - name: subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts
+      operations:
+      - name: storageaccountslistbyresourcegroup
+        method: GET
+        description: Azure Storage Accounts Storage Accounts_ List by Resource Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+    - name: subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}
+      operations:
+      - name: storageaccountsdelete
+        method: DELETE
+        description: Azure Storage Accounts Storage Accounts_ Delete
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+      - name: storageaccountsgetproperties
+        method: GET
+        description: Azure Storage Accounts Storage Accounts_ Get Properties
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+        - name: $expand
+          in: query
+          type: string
+          description: May be used to expand the properties within account's properties. By default, data is not included
+            when fetching properties. Currently we only support geoReplic
+      - name: storageaccountsupdate
+        method: PATCH
+        description: Azure Storage Accounts Storage Accounts_ Update
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: parameters
+          in: body
+          type: string
+          description: The parameters to provide for the updated account.
+          required: true
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+      - name: storageaccountscreate
+        method: PUT
+        description: Azure Storage Accounts Storage Accounts_ Create
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: parameters
+          in: body
+          type: string
+          description: The parameters to provide for the created account.
+          required: true
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+    - name: subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/ListAccountSas
+      operations:
+      - name: storageaccountslistaccountsas
+        method: POST
+        description: Azure Storage Accounts Storage Accounts_ List Account S a S
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: parameters
+          in: body
+          type: string
+          description: The parameters to provide to list SAS credentials for the storage account.
+          required: true
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+    - name: subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/ListServiceSas
+      operations:
+      - name: storageaccountslistservicesas
+        method: POST
+        description: Azure Storage Accounts Storage Accounts_ List Service S a S
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: parameters
+          in: body
+          type: string
+          description: The parameters to provide to list service SAS credentials.
+          required: true
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+    - name: subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/failover
+      operations:
+      - name: storageaccountsfailover
+        method: POST
+        description: Azure Storage Accounts Storage Accounts_ Failover
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+    - name: subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/listKeys
+      operations:
+      - name: storageaccountslistkeys
+        method: POST
+        description: Azure Storage Accounts Storage Accounts_ List Keys
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+        - name: $expand
+          in: query
+          type: string
+          description: Specifies type of the key to be listed. Possible value is kerb.
+    - name: subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/regenerateKey
+      operations:
+      - name: storageaccountsregeneratekey
+        method: POST
+        description: Azure Storage Accounts Storage Accounts_ Regenerate Key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: regenerateKey
+          in: body
+          type: string
+          description: Specifies name of the key which should be regenerated -- key1, key2, kerb1, kerb2.
+          required: true
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+    - name: subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/restoreBlobRanges
+      operations:
+      - name: storageaccountsrestoreblobranges
+        method: POST
+        description: Azure Storage Accounts Storage Accounts_ Restore Blob Ranges
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+        - name: parameters
+          in: body
+          type: string
+          description: The parameters to provide for restore blob ranges.
+          required: true
+    - name: subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/revokeUserDelegationKeys
+      operations:
+      - name: storageaccountsrevokeuserdelegationkeys
+        method: POST
+        description: Azure Storage Accounts Storage Accounts_ Revoke User Delegation Keys
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountName
+          in: path
+          type: string
+          description: The name of the storage account within the specified resource group. Storage account names must be
+            between 3 and 24 characters in length and use numbers and low
+          required: true
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+  exposes:
+  - type: rest
+    namespace: management-storageaccounts-rest
+    port: 8080
+    description: REST adapter for StorageManagementClient — StorageAccounts. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/subscriptions/{subscriptionid}/providers/microsoft-storage/checknameavailability
+      name: subscriptions-subscriptionid-providers-microsoft-storage-checknameavailability
+      description: REST surface for subscriptions-subscriptionId-providers-Microsoft.Storage-checkNameAvailability.
+      operations:
+      - method: POST
+        name: storageaccountschecknameavailability
+        description: Azure Storage Accounts Storage Accounts_ Check Name Availability
+        call: management-storageaccounts.storageaccountschecknameavailability
+        with:
+          accountName: rest.accountName
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subscriptions/{subscriptionid}/providers/microsoft-storage/storageaccounts
+      name: subscriptions-subscriptionid-providers-microsoft-storage-storageaccounts
+      description: REST surface for subscriptions-subscriptionId-providers-Microsoft.Storage-storageAccounts.
+      operations:
+      - method: GET
+        name: storageaccountslist
+        description: Azure Storage Accounts Storage Accounts_ List
+        call: management-storageaccounts.storageaccountslist
+        with:
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-storage/storageaccounts
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof.
+      operations:
+      - method: GET
+        name: storageaccountslistbyresourcegroup
+        description: Azure Storage Accounts Storage Accounts_ List by Resource Group
+        call: management-storageaccounts.storageaccountslistbyresourcegroup
+        with:
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-storage/storageaccounts/{accountname}
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof.
+      operations:
+      - method: DELETE
+        name: storageaccountsdelete
+        description: Azure Storage Accounts Storage Accounts_ Delete
+        call: management-storageaccounts.storageaccountsdelete
+        with:
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: storageaccountsgetproperties
+        description: Azure Storage Accounts Storage Accounts_ Get Properties
+        call: management-storageaccounts.storageaccountsgetproperties
+        with:
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+          $expand: rest.$expand
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: storageaccountsupdate
+        description: Azure Storage Accounts Storage Accounts_ Update
+        call: management-storageaccounts.storageaccountsupdate
+        with:
+          parameters: rest.parameters
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: storageaccountscreate
+        description: Azure Storage Accounts Storage Accounts_ Create
+        call: management-storageaccounts.storageaccountscreate
+        with:
+          parameters: rest.parameters
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-storage/storageaccounts/{accountname}/listaccountsas
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof.
+      operations:
+      - method: POST
+        name: storageaccountslistaccountsas
+        description: Azure Storage Accounts Storage Accounts_ List Account S a S
+        call: management-storageaccounts.storageaccountslistaccountsas
+        with:
+          parameters: rest.parameters
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-storage/storageaccounts/{accountname}/listservicesas
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof.
+      operations:
+      - method: POST
+        name: storageaccountslistservicesas
+        description: Azure Storage Accounts Storage Accounts_ List Service S a S
+        call: management-storageaccounts.storageaccountslistservicesas
+        with:
+          parameters: rest.parameters
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-storage/storageaccounts/{accountname}/failover
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof.
+      operations:
+      - method: POST
+        name: storageaccountsfailover
+        description: Azure Storage Accounts Storage Accounts_ Failover
+        call: management-storageaccounts.storageaccountsfailover
+        with:
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-storage/storageaccounts/{accountname}/listkeys
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof.
+      operations:
+      - method: POST
+        name: storageaccountslistkeys
+        description: Azure Storage Accounts Storage Accounts_ List Keys
+        call: management-storageaccounts.storageaccountslistkeys
+        with:
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+          $expand: rest.$expand
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-storage/storageaccounts/{accountname}/regeneratekey
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof.
+      operations:
+      - method: POST
+        name: storageaccountsregeneratekey
+        description: Azure Storage Accounts Storage Accounts_ Regenerate Key
+        call: management-storageaccounts.storageaccountsregeneratekey
+        with:
+          regenerateKey: rest.regenerateKey
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-storage/storageaccounts/{accountname}/restoreblobranges
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof.
+      operations:
+      - method: POST
+        name: storageaccountsrestoreblobranges
+        description: Azure Storage Accounts Storage Accounts_ Restore Blob Ranges
+        call: management-storageaccounts.storageaccountsrestoreblobranges
+        with:
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+          parameters: rest.parameters
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-storage/storageaccounts/{accountname}/revokeuserdelegationkeys
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof.
+      operations:
+      - method: POST
+        name: storageaccountsrevokeuserdelegationkeys
+        description: Azure Storage Accounts Storage Accounts_ Revoke User Delegation Keys
+        call: management-storageaccounts.storageaccountsrevokeuserdelegationkeys
+        with:
+          accountName: rest.accountName
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: management-storageaccounts-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for StorageManagementClient — StorageAccounts. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: azure-storage-accounts-storage-accounts
+      description: Azure Storage Accounts Storage Accounts_ Check Name Availability
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: management-storageaccounts.storageaccountschecknameavailability
+      with:
+        accountName: tools.accountName
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-storage-accounts-storage-accounts-2
+      description: Azure Storage Accounts Storage Accounts_ List
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-storageaccounts.storageaccountslist
+      with:
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-storage-accounts-storage-accounts-3
+      description: Azure Storage Accounts Storage Accounts_ List by Resource Group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-storageaccounts.storageaccountslistbyresourcegroup
+      with:
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-storage-accounts-storage-accounts-4
+      description: Azure Storage Accounts Storage Accounts_ Delete
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: management-storageaccounts.storageaccountsdelete
+      with:
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-storage-accounts-storage-accounts-5
+      description: Azure Storage Accounts Storage Accounts_ Get Properties
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-storageaccounts.storageaccountsgetproperties
+      with:
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+        $expand: tools.$expand
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-storage-accounts-storage-accounts-6
+      description: Azure Storage Accounts Storage Accounts_ Update
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-storageaccounts.storageaccountsupdate
+      with:
+        parameters: tools.parameters
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-storage-accounts-storage-accounts-7
+      description: Azure Storage Accounts Storage Accounts_ Create
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-storageaccounts.storageaccountscreate
+      with:
+        parameters: tools.parameters
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-storage-accounts-storage-accounts-8
+      description: Azure Storage Accounts Storage Accounts_ List Account S a S
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: management-storageaccounts.storageaccountslistaccountsas
+      with:
+        parameters: tools.parameters
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-storage-accounts-storage-accounts-9
+      description: Azure Storage Accounts Storage Accounts_ List Service S a S
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: management-storageaccounts.storageaccountslistservicesas
+      with:
+        parameters: tools.parameters
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-storage-accounts-storage-accounts-10
+      description: Azure Storage Accounts Storage Accounts_ Failover
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: management-storageaccounts.storageaccountsfailover
+      with:
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-storage-accounts-storage-accounts-11
+      description: Azure Storage Accounts Storage Accounts_ List Keys
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: management-storageaccounts.storageaccountslistkeys
+      with:
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+        $expand: tools.$expand
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-storage-accounts-storage-accounts-12
+      description: Azure Storage Accounts Storage Accounts_ Regenerate Key
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: management-storageaccounts.storageaccountsregeneratekey
+      with:
+        regenerateKey: tools.regenerateKey
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-storage-accounts-storage-accounts-13
+      description: Azure Storage Accounts Storage Accounts_ Restore Blob Ranges
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: management-storageaccounts.storageaccountsrestoreblobranges
+      with:
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+        parameters: tools.parameters
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-storage-accounts-storage-accounts-14
+      description: Azure Storage Accounts Storage Accounts_ Revoke User Delegation Keys
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: management-storageaccounts.storageaccountsrevokeuserdelegationkeys
+      with:
+        accountName: tools.accountName
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+      outputParameters:
+      - type: object
+        mapping: $.

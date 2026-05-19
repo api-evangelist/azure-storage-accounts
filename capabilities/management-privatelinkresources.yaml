@@ -1,0 +1,85 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: StorageManagementClient — PrivateLinkResources
+  description: 'StorageManagementClient — PrivateLinkResources. 1 operations. Lead operation: Azure Storage Accounts Private
+    Link Resources_ List by Storage Account. Self-contained Naftiko capability covering one Azure Storage Accounts business
+    surface.'
+  tags:
+  - Azure Storage Accounts
+  - PrivateLinkResources
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AZURE_STORAGE_ACCOUNTS_API_KEY: AZURE_STORAGE_ACCOUNTS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: management-privatelinkresources
+    baseUri: https://management.azure.com
+    description: StorageManagementClient — PrivateLinkResources business capability. Self-contained, no shared references.
+    resources:
+    - name: subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateLinkResources
+      operations:
+      - name: privatelinkresourceslistbystorageaccount
+        method: GET
+        description: Azure Storage Accounts Private Link Resources_ List by Storage Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+  exposes:
+  - type: rest
+    namespace: management-privatelinkresources-rest
+    port: 8080
+    description: REST adapter for StorageManagementClient — PrivateLinkResources. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-storage/storageaccounts/{accountname}/privatelinkresources
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof.
+      operations:
+      - method: GET
+        name: privatelinkresourceslistbystorageaccount
+        description: Azure Storage Accounts Private Link Resources_ List by Storage Account
+        call: management-privatelinkresources.privatelinkresourceslistbystorageaccount
+        with:
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: management-privatelinkresources-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for StorageManagementClient — PrivateLinkResources. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: azure-storage-accounts-private-link
+      description: Azure Storage Accounts Private Link Resources_ List by Storage Account
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-privatelinkresources.privatelinkresourceslistbystorageaccount
+      with:
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+      outputParameters:
+      - type: object
+        mapping: $.

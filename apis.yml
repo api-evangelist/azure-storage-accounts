@@ -1,9 +1,7 @@
 aid: azure-storage-accounts
 name: Azure Storage Accounts
-description: >-
-  Azure Storage is Microsoft's cloud storage solution for modern data storage
-  scenarios offering highly available, massively scalable, durable, and secure
-  storage for blobs, files, queues, tables, and disks.
+description: Azure Storage is Microsoft's cloud storage solution for modern data storage scenarios offering highly available,
+  massively scalable, durable, and secure storage for blobs, files, queues, tables, and disks.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
@@ -14,10 +12,9 @@ tags:
 - Queue Storage
 - Storage
 - Table Storage
-url: >-
-  https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/apis.yml
 created: '2024-01-01'
-modified: '2026-04-19'
+modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
 - aid: azure-storage-accounts:azure-storage-blob-service-api
@@ -34,6 +31,24 @@ apis:
     url: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
   - type: OpenAPI
     url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/storage/data-plane/Microsoft.BlobStorage/stable/2023-11-03/blob.json
+  - type: NaftikoCapability
+    url: capabilities/blob-blobcontainers.yaml
+  - type: NaftikoCapability
+    url: capabilities/blob-blobservice.yaml
+  - type: NaftikoCapability
+    url: capabilities/management-locationusage.yaml
+  - type: NaftikoCapability
+    url: capabilities/management-managementpolicies.yaml
+  - type: NaftikoCapability
+    url: capabilities/management-operations.yaml
+  - type: NaftikoCapability
+    url: capabilities/management-privateendpointconnections.yaml
+  - type: NaftikoCapability
+    url: capabilities/management-privatelinkresources.yaml
+  - type: NaftikoCapability
+    url: capabilities/management-skus.yaml
+  - type: NaftikoCapability
+    url: capabilities/management-storageaccounts.yaml
 - aid: azure-storage-accounts:azure-storage-management-api
   name: Azure Storage Management API
   description: REST API for managing Azure Storage accounts and resources.
@@ -73,10 +88,6 @@ common:
   url: https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/vocabulary/azure-storage-accounts-vocabulary.yaml
 - type: JSONLD
   url: https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/json-ld/azure-storage-accounts-context.jsonld
-- type: NaftikoCapability
-  url: https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/capabilities/azure-storage-accounts-management.yaml
-- type: NaftikoCapability
-  url: https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/capabilities/shared/azure-storage-accounts.yaml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

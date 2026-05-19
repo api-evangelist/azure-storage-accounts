@@ -1,0 +1,175 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: StorageManagementClient — PrivateEndpointConnections
+  description: 'StorageManagementClient — PrivateEndpointConnections. 3 operations. Lead operation: Azure Storage Accounts
+    Private Endpoint Connections_ Delete. Self-contained Naftiko capability covering one Azure Storage Accounts business surface.'
+  tags:
+  - Azure Storage Accounts
+  - PrivateEndpointConnections
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AZURE_STORAGE_ACCOUNTS_API_KEY: AZURE_STORAGE_ACCOUNTS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: management-privateendpointconnections
+    baseUri: https://management.azure.com
+    description: StorageManagementClient — PrivateEndpointConnections business capability. Self-contained, no shared references.
+    resources:
+    - name: subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}
+      operations:
+      - name: privateendpointconnectionsdelete
+        method: DELETE
+        description: Azure Storage Accounts Private Endpoint Connections_ Delete
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+      - name: privateendpointconnectionsget
+        method: GET
+        description: Azure Storage Accounts Private Endpoint Connections_ Get
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+      - name: privateendpointconnectionsput
+        method: PUT
+        description: Azure Storage Accounts Private Endpoint Connections_ Put
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+        - name: properties
+          in: body
+          type: string
+          description: The private endpoint connection properties.
+          required: true
+  exposes:
+  - type: rest
+    namespace: management-privateendpointconnections-rest
+    port: 8080
+    description: REST adapter for StorageManagementClient — PrivateEndpointConnections. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-storage/storageaccounts/{accountname}/privateendpointconnections/{privateendpointconnectionname}
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof.
+      operations:
+      - method: DELETE
+        name: privateendpointconnectionsdelete
+        description: Azure Storage Accounts Private Endpoint Connections_ Delete
+        call: management-privateendpointconnections.privateendpointconnectionsdelete
+        with:
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: privateendpointconnectionsget
+        description: Azure Storage Accounts Private Endpoint Connections_ Get
+        call: management-privateendpointconnections.privateendpointconnectionsget
+        with:
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: privateendpointconnectionsput
+        description: Azure Storage Accounts Private Endpoint Connections_ Put
+        call: management-privateendpointconnections.privateendpointconnectionsput
+        with:
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+          properties: rest.properties
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: management-privateendpointconnections-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for StorageManagementClient — PrivateEndpointConnections. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: azure-storage-accounts-private-endpoint
+      description: Azure Storage Accounts Private Endpoint Connections_ Delete
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: management-privateendpointconnections.privateendpointconnectionsdelete
+      with:
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-storage-accounts-private-endpoint-2
+      description: Azure Storage Accounts Private Endpoint Connections_ Get
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-privateendpointconnections.privateendpointconnectionsget
+      with:
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-storage-accounts-private-endpoint-3
+      description: Azure Storage Accounts Private Endpoint Connections_ Put
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-privateendpointconnections.privateendpointconnectionsput
+      with:
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+        properties: tools.properties
+      outputParameters:
+      - type: object
+        mapping: $.

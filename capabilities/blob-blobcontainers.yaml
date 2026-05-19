@@ -1,0 +1,928 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: StorageManagementClient — BlobContainers
+  description: 'StorageManagementClient — BlobContainers. 13 operations. Lead operation: Azure Storage Accounts Blob Containers_
+    List. Self-contained Naftiko capability covering one Azure Storage Accounts business surface.'
+  tags:
+  - Azure Storage Accounts
+  - BlobContainers
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AZURE_STORAGE_ACCOUNTS_API_KEY: AZURE_STORAGE_ACCOUNTS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: blob-blobcontainers
+    baseUri: https://management.azure.com
+    description: StorageManagementClient — BlobContainers business capability. Self-contained, no shared references.
+    resources:
+    - name: subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers
+      operations:
+      - name: blobcontainerslist
+        method: GET
+        description: Azure Storage Accounts Blob Containers_ List
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resourceGroupName
+          in: path
+          type: string
+          description: The name of the resource group within the user's subscription. The name is case insensitive.
+          required: true
+        - name: accountName
+          in: path
+          type: string
+          description: The name of the storage account within the specified resource group. Storage account names must be
+            between 3 and 24 characters in length and use numbers and low
+          required: true
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+        - name: $maxpagesize
+          in: query
+          type: string
+          description: Optional. Specified maximum number of containers that can be included in the list.
+        - name: $filter
+          in: query
+          type: string
+          description: Optional. When specified, only container names starting with the filter will be listed.
+    - name: subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}
+      operations:
+      - name: blobcontainersdelete
+        method: DELETE
+        description: Azure Storage Accounts Blob Containers_ Delete
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resourceGroupName
+          in: path
+          type: string
+          description: The name of the resource group within the user's subscription. The name is case insensitive.
+          required: true
+        - name: accountName
+          in: path
+          type: string
+          description: The name of the storage account within the specified resource group. Storage account names must be
+            between 3 and 24 characters in length and use numbers and low
+          required: true
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+      - name: blobcontainersget
+        method: GET
+        description: Azure Storage Accounts Blob Containers_ Get
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resourceGroupName
+          in: path
+          type: string
+          description: The name of the resource group within the user's subscription. The name is case insensitive.
+          required: true
+        - name: accountName
+          in: path
+          type: string
+          description: The name of the storage account within the specified resource group. Storage account names must be
+            between 3 and 24 characters in length and use numbers and low
+          required: true
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+      - name: blobcontainersupdate
+        method: PATCH
+        description: Azure Storage Accounts Blob Containers_ Update
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resourceGroupName
+          in: path
+          type: string
+          description: The name of the resource group within the user's subscription. The name is case insensitive.
+          required: true
+        - name: accountName
+          in: path
+          type: string
+          description: The name of the storage account within the specified resource group. Storage account names must be
+            between 3 and 24 characters in length and use numbers and low
+          required: true
+        - name: blobContainer
+          in: body
+          type: string
+          description: Properties to update for the blob container.
+          required: true
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+      - name: blobcontainerscreate
+        method: PUT
+        description: Azure Storage Accounts Blob Containers_ Create
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resourceGroupName
+          in: path
+          type: string
+          description: The name of the resource group within the user's subscription. The name is case insensitive.
+          required: true
+        - name: accountName
+          in: path
+          type: string
+          description: The name of the storage account within the specified resource group. Storage account names must be
+            between 3 and 24 characters in length and use numbers and low
+          required: true
+        - name: blobContainer
+          in: body
+          type: string
+          description: Properties of the blob container to create.
+          required: true
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+    - name: subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/clearLegalHold
+      operations:
+      - name: blobcontainersclearlegalhold
+        method: POST
+        description: Azure Storage Accounts Blob Containers_ Clear Legal Hold
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resourceGroupName
+          in: path
+          type: string
+          description: The name of the resource group within the user's subscription. The name is case insensitive.
+          required: true
+        - name: accountName
+          in: path
+          type: string
+          description: The name of the storage account within the specified resource group. Storage account names must be
+            between 3 and 24 characters in length and use numbers and low
+          required: true
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+        - name: LegalHold
+          in: body
+          type: string
+          description: The LegalHold property that will be clear from a blob container.
+          required: true
+    - name: subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default/extend
+      operations:
+      - name: blobcontainersextendimmutabilitypolicy
+        method: POST
+        description: Azure Storage Accounts Blob Containers_ Extend Immutability Policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resourceGroupName
+          in: path
+          type: string
+          description: The name of the resource group within the user's subscription. The name is case insensitive.
+          required: true
+        - name: accountName
+          in: path
+          type: string
+          description: The name of the storage account within the specified resource group. Storage account names must be
+            between 3 and 24 characters in length and use numbers and low
+          required: true
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+        - name: parameters
+          in: body
+          type: string
+          description: The ImmutabilityPolicy Properties that will be extended for a blob container.
+        - name: If-Match
+          in: header
+          type: string
+          description: 'The entity state (ETag) version of the immutability policy to update. A value of "*" can be used to
+            apply the operation only if the immutability policy already '
+          required: true
+    - name: subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default/lock
+      operations:
+      - name: blobcontainerslockimmutabilitypolicy
+        method: POST
+        description: Azure Storage Accounts Blob Containers_ Lock Immutability Policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resourceGroupName
+          in: path
+          type: string
+          description: The name of the resource group within the user's subscription. The name is case insensitive.
+          required: true
+        - name: accountName
+          in: path
+          type: string
+          description: The name of the storage account within the specified resource group. Storage account names must be
+            between 3 and 24 characters in length and use numbers and low
+          required: true
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+        - name: If-Match
+          in: header
+          type: string
+          description: 'The entity state (ETag) version of the immutability policy to update. A value of "*" can be used to
+            apply the operation only if the immutability policy already '
+          required: true
+    - name: subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/{immutabilityPolicyName}
+      operations:
+      - name: blobcontainersdeleteimmutabilitypolicy
+        method: DELETE
+        description: Azure Storage Accounts Blob Containers_ Delete Immutability Policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resourceGroupName
+          in: path
+          type: string
+          description: The name of the resource group within the user's subscription. The name is case insensitive.
+          required: true
+        - name: accountName
+          in: path
+          type: string
+          description: The name of the storage account within the specified resource group. Storage account names must be
+            between 3 and 24 characters in length and use numbers and low
+          required: true
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+        - name: If-Match
+          in: header
+          type: string
+          description: 'The entity state (ETag) version of the immutability policy to update. A value of "*" can be used to
+            apply the operation only if the immutability policy already '
+          required: true
+      - name: blobcontainersgetimmutabilitypolicy
+        method: GET
+        description: Azure Storage Accounts Blob Containers_ Get Immutability Policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resourceGroupName
+          in: path
+          type: string
+          description: The name of the resource group within the user's subscription. The name is case insensitive.
+          required: true
+        - name: accountName
+          in: path
+          type: string
+          description: The name of the storage account within the specified resource group. Storage account names must be
+            between 3 and 24 characters in length and use numbers and low
+          required: true
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+        - name: If-Match
+          in: header
+          type: string
+          description: 'The entity state (ETag) version of the immutability policy to update. A value of "*" can be used to
+            apply the operation only if the immutability policy already '
+      - name: blobcontainerscreateorupdateimmutabilitypolicy
+        method: PUT
+        description: Azure Storage Accounts Blob Containers_ Create or Update Immutability Policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resourceGroupName
+          in: path
+          type: string
+          description: The name of the resource group within the user's subscription. The name is case insensitive.
+          required: true
+        - name: accountName
+          in: path
+          type: string
+          description: The name of the storage account within the specified resource group. Storage account names must be
+            between 3 and 24 characters in length and use numbers and low
+          required: true
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+        - name: parameters
+          in: body
+          type: string
+          description: The ImmutabilityPolicy Properties that will be created or updated to a blob container.
+        - name: If-Match
+          in: header
+          type: string
+          description: 'The entity state (ETag) version of the immutability policy to update. A value of "*" can be used to
+            apply the operation only if the immutability policy already '
+    - name: subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/lease
+      operations:
+      - name: blobcontainerslease
+        method: POST
+        description: Azure Storage Accounts Blob Containers_ Lease
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resourceGroupName
+          in: path
+          type: string
+          description: The name of the resource group within the user's subscription. The name is case insensitive.
+          required: true
+        - name: accountName
+          in: path
+          type: string
+          description: The name of the storage account within the specified resource group. Storage account names must be
+            between 3 and 24 characters in length and use numbers and low
+          required: true
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+        - name: parameters
+          in: body
+          type: string
+          description: Lease Container request body.
+    - name: subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/setLegalHold
+      operations:
+      - name: blobcontainerssetlegalhold
+        method: POST
+        description: Azure Storage Accounts Blob Containers_ Set Legal Hold
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resourceGroupName
+          in: path
+          type: string
+          description: The name of the resource group within the user's subscription. The name is case insensitive.
+          required: true
+        - name: accountName
+          in: path
+          type: string
+          description: The name of the storage account within the specified resource group. Storage account names must be
+            between 3 and 24 characters in length and use numbers and low
+          required: true
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+        - name: LegalHold
+          in: body
+          type: string
+          description: The LegalHold property that will be set to a blob container.
+          required: true
+  exposes:
+  - type: rest
+    namespace: blob-blobcontainers-rest
+    port: 8080
+    description: REST adapter for StorageManagementClient — BlobContainers. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-storage/storageaccounts/{accountname}/blobservices/default/containers
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof.
+      operations:
+      - method: GET
+        name: blobcontainerslist
+        description: Azure Storage Accounts Blob Containers_ List
+        call: blob-blobcontainers.blobcontainerslist
+        with:
+          resourceGroupName: rest.resourceGroupName
+          accountName: rest.accountName
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+          $maxpagesize: rest.$maxpagesize
+          $filter: rest.$filter
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-storage/storageaccounts/{accountname}/blobservices/default/containers/{containername}
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof.
+      operations:
+      - method: DELETE
+        name: blobcontainersdelete
+        description: Azure Storage Accounts Blob Containers_ Delete
+        call: blob-blobcontainers.blobcontainersdelete
+        with:
+          resourceGroupName: rest.resourceGroupName
+          accountName: rest.accountName
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: blobcontainersget
+        description: Azure Storage Accounts Blob Containers_ Get
+        call: blob-blobcontainers.blobcontainersget
+        with:
+          resourceGroupName: rest.resourceGroupName
+          accountName: rest.accountName
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: blobcontainersupdate
+        description: Azure Storage Accounts Blob Containers_ Update
+        call: blob-blobcontainers.blobcontainersupdate
+        with:
+          resourceGroupName: rest.resourceGroupName
+          accountName: rest.accountName
+          blobContainer: rest.blobContainer
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: blobcontainerscreate
+        description: Azure Storage Accounts Blob Containers_ Create
+        call: blob-blobcontainers.blobcontainerscreate
+        with:
+          resourceGroupName: rest.resourceGroupName
+          accountName: rest.accountName
+          blobContainer: rest.blobContainer
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-storage/storageaccounts/{accountname}/blobservices/default/containers/{containername}/clearlegalhold
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof.
+      operations:
+      - method: POST
+        name: blobcontainersclearlegalhold
+        description: Azure Storage Accounts Blob Containers_ Clear Legal Hold
+        call: blob-blobcontainers.blobcontainersclearlegalhold
+        with:
+          resourceGroupName: rest.resourceGroupName
+          accountName: rest.accountName
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+          LegalHold: rest.LegalHold
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-storage/storageaccounts/{accountname}/blobservices/default/containers/{containername}/immutabilitypolicies/default/extend
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof.
+      operations:
+      - method: POST
+        name: blobcontainersextendimmutabilitypolicy
+        description: Azure Storage Accounts Blob Containers_ Extend Immutability Policy
+        call: blob-blobcontainers.blobcontainersextendimmutabilitypolicy
+        with:
+          resourceGroupName: rest.resourceGroupName
+          accountName: rest.accountName
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+          parameters: rest.parameters
+          If-Match: rest.If-Match
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-storage/storageaccounts/{accountname}/blobservices/default/containers/{containername}/immutabilitypolicies/default/lock
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof.
+      operations:
+      - method: POST
+        name: blobcontainerslockimmutabilitypolicy
+        description: Azure Storage Accounts Blob Containers_ Lock Immutability Policy
+        call: blob-blobcontainers.blobcontainerslockimmutabilitypolicy
+        with:
+          resourceGroupName: rest.resourceGroupName
+          accountName: rest.accountName
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+          If-Match: rest.If-Match
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-storage/storageaccounts/{accountname}/blobservices/default/containers/{containername}/immutabilitypolicies/{immutabilitypolicyname}
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof.
+      operations:
+      - method: DELETE
+        name: blobcontainersdeleteimmutabilitypolicy
+        description: Azure Storage Accounts Blob Containers_ Delete Immutability Policy
+        call: blob-blobcontainers.blobcontainersdeleteimmutabilitypolicy
+        with:
+          resourceGroupName: rest.resourceGroupName
+          accountName: rest.accountName
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+          If-Match: rest.If-Match
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: blobcontainersgetimmutabilitypolicy
+        description: Azure Storage Accounts Blob Containers_ Get Immutability Policy
+        call: blob-blobcontainers.blobcontainersgetimmutabilitypolicy
+        with:
+          resourceGroupName: rest.resourceGroupName
+          accountName: rest.accountName
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+          If-Match: rest.If-Match
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: blobcontainerscreateorupdateimmutabilitypolicy
+        description: Azure Storage Accounts Blob Containers_ Create or Update Immutability Policy
+        call: blob-blobcontainers.blobcontainerscreateorupdateimmutabilitypolicy
+        with:
+          resourceGroupName: rest.resourceGroupName
+          accountName: rest.accountName
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+          parameters: rest.parameters
+          If-Match: rest.If-Match
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-storage/storageaccounts/{accountname}/blobservices/default/containers/{containername}/lease
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof.
+      operations:
+      - method: POST
+        name: blobcontainerslease
+        description: Azure Storage Accounts Blob Containers_ Lease
+        call: blob-blobcontainers.blobcontainerslease
+        with:
+          resourceGroupName: rest.resourceGroupName
+          accountName: rest.accountName
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+          parameters: rest.parameters
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-storage/storageaccounts/{accountname}/blobservices/default/containers/{containername}/setlegalhold
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof.
+      operations:
+      - method: POST
+        name: blobcontainerssetlegalhold
+        description: Azure Storage Accounts Blob Containers_ Set Legal Hold
+        call: blob-blobcontainers.blobcontainerssetlegalhold
+        with:
+          resourceGroupName: rest.resourceGroupName
+          accountName: rest.accountName
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+          LegalHold: rest.LegalHold
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: blob-blobcontainers-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for StorageManagementClient — BlobContainers. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: azure-storage-accounts-blob-containers
+      description: Azure Storage Accounts Blob Containers_ List
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: blob-blobcontainers.blobcontainerslist
+      with:
+        resourceGroupName: tools.resourceGroupName
+        accountName: tools.accountName
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+        $maxpagesize: tools.$maxpagesize
+        $filter: tools.$filter
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-storage-accounts-blob-containers-2
+      description: Azure Storage Accounts Blob Containers_ Delete
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: blob-blobcontainers.blobcontainersdelete
+      with:
+        resourceGroupName: tools.resourceGroupName
+        accountName: tools.accountName
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-storage-accounts-blob-containers-3
+      description: Azure Storage Accounts Blob Containers_ Get
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: blob-blobcontainers.blobcontainersget
+      with:
+        resourceGroupName: tools.resourceGroupName
+        accountName: tools.accountName
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-storage-accounts-blob-containers-4
+      description: Azure Storage Accounts Blob Containers_ Update
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: blob-blobcontainers.blobcontainersupdate
+      with:
+        resourceGroupName: tools.resourceGroupName
+        accountName: tools.accountName
+        blobContainer: tools.blobContainer
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-storage-accounts-blob-containers-5
+      description: Azure Storage Accounts Blob Containers_ Create
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: blob-blobcontainers.blobcontainerscreate
+      with:
+        resourceGroupName: tools.resourceGroupName
+        accountName: tools.accountName
+        blobContainer: tools.blobContainer
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-storage-accounts-blob-containers-6
+      description: Azure Storage Accounts Blob Containers_ Clear Legal Hold
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: blob-blobcontainers.blobcontainersclearlegalhold
+      with:
+        resourceGroupName: tools.resourceGroupName
+        accountName: tools.accountName
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+        LegalHold: tools.LegalHold
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-storage-accounts-blob-containers-7
+      description: Azure Storage Accounts Blob Containers_ Extend Immutability Policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: blob-blobcontainers.blobcontainersextendimmutabilitypolicy
+      with:
+        resourceGroupName: tools.resourceGroupName
+        accountName: tools.accountName
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+        parameters: tools.parameters
+        If-Match: tools.If-Match
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-storage-accounts-blob-containers-8
+      description: Azure Storage Accounts Blob Containers_ Lock Immutability Policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: blob-blobcontainers.blobcontainerslockimmutabilitypolicy
+      with:
+        resourceGroupName: tools.resourceGroupName
+        accountName: tools.accountName
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+        If-Match: tools.If-Match
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-storage-accounts-blob-containers-9
+      description: Azure Storage Accounts Blob Containers_ Delete Immutability Policy
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: blob-blobcontainers.blobcontainersdeleteimmutabilitypolicy
+      with:
+        resourceGroupName: tools.resourceGroupName
+        accountName: tools.accountName
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+        If-Match: tools.If-Match
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-storage-accounts-blob-containers-10
+      description: Azure Storage Accounts Blob Containers_ Get Immutability Policy
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: blob-blobcontainers.blobcontainersgetimmutabilitypolicy
+      with:
+        resourceGroupName: tools.resourceGroupName
+        accountName: tools.accountName
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+        If-Match: tools.If-Match
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-storage-accounts-blob-containers-11
+      description: Azure Storage Accounts Blob Containers_ Create or Update Immutability Policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: blob-blobcontainers.blobcontainerscreateorupdateimmutabilitypolicy
+      with:
+        resourceGroupName: tools.resourceGroupName
+        accountName: tools.accountName
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+        parameters: tools.parameters
+        If-Match: tools.If-Match
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-storage-accounts-blob-containers-12
+      description: Azure Storage Accounts Blob Containers_ Lease
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: blob-blobcontainers.blobcontainerslease
+      with:
+        resourceGroupName: tools.resourceGroupName
+        accountName: tools.accountName
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+        parameters: tools.parameters
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-storage-accounts-blob-containers-13
+      description: Azure Storage Accounts Blob Containers_ Set Legal Hold
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: blob-blobcontainers.blobcontainerssetlegalhold
+      with:
+        resourceGroupName: tools.resourceGroupName
+        accountName: tools.accountName
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+        LegalHold: tools.LegalHold
+      outputParameters:
+      - type: object
+        mapping: $.

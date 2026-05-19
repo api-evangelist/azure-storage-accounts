@@ -1,0 +1,175 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: StorageManagementClient — ManagementPolicies
+  description: 'StorageManagementClient — ManagementPolicies. 3 operations. Lead operation: Azure Storage Accounts Management
+    Policies_ Delete. Self-contained Naftiko capability covering one Azure Storage Accounts business surface.'
+  tags:
+  - Azure Storage Accounts
+  - ManagementPolicies
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AZURE_STORAGE_ACCOUNTS_API_KEY: AZURE_STORAGE_ACCOUNTS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: management-managementpolicies
+    baseUri: https://management.azure.com
+    description: StorageManagementClient — ManagementPolicies business capability. Self-contained, no shared references.
+    resources:
+    - name: subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}
+      operations:
+      - name: managementpoliciesdelete
+        method: DELETE
+        description: Azure Storage Accounts Management Policies_ Delete
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+      - name: managementpoliciesget
+        method: GET
+        description: Azure Storage Accounts Management Policies_ Get
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+      - name: managementpoliciescreateorupdate
+        method: PUT
+        description: Azure Storage Accounts Management Policies_ Create or Update
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+        - name: properties
+          in: body
+          type: string
+          description: The ManagementPolicy set to a storage account.
+          required: true
+  exposes:
+  - type: rest
+    namespace: management-managementpolicies-rest
+    port: 8080
+    description: REST adapter for StorageManagementClient — ManagementPolicies. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-storage/storageaccounts/{accountname}/managementpolicies/{managementpolicyname}
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof.
+      operations:
+      - method: DELETE
+        name: managementpoliciesdelete
+        description: Azure Storage Accounts Management Policies_ Delete
+        call: management-managementpolicies.managementpoliciesdelete
+        with:
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: managementpoliciesget
+        description: Azure Storage Accounts Management Policies_ Get
+        call: management-managementpolicies.managementpoliciesget
+        with:
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: managementpoliciescreateorupdate
+        description: Azure Storage Accounts Management Policies_ Create or Update
+        call: management-managementpolicies.managementpoliciescreateorupdate
+        with:
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+          properties: rest.properties
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: management-managementpolicies-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for StorageManagementClient — ManagementPolicies. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: azure-storage-accounts-management-policies
+      description: Azure Storage Accounts Management Policies_ Delete
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: management-managementpolicies.managementpoliciesdelete
+      with:
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-storage-accounts-management-policies-2
+      description: Azure Storage Accounts Management Policies_ Get
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-managementpolicies.managementpoliciesget
+      with:
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-storage-accounts-management-policies-3
+      description: Azure Storage Accounts Management Policies_ Create or Update
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: management-managementpolicies.managementpoliciescreateorupdate
+      with:
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+        properties: tools.properties
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,84 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: StorageManagementClient — Skus
+  description: 'StorageManagementClient — Skus. 1 operations. Lead operation: Azure Storage Accounts Skus_ List. Self-contained
+    Naftiko capability covering one Azure Storage Accounts business surface.'
+  tags:
+  - Azure Storage Accounts
+  - Skus
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AZURE_STORAGE_ACCOUNTS_API_KEY: AZURE_STORAGE_ACCOUNTS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: management-skus
+    baseUri: https://management.azure.com
+    description: StorageManagementClient — Skus business capability. Self-contained, no shared references.
+    resources:
+    - name: subscriptions-subscriptionId-providers-Microsoft.Storage-skus
+      path: /subscriptions/{subscriptionId}/providers/Microsoft.Storage/skus
+      operations:
+      - name: skuslist
+        method: GET
+        description: Azure Storage Accounts Skus_ List
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: subscriptionId
+          in: path
+          type: string
+          description: The ID of the target subscription.
+          required: true
+  exposes:
+  - type: rest
+    namespace: management-skus-rest
+    port: 8080
+    description: REST adapter for StorageManagementClient — Skus. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/subscriptions/{subscriptionid}/providers/microsoft-storage/skus
+      name: subscriptions-subscriptionid-providers-microsoft-storage-skus
+      description: REST surface for subscriptions-subscriptionId-providers-Microsoft.Storage-skus.
+      operations:
+      - method: GET
+        name: skuslist
+        description: Azure Storage Accounts Skus_ List
+        call: management-skus.skuslist
+        with:
+          api-version: rest.api-version
+          subscriptionId: rest.subscriptionId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: management-skus-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for StorageManagementClient — Skus. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: azure-storage-accounts-skus-list
+      description: Azure Storage Accounts Skus_ List
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-skus.skuslist
+      with:
+        api-version: tools.api-version
+        subscriptionId: tools.subscriptionId
+      outputParameters:
+      - type: object
+        mapping: $.
