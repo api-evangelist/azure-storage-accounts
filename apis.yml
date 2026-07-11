@@ -64,6 +64,10 @@ apis:
   - type: OpenAPI
     url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/storage/resource-manager/Microsoft.Storage/stable/2023-01-01/storage.json
 common:
+- type: DomainSecurity
+  url: security/azure-storage-accounts-domain-security.yml
+- type: Authentication
+  url: authentication/azure-storage-accounts-authentication.yml
 - type: OAuthScopes
   url: scopes/azure-storage-accounts-scopes.yml
 - type: Portal
