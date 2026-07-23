@@ -1,0 +1,333 @@
+swagger: '2.0'
+info:
+  description: The Azure Storage Management API.
+  title: StorageManagementClient BlobContainers PrivateEndpointConnections API
+  version: '2019-06-01'
+  x-apisguru-categories:
+  - cloud
+  x-logo:
+    url: https://api.apis.guru/v2/cache/logo/https_assets.onestore.ms_cdnfiles_onestorerolling-1606-01000_shell_v3_images_logo_microsoft.png
+  x-origin:
+  - format: swagger
+    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/storage/resource-manager/Microsoft.Storage/stable/2019-06-01/blob.json
+    version: '2.0'
+  x-preferred: false
+  x-providerName: azure.com
+  x-serviceName: storage-blob
+  x-tags:
+  - Azure
+  - Microsoft
+host: management.azure.com
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- azure_auth:
+  - user_impersonation
+tags:
+- name: PrivateEndpointConnections
+paths:
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}
+  : delete:
+      description: Deletes the specified private endpoint connection associated with the storage account.
+      operationId: PrivateEndpointConnections_Delete
+      parameters:
+      - $ref: '#/parameters/ResourceGroupName'
+      - $ref: '#/parameters/StorageAccountName'
+      - description: The API version to use for this operation.
+        in: query
+        minLength: 1
+        name: api-version
+        required: true
+        type: string
+        example: '2019-06-01'
+      - description: The ID of the target subscription.
+        in: path
+        minLength: 1
+        name: subscriptionId
+        required: true
+        type: string
+        example: 00000000-0000-0000-0000-000000000000
+      - $ref: '#/parameters/PrivateEndpointConnectionName'
+      responses:
+        '200':
+          description: OK -- Delete the private endpoint connection successfully.
+        '204':
+          description: No Content -- The private endpoint connection does not exist.
+        default:
+          description: Error response describing why the operation failed.
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      tags:
+      - PrivateEndpointConnections
+      x-ms-examples:
+        StorageAccountDeletePrivateEndpointConnection:
+          parameters:
+            accountName: sto2527
+            api-version: '2019-06-01'
+            monitor: 'true'
+            privateEndpointConnectionName: '{privateEndpointConnectionName}'
+            resourceGroupName: res6977
+            subscriptionId: '{subscription-id}'
+          responses:
+            '200': {}
+            '204': {}
+      summary: Azure Storage Accounts Private Endpoint Connections_ Delete
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    get:
+      description: Gets the specified private endpoint connection associated with the storage account.
+      operationId: PrivateEndpointConnections_Get
+      parameters:
+      - $ref: '#/parameters/ResourceGroupName'
+      - $ref: '#/parameters/StorageAccountName'
+      - description: The API version to use for this operation.
+        in: query
+        minLength: 1
+        name: api-version
+        required: true
+        type: string
+        example: '2019-06-01'
+      - description: The ID of the target subscription.
+        in: path
+        minLength: 1
+        name: subscriptionId
+        required: true
+        type: string
+        example: 00000000-0000-0000-0000-000000000000
+      - $ref: '#/parameters/PrivateEndpointConnectionName'
+      responses:
+        '200':
+          description: OK -- Get the private endpoint connection properties successfully.
+          schema:
+            $ref: '#/definitions/PrivateEndpointConnection'
+        default:
+          description: Error response describing why the operation failed.
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      tags:
+      - PrivateEndpointConnections
+      x-ms-examples:
+        StorageAccountGetPrivateEndpointConnection:
+          parameters:
+            accountName: sto2527
+            api-version: '2019-06-01'
+            monitor: 'true'
+            privateEndpointConnectionName: '{privateEndpointConnectionName}'
+            resourceGroupName: res6977
+            subscriptionId: '{subscription-id}'
+          responses:
+            '200':
+              body:
+                id: /subscriptions/{subscription-id}/resourceGroups/res7231/providers/Microsoft.Storage/storageAccounts/sto288/privateEndpointConnections/{privateEndpointConnectionName}
+                name: '{privateEndpointConnectionName}'
+                properties:
+                  privateEndpoint:
+                    id: /subscriptions/{subscription-id}/resourceGroups/res7231/providers/Microsoft.Network/privateEndpoints/petest01
+                  privateLinkServiceConnectionState:
+                    actionRequired: None
+                    description: Auto-Approved
+                    status: Approved
+                  provisioningState: Succeeded
+                type: Microsoft.Storage/storageAccounts/privateEndpointConnections
+      summary: Azure Storage Accounts Private Endpoint Connections_ Get
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      description: Update the state of specified private endpoint connection associated with the storage account.
+      operationId: PrivateEndpointConnections_Put
+      parameters:
+      - $ref: '#/parameters/ResourceGroupName'
+      - $ref: '#/parameters/StorageAccountName'
+      - description: The API version to use for this operation.
+        in: query
+        minLength: 1
+        name: api-version
+        required: true
+        type: string
+        example: '2019-06-01'
+      - description: The ID of the target subscription.
+        in: path
+        minLength: 1
+        name: subscriptionId
+        required: true
+        type: string
+        example: 00000000-0000-0000-0000-000000000000
+      - $ref: '#/parameters/PrivateEndpointConnectionName'
+      - description: The private endpoint connection properties.
+        in: body
+        name: properties
+        required: true
+        schema:
+          $ref: '#/definitions/PrivateEndpointConnection'
+        example: example-value
+      responses:
+        '200':
+          description: OK -- Update the private endpoint connection properties successfully.
+          schema:
+            $ref: '#/definitions/PrivateEndpointConnection'
+        default:
+          description: Error response describing why the operation failed.
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      tags:
+      - PrivateEndpointConnections
+      x-ms-examples:
+        StorageAccountPutPrivateEndpointConnection:
+          parameters:
+            accountName: sto9699
+            api-version: '2019-06-01'
+            monitor: 'true'
+            privateEndpointConnectionName: '{privateEndpointConnectionName}'
+            properties:
+              properties:
+                privateLinkServiceConnectionState:
+                  description: Auto-Approved
+                  status: Approved
+            resourceGroupName: res7687
+            subscriptionId: '{subscription-id}'
+          responses:
+            '200':
+              body:
+                id: /subscriptions/{subscription-id}/resourceGroups/res7231/providers/Microsoft.Storage/storageAccounts/sto288/privateEndpointConnections/{privateEndpointConnectionName}
+                name: '{privateEndpointConnectionName}'
+                properties:
+                  privateEndpoint:
+                    id: /subscriptions/{subscription-id}/resourceGroups/res7231/providers/Microsoft.Network/privateEndpoints/petest01
+                  privateLinkServiceConnectionState:
+                    actionRequired: None
+                    description: Auto-Approved
+                    status: Approved
+                  provisioningState: Succeeded
+                type: Microsoft.Storage/storageAccounts/privateEndpointConnections
+      summary: Azure Storage Accounts Private Endpoint Connections_ Put
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+definitions:
+  PrivateLinkServiceConnectionState:
+    description: A collection of information about the state of the connection between service consumer and provider.
+    properties:
+      actionRequired:
+        description: A message indicating if changes on the service provider require any updates on the consumer.
+        type: string
+      description:
+        description: The reason for approval/rejection of the connection.
+        type: string
+      status:
+        $ref: '#/definitions/PrivateEndpointServiceConnectionStatus'
+        description: Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+  PrivateEndpoint:
+    description: The Private Endpoint resource.
+    properties:
+      id:
+        description: The ARM identifier for Private Endpoint
+        readOnly: true
+        type: string
+  PrivateEndpointConnectionProvisioningState:
+    description: The current provisioning state.
+    enum:
+    - Succeeded
+    - Creating
+    - Deleting
+    - Failed
+    readOnly: true
+    type: string
+    x-ms-enum:
+      modelAsString: true
+      name: PrivateEndpointConnectionProvisioningState
+  PrivateEndpointConnection:
+    allOf:
+    - properties:
+        id:
+          description: Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+          readOnly: true
+          type: string
+        name:
+          description: The name of the resource
+          readOnly: true
+          type: string
+        type:
+          description: The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+          readOnly: true
+          type: string
+      x-ms-azure-resource: true
+    description: The Private Endpoint Connection resource.
+    properties:
+      properties:
+        $ref: '#/definitions/PrivateEndpointConnectionProperties'
+        description: Resource properties.
+        x-ms-client-flatten: true
+  ErrorResponse:
+    description: An error response from the storage resource provider.
+    properties:
+      code:
+        description: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
+        type: string
+      message:
+        description: A message describing the error, intended to be suitable for display in a user interface.
+        type: string
+  PrivateEndpointServiceConnectionStatus:
+    description: The private endpoint connection status.
+    enum:
+    - Pending
+    - Approved
+    - Rejected
+    type: string
+    x-ms-enum:
+      modelAsString: true
+      name: PrivateEndpointServiceConnectionStatus
+  PrivateEndpointConnectionProperties:
+    description: Properties of the PrivateEndpointConnectProperties.
+    properties:
+      privateEndpoint:
+        $ref: '#/definitions/PrivateEndpoint'
+        description: The resource of private end point.
+      privateLinkServiceConnectionState:
+        $ref: '#/definitions/PrivateLinkServiceConnectionState'
+        description: A collection of information about the state of the connection between service consumer and provider.
+      provisioningState:
+        $ref: '#/definitions/PrivateEndpointConnectionProvisioningState'
+        description: The provisioning state of the private endpoint connection resource.
+    required:
+    - privateLinkServiceConnectionState
+parameters:
+  ResourceGroupName:
+    description: The name of the resource group within the user's subscription. The name is case insensitive.
+    in: path
+    maxLength: 90
+    minLength: 1
+    name: resourceGroupName
+    pattern: ^[-\w\._\(\)]+$
+    required: true
+    type: string
+    x-ms-parameter-location: method
+  StorageAccountName:
+    description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+    in: path
+    maxLength: 24
+    minLength: 3
+    name: accountName
+    required: true
+    type: string
+    x-ms-parameter-location: method
+  PrivateEndpointConnectionName:
+    description: The name of the private endpoint connection associated with the Storage Account
+    in: path
+    name: privateEndpointConnectionName
+    required: true
+    type: string
+    x-ms-parameter-location: method
+securityDefinitions:
+  azure_auth:
+    authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
+    description: Azure Active Directory OAuth2 Flow
+    flow: implicit
+    scopes:
+      user_impersonation: impersonate your user account
+    type: oauth2

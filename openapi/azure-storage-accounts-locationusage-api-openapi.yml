@@ -1,0 +1,145 @@
+swagger: '2.0'
+info:
+  description: The Azure Storage Management API.
+  title: StorageManagementClient BlobContainers LocationUsage API
+  version: '2019-06-01'
+  x-apisguru-categories:
+  - cloud
+  x-logo:
+    url: https://api.apis.guru/v2/cache/logo/https_assets.onestore.ms_cdnfiles_onestorerolling-1606-01000_shell_v3_images_logo_microsoft.png
+  x-origin:
+  - format: swagger
+    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/storage/resource-manager/Microsoft.Storage/stable/2019-06-01/blob.json
+    version: '2.0'
+  x-preferred: false
+  x-providerName: azure.com
+  x-serviceName: storage-blob
+  x-tags:
+  - Azure
+  - Microsoft
+host: management.azure.com
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- azure_auth:
+  - user_impersonation
+tags:
+- name: LocationUsage
+paths:
+  /subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/usages:
+    get:
+      description: Gets the current usage count and the limit for the resources of the location under the subscription.
+      operationId: Usages_ListByLocation
+      parameters:
+      - description: The API version to use for this operation.
+        in: query
+        minLength: 1
+        name: api-version
+        required: true
+        type: string
+        example: '2019-06-01'
+      - description: The ID of the target subscription.
+        in: path
+        minLength: 1
+        name: subscriptionId
+        required: true
+        type: string
+        example: 00000000-0000-0000-0000-000000000000
+      - description: The location of the Azure Storage resource.
+        in: path
+        name: location
+        required: true
+        type: string
+        example: example-value
+      responses:
+        '200':
+          description: OK -- current usage count and limit retrieved and returned successfully.
+          schema:
+            $ref: '#/definitions/UsageListResult'
+      tags:
+      - LocationUsage
+      x-ms-examples:
+        UsageList:
+          parameters:
+            api-version: '2019-06-01'
+            location: eastus2(stage)
+            subscriptionId: '{subscription-id}'
+          responses:
+            '200':
+              body:
+                value:
+                - currentValue: 55
+                  limit: 250
+                  name:
+                    localizedValue: Storage Accounts
+                    value: StorageAccounts
+                  unit: Count
+      x-ms-pageable:
+        nextLinkName: null
+      summary: Azure Storage Accounts Usages_ List by Location
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+definitions:
+  Usage:
+    description: Describes Storage Resource Usage.
+    properties:
+      currentValue:
+        description: Gets the current count of the allocated resources in the subscription.
+        format: int32
+        readOnly: true
+        type: integer
+      limit:
+        description: Gets the maximum count of the resources that can be allocated in the subscription.
+        format: int32
+        readOnly: true
+        type: integer
+      name:
+        $ref: '#/definitions/UsageName'
+        description: Gets the name of the type of usage.
+        readOnly: true
+      unit:
+        description: Gets the unit of measurement.
+        enum:
+        - Count
+        - Bytes
+        - Seconds
+        - Percent
+        - CountsPerSecond
+        - BytesPerSecond
+        readOnly: true
+        type: string
+        x-ms-enum:
+          modelAsString: false
+          name: UsageUnit
+  UsageListResult:
+    description: The response from the List Usages operation.
+    properties:
+      value:
+        description: Gets or sets the list of Storage Resource Usages.
+        items:
+          $ref: '#/definitions/Usage'
+        type: array
+  UsageName:
+    description: The usage names that can be used; currently limited to StorageAccount.
+    properties:
+      localizedValue:
+        description: Gets a localized string describing the resource name.
+        readOnly: true
+        type: string
+      value:
+        description: Gets a string describing the resource name.
+        readOnly: true
+        type: string
+securityDefinitions:
+  azure_auth:
+    authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
+    description: Azure Active Directory OAuth2 Flow
+    flow: implicit
+    scopes:
+      user_impersonation: impersonate your user account
+    type: oauth2

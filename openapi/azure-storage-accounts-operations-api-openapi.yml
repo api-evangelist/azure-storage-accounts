@@ -1,0 +1,486 @@
+swagger: '2.0'
+info:
+  description: The Azure Storage Management API.
+  title: StorageManagementClient BlobContainers Operations API
+  version: '2019-06-01'
+  x-apisguru-categories:
+  - cloud
+  x-logo:
+    url: https://api.apis.guru/v2/cache/logo/https_assets.onestore.ms_cdnfiles_onestorerolling-1606-01000_shell_v3_images_logo_microsoft.png
+  x-origin:
+  - format: swagger
+    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/storage/resource-manager/Microsoft.Storage/stable/2019-06-01/blob.json
+    version: '2.0'
+  x-preferred: false
+  x-providerName: azure.com
+  x-serviceName: storage-blob
+  x-tags:
+  - Azure
+  - Microsoft
+host: management.azure.com
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- azure_auth:
+  - user_impersonation
+tags:
+- name: Operations
+paths:
+  /providers/Microsoft.Storage/operations:
+    get:
+      description: Lists all of the available Storage Rest API operations.
+      operationId: Operations_List
+      parameters:
+      - description: The API version to use for this operation.
+        in: query
+        minLength: 1
+        name: api-version
+        required: true
+        type: string
+        example: '2019-06-01'
+      responses:
+        '200':
+          description: OK. The request has succeeded.
+          schema:
+            $ref: '#/definitions/OperationListResult'
+      tags:
+      - Operations
+      x-ms-examples:
+        OperationsList:
+          parameters:
+            api-version: '2019-06-01'
+          responses:
+            '200':
+              body:
+                value:
+                - display:
+                    description: Creates a storage account with the specified parameters or update the properties or tags or adds custom domain for the specified storage account.
+                    operation: Create/Update Storage Account
+                    provider: Microsoft Storage
+                    resource: Storage Accounts
+                  name: Microsoft.Storage/storageAccounts/write
+                - display:
+                    description: Deletes an existing storage account.
+                    operation: Delete Storage Account
+                    provider: Microsoft Storage
+                    resource: Storage Accounts
+                  name: Microsoft.Storage/storageAccounts/delete
+                - display:
+                    description: Returns the access keys for the specified storage account.
+                    operation: List Storage Account Keys
+                    provider: Microsoft Storage
+                    resource: Storage Accounts
+                  name: Microsoft.Storage/storageAccounts/listkeys/action
+                - display:
+                    description: Regenerates the access keys for the specified storage account.
+                    operation: Regenerate Storage Account Keys
+                    provider: Microsoft Storage
+                    resource: Storage Accounts
+                  name: Microsoft.Storage/storageAccounts/regeneratekey/action
+                - display:
+                    description: Checks that account name is valid and is not in use.
+                    operation: Check Name Availability
+                    provider: Microsoft Storage
+                    resource: Name Availability
+                  name: Microsoft.Storage/checknameavailability/read
+                - display:
+                    description: Returns the list of storage accounts or gets the properties for the specified storage account.
+                    operation: List/Get Storage Account(s)
+                    provider: Microsoft Storage
+                    resource: Storage Accounts
+                  name: Microsoft.Storage/storageAccounts/read
+                - display:
+                    description: Returns the limit and the current usage count for resources in the specified subscription
+                    operation: Get Subscription Usages
+                    provider: Microsoft Storage
+                    resource: Usage Metrics
+                  name: Microsoft.Storage/usages/read
+                - display:
+                    description: Returns the Account SAS token for the specified storage account.
+                    operation: Returns Storage Account SAS Token
+                    provider: Microsoft Storage
+                    resource: Storage Account SAS Token
+                  name: Microsoft.Storage/storageAccounts/listAccountSas/action
+                - display:
+                    description: Storage Service SAS Token
+                    operation: Returns Storage Service SAS Token
+                    provider: Microsoft Storage
+                    resource: Returns the Service SAS token for the specified storage account.
+                  name: Microsoft.Storage/storageAccounts/listServiceSas/action
+                - display:
+                    description: Notifies Microsoft.Storage that virtual network or subnet is being deleted
+                    operation: Delete virtual network or subnets notifications
+                    provider: Microsoft Storage
+                    resource: Location
+                  name: Microsoft.Storage/locations/deleteVirtualNetworkOrSubnets/action
+                - display:
+                    description: Polls the status of an asynchronous operation.
+                    operation: Poll Asynchronous Operation
+                    provider: Microsoft Storage
+                    resource: Operations
+                  name: Microsoft.Storage/operations/read
+                - display:
+                    description: Registers the subscription for the storage resource provider and enables the creation of storage accounts.
+                    operation: Registers the Storage Resource Provider
+                    provider: Microsoft Storage
+                    resource: Storage Resource Provider
+                  name: Microsoft.Storage/register/action
+                - display:
+                    description: Lists the Skus supported by Microsoft.Storage.
+                    operation: List Skus
+                    provider: Microsoft Storage
+                    resource: Skus
+                  name: Microsoft.Storage/skus/read
+                - display:
+                    description: Create/Update storage account diagnostic settings.
+                    operation: Create/Update Diagnostic Settings
+                    provider: Microsoft Storage
+                    resource: Storage Accounts
+                  name: Microsoft.Storage/storageAccounts/services/diagnosticSettings/write
+                - display:
+                    description: Get list of Microsoft Storage Metrics definitions.
+                    operation: Get list of Microsoft Storage Metrics definitions
+                    provider: Microsoft Storage
+                    resource: Storage Accounts
+                  name: Microsoft.Storage/storageAccounts/providers/Microsoft.Insights/metricDefinitions/read
+                  origin: system
+                  properties:
+                    serviceSpecification:
+                      metricSpecifications:
+                      - aggregationType: Average
+                        category: Capacity
+                        displayDescription: Account used capacity
+                        displayName: Used capacity
+                        fillGapWithZero: false
+                        name: UsedCapacity
+                        resourceIdDimensionNameOverride: AccountResourceId
+                        unit: Bytes
+                - display:
+                    description: Gets the diagnostic setting for the resource.
+                    operation: Read diagnostic setting
+                    provider: Microsoft Storage
+                    resource: Storage Accounts
+                  name: Microsoft.Storage/storageAccounts/providers/Microsoft.Insights/diagnosticSettings/read
+                  origin: system
+                - display:
+                    description: Creates or updates the diagnostic setting for the resource.
+                    operation: Write diagnostic setting
+                    provider: Microsoft Storage
+                    resource: Storage Accounts
+                  name: Microsoft.Storage/storageAccounts/providers/Microsoft.Insights/diagnosticSettings/write
+                  origin: system
+                - display:
+                    description: Get list of Microsoft Storage Metrics definitions.
+                    operation: Get list of Microsoft Storage Metrics definitions
+                    provider: Microsoft Storage
+                    resource: Blob service
+                  name: Microsoft.Storage/storageAccounts/blobServices/providers/Microsoft.Insights/metricDefinitions/read
+                  origin: system
+                  properties:
+                    serviceSpecification:
+                      metricSpecifications:
+                      - aggregationType: Average
+                        category: Capacity
+                        dimensions:
+                        - displayName: Blob type
+                          name: BlobType
+                        displayDescription: The amount of storage used by the storage account’s Blob service in bytes.
+                        displayName: Blob Capacity
+                        fillGapWithZero: false
+                        name: BlobCapacity
+                        unit: Bytes
+                      - aggregationType: Average
+                        category: Capacity
+                        dimensions:
+                        - displayName: Blob type
+                          name: BlobType
+                        displayDescription: The number of Blob in the storage account’s Blob service.
+                        displayName: Blob Count
+                        fillGapWithZero: false
+                        name: BlobCount
+                        unit: Count
+                      - aggregationType: Average
+                        category: Capacity
+                        displayDescription: The number of containers in the storage account’s Blob service.
+                        displayName: Blob Container Count
+                        fillGapWithZero: false
+                        name: ContainerCount
+                        unit: Count
+                      - aggregationType: Average
+                        category: Capacity
+                        dimensions:
+                        - displayName: Blob type
+                          name: BlobType
+                        displayDescription: The amount of storage provisioned in the storage account’s Blob service in bytes.
+                        displayName: Blob Provisioned Size
+                        fillGapWithZero: false
+                        name: BlobProvisionedSize
+                        unit: Bytes
+                - display:
+                    description: Gets the diagnostic setting for the resource.
+                    operation: Read diagnostic setting
+                    provider: Microsoft Storage
+                    resource: Blob service
+                  name: Microsoft.Storage/storageAccounts/blobServices/providers/Microsoft.Insights/diagnosticSettings/read
+                  origin: system
+                - display:
+                    description: Creates or updates the diagnostic setting for the resource.
+                    operation: Write diagnostic setting
+                    provider: Microsoft Storage
+                    resource: Blob service
+                  name: Microsoft.Storage/storageAccounts/blobServices/providers/Microsoft.Insights/diagnosticSettings/write
+                  origin: system
+                - display:
+                    description: Get list of Microsoft Storage Metrics definitions.
+                    operation: Get list of Microsoft Storage Metrics definitions
+                    provider: Microsoft Storage
+                    resource: Table service
+                  name: Microsoft.Storage/storageAccounts/tableServices/providers/Microsoft.Insights/metricDefinitions/read
+                  origin: system
+                  properties:
+                    serviceSpecification:
+                      metricSpecifications:
+                      - aggregationType: Average
+                        category: Capacity
+                        displayDescription: The amount of storage used by the storage account’s Table service in bytes.
+                        displayName: Table Capacity
+                        fillGapWithZero: false
+                        name: TableCapacity
+                        unit: Bytes
+                      - aggregationType: Average
+                        category: Capacity
+                        displayDescription: The number of table in the storage account’s Table service.
+                        displayName: Table Count
+                        fillGapWithZero: false
+                        name: TableCount
+                        unit: Count
+                      - aggregationType: Average
+                        category: Capacity
+                        displayDescription: The number of table entities in the storage account’s Table service.
+                        displayName: Table Entity Count
+                        fillGapWithZero: false
+                        name: TableEntityCount
+                        unit: Count
+                - display:
+                    description: Gets the diagnostic setting for the resource.
+                    operation: Read diagnostic setting
+                    provider: Microsoft Storage
+                    resource: Table service
+                  name: Microsoft.Storage/storageAccounts/tableServices/providers/Microsoft.Insights/diagnosticSettings/read
+                  origin: system
+                - display:
+                    description: Creates or updates the diagnostic setting for the resource.
+                    operation: Write diagnostic setting
+                    provider: Microsoft Storage
+                    resource: Table service
+                  name: Microsoft.Storage/storageAccounts/tableServices/providers/Microsoft.Insights/diagnosticSettings/write
+                  origin: system
+                - display:
+                    description: Get list of Microsoft Storage Metrics definitions.
+                    operation: Get list of Microsoft Storage Metrics definitions
+                    provider: Microsoft Storage
+                    resource: Queue service
+                  name: Microsoft.Storage/storageAccounts/queueServices/providers/Microsoft.Insights/metricDefinitions/read
+                  origin: system
+                  properties:
+                    serviceSpecification:
+                      metricSpecifications:
+                      - aggregationType: Average
+                        category: Capacity
+                        displayDescription: The amount of storage used by the storage account’s Queue service in bytes.
+                        displayName: Queue Capacity
+                        fillGapWithZero: false
+                        name: QueueCapacity
+                        unit: Bytes
+                      - aggregationType: Average
+                        category: Capacity
+                        displayDescription: The number of queue in the storage account’s Queue service.
+                        displayName: Queue Count
+                        fillGapWithZero: false
+                        name: QueueCount
+                        unit: Count
+                      - aggregationType: Average
+                        category: Capacity
+                        displayDescription: The approximate number of queue messages in the storage account’s Queue service.
+                        displayName: Queue Message Count
+                        fillGapWithZero: false
+                        name: QueueMessageCount
+                        unit: Count
+                - display:
+                    description: Gets the diagnostic setting for the resource.
+                    operation: Read diagnostic setting
+                    provider: Microsoft Storage
+                    resource: Queue service
+                  name: Microsoft.Storage/storageAccounts/queueServices/providers/Microsoft.Insights/diagnosticSettings/read
+                  origin: system
+                - display:
+                    description: Creates or updates the diagnostic setting for the resource.
+                    operation: Write diagnostic setting
+                    provider: Microsoft Storage
+                    resource: Queue service
+                  name: Microsoft.Storage/storageAccounts/queueServices/providers/Microsoft.Insights/diagnosticSettings/write
+                  origin: system
+                - display:
+                    description: Get list of Microsoft Storage Metrics definitions.
+                    operation: Get list of Microsoft Storage Metrics definitions
+                    provider: Microsoft Storage
+                    resource: File service
+                  name: Microsoft.Storage/storageAccounts/fileServices/providers/Microsoft.Insights/metricDefinitions/read
+                  origin: system
+                  properties:
+                    serviceSpecification:
+                      metricSpecifications:
+                      - aggregationType: Average
+                        category: Capacity
+                        displayDescription: The amount of storage used by the storage account’s File service in bytes.
+                        displayName: File Capacity
+                        fillGapWithZero: false
+                        name: FileCapacity
+                        unit: Bytes
+                      - aggregationType: Average
+                        category: Capacity
+                        displayDescription: The amount of storage provisioned in the storage account’s File service in bytes.
+                        displayName: File Provisioned Size
+                        fillGapWithZero: false
+                        name: FileProvisionedSize
+                        unit: Bytes
+                      - aggregationType: Average
+                        category: Capacity
+                        displayDescription: The number of file in the storage account’s File service.
+                        displayName: File Count
+                        fillGapWithZero: false
+                        name: FileCount
+                        unit: Count
+                      - aggregationType: Average
+                        category: Capacity
+                        displayDescription: The number of file shares in the storage account’s File service.
+                        displayName: File Share Count
+                        fillGapWithZero: false
+                        name: FileShareCount
+                        unit: Count
+                - display:
+                    description: Gets the diagnostic setting for the resource.
+                    operation: Read diagnostic setting
+                    provider: Microsoft Storage
+                    resource: File service
+                  name: Microsoft.Storage/storageAccounts/fileServices/providers/Microsoft.Insights/diagnosticSettings/read
+                  origin: system
+                - display:
+                    description: Creates or updates the diagnostic setting for the resource.
+                    operation: Write diagnostic setting
+                    provider: Microsoft Storage
+                    resource: File service
+                  name: Microsoft.Storage/storageAccounts/fileServices/providers/Microsoft.Insights/diagnosticSettings/write
+                  origin: system
+      x-ms-pageable:
+        nextLinkName: null
+      summary: Azure Storage Accounts Operations_ List
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+definitions:
+  Operation:
+    description: Storage REST API operation definition.
+    properties:
+      display:
+        description: Display metadata associated with the operation.
+        properties:
+          description:
+            description: Description of the operation.
+            type: string
+          operation:
+            description: 'Type of operation: get, read, delete, etc.'
+            type: string
+          provider:
+            description: 'Service provider: Microsoft Storage.'
+            type: string
+          resource:
+            description: Resource on which the operation is performed etc.
+            type: string
+      name:
+        description: 'Operation name: {provider}/{resource}/{operation}'
+        type: string
+      origin:
+        description: The origin of operations.
+        type: string
+      properties:
+        $ref: '#/definitions/OperationProperties'
+        description: Properties of operation, include metric specifications.
+        x-ms-client-flatten: true
+        x-ms-client-name: OperationProperties
+    type: object
+  OperationProperties:
+    description: Properties of operation, include metric specifications.
+    properties:
+      serviceSpecification:
+        $ref: '#/definitions/ServiceSpecification'
+        description: One property of operation, include metric specifications.
+  ServiceSpecification:
+    description: One property of operation, include metric specifications.
+    properties:
+      metricSpecifications:
+        description: Metric specifications of operation.
+        items:
+          $ref: '#/definitions/MetricSpecification'
+        type: array
+  Dimension:
+    description: Dimension of blobs, possibly be blob type or access tier.
+    properties:
+      displayName:
+        description: Display name of dimension.
+        type: string
+      name:
+        description: Display name of dimension.
+        type: string
+  OperationListResult:
+    description: Result of the request to list Storage operations. It contains a list of operations and a URL link to get the next set of results.
+    properties:
+      value:
+        description: List of Storage operations supported by the Storage resource provider.
+        items:
+          $ref: '#/definitions/Operation'
+        type: array
+  MetricSpecification:
+    description: Metric specification of operation.
+    properties:
+      aggregationType:
+        description: Aggregation type could be Average.
+        type: string
+      category:
+        description: The category this metric specification belong to, could be Capacity.
+        type: string
+      dimensions:
+        description: Dimensions of blobs, including blob type and access tier.
+        items:
+          $ref: '#/definitions/Dimension'
+        type: array
+      displayDescription:
+        description: Display description of metric specification.
+        type: string
+      displayName:
+        description: Display name of metric specification.
+        type: string
+      fillGapWithZero:
+        description: The property to decide fill gap with zero or not.
+        type: boolean
+      name:
+        description: Name of metric specification.
+        type: string
+      resourceIdDimensionNameOverride:
+        description: Account Resource Id.
+        type: string
+      unit:
+        description: Unit could be Bytes or Count.
+        type: string
+securityDefinitions:
+  azure_auth:
+    authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
+    description: Azure Active Directory OAuth2 Flow
+    flow: implicit
+    scopes:
+      user_impersonation: impersonate your user account
+    type: oauth2

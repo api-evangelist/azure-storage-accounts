@@ -1,0 +1,3904 @@
+swagger: '2.0'
+info:
+  description: The Azure Storage Management API.
+  title: StorageManagementClient BlobContainers Skus API
+  version: '2019-06-01'
+  x-apisguru-categories:
+  - cloud
+  x-logo:
+    url: https://api.apis.guru/v2/cache/logo/https_assets.onestore.ms_cdnfiles_onestorerolling-1606-01000_shell_v3_images_logo_microsoft.png
+  x-origin:
+  - format: swagger
+    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/storage/resource-manager/Microsoft.Storage/stable/2019-06-01/blob.json
+    version: '2.0'
+  x-preferred: false
+  x-providerName: azure.com
+  x-serviceName: storage-blob
+  x-tags:
+  - Azure
+  - Microsoft
+host: management.azure.com
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- azure_auth:
+  - user_impersonation
+tags:
+- name: Skus
+paths:
+  /subscriptions/{subscriptionId}/providers/Microsoft.Storage/skus:
+    get:
+      description: Lists the available SKUs supported by Microsoft.Storage for given subscription.
+      operationId: Skus_List
+      parameters:
+      - description: The API version to use for this operation.
+        in: query
+        minLength: 1
+        name: api-version
+        required: true
+        type: string
+        example: '2019-06-01'
+      - description: The ID of the target subscription.
+        in: path
+        minLength: 1
+        name: subscriptionId
+        required: true
+        type: string
+        example: 00000000-0000-0000-0000-000000000000
+      responses:
+        '200':
+          description: OK -- List of storage SKUs in the given subscription retrieved and returned successfully.
+          schema:
+            $ref: '#/definitions/StorageSkuListResult'
+      tags:
+      - Skus
+      x-ms-examples:
+        SkuList:
+          parameters:
+            api-version: '2019-06-01'
+            subscriptionId: '{subscription-id}'
+          responses:
+            '200':
+              body:
+                value:
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - eastus
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - eastus
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - eastus
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - eastus
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - eastus
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - eastus
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - eastus
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - eastus
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - eastus2
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - eastus2
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - eastus2
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - eastus2
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - eastus2
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'true'
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - eastus2
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - eastus2
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - eastus2
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'true'
+                  kind: Storage
+                  locations:
+                  - eastus2(stage)
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'true'
+                  kind: Storage
+                  locations:
+                  - eastus2(stage)
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'true'
+                  kind: Storage
+                  locations:
+                  - eastus2(stage)
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - eastus2(stage)
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsnetworkacls
+                    value: 'true'
+                  kind: Storage
+                  locations:
+                  - eastus2(stage)
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'true'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'true'
+                  kind: BlobStorage
+                  locations:
+                  - eastus2(stage)
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'true'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'true'
+                  kind: BlobStorage
+                  locations:
+                  - eastus2(stage)
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'true'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - eastus2(stage)
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - westus
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - westus
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - westus
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - westus
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - westus
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - westus
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - westus
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - westus
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - westeurope
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - westeurope
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - westeurope
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - westeurope
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - westeurope
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - westeurope
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - westeurope
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - westeurope
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - eastasia
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - eastasia
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - eastasia
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - eastasia
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - eastasia
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - eastasia
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - eastasia
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - eastasia
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - southeastasia
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - southeastasia
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - southeastasia
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - southeastasia
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - southeastasia
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - southeastasia
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - southeastasia
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - southeastasia
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - japaneast
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - japaneast
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - japaneast
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - japaneast
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - japaneast
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - japaneast
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - japaneast
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - japaneast
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - japanwest
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - japanwest
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - japanwest
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - japanwest
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - japanwest
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - japanwest
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - japanwest
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - japanwest
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - northcentralus
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - northcentralus
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - northcentralus
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - northcentralus
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - northcentralus
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - northcentralus
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - northcentralus
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - northcentralus
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - southcentralus
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - southcentralus
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - southcentralus
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - southcentralus
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - southcentralus
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - southcentralus
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - southcentralus
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - southcentralus
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - centralus
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - centralus
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - centralus
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - centralus
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - centralus
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - centralus
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - centralus
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - centralus
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - northeurope
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - northeurope
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - northeurope
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - northeurope
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - northeurope
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - northeurope
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - northeurope
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - northeurope
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - brazilsouth
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - brazilsouth
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - brazilsouth
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - brazilsouth
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - brazilsouth
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - brazilsouth
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - brazilsouth
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - brazilsouth
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - australiaeast
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - australiaeast
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - australiaeast
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - australiaeast
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - australiaeast
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - australiaeast
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - australiaeast
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - australiaeast
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - australiasoutheast
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - australiasoutheast
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - australiasoutheast
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - australiasoutheast
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - australiasoutheast
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - australiasoutheast
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - australiasoutheast
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - australiasoutheast
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - southindia
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - southindia
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - southindia
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - southindia
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - southindia
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - southindia
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - southindia
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - southindia
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - centralindia
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - centralindia
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - centralindia
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - centralindia
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - centralindia
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - centralindia
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - centralindia
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - centralindia
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - westindia
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - westindia
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - westindia
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - westindia
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - westindia
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - westindia
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - westindia
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - westindia
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - canadaeast
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - canadaeast
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - canadaeast
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - canadaeast
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - canadaeast
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - canadaeast
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - canadaeast
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - canadaeast
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - canadacentral
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - canadacentral
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - canadacentral
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - canadacentral
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - canadacentral
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - canadacentral
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - canadacentral
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - canadacentral
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - westus2
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - westus2
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - westus2
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - westus2
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - westus2
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - westus2
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - westus2
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - westus2
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'true'
+                  kind: Storage
+                  locations:
+                  - westcentralus
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'true'
+                  kind: Storage
+                  locations:
+                  - westcentralus
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'true'
+                  kind: Storage
+                  locations:
+                  - westcentralus
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - westcentralus
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'true'
+                  kind: Storage
+                  locations:
+                  - westcentralus
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'true'
+                  kind: BlobStorage
+                  locations:
+                  - westcentralus
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'true'
+                  kind: BlobStorage
+                  locations:
+                  - westcentralus
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'true'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - westcentralus
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - uksouth
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - uksouth
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - uksouth
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - uksouth
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - uksouth
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - uksouth
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - uksouth
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - uksouth
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - ukwest
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - ukwest
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - ukwest
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - ukwest
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - ukwest
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - ukwest
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - ukwest
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - ukwest
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - koreacentral
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - koreacentral
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - koreacentral
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - koreacentral
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - koreacentral
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - koreacentral
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - koreacentral
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - koreacentral
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - koreasouth
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - koreasouth
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - koreasouth
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - koreasouth
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - koreasouth
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - koreasouth
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - koreasouth
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - koreasouth
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - uknorth
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - uknorth
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - uknorth
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - uknorth
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - uknorth
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - uknorth
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - uknorth
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - uknorth
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - uksouth2
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - uksouth2
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - uksouth2
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - uksouth2
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - uksouth2
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - uksouth2
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - uksouth2
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'false'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - uksouth2
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'true'
+                  kind: Storage
+                  locations:
+                  - eastus2euap
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'true'
+                  kind: Storage
+                  locations:
+                  - eastus2euap
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'true'
+                  kind: Storage
+                  locations:
+                  - eastus2euap
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - eastus2euap
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'true'
+                  kind: Storage
+                  locations:
+                  - eastus2euap
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'true'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'true'
+                  kind: BlobStorage
+                  locations:
+                  - eastus2euap
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'true'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'true'
+                  kind: BlobStorage
+                  locations:
+                  - eastus2euap
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'true'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - eastus2euap
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'true'
+                  kind: Storage
+                  locations:
+                  - centraluseuap
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'true'
+                  kind: Storage
+                  locations:
+                  - centraluseuap
+                  name: Standard_ZRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'true'
+                  kind: Storage
+                  locations:
+                  - centraluseuap
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'true'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: Storage
+                  locations:
+                  - centraluseuap
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'true'
+                  kind: Storage
+                  locations:
+                  - centraluseuap
+                  name: Premium_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Premium
+                - capabilities:
+                  - name: supportsarchivepreview
+                    value: 'false'
+                  - name: supportschangenotification
+                    value: 'true'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'true'
+                  kind: BlobStorage
+                  locations:
+                  - centraluseuap
+                  name: Standard_LRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'true'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'true'
+                  kind: BlobStorage
+                  locations:
+                  - centraluseuap
+                  name: Standard_GRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+                - capabilities:
+                  - name: supportschangenotification
+                    value: 'true'
+                  - name: supportsfileencryption
+                    value: 'false'
+                  - name: supportshoeboxcapacitymetrics
+                    value: 'false'
+                  - name: supportsnetworkacls
+                    value: 'false'
+                  kind: BlobStorage
+                  locations:
+                  - centraluseuap
+                  name: Standard_RAGRS
+                  resourceType: storageAccounts
+                  restrictions: []
+                  tier: Standard
+      x-ms-pageable:
+        nextLinkName: null
+      summary: Azure Storage Accounts Skus_ List
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+definitions:
+  SKUCapability:
+    description: The capability information in the specified SKU, including file encryption, network ACLs, change notification, etc.
+    properties:
+      name:
+        description: The name of capability, The capability information in the specified SKU, including file encryption, network ACLs, change notification, etc.
+        readOnly: true
+        type: string
+      value:
+        description: A string value to indicate states of given capability. Possibly 'true' or 'false'.
+        readOnly: true
+        type: string
+  SkuInformation:
+    description: Storage SKU and its properties
+    properties:
+      capabilities:
+        description: The capability information in the specified SKU, including file encryption, network ACLs, change notification, etc.
+        items:
+          $ref: '#/definitions/SKUCapability'
+        readOnly: true
+        type: array
+      kind:
+        description: Indicates the type of storage account.
+        enum:
+        - Storage
+        - StorageV2
+        - BlobStorage
+        - FileStorage
+        - BlockBlobStorage
+        readOnly: true
+        type: string
+        x-ms-enum:
+          modelAsString: true
+          name: Kind
+      locations:
+        description: The set of locations that the SKU is available. This will be supported and registered Azure Geo Regions (e.g. West US, East US, Southeast Asia, etc.).
+        items:
+          type: string
+        readOnly: true
+        type: array
+      name:
+        description: The SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType.
+        enum:
+        - Standard_LRS
+        - Standard_GRS
+        - Standard_RAGRS
+        - Standard_ZRS
+        - Premium_LRS
+        - Premium_ZRS
+        - Standard_GZRS
+        - Standard_RAGZRS
+        type: string
+        x-ms-enum:
+          modelAsString: true
+          name: SkuName
+      resourceType:
+        description: The type of the resource, usually it is 'storageAccounts'.
+        readOnly: true
+        type: string
+      restrictions:
+        description: The restrictions because of which SKU cannot be used. This is empty if there are no restrictions.
+        items:
+          $ref: '#/definitions/Restriction'
+        type: array
+      tier:
+        description: The SKU tier. This is based on the SKU name.
+        enum:
+        - Standard
+        - Premium
+        readOnly: true
+        type: string
+        x-ms-enum:
+          modelAsString: false
+          name: SkuTier
+    required:
+    - name
+  Restriction:
+    description: The restriction because of which SKU cannot be used.
+    properties:
+      reasonCode:
+        description: The reason for the restriction. As of now this can be "QuotaId" or "NotAvailableForSubscription". Quota Id is set when the SKU has requiredQuotas parameter as the subscription does not belong to that quota. The "NotAvailableForSubscription" is related to capacity at DC.
+        enum:
+        - QuotaId
+        - NotAvailableForSubscription
+        type: string
+        x-ms-enum:
+          modelAsString: true
+          name: ReasonCode
+      type:
+        description: The type of restrictions. As of now only possible value for this is location.
+        readOnly: true
+        type: string
+      values:
+        description: The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted.
+        items:
+          type: string
+        readOnly: true
+        type: array
+  StorageSkuListResult:
+    description: The response from the List Storage SKUs operation.
+    properties:
+      value:
+        description: Get the list result of storage SKUs and their properties.
+        items:
+          $ref: '#/definitions/SkuInformation'
+        readOnly: true
+        type: array
+securityDefinitions:
+  azure_auth:
+    authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
+    description: Azure Active Directory OAuth2 Flow
+    flow: implicit
+    scopes:
+      user_impersonation: impersonate your user account
+    type: oauth2
