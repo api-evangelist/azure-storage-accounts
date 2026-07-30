@@ -3,7 +3,20 @@ name: Azure Storage Accounts
 description: Azure Storage is Microsoft's cloud storage solution for modern data storage scenarios offering highly available,
   massively scalable, durable, and secure storage for blobs, files, queues, tables, and disks.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/azure-storage-accounts.png
 tags:
 - Azure
 - Blob Storage
@@ -17,20 +30,18 @@ created: '2024-01-01'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-- aid: azure-storage-accounts:azure-storage-blob-service-api
-  name: Azure Storage Blob Service API
-  description: REST API for operations on blobs in Azure Storage.
+- aid: azure-storage-accounts:azure-storage-accounts-blobcontainers-api
+  name: Azure Storage Accounts BlobContainers API
+  description: The BlobContainers API from Azure Storage Accounts — 8 operation(s) for blobcontainers.
   humanURL: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
   baseURL: https://{accountName}.blob.core.windows.net
   tags:
-  - Binary Data
-  - Blob Storage
-  - Object Storage
+  - BlobContainers
   properties:
+  - type: OpenAPI
+    url: openapi/azure-storage-accounts-blobcontainers-api-openapi.yml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
-  - type: OpenAPI
-    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/storage/data-plane/Microsoft.BlobStorage/stable/2023-11-03/blob.json
   - type: X-NaftikoCapability
     url: capabilities/blob-blobcontainers.yaml
   - type: X-NaftikoCapability
@@ -49,21 +60,271 @@ apis:
     url: capabilities/management-skus.yaml
   - type: X-NaftikoCapability
     url: capabilities/management-storageaccounts.yaml
-- aid: azure-storage-accounts:azure-storage-management-api
-  name: Azure Storage Management API
-  description: REST API for managing Azure Storage accounts and resources.
-  humanURL: https://learn.microsoft.com/en-us/rest/api/storagerp/
-  baseURL: https://management.azure.com
-  tags:
-  - Azure Resource Manager
-  - Management
-  - Resource Provider
-  properties:
   - type: Documentation
     url: https://learn.microsoft.com/en-us/rest/api/storagerp/
+- aid: azure-storage-accounts:azure-storage-accounts-blobservice-api
+  name: Azure Storage Accounts BlobService API
+  description: The BlobService API from Azure Storage Accounts — 2 operation(s) for blobservice.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
+  baseURL: https://{accountName}.blob.core.windows.net
+  tags:
+  - BlobService
+  properties:
   - type: OpenAPI
-    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/storage/resource-manager/Microsoft.Storage/stable/2023-01-01/storage.json
+    url: openapi/azure-storage-accounts-blobservice-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
+  - type: X-NaftikoCapability
+    url: capabilities/blob-blobcontainers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/blob-blobservice.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-locationusage.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-managementpolicies.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-operations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-privateendpointconnections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-privatelinkresources.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-skus.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-storageaccounts.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/storagerp/
+- aid: azure-storage-accounts:azure-storage-accounts-locationusage-api
+  name: Azure Storage Accounts LocationUsage API
+  description: The LocationUsage API from Azure Storage Accounts — 1 operation(s) for locationusage.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
+  baseURL: https://{accountName}.blob.core.windows.net
+  tags:
+  - LocationUsage
+  properties:
+  - type: OpenAPI
+    url: openapi/azure-storage-accounts-locationusage-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
+  - type: X-NaftikoCapability
+    url: capabilities/blob-blobcontainers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/blob-blobservice.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-locationusage.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-managementpolicies.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-operations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-privateendpointconnections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-privatelinkresources.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-skus.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-storageaccounts.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/storagerp/
+- aid: azure-storage-accounts:azure-storage-accounts-managementpolicies-api
+  name: Azure Storage Accounts ManagementPolicies API
+  description: >-
+    The ManagementPolicies API from Azure Storage Accounts — 1 operation(s) for managementpolicies.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
+  baseURL: https://{accountName}.blob.core.windows.net
+  tags:
+  - ManagementPolicies
+  properties:
+  - type: OpenAPI
+    url: openapi/azure-storage-accounts-managementpolicies-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
+  - type: X-NaftikoCapability
+    url: capabilities/blob-blobcontainers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/blob-blobservice.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-locationusage.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-managementpolicies.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-operations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-privateendpointconnections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-privatelinkresources.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-skus.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-storageaccounts.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/storagerp/
+- aid: azure-storage-accounts:azure-storage-accounts-operations-api
+  name: Azure Storage Accounts Operations API
+  description: The Operations API from Azure Storage Accounts — 1 operation(s) for operations.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
+  baseURL: https://{accountName}.blob.core.windows.net
+  tags:
+  - Operations
+  properties:
+  - type: OpenAPI
+    url: openapi/azure-storage-accounts-operations-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
+  - type: X-NaftikoCapability
+    url: capabilities/blob-blobcontainers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/blob-blobservice.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-locationusage.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-managementpolicies.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-operations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-privateendpointconnections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-privatelinkresources.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-skus.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-storageaccounts.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/storagerp/
+- aid: azure-storage-accounts:azure-storage-accounts-privateendpointconnections-api
+  name: Azure Storage Accounts PrivateEndpointConnections API
+  description: >-
+    The PrivateEndpointConnections API from Azure Storage Accounts — 1 operation(s) for privateendpointconnections.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
+  baseURL: https://{accountName}.blob.core.windows.net
+  tags:
+  - PrivateEndpointConnections
+  properties:
+  - type: OpenAPI
+    url: openapi/azure-storage-accounts-privateendpointconnections-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
+  - type: X-NaftikoCapability
+    url: capabilities/blob-blobcontainers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/blob-blobservice.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-locationusage.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-managementpolicies.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-operations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-privateendpointconnections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-privatelinkresources.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-skus.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-storageaccounts.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/storagerp/
+- aid: azure-storage-accounts:azure-storage-accounts-privatelinkresources-api
+  name: Azure Storage Accounts PrivateLinkResources API
+  description: >-
+    The PrivateLinkResources API from Azure Storage Accounts — 1 operation(s) for privatelinkresources.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
+  baseURL: https://{accountName}.blob.core.windows.net
+  tags:
+  - PrivateLinkResources
+  properties:
+  - type: OpenAPI
+    url: openapi/azure-storage-accounts-privatelinkresources-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
+  - type: X-NaftikoCapability
+    url: capabilities/blob-blobcontainers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/blob-blobservice.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-locationusage.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-managementpolicies.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-operations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-privateendpointconnections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-privatelinkresources.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-skus.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-storageaccounts.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/storagerp/
+- aid: azure-storage-accounts:azure-storage-accounts-skus-api
+  name: Azure Storage Accounts Skus API
+  description: The Skus API from Azure Storage Accounts — 1 operation(s) for skus.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
+  baseURL: https://{accountName}.blob.core.windows.net
+  tags:
+  - Skus
+  properties:
+  - type: OpenAPI
+    url: openapi/azure-storage-accounts-skus-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
+  - type: X-NaftikoCapability
+    url: capabilities/blob-blobcontainers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/blob-blobservice.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-locationusage.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-managementpolicies.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-operations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-privateendpointconnections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-privatelinkresources.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-skus.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-storageaccounts.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/storagerp/
+- aid: azure-storage-accounts:azure-storage-accounts-storageaccounts-api
+  name: Azure Storage Accounts StorageAccounts API
+  description: >-
+    The StorageAccounts API from Azure Storage Accounts — 11 operation(s) for storageaccounts.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
+  baseURL: https://{accountName}.blob.core.windows.net
+  tags:
+  - StorageAccounts
+  properties:
+  - type: OpenAPI
+    url: openapi/azure-storage-accounts-storageaccounts-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
+  - type: X-NaftikoCapability
+    url: capabilities/blob-blobcontainers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/blob-blobservice.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-locationusage.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-managementpolicies.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-operations.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-privateendpointconnections.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-privatelinkresources.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-skus.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/management-storageaccounts.yaml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/storagerp/
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/azure-storage-accounts/overview
 - type: AgenticAccess
   url: agentic-access/azure-storage-accounts-agentic-access.yml
 - type: DomainSecurity
