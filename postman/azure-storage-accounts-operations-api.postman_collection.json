@@ -1,0 +1,158 @@
+{
+  "info": {
+    "_postman_id": "7788adfb-3b1f-453a-9707-ec04f5f54ea6",
+    "name": "StorageManagementClient BlobContainers Operations API",
+    "description": "The Azure Storage Management API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:53:59.000Z",
+    "updatedAt": "2026-07-28T10:53:59.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7788adfb-3b1f-453a-9707-ec04f5f54ea6"
+  },
+  "item": [
+    {
+      "name": "providers",
+      "item": [
+        {
+          "name": "Microsoft.Storage",
+          "item": [
+            {
+              "name": "operations",
+              "item": [
+                {
+                  "name": "Azure Storage Accounts Operations_ List",
+                  "id": "dc92c8d6-6134-4d66-b877-82caf6a60085",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/providers/Microsoft.Storage/operations?api-version=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "providers",
+                        "Microsoft.Storage",
+                        "operations"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The API version to use for this operation.",
+                          "key": "api-version",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Lists all of the available Storage Rest API operations."
+                  },
+                  "response": [
+                    {
+                      "id": "0026e6e3-ffd0-400a-bc91-37bafd922a99",
+                      "name": "OK. The request has succeeded.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/providers/Microsoft.Storage/operations?api-version=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "providers",
+                            "Microsoft.Storage",
+                            "operations"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The API version to use for this operation.",
+                              "key": "api-version",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": [\n    {\n      \"display\": {\n        \"description\": \"<string>\",\n        \"operation\": \"<string>\",\n        \"provider\": \"<string>\",\n        \"resource\": \"<string>\"\n      },\n      \"name\": \"<string>\",\n      \"origin\": \"<string>\",\n      \"properties\": {\n        \"serviceSpecification\": {\n          \"metricSpecifications\": [\n            {\n              \"aggregationType\": \"<string>\",\n              \"category\": \"<string>\",\n              \"dimensions\": [\n                {\n                  \"displayName\": \"<string>\",\n                  \"name\": \"<string>\"\n                },\n                {\n                  \"displayName\": \"<string>\",\n                  \"name\": \"<string>\"\n                }\n              ],\n              \"displayDescription\": \"<string>\",\n              \"displayName\": \"<string>\",\n              \"fillGapWithZero\": \"<boolean>\",\n              \"name\": \"<string>\",\n              \"resourceIdDimensionNameOverride\": \"<string>\",\n              \"unit\": \"<string>\"\n            },\n            {\n              \"aggregationType\": \"<string>\",\n              \"category\": \"<string>\",\n              \"dimensions\": [\n                {\n                  \"displayName\": \"<string>\",\n                  \"name\": \"<string>\"\n                },\n                {\n                  \"displayName\": \"<string>\",\n                  \"name\": \"<string>\"\n                }\n              ],\n              \"displayDescription\": \"<string>\",\n              \"displayName\": \"<string>\",\n              \"fillGapWithZero\": \"<boolean>\",\n              \"name\": \"<string>\",\n              \"resourceIdDimensionNameOverride\": \"<string>\",\n              \"unit\": \"<string>\"\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"display\": {\n        \"description\": \"<string>\",\n        \"operation\": \"<string>\",\n        \"provider\": \"<string>\",\n        \"resource\": \"<string>\"\n      },\n      \"name\": \"<string>\",\n      \"origin\": \"<string>\",\n      \"properties\": {\n        \"serviceSpecification\": {\n          \"metricSpecifications\": [\n            {\n              \"aggregationType\": \"<string>\",\n              \"category\": \"<string>\",\n              \"dimensions\": [\n                {\n                  \"displayName\": \"<string>\",\n                  \"name\": \"<string>\"\n                },\n                {\n                  \"displayName\": \"<string>\",\n                  \"name\": \"<string>\"\n                }\n              ],\n              \"displayDescription\": \"<string>\",\n              \"displayName\": \"<string>\",\n              \"fillGapWithZero\": \"<boolean>\",\n              \"name\": \"<string>\",\n              \"resourceIdDimensionNameOverride\": \"<string>\",\n              \"unit\": \"<string>\"\n            },\n            {\n              \"aggregationType\": \"<string>\",\n              \"category\": \"<string>\",\n              \"dimensions\": [\n                {\n                  \"displayName\": \"<string>\",\n                  \"name\": \"<string>\"\n                },\n                {\n                  \"displayName\": \"<string>\",\n                  \"name\": \"<string>\"\n                }\n              ],\n              \"displayDescription\": \"<string>\",\n              \"displayName\": \"<string>\",\n              \"fillGapWithZero\": \"<boolean>\",\n              \"name\": \"<string>\",\n              \"resourceIdDimensionNameOverride\": \"<string>\",\n              \"unit\": \"<string>\"\n            }\n          ]\n        }\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T10:53:59.000Z",
+                      "updatedAt": "2026-07-28T10:53:59.000Z",
+                      "uid": "35240-0026e6e3-ffd0-400a-bc91-37bafd922a99"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T10:53:59.000Z",
+                  "updatedAt": "2026-07-28T10:53:59.000Z",
+                  "uid": "35240-dc92c8d6-6134-4d66-b877-82caf6a60085"
+                }
+              ],
+              "id": "ac0f3c91-b4fa-49db-a4c8-5e48ee4efece",
+              "createdAt": "2026-07-28T10:53:59.000Z",
+              "updatedAt": "2026-07-28T10:53:59.000Z",
+              "uid": "35240-ac0f3c91-b4fa-49db-a4c8-5e48ee4efece"
+            }
+          ],
+          "id": "20183e19-13aa-41f1-8f6e-4bb6d9f64c8f",
+          "createdAt": "2026-07-28T10:53:59.000Z",
+          "updatedAt": "2026-07-28T10:53:59.000Z",
+          "uid": "35240-20183e19-13aa-41f1-8f6e-4bb6d9f64c8f"
+        }
+      ],
+      "id": "66746111-0f86-40d6-9da2-34ebfcc11b9e",
+      "createdAt": "2026-07-28T10:53:59.000Z",
+      "updatedAt": "2026-07-28T10:53:59.000Z",
+      "uid": "35240-66746111-0f86-40d6-9da2-34ebfcc11b9e"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "user_impersonation",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "implicit",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://management.azure.com"
+    }
+  ]
+}

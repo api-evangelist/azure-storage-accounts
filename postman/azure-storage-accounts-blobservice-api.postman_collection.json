@@ -1,0 +1,582 @@
+{
+  "info": {
+    "_postman_id": "24b9b440-4211-452e-986a-f5aec19cb4cc",
+    "name": "StorageManagementClient BlobContainers BlobService API",
+    "description": "The Azure Storage Management API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:53:55.000Z",
+    "updatedAt": "2026-07-28T10:53:55.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-24b9b440-4211-452e-986a-f5aec19cb4cc"
+  },
+  "item": [
+    {
+      "name": "subscriptions",
+      "item": [
+        {
+          "name": "{subscriptionId}",
+          "item": [
+            {
+              "name": "resourceGroups",
+              "item": [
+                {
+                  "name": "{resourceGroupName}",
+                  "item": [
+                    {
+                      "name": "providers",
+                      "item": [
+                        {
+                          "name": "Microsoft.Storage",
+                          "item": [
+                            {
+                              "name": "storageAccounts",
+                              "item": [
+                                {
+                                  "name": "{accountName}",
+                                  "item": [
+                                    {
+                                      "name": "blobServices",
+                                      "item": [
+                                        {
+                                          "name": "{BlobServicesName}",
+                                          "item": [
+                                            {
+                                              "name": "Azure Storage Accounts Blob Services_ Get Service Properties",
+                                              "id": "2bd03d92-881a-4316-9b53-d71001a8cd8e",
+                                              "protocolProfileBehavior": {
+                                                "disableBodyPruning": true
+                                              },
+                                              "request": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "application/json"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Storage/storageAccounts/:accountName/blobServices/:BlobServicesName?api-version=<string>",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "subscriptions",
+                                                    ":subscriptionId",
+                                                    "resourceGroups",
+                                                    ":resourceGroupName",
+                                                    "providers",
+                                                    "Microsoft.Storage",
+                                                    "storageAccounts",
+                                                    ":accountName",
+                                                    "blobServices",
+                                                    ":BlobServicesName"
+                                                  ],
+                                                  "query": [
+                                                    {
+                                                      "description": "(Required) The API version to use for this operation.",
+                                                      "key": "api-version",
+                                                      "value": "<string>"
+                                                    }
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "id": "bc984316-01ec-40e4-b8a4-2d23b9ecc900",
+                                                      "key": "subscriptionId",
+                                                      "value": "<string>",
+                                                      "description": "(Required) The ID of the target subscription."
+                                                    },
+                                                    {
+                                                      "id": "a4b0a799-e9d2-4ab4-b4b6-9f8d38703a0c",
+                                                      "key": "resourceGroupName",
+                                                      "value": "WaxGBXfW",
+                                                      "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                                                    },
+                                                    {
+                                                      "id": "23bf3e9a-61df-49af-b2ad-2430e5e10125",
+                                                      "key": "accountName",
+                                                      "value": "<string>",
+                                                      "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                                                    },
+                                                    {
+                                                      "id": "2ef86e80-49e5-4ca5-890b-4b2798542013",
+                                                      "key": "BlobServicesName",
+                                                      "value": "default",
+                                                      "description": "(Required) The name of the blob Service within the specified storage account. Blob Service Name must be 'default'"
+                                                    }
+                                                  ]
+                                                },
+                                                "description": "Gets the properties of a storage account\u2019s Blob service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules."
+                                              },
+                                              "response": [
+                                                {
+                                                  "id": "40357160-e6ef-40dc-be08-d59acdfa63dd",
+                                                  "name": "OK -- returned the properties of a storage account\u2019s Blob service.",
+                                                  "originalRequest": {
+                                                    "method": "GET",
+                                                    "header": [
+                                                      {
+                                                        "key": "Accept",
+                                                        "value": "application/json"
+                                                      },
+                                                      {
+                                                        "description": "Added as a part of security scheme: oauth2",
+                                                        "key": "Authorization",
+                                                        "value": "<token>"
+                                                      }
+                                                    ],
+                                                    "url": {
+                                                      "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Storage/storageAccounts/:accountName/blobServices/:BlobServicesName?api-version=<string>",
+                                                      "host": [
+                                                        "{{baseUrl}}"
+                                                      ],
+                                                      "path": [
+                                                        "subscriptions",
+                                                        ":subscriptionId",
+                                                        "resourceGroups",
+                                                        ":resourceGroupName",
+                                                        "providers",
+                                                        "Microsoft.Storage",
+                                                        "storageAccounts",
+                                                        ":accountName",
+                                                        "blobServices",
+                                                        ":BlobServicesName"
+                                                      ],
+                                                      "query": [
+                                                        {
+                                                          "description": "(Required) The API version to use for this operation.",
+                                                          "key": "api-version",
+                                                          "value": "<string>"
+                                                        }
+                                                      ],
+                                                      "variable": [
+                                                        {
+                                                          "key": "subscriptionId"
+                                                        },
+                                                        {
+                                                          "key": "resourceGroupName"
+                                                        },
+                                                        {
+                                                          "key": "accountName"
+                                                        },
+                                                        {
+                                                          "key": "BlobServicesName"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "status": "OK",
+                                                  "code": 200,
+                                                  "_postman_previewlanguage": "json",
+                                                  "header": [
+                                                    {
+                                                      "key": "Content-Type",
+                                                      "value": "application/json"
+                                                    }
+                                                  ],
+                                                  "cookie": [],
+                                                  "responseTime": null,
+                                                  "body": "{\n  \"properties\": {\n    \"description\": \"The properties of a storage account\u2019s Blob service.\",\n    \"x-ms-client-flatten\": true,\n    \"x-ms-client-name\": \"BlobServiceProperties\",\n    \"properties\": {\n      \"automaticSnapshotPolicyEnabled\": true,\n      \"changeFeed\": {},\n      \"cors\": {\n        \"corsRules\": [\n          {\n            \"allowedOrigins\": [\n              \"aute irure \",\n              \"ut nostrud non consectetur adipisicing\"\n            ],\n            \"allowedMethods\": [\n              \"DELETE\",\n              \"POST\"\n            ],\n            \"maxAgeInSeconds\": 29821637,\n            \"exposedHeaders\": [\n              \"non Ut ut\",\n              \"sint\"\n            ],\n            \"allowedHeaders\": [\n              \"veniam cupidatat tempor\",\n              \"eu quis dolore\"\n            ]\n          },\n          {\n            \"allowedOrigins\": [\n              \"laboris nisi fugia\",\n              \"sint officia\"\n            ],\n            \"allowedMethods\": [\n              \"PUT\",\n              \"MERGE\"\n            ],\n            \"maxAgeInSeconds\": 39145392,\n            \"exposedHeaders\": [\n              \"fugiat id laborum dolore dolor\",\n              \"et do\"\n            ],\n            \"allowedHeaders\": [\n              \"in ut\",\n              \"Ut aliquip ad eiusmod\"\n            ]\n          }\n        ]\n      },\n      \"defaultServiceVersion\": \"reprehenderit magna dolore\",\n      \"deleteRetentionPolicy\": {\n        \"days\": 130,\n        \"enabled\": true\n      },\n      \"restorePolicy\": {}\n    }\n  },\n  \"sku\": {\n    \"name\": \"Premium_ZRS\",\n    \"tier\": \"Standard\"\n  },\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                                                  "createdAt": "2026-07-28T10:53:56.000Z",
+                                                  "updatedAt": "2026-07-28T10:53:56.000Z",
+                                                  "uid": "35240-40357160-e6ef-40dc-be08-d59acdfa63dd"
+                                                }
+                                              ],
+                                              "createdAt": "2026-07-28T10:53:56.000Z",
+                                              "updatedAt": "2026-07-28T10:53:56.000Z",
+                                              "uid": "35240-2bd03d92-881a-4316-9b53-d71001a8cd8e"
+                                            },
+                                            {
+                                              "name": "Azure Storage Accounts Blob Services_ Set Service Properties",
+                                              "id": "22219f1f-0827-4749-9460-f532ec38ffbb",
+                                              "protocolProfileBehavior": {
+                                                "disableBodyPruning": true
+                                              },
+                                              "request": {
+                                                "method": "PUT",
+                                                "header": [
+                                                  {
+                                                    "key": "Content-Type",
+                                                    "value": "application/json"
+                                                  },
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "application/json"
+                                                  }
+                                                ],
+                                                "body": {
+                                                  "mode": "raw",
+                                                  "raw": "{\n  \"properties\": {\n    \"description\": \"The properties of a storage account\u2019s Blob service.\",\n    \"x-ms-client-flatten\": true,\n    \"x-ms-client-name\": \"BlobServiceProperties\",\n    \"properties\": {\n      \"automaticSnapshotPolicyEnabled\": true,\n      \"changeFeed\": {},\n      \"cors\": {\n        \"corsRules\": [\n          {\n            \"allowedOrigins\": [\n              \"aute irure \",\n              \"ut nostrud non consectetur adipisicing\"\n            ],\n            \"allowedMethods\": [\n              \"DELETE\",\n              \"POST\"\n            ],\n            \"maxAgeInSeconds\": 29821637,\n            \"exposedHeaders\": [\n              \"non Ut ut\",\n              \"sint\"\n            ],\n            \"allowedHeaders\": [\n              \"veniam cupidatat tempor\",\n              \"eu quis dolore\"\n            ]\n          },\n          {\n            \"allowedOrigins\": [\n              \"laboris nisi fugia\",\n              \"sint officia\"\n            ],\n            \"allowedMethods\": [\n              \"PUT\",\n              \"MERGE\"\n            ],\n            \"maxAgeInSeconds\": 39145392,\n            \"exposedHeaders\": [\n              \"fugiat id laborum dolore dolor\",\n              \"et do\"\n            ],\n            \"allowedHeaders\": [\n              \"in ut\",\n              \"Ut aliquip ad eiusmod\"\n            ]\n          }\n        ]\n      },\n      \"defaultServiceVersion\": \"reprehenderit magna dolore\",\n      \"deleteRetentionPolicy\": {\n        \"days\": 130,\n        \"enabled\": true\n      },\n      \"restorePolicy\": {}\n    }\n  },\n  \"sku\": {\n    \"name\": \"Premium_ZRS\",\n    \"tier\": \"Standard\"\n  },\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                                                  "options": {
+                                                    "raw": {
+                                                      "headerFamily": "json",
+                                                      "language": "json"
+                                                    }
+                                                  }
+                                                },
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Storage/storageAccounts/:accountName/blobServices/:BlobServicesName?api-version=<string>",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "subscriptions",
+                                                    ":subscriptionId",
+                                                    "resourceGroups",
+                                                    ":resourceGroupName",
+                                                    "providers",
+                                                    "Microsoft.Storage",
+                                                    "storageAccounts",
+                                                    ":accountName",
+                                                    "blobServices",
+                                                    ":BlobServicesName"
+                                                  ],
+                                                  "query": [
+                                                    {
+                                                      "description": "(Required) The API version to use for this operation.",
+                                                      "key": "api-version",
+                                                      "value": "<string>"
+                                                    }
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "id": "c8f21c66-48dc-4f80-a0ed-73f8e120eaac",
+                                                      "key": "subscriptionId",
+                                                      "value": "<string>",
+                                                      "description": "(Required) The ID of the target subscription."
+                                                    },
+                                                    {
+                                                      "id": "6f426119-a5b8-4528-a258-d7b0e3396cf0",
+                                                      "key": "resourceGroupName",
+                                                      "value": "WaxGBXfW",
+                                                      "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                                                    },
+                                                    {
+                                                      "id": "174ea44b-2628-4723-9e4a-5c31bd767802",
+                                                      "key": "accountName",
+                                                      "value": "<string>",
+                                                      "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                                                    },
+                                                    {
+                                                      "id": "eb99f30d-13de-4eb5-89c9-cbb8563908f7",
+                                                      "key": "BlobServicesName",
+                                                      "value": "default",
+                                                      "description": "(Required) The name of the blob Service within the specified storage account. Blob Service Name must be 'default'"
+                                                    }
+                                                  ]
+                                                },
+                                                "description": "Sets the properties of a storage account\u2019s Blob service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules. "
+                                              },
+                                              "response": [
+                                                {
+                                                  "id": "df58a781-5b18-4918-bd77-f3649f795711",
+                                                  "name": "OK -- Sets The properties of a storage account\u2019s Blob service successfully.",
+                                                  "originalRequest": {
+                                                    "method": "PUT",
+                                                    "header": [
+                                                      {
+                                                        "key": "Content-Type",
+                                                        "value": "application/json"
+                                                      },
+                                                      {
+                                                        "key": "Accept",
+                                                        "value": "application/json"
+                                                      },
+                                                      {
+                                                        "description": "Added as a part of security scheme: oauth2",
+                                                        "key": "Authorization",
+                                                        "value": "<token>"
+                                                      }
+                                                    ],
+                                                    "body": {
+                                                      "mode": "raw",
+                                                      "raw": "{\n  \"properties\": {\n    \"description\": \"The properties of a storage account\u2019s Blob service.\",\n    \"x-ms-client-flatten\": true,\n    \"x-ms-client-name\": \"BlobServiceProperties\",\n    \"properties\": {\n      \"automaticSnapshotPolicyEnabled\": true,\n      \"changeFeed\": {},\n      \"cors\": {\n        \"corsRules\": [\n          {\n            \"allowedOrigins\": [\n              \"aute irure \",\n              \"ut nostrud non consectetur adipisicing\"\n            ],\n            \"allowedMethods\": [\n              \"DELETE\",\n              \"POST\"\n            ],\n            \"maxAgeInSeconds\": 29821637,\n            \"exposedHeaders\": [\n              \"non Ut ut\",\n              \"sint\"\n            ],\n            \"allowedHeaders\": [\n              \"veniam cupidatat tempor\",\n              \"eu quis dolore\"\n            ]\n          },\n          {\n            \"allowedOrigins\": [\n              \"laboris nisi fugia\",\n              \"sint officia\"\n            ],\n            \"allowedMethods\": [\n              \"PUT\",\n              \"MERGE\"\n            ],\n            \"maxAgeInSeconds\": 39145392,\n            \"exposedHeaders\": [\n              \"fugiat id laborum dolore dolor\",\n              \"et do\"\n            ],\n            \"allowedHeaders\": [\n              \"in ut\",\n              \"Ut aliquip ad eiusmod\"\n            ]\n          }\n        ]\n      },\n      \"defaultServiceVersion\": \"reprehenderit magna dolore\",\n      \"deleteRetentionPolicy\": {\n        \"days\": 130,\n        \"enabled\": true\n      },\n      \"restorePolicy\": {}\n    }\n  },\n  \"sku\": {\n    \"name\": \"Premium_ZRS\",\n    \"tier\": \"Standard\"\n  },\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                                                      "options": {
+                                                        "raw": {
+                                                          "headerFamily": "json",
+                                                          "language": "json"
+                                                        }
+                                                      }
+                                                    },
+                                                    "url": {
+                                                      "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Storage/storageAccounts/:accountName/blobServices/:BlobServicesName?api-version=<string>",
+                                                      "host": [
+                                                        "{{baseUrl}}"
+                                                      ],
+                                                      "path": [
+                                                        "subscriptions",
+                                                        ":subscriptionId",
+                                                        "resourceGroups",
+                                                        ":resourceGroupName",
+                                                        "providers",
+                                                        "Microsoft.Storage",
+                                                        "storageAccounts",
+                                                        ":accountName",
+                                                        "blobServices",
+                                                        ":BlobServicesName"
+                                                      ],
+                                                      "query": [
+                                                        {
+                                                          "description": "(Required) The API version to use for this operation.",
+                                                          "key": "api-version",
+                                                          "value": "<string>"
+                                                        }
+                                                      ],
+                                                      "variable": [
+                                                        {
+                                                          "key": "subscriptionId"
+                                                        },
+                                                        {
+                                                          "key": "resourceGroupName"
+                                                        },
+                                                        {
+                                                          "key": "accountName"
+                                                        },
+                                                        {
+                                                          "key": "BlobServicesName"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "status": "OK",
+                                                  "code": 200,
+                                                  "_postman_previewlanguage": "json",
+                                                  "header": [
+                                                    {
+                                                      "key": "Content-Type",
+                                                      "value": "application/json"
+                                                    }
+                                                  ],
+                                                  "cookie": [],
+                                                  "responseTime": null,
+                                                  "body": "{\n  \"properties\": {\n    \"description\": \"The properties of a storage account\u2019s Blob service.\",\n    \"x-ms-client-flatten\": true,\n    \"x-ms-client-name\": \"BlobServiceProperties\",\n    \"properties\": {\n      \"automaticSnapshotPolicyEnabled\": true,\n      \"changeFeed\": {},\n      \"cors\": {\n        \"corsRules\": [\n          {\n            \"allowedOrigins\": [\n              \"aute irure \",\n              \"ut nostrud non consectetur adipisicing\"\n            ],\n            \"allowedMethods\": [\n              \"DELETE\",\n              \"POST\"\n            ],\n            \"maxAgeInSeconds\": 29821637,\n            \"exposedHeaders\": [\n              \"non Ut ut\",\n              \"sint\"\n            ],\n            \"allowedHeaders\": [\n              \"veniam cupidatat tempor\",\n              \"eu quis dolore\"\n            ]\n          },\n          {\n            \"allowedOrigins\": [\n              \"laboris nisi fugia\",\n              \"sint officia\"\n            ],\n            \"allowedMethods\": [\n              \"PUT\",\n              \"MERGE\"\n            ],\n            \"maxAgeInSeconds\": 39145392,\n            \"exposedHeaders\": [\n              \"fugiat id laborum dolore dolor\",\n              \"et do\"\n            ],\n            \"allowedHeaders\": [\n              \"in ut\",\n              \"Ut aliquip ad eiusmod\"\n            ]\n          }\n        ]\n      },\n      \"defaultServiceVersion\": \"reprehenderit magna dolore\",\n      \"deleteRetentionPolicy\": {\n        \"days\": 130,\n        \"enabled\": true\n      },\n      \"restorePolicy\": {}\n    }\n  },\n  \"sku\": {\n    \"name\": \"Premium_ZRS\",\n    \"tier\": \"Standard\"\n  },\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                                                  "createdAt": "2026-07-28T10:53:56.000Z",
+                                                  "updatedAt": "2026-07-28T10:53:56.000Z",
+                                                  "uid": "35240-df58a781-5b18-4918-bd77-f3649f795711"
+                                                }
+                                              ],
+                                              "createdAt": "2026-07-28T10:53:56.000Z",
+                                              "updatedAt": "2026-07-28T10:53:56.000Z",
+                                              "uid": "35240-22219f1f-0827-4749-9460-f532ec38ffbb"
+                                            }
+                                          ],
+                                          "id": "7cffd9de-0295-438e-97b7-69e08470b100",
+                                          "createdAt": "2026-07-28T10:53:56.000Z",
+                                          "updatedAt": "2026-07-28T10:53:56.000Z",
+                                          "uid": "35240-7cffd9de-0295-438e-97b7-69e08470b100"
+                                        },
+                                        {
+                                          "name": "Azure Storage Accounts Blob Services_ List",
+                                          "id": "4b42299f-7119-43db-92df-1f83bdd27af1",
+                                          "protocolProfileBehavior": {
+                                            "disableBodyPruning": true
+                                          },
+                                          "request": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Storage/storageAccounts/:accountName/blobServices?api-version=<string>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "subscriptions",
+                                                ":subscriptionId",
+                                                "resourceGroups",
+                                                ":resourceGroupName",
+                                                "providers",
+                                                "Microsoft.Storage",
+                                                "storageAccounts",
+                                                ":accountName",
+                                                "blobServices"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) The API version to use for this operation.",
+                                                  "key": "api-version",
+                                                  "value": "<string>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "id": "1816dd0d-3ff7-41eb-b1da-c7b4e8941313",
+                                                  "key": "subscriptionId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) The ID of the target subscription."
+                                                },
+                                                {
+                                                  "id": "245a150d-ef79-479e-92b6-f43181b086b6",
+                                                  "key": "resourceGroupName",
+                                                  "value": "WaxGBXfW",
+                                                  "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                                                },
+                                                {
+                                                  "id": "2d879bc1-df2a-4c06-844a-e384a0a8e663",
+                                                  "key": "accountName",
+                                                  "value": "<string>",
+                                                  "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                                                }
+                                              ]
+                                            },
+                                            "description": "List blob services of storage account. It returns a collection of one object named default."
+                                          },
+                                          "response": [
+                                            {
+                                              "id": "3eeac22d-b238-4aab-bd8a-1cd55e41f82e",
+                                              "name": "OK -- List blob services operation completed successfully.",
+                                              "originalRequest": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "application/json"
+                                                  },
+                                                  {
+                                                    "description": "Added as a part of security scheme: oauth2",
+                                                    "key": "Authorization",
+                                                    "value": "<token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Storage/storageAccounts/:accountName/blobServices?api-version=<string>",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "subscriptions",
+                                                    ":subscriptionId",
+                                                    "resourceGroups",
+                                                    ":resourceGroupName",
+                                                    "providers",
+                                                    "Microsoft.Storage",
+                                                    "storageAccounts",
+                                                    ":accountName",
+                                                    "blobServices"
+                                                  ],
+                                                  "query": [
+                                                    {
+                                                      "description": "(Required) The API version to use for this operation.",
+                                                      "key": "api-version",
+                                                      "value": "<string>"
+                                                    }
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "subscriptionId"
+                                                    },
+                                                    {
+                                                      "key": "resourceGroupName"
+                                                    },
+                                                    {
+                                                      "key": "accountName"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "OK",
+                                              "code": 200,
+                                              "_postman_previewlanguage": "json",
+                                              "header": [
+                                                {
+                                                  "key": "Content-Type",
+                                                  "value": "application/json"
+                                                }
+                                              ],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": "{\n  \"value\": [\n    {\n      \"properties\": {\n        \"description\": \"The properties of a storage account\u2019s Blob service.\",\n        \"x-ms-client-flatten\": true,\n        \"x-ms-client-name\": \"BlobServiceProperties\",\n        \"properties\": {\n          \"automaticSnapshotPolicyEnabled\": false,\n          \"changeFeed\": {},\n          \"cors\": {\n            \"corsRules\": [\n              {\n                \"allowedOrigins\": [\n                  \"culpa\",\n                  \"laboris ea ipsum in adipisicing\"\n                ],\n                \"allowedMethods\": [\n                  \"MERGE\",\n                  \"OPTIONS\"\n                ],\n                \"maxAgeInSeconds\": -47263518,\n                \"exposedHeaders\": [\n                  \"sunt commodo\",\n                  \"magna ut\"\n                ],\n                \"allowedHeaders\": [\n                  \"magna\",\n                  \"volu\"\n                ]\n              },\n              {\n                \"allowedOrigins\": [\n                  \"irure veniam sit\",\n                  \"ame\"\n                ],\n                \"allowedMethods\": [\n                  \"DELETE\",\n                  \"MERGE\"\n                ],\n                \"maxAgeInSeconds\": -26591840,\n                \"exposedHeaders\": [\n                  \"commodo eiusmod occaecat sed culpa\",\n                  \"elit irure\"\n                ],\n                \"allowedHeaders\": [\n                  \"sint sed\",\n                  \"ullamco dolor\"\n                ]\n              }\n            ]\n          },\n          \"defaultServiceVersion\": \"amet dolore in fugiat\",\n          \"deleteRetentionPolicy\": {\n            \"days\": 216,\n            \"enabled\": false\n          },\n          \"restorePolicy\": {}\n        }\n      },\n      \"sku\": {\n        \"name\": \"Standard_RAGZRS\",\n        \"tier\": \"Premium\"\n      },\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"properties\": {\n        \"description\": \"The properties of a storage account\u2019s Blob service.\",\n        \"x-ms-client-flatten\": true,\n        \"x-ms-client-name\": \"BlobServiceProperties\",\n        \"properties\": {\n          \"automaticSnapshotPolicyEnabled\": false,\n          \"changeFeed\": {},\n          \"cors\": {\n            \"corsRules\": [\n              {\n                \"allowedOrigins\": [\n                  \"voluptate Ut dolor aliqua\",\n                  \"tempor aliqua deserunt nisi\"\n                ],\n                \"allowedMethods\": [\n                  \"MERGE\",\n                  \"MERGE\"\n                ],\n                \"maxAgeInSeconds\": 98995002,\n                \"exposedHeaders\": [\n                  \"dolor pariatur\",\n                  \"anim sunt ipsum ut\"\n                ],\n                \"allowedHeaders\": [\n                  \"Lorem incididunt\",\n                  \"incididunt eiusmod Ut\"\n                ]\n              },\n              {\n                \"allowedOrigins\": [\n                  \"culpa qui occaecat minim sed\",\n                  \"laborum sunt id magna\"\n                ],\n                \"allowedMethods\": [\n                  \"POST\",\n                  \"PUT\"\n                ],\n                \"maxAgeInSeconds\": -25257159,\n                \"exposedHeaders\": [\n                  \"sed Duis in commodo\",\n                  \"aliquip qui labore\"\n                ],\n                \"allowedHeaders\": [\n                  \"in magna\",\n                  \"amet\"\n                ]\n              }\n            ]\n          },\n          \"defaultServiceVersion\": \"laborum Duis\",\n          \"deleteRetentionPolicy\": {\n            \"days\": 135,\n            \"enabled\": true\n          },\n          \"restorePolicy\": {}\n        }\n      },\n      \"sku\": {\n        \"name\": \"Standard_GRS\",\n        \"tier\": \"Premium\"\n      },\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                                              "createdAt": "2026-07-28T10:53:56.000Z",
+                                              "updatedAt": "2026-07-28T10:53:56.000Z",
+                                              "uid": "35240-3eeac22d-b238-4aab-bd8a-1cd55e41f82e"
+                                            }
+                                          ],
+                                          "createdAt": "2026-07-28T10:53:56.000Z",
+                                          "updatedAt": "2026-07-28T10:53:56.000Z",
+                                          "uid": "35240-4b42299f-7119-43db-92df-1f83bdd27af1"
+                                        }
+                                      ],
+                                      "id": "54c32854-0326-412d-826a-b652f3d2727b",
+                                      "createdAt": "2026-07-28T10:53:56.000Z",
+                                      "updatedAt": "2026-07-28T10:53:56.000Z",
+                                      "uid": "35240-54c32854-0326-412d-826a-b652f3d2727b"
+                                    }
+                                  ],
+                                  "id": "aee565d4-7d58-49cb-b268-f5b757fa4f29",
+                                  "createdAt": "2026-07-28T10:53:56.000Z",
+                                  "updatedAt": "2026-07-28T10:53:56.000Z",
+                                  "uid": "35240-aee565d4-7d58-49cb-b268-f5b757fa4f29"
+                                }
+                              ],
+                              "id": "045d86d7-7c5a-41ee-903a-0f6d216d21fb",
+                              "createdAt": "2026-07-28T10:53:56.000Z",
+                              "updatedAt": "2026-07-28T10:53:56.000Z",
+                              "uid": "35240-045d86d7-7c5a-41ee-903a-0f6d216d21fb"
+                            }
+                          ],
+                          "id": "8c0514dc-7599-4642-8972-ea20ca4f034c",
+                          "createdAt": "2026-07-28T10:53:56.000Z",
+                          "updatedAt": "2026-07-28T10:53:56.000Z",
+                          "uid": "35240-8c0514dc-7599-4642-8972-ea20ca4f034c"
+                        }
+                      ],
+                      "id": "48cb187e-aee3-4f4c-8350-189cacb12a60",
+                      "createdAt": "2026-07-28T10:53:56.000Z",
+                      "updatedAt": "2026-07-28T10:53:56.000Z",
+                      "uid": "35240-48cb187e-aee3-4f4c-8350-189cacb12a60"
+                    }
+                  ],
+                  "id": "87e8230b-c87b-432e-baac-2919471a3e63",
+                  "createdAt": "2026-07-28T10:53:56.000Z",
+                  "updatedAt": "2026-07-28T10:53:56.000Z",
+                  "uid": "35240-87e8230b-c87b-432e-baac-2919471a3e63"
+                }
+              ],
+              "id": "1e0cc0af-2829-40c6-aaed-a0d2e8d63913",
+              "createdAt": "2026-07-28T10:53:56.000Z",
+              "updatedAt": "2026-07-28T10:53:56.000Z",
+              "uid": "35240-1e0cc0af-2829-40c6-aaed-a0d2e8d63913"
+            }
+          ],
+          "id": "c402cb46-bc6d-4b36-bc22-f4172d2a309f",
+          "createdAt": "2026-07-28T10:53:56.000Z",
+          "updatedAt": "2026-07-28T10:53:56.000Z",
+          "uid": "35240-c402cb46-bc6d-4b36-bc22-f4172d2a309f"
+        }
+      ],
+      "id": "06253f54-7809-4c7b-ad6d-fcca52ee5f8f",
+      "createdAt": "2026-07-28T10:53:56.000Z",
+      "updatedAt": "2026-07-28T10:53:56.000Z",
+      "uid": "35240-06253f54-7809-4c7b-ad6d-fcca52ee5f8f"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "user_impersonation",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "implicit",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://management.azure.com"
+    }
+  ]
+}

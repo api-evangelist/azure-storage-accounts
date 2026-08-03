@@ -1,0 +1,30 @@
+{
+  "provider": "azure-storage-accounts",
+  "sources": [
+    "azure-storage-accounts-blobcontainers-api-openapi.yml",
+    "azure-storage-accounts-blobservice-api-openapi.yml",
+    "azure-storage-accounts-locationusage-api-openapi.yml",
+    "azure-storage-accounts-managementpolicies-api-openapi.yml",
+    "azure-storage-accounts-operations-api-openapi.yml",
+    "azure-storage-accounts-privateendpointconnections-api-openapi.yml",
+    "azure-storage-accounts-privatelinkresources-api-openapi.yml",
+    "azure-storage-accounts-skus-api-openapi.yml",
+    "azure-storage-accounts-storageaccounts-api-openapi.yml"
+  ],
+  "outputs": [
+    "azure-storage-accounts-blobcontainers-api-openapi.yml",
+    "azure-storage-accounts-blobservice-api-openapi.yml",
+    "azure-storage-accounts-locationusage-api-openapi.yml",
+    "azure-storage-accounts-managementpolicies-api-openapi.yml",
+    "azure-storage-accounts-operations-api-openapi.yml",
+    "azure-storage-accounts-privateendpointconnections-api-openapi.yml",
+    "azure-storage-accounts-privatelinkresources-api-openapi.yml",
+    "azure-storage-accounts-skus-api-openapi.yml",
+    "azure-storage-accounts-storageaccounts-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

@@ -1,0 +1,224 @@
+{
+  "info": {
+    "_postman_id": "5e9e649c-08db-4796-adfe-04ce3307a6e0",
+    "name": "StorageManagementClient BlobContainers LocationUsage API",
+    "description": "The Azure Storage Management API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:53:57.000Z",
+    "updatedAt": "2026-07-28T10:53:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5e9e649c-08db-4796-adfe-04ce3307a6e0"
+  },
+  "item": [
+    {
+      "name": "subscriptions",
+      "item": [
+        {
+          "name": "{subscriptionId}",
+          "item": [
+            {
+              "name": "providers",
+              "item": [
+                {
+                  "name": "Microsoft.Storage",
+                  "item": [
+                    {
+                      "name": "locations",
+                      "item": [
+                        {
+                          "name": "{location}",
+                          "item": [
+                            {
+                              "name": "usages",
+                              "item": [
+                                {
+                                  "name": "Azure Storage Accounts Usages_ List by Location",
+                                  "id": "54c9c772-b139-477b-92d0-45b7dedd560b",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/subscriptions/:subscriptionId/providers/Microsoft.Storage/locations/:location/usages?api-version=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "subscriptions",
+                                        ":subscriptionId",
+                                        "providers",
+                                        "Microsoft.Storage",
+                                        "locations",
+                                        ":location",
+                                        "usages"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) The API version to use for this operation.",
+                                          "key": "api-version",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "bd7648cf-e728-4525-8c27-3dd544f46f4a",
+                                          "key": "subscriptionId",
+                                          "value": "<string>",
+                                          "description": "(Required) The ID of the target subscription."
+                                        },
+                                        {
+                                          "id": "20e3eb88-68e5-40ac-8064-a896bdd2fb0e",
+                                          "key": "location",
+                                          "value": "<string>",
+                                          "description": "(Required) The location of the Azure Storage resource."
+                                        }
+                                      ]
+                                    },
+                                    "description": "Gets the current usage count and the limit for the resources of the location under the subscription."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "e176ba9c-40c0-4494-a71a-372e0574235e",
+                                      "name": "OK -- current usage count and limit retrieved and returned successfully.",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/subscriptions/:subscriptionId/providers/Microsoft.Storage/locations/:location/usages?api-version=<string>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "subscriptions",
+                                            ":subscriptionId",
+                                            "providers",
+                                            "Microsoft.Storage",
+                                            "locations",
+                                            ":location",
+                                            "usages"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) The API version to use for this operation.",
+                                              "key": "api-version",
+                                              "value": "<string>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "subscriptionId"
+                                            },
+                                            {
+                                              "key": "location"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"value\": [\n    {\n      \"currentValue\": \"<integer>\",\n      \"limit\": \"<integer>\",\n      \"name\": {\n        \"localizedValue\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      \"unit\": \"Bytes\"\n    },\n    {\n      \"currentValue\": \"<integer>\",\n      \"limit\": \"<integer>\",\n      \"name\": {\n        \"localizedValue\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      \"unit\": \"BytesPerSecond\"\n    }\n  ]\n}",
+                                      "createdAt": "2026-07-28T10:53:57.000Z",
+                                      "updatedAt": "2026-07-28T10:53:57.000Z",
+                                      "uid": "35240-e176ba9c-40c0-4494-a71a-372e0574235e"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T10:53:57.000Z",
+                                  "updatedAt": "2026-07-28T10:53:57.000Z",
+                                  "uid": "35240-54c9c772-b139-477b-92d0-45b7dedd560b"
+                                }
+                              ],
+                              "id": "8a5756f1-ebd4-44da-80b1-95fd8ad1bc13",
+                              "createdAt": "2026-07-28T10:53:57.000Z",
+                              "updatedAt": "2026-07-28T10:53:57.000Z",
+                              "uid": "35240-8a5756f1-ebd4-44da-80b1-95fd8ad1bc13"
+                            }
+                          ],
+                          "id": "8c58efc6-f0a0-4a1e-856d-f48c771589d8",
+                          "createdAt": "2026-07-28T10:53:57.000Z",
+                          "updatedAt": "2026-07-28T10:53:57.000Z",
+                          "uid": "35240-8c58efc6-f0a0-4a1e-856d-f48c771589d8"
+                        }
+                      ],
+                      "id": "bcfa5904-3bcc-4e49-987e-eb75ffd032c5",
+                      "createdAt": "2026-07-28T10:53:57.000Z",
+                      "updatedAt": "2026-07-28T10:53:57.000Z",
+                      "uid": "35240-bcfa5904-3bcc-4e49-987e-eb75ffd032c5"
+                    }
+                  ],
+                  "id": "6e3b5281-4e63-4817-a59d-37a43a0b3b8b",
+                  "createdAt": "2026-07-28T10:53:57.000Z",
+                  "updatedAt": "2026-07-28T10:53:57.000Z",
+                  "uid": "35240-6e3b5281-4e63-4817-a59d-37a43a0b3b8b"
+                }
+              ],
+              "id": "6d484851-0fb9-4307-ae07-e1372f85122a",
+              "createdAt": "2026-07-28T10:53:57.000Z",
+              "updatedAt": "2026-07-28T10:53:57.000Z",
+              "uid": "35240-6d484851-0fb9-4307-ae07-e1372f85122a"
+            }
+          ],
+          "id": "262c5dc9-6fb9-4e7b-81f8-0f6cd0523f90",
+          "createdAt": "2026-07-28T10:53:57.000Z",
+          "updatedAt": "2026-07-28T10:53:57.000Z",
+          "uid": "35240-262c5dc9-6fb9-4e7b-81f8-0f6cd0523f90"
+        }
+      ],
+      "id": "2b59d286-e517-41c8-87e5-65118cc50cf4",
+      "createdAt": "2026-07-28T10:53:57.000Z",
+      "updatedAt": "2026-07-28T10:53:57.000Z",
+      "uid": "35240-2b59d286-e517-41c8-87e5-65118cc50cf4"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "user_impersonation",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "implicit",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://management.azure.com"
+    }
+  ]
+}

@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   description: The Azure Storage Management API.
   title: StorageManagementClient BlobContainers PrivateEndpointConnections API
-  version: '2019-06-01'
+  version: '2.0'
   x-apisguru-categories:
   - cloud
   x-logo:
@@ -10,7 +10,6 @@ info:
   x-origin:
   - format: swagger
     url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/storage/resource-manager/Microsoft.Storage/stable/2019-06-01/blob.json
-    version: '2.0'
   x-preferred: false
   x-providerName: azure.com
   x-serviceName: storage-blob

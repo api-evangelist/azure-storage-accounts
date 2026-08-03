@@ -1,0 +1,193 @@
+{
+  "info": {
+    "_postman_id": "7f537bcc-8d70-4f0a-bb95-5daa8a3e3588",
+    "name": "StorageManagementClient BlobContainers Skus API",
+    "description": "The Azure Storage Management API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:54:17.000Z",
+    "updatedAt": "2026-07-28T10:54:17.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7f537bcc-8d70-4f0a-bb95-5daa8a3e3588"
+  },
+  "item": [
+    {
+      "name": "subscriptions",
+      "item": [
+        {
+          "name": "{subscriptionId}",
+          "item": [
+            {
+              "name": "providers",
+              "item": [
+                {
+                  "name": "Microsoft.Storage",
+                  "item": [
+                    {
+                      "name": "skus",
+                      "item": [
+                        {
+                          "name": "Azure Storage Accounts Skus_ List",
+                          "id": "d7c4d5be-79ad-4d7d-a4e3-cd9f4ff12a7e",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/subscriptions/:subscriptionId/providers/Microsoft.Storage/skus?api-version=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "subscriptions",
+                                ":subscriptionId",
+                                "providers",
+                                "Microsoft.Storage",
+                                "skus"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The API version to use for this operation.",
+                                  "key": "api-version",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "0a61e320-8501-4873-b030-9eb15a6cb8df",
+                                  "key": "subscriptionId",
+                                  "value": "<string>",
+                                  "description": "(Required) The ID of the target subscription."
+                                }
+                              ]
+                            },
+                            "description": "Lists the available SKUs supported by Microsoft.Storage for given subscription."
+                          },
+                          "response": [
+                            {
+                              "id": "308ba943-3ec2-441c-b1e5-5f0a63a09da1",
+                              "name": "OK -- List of storage SKUs in the given subscription retrieved and returned successfully.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/subscriptions/:subscriptionId/providers/Microsoft.Storage/skus?api-version=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "subscriptions",
+                                    ":subscriptionId",
+                                    "providers",
+                                    "Microsoft.Storage",
+                                    "skus"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) The API version to use for this operation.",
+                                      "key": "api-version",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "subscriptionId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"value\": [\n    {\n      \"name\": \"Standard_RAGRS\",\n      \"capabilities\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"kind\": \"BlobStorage\",\n      \"locations\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"resourceType\": \"<string>\",\n      \"restrictions\": [\n        {\n          \"reasonCode\": \"QuotaId\",\n          \"type\": \"<string>\",\n          \"values\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"reasonCode\": \"NotAvailableForSubscription\",\n          \"type\": \"<string>\",\n          \"values\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"tier\": \"Standard\"\n    },\n    {\n      \"name\": \"Standard_GZRS\",\n      \"capabilities\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"kind\": \"FileStorage\",\n      \"locations\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"resourceType\": \"<string>\",\n      \"restrictions\": [\n        {\n          \"reasonCode\": \"NotAvailableForSubscription\",\n          \"type\": \"<string>\",\n          \"values\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"reasonCode\": \"QuotaId\",\n          \"type\": \"<string>\",\n          \"values\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"tier\": \"Premium\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T10:54:17.000Z",
+                              "updatedAt": "2026-07-28T10:54:17.000Z",
+                              "uid": "35240-308ba943-3ec2-441c-b1e5-5f0a63a09da1"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:54:17.000Z",
+                          "updatedAt": "2026-07-28T10:54:17.000Z",
+                          "uid": "35240-d7c4d5be-79ad-4d7d-a4e3-cd9f4ff12a7e"
+                        }
+                      ],
+                      "id": "887b3cf0-ecf8-40f2-bd20-0d58c183ebb3",
+                      "createdAt": "2026-07-28T10:54:17.000Z",
+                      "updatedAt": "2026-07-28T10:54:17.000Z",
+                      "uid": "35240-887b3cf0-ecf8-40f2-bd20-0d58c183ebb3"
+                    }
+                  ],
+                  "id": "193504a4-a346-4d1b-9b60-2d47b45078f4",
+                  "createdAt": "2026-07-28T10:54:17.000Z",
+                  "updatedAt": "2026-07-28T10:54:17.000Z",
+                  "uid": "35240-193504a4-a346-4d1b-9b60-2d47b45078f4"
+                }
+              ],
+              "id": "af79b6b6-476c-4e25-8a51-fc3727583146",
+              "createdAt": "2026-07-28T10:54:17.000Z",
+              "updatedAt": "2026-07-28T10:54:17.000Z",
+              "uid": "35240-af79b6b6-476c-4e25-8a51-fc3727583146"
+            }
+          ],
+          "id": "3019a547-3156-438c-bef9-307462e7abe1",
+          "createdAt": "2026-07-28T10:54:17.000Z",
+          "updatedAt": "2026-07-28T10:54:17.000Z",
+          "uid": "35240-3019a547-3156-438c-bef9-307462e7abe1"
+        }
+      ],
+      "id": "fe2f1a14-747a-4761-b266-a90b987af24f",
+      "createdAt": "2026-07-28T10:54:17.000Z",
+      "updatedAt": "2026-07-28T10:54:17.000Z",
+      "uid": "35240-fe2f1a14-747a-4761-b266-a90b987af24f"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "user_impersonation",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "implicit",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://management.azure.com"
+    }
+  ]
+}
