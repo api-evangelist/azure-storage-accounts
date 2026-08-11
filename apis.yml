@@ -42,24 +42,6 @@ apis:
     url: openapi/azure-storage-accounts-blobcontainers-api-openapi.yml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
-  - type: X-NaftikoCapability
-    url: capabilities/blob-blobcontainers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/blob-blobservice.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-locationusage.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-managementpolicies.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-operations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-privateendpointconnections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-privatelinkresources.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-skus.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-storageaccounts.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/rest/api/storagerp/
 - aid: azure-storage-accounts:azure-storage-accounts-blobservice-api
@@ -74,24 +56,6 @@ apis:
     url: openapi/azure-storage-accounts-blobservice-api-openapi.yml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
-  - type: X-NaftikoCapability
-    url: capabilities/blob-blobcontainers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/blob-blobservice.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-locationusage.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-managementpolicies.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-operations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-privateendpointconnections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-privatelinkresources.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-skus.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-storageaccounts.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/rest/api/storagerp/
 - aid: azure-storage-accounts:azure-storage-accounts-locationusage-api
@@ -106,24 +70,6 @@ apis:
     url: openapi/azure-storage-accounts-locationusage-api-openapi.yml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
-  - type: X-NaftikoCapability
-    url: capabilities/blob-blobcontainers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/blob-blobservice.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-locationusage.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-managementpolicies.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-operations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-privateendpointconnections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-privatelinkresources.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-skus.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-storageaccounts.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/rest/api/storagerp/
 - aid: azure-storage-accounts:azure-storage-accounts-managementpolicies-api
@@ -139,24 +85,6 @@ apis:
     url: openapi/azure-storage-accounts-managementpolicies-api-openapi.yml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
-  - type: X-NaftikoCapability
-    url: capabilities/blob-blobcontainers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/blob-blobservice.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-locationusage.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-managementpolicies.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-operations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-privateendpointconnections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-privatelinkresources.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-skus.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-storageaccounts.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/rest/api/storagerp/
 - aid: azure-storage-accounts:azure-storage-accounts-operations-api
@@ -171,24 +99,6 @@ apis:
     url: openapi/azure-storage-accounts-operations-api-openapi.yml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
-  - type: X-NaftikoCapability
-    url: capabilities/blob-blobcontainers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/blob-blobservice.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-locationusage.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-managementpolicies.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-operations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-privateendpointconnections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-privatelinkresources.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-skus.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-storageaccounts.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/rest/api/storagerp/
 - aid: azure-storage-accounts:azure-storage-accounts-privateendpointconnections-api
@@ -204,24 +114,6 @@ apis:
     url: openapi/azure-storage-accounts-privateendpointconnections-api-openapi.yml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
-  - type: X-NaftikoCapability
-    url: capabilities/blob-blobcontainers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/blob-blobservice.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-locationusage.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-managementpolicies.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-operations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-privateendpointconnections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-privatelinkresources.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-skus.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-storageaccounts.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/rest/api/storagerp/
 - aid: azure-storage-accounts:azure-storage-accounts-privatelinkresources-api
@@ -237,24 +129,6 @@ apis:
     url: openapi/azure-storage-accounts-privatelinkresources-api-openapi.yml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
-  - type: X-NaftikoCapability
-    url: capabilities/blob-blobcontainers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/blob-blobservice.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-locationusage.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-managementpolicies.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-operations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-privateendpointconnections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-privatelinkresources.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-skus.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-storageaccounts.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/rest/api/storagerp/
 - aid: azure-storage-accounts:azure-storage-accounts-skus-api
@@ -269,24 +143,6 @@ apis:
     url: openapi/azure-storage-accounts-skus-api-openapi.yml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
-  - type: X-NaftikoCapability
-    url: capabilities/blob-blobcontainers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/blob-blobservice.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-locationusage.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-managementpolicies.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-operations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-privateendpointconnections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-privatelinkresources.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-skus.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-storageaccounts.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/rest/api/storagerp/
 - aid: azure-storage-accounts:azure-storage-accounts-storageaccounts-api
@@ -302,24 +158,6 @@ apis:
     url: openapi/azure-storage-accounts-storageaccounts-api-openapi.yml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
-  - type: X-NaftikoCapability
-    url: capabilities/blob-blobcontainers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/blob-blobservice.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-locationusage.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-managementpolicies.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-operations.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-privateendpointconnections.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-privatelinkresources.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-skus.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/management-storageaccounts.yaml
   - type: Documentation
     url: https://learn.microsoft.com/en-us/rest/api/storagerp/
 common:
