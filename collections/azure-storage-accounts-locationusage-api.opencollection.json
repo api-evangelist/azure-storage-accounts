@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "StorageManagementClient BlobContainers LocationUsage API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "LocationUsage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Azure Storage Accounts Usages_ List by Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/subscriptions/:subscriptionId/providers/Microsoft.Storage/locations/:location/usages",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "2019-06-01",
+                "type": "query",
+                "description": "The API version to use for this operation."
+              },
+              {
+                "name": "subscriptionId",
+                "value": "00000000-0000-0000-0000-000000000000",
+                "type": "path",
+                "description": "The ID of the target subscription."
+              },
+              {
+                "name": "location",
+                "value": "example-value",
+                "type": "path",
+                "description": "The location of the Azure Storage resource."
+              }
+            ]
+          },
+          "docs": "Gets the current usage count and the limit for the resources of the location under the subscription."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

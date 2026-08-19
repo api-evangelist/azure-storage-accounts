@@ -1,0 +1,199 @@
+{
+  "item": [
+    {
+      "id": "104d35be-9bb2-4d01-8a04-24714129a6df",
+      "name": "PrivateLinkResources",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ac2985b3-91b9-4a46-9216-388ded0f7be1",
+          "name": "Azure Storage Accounts Private Link Resources_ List by Storage Account",
+          "request": {
+            "name": "Azure Storage Accounts Private Link Resources_ List by Storage Account",
+            "description": {
+              "content": "Gets the private link resources that need to be created for a storage account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Storage",
+                "storageAccounts",
+                ":accountName",
+                "privateLinkResources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "<string>",
+                  "description": "(Required) The API version to use for this operation."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountName",
+                  "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "365ffba2-13f1-4813-ad1b-88f792bf4a35",
+              "name": "Successfully retrieved private link resources.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Storage",
+                    "storageAccounts",
+                    ":accountName",
+                    "privateLinkResources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2019-06-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountName",
+                      "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"id\": \"/subscriptions/{subscription-id}/resourceGroups/res6977/providers/Microsoft.Storage/storageAccounts/sto2527/privateLinkResources/blob\",\n      \"name\": \"blob\",\n      \"properties\": {\n        \"groupId\": \"blob\",\n        \"requiredMembers\": [\n          \"blob\"\n        ],\n        \"requiredZoneNames\": [\n          \"privatelink.blob.core.windows.net\"\n        ]\n      },\n      \"type\": \"Microsoft.Storage/storageAccounts/privateLinkResources\"\n    },\n    {\n      \"id\": \"/subscriptions/{subscription-id}/resourceGroups/res6977/providers/Microsoft.Storage/storageAccounts/sto2527/privateLinkResources/blob_secondary\",\n      \"name\": \"blob_secondary\",\n      \"properties\": {\n        \"groupId\": \"blob_secondary\",\n        \"requiredMembers\": [\n          \"blob_secondary\"\n        ],\n        \"requiredZoneNames\": [\n          \"privatelink.blob.core.windows.net\"\n        ]\n      },\n      \"type\": \"Microsoft.Storage/storageAccounts/privateLinkResources\"\n    },\n    {\n      \"id\": \"/subscriptions/{subscription-id}/resourceGroups/res6977/providers/Microsoft.Storage/storageAccounts/sto2527/privateLinkResources/table\",\n      \"name\": \"table\",\n      \"properties\": {\n        \"groupId\": \"table\",\n        \"requiredMembers\": [\n          \"table\"\n        ],\n        \"requiredZoneNames\": [\n          \"privatelink.table.core.windows.net\"\n        ]\n      },\n      \"type\": \"Microsoft.Storage/storageAccounts/privateLinkResources\"\n    },\n    {\n      \"id\": \"/subscriptions/{subscription-id}/resourceGroups/res6977/providers/Microsoft.Storage/storageAccounts/sto2527/privateLinkResources/table_secondary\",\n      \"name\": \"table_secondary\",\n      \"properties\": {\n        \"groupId\": \"table_secondary\",\n        \"requiredMembers\": [\n          \"table_secondary\"\n        ],\n        \"requiredZoneNames\": [\n          \"privatelink.table.core.windows.net\"\n        ]\n      },\n      \"type\": \"Microsoft.Storage/storageAccounts/privateLinkResources\"\n    },\n    {\n      \"id\": \"/subscriptions/{subscription-id}/resourceGroups/res6977/providers/Microsoft.Storage/storageAccounts/sto2527/privateLinkResources/dfs\",\n      \"name\": \"dfs\",\n      \"properties\": {\n        \"groupId\": \"dfs\",\n        \"requiredMembers\": [\n          \"dfs\"\n        ],\n        \"requiredZoneNames\": [\n          \"privatelink.dfs.core.windows.net\"\n        ]\n      },\n      \"type\": \"Microsoft.Storage/storageAccounts/privateLinkResources\"\n    },\n    {\n      \"id\": \"/subscriptions/{subscription-id}/resourceGroups/res6977/providers/Microsoft.Storage/storageAccounts/sto2527/privateLinkResources/dfs_secondary\",\n      \"name\": \"dfs_secondary\",\n      \"properties\": {\n        \"groupId\": \"dfs_secondary\",\n        \"requiredMembers\": [\n          \"dfs_secondary\"\n        ],\n        \"requiredZoneNames\": [\n          \"privatelink.dfs.core.windows.net\"\n        ]\n      },\n      \"type\": \"Microsoft.Storage/storageAccounts/privateLinkResources\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://management.azure.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "user_impersonation"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "implicit"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fae3a6e7-6b63-4310-ac30-b5c3596e8039",
+    "name": "StorageManagementClient BlobContainers PrivateLinkResources API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Azure Storage Management API.",
+      "type": "text/plain"
+    }
+  }
+}

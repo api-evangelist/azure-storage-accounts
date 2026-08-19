@@ -1,0 +1,2502 @@
+{
+  "item": [
+    {
+      "id": "1c142f1f-1b71-49cd-b6e1-2493e56e5364",
+      "name": "StorageAccounts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "afe67037-e197-4664-b3cf-a4d30a1984be",
+          "name": "Azure Storage Accounts Storage Accounts_ Check Name Availability",
+          "request": {
+            "name": "Azure Storage Accounts Storage Accounts_ Check Name Availability",
+            "description": {
+              "content": "Checks that the storage account name is valid and is not already in use.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "providers",
+                "Microsoft.Storage",
+                "checkNameAvailability"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "<string>",
+                  "description": "(Required) The API version to use for this operation."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "40662d83-c7eb-46e1-a8e9-e2b2c1481f1e",
+              "name": "OK -- Operation to check the storage account name availability was successful.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "providers",
+                    "Microsoft.Storage",
+                    "checkNameAvailability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2019-06-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nameAvailable\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fbe3ea4c-bf43-44c6-8509-ddf66c7b2d59",
+          "name": "Azure Storage Accounts Storage Accounts_ List",
+          "request": {
+            "name": "Azure Storage Accounts Storage Accounts_ List",
+            "description": {
+              "content": "Lists all the storage accounts available under the subscription. Note that storage keys are not returned; use the ListKeys operation for this.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "providers",
+                "Microsoft.Storage",
+                "storageAccounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "<string>",
+                  "description": "(Required) The API version to use for this operation."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f5d2a2af-beda-429a-a995-41b917e2e403",
+              "name": "OK -- List of storage accounts was retrieved and returned successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "providers",
+                    "Microsoft.Storage",
+                    "storageAccounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2019-06-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"id\": \"/subscriptions/{subscription-id}/resourceGroups/res2627/providers/Microsoft.Storage/storageAccounts/sto1125\",\n      \"kind\": \"Storage\",\n      \"location\": \"eastus2euap\",\n      \"name\": \"sto1125\",\n      \"properties\": {\n        \"creationTime\": \"2017-05-24T13:28:53.4540398Z\",\n        \"encryption\": {\n          \"keySource\": \"Microsoft.Storage\",\n          \"services\": {\n            \"blob\": {\n              \"enabled\": true,\n              \"keyType\": \"Account\",\n              \"lastEnabledTime\": \"2019-12-11T20:49:31.7036140Z\"\n            },\n            \"file\": {\n              \"enabled\": true,\n              \"keyType\": \"Account\",\n              \"lastEnabledTime\": \"2019-12-11T20:49:31.7036140Z\"\n            }\n          }\n        },\n        \"isHnsEnabled\": true,\n        \"primaryEndpoints\": {\n          \"blob\": \"https://sto1125.blob.core.windows.net/\",\n          \"dfs\": \"https://sto1125.dfs.core.windows.net/\",\n          \"file\": \"https://sto1125.file.core.windows.net/\",\n          \"internetEndpoints\": {\n            \"blob\": \"https://sto1125-internetrouting.blob.core.windows.net/\",\n            \"dfs\": \"https://sto1125-internetrouting.dfs.core.windows.net/\",\n            \"file\": \"https://sto1125-internetrouting.file.core.windows.net/\",\n            \"web\": \"https://sto1125-internetrouting.web.core.windows.net/\"\n          },\n          \"microsoftEndpoints\": {\n            \"blob\": \"https://sto1125-microsoftrouting.blob.core.windows.net/\",\n            \"dfs\": \"https://sto1125-microsoftrouting.dfs.core.windows.net/\",\n            \"file\": \"https://sto1125-microsoftrouting.file.core.windows.net/\",\n            \"queue\": \"https://sto1125-microsoftrouting.queue.core.windows.net/\",\n            \"table\": \"https://sto1125-microsoftrouting.table.core.windows.net/\",\n            \"web\": \"https://sto1125-microsoftrouting.web.core.windows.net/\"\n          },\n          \"queue\": \"https://sto1125.queue.core.windows.net/\",\n          \"table\": \"https://sto1125.table.core.windows.net/\",\n          \"web\": \"https://sto1125.web.core.windows.net/\"\n        },\n        \"primaryLocation\": \"eastus2euap\",\n        \"provisioningState\": \"Succeeded\",\n        \"routingPreference\": {\n          \"publishInternetEndpoints\": true,\n          \"publishMicrosoftEndpoints\": true,\n          \"routingChoice\": \"MicrosoftRouting\"\n        },\n        \"secondaryLocation\": \"centraluseuap\",\n        \"statusOfPrimary\": \"available\",\n        \"statusOfSecondary\": \"available\",\n        \"supportsHttpsTrafficOnly\": false\n      },\n      \"sku\": {\n        \"name\": \"Standard_GRS\",\n        \"tier\": \"Standard\"\n      },\n      \"tags\": {\n        \"key1\": \"value1\",\n        \"key2\": \"value2\"\n      },\n      \"type\": \"Microsoft.Storage/storageAccounts\"\n    },\n    {\n      \"id\": \"/subscriptions/{subscription-id}/resourceGroups/testcmk3/providers/Microsoft.Storage/storageAccounts/sto3699\",\n      \"identity\": {\n        \"principalId\": \"356d057d-cba5-44dd-8a30-b2e547bc416b\",\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\n        \"type\": \"SystemAssigned\"\n      },\n      \"kind\": \"Storage\",\n      \"location\": \"eastus2euap\",\n      \"name\": \"sto3699\",\n      \"properties\": {\n        \"creationTime\": \"2017-05-24T10:06:30.6093014Z\",\n        \"primaryEndpoints\": {\n          \"blob\": \"https://sto3699.blob.core.windows.net/\",\n          \"file\": \"https://sto3699.file.core.windows.net/\",\n          \"queue\": \"https://sto3699.queue.core.windows.net/\",\n          \"table\": \"https://sto3699.table.core.windows.net/\"\n        },\n        \"primaryLocation\": \"eastus2euap\",\n        \"provisioningState\": \"Succeeded\",\n        \"secondaryLocation\": \"centraluseuap\",\n        \"statusOfPrimary\": \"available\",\n        \"statusOfSecondary\": \"available\",\n        \"supportsHttpsTrafficOnly\": false\n      },\n      \"sku\": {\n        \"name\": \"Standard_GRS\",\n        \"tier\": \"Standard\"\n      },\n      \"tags\": {\n        \"key1\": \"value1\",\n        \"key2\": \"value2\"\n      },\n      \"type\": \"Microsoft.Storage/storageAccounts\"\n    },\n    {\n      \"id\": \"/subscriptions/{subscription-id}/resourceGroups/testcmk3/providers/Microsoft.Storage/storageAccounts/sto6637\",\n      \"identity\": {\n        \"principalId\": \"911871cc-ffd1-4fc4-ac11-7a316433ea66\",\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\n        \"type\": \"SystemAssigned\"\n      },\n      \"kind\": \"Storage\",\n      \"location\": \"eastus2euap\",\n      \"name\": \"sto6637\",\n      \"properties\": {\n        \"creationTime\": \"2017-05-24T10:09:39.5625175Z\",\n        \"primaryEndpoints\": {\n          \"blob\": \"https://sto6637.blob.core.windows.net/\",\n          \"file\": \"https://sto6637.file.core.windows.net/\",\n          \"queue\": \"https://sto6637.queue.core.windows.net/\",\n          \"table\": \"https://sto6637.table.core.windows.net/\"\n        },\n        \"primaryLocation\": \"eastus2euap\",\n        \"provisioningState\": \"Succeeded\",\n        \"secondaryLocation\": \"centraluseuap\",\n        \"statusOfPrimary\": \"available\",\n        \"statusOfSecondary\": \"available\",\n        \"supportsHttpsTrafficOnly\": false\n      },\n      \"sku\": {\n        \"name\": \"Standard_GRS\",\n        \"tier\": \"Standard\"\n      },\n      \"tags\": {\n        \"key1\": \"value1\",\n        \"key2\": \"value2\"\n      },\n      \"type\": \"Microsoft.Storage/storageAccounts\"\n    },\n    {\n      \"id\": \"/subscriptions/{subscription-id}/resourceGroups/res8186/providers/Microsoft.Storage/storageAccounts/sto834\",\n      \"kind\": \"Storage\",\n      \"location\": \"eastus2euap\",\n      \"name\": \"sto834\",\n      \"properties\": {\n        \"creationTime\": \"2017-05-24T13:28:20.8686541Z\",\n        \"primaryEndpoints\": {\n          \"blob\": \"https://sto834.blob.core.windows.net/\",\n          \"file\": \"https://sto834.file.core.windows.net/\",\n          \"queue\": \"https://sto834.queue.core.windows.net/\",\n          \"table\": \"https://sto834.table.core.windows.net/\"\n        },\n        \"primaryLocation\": \"eastus2euap\",\n        \"provisioningState\": \"Succeeded\",\n        \"secondaryLocation\": \"centraluseuap\",\n        \"statusOfPrimary\": \"available\",\n        \"statusOfSecondary\": \"available\",\n        \"supportsHttpsTrafficOnly\": false\n      },\n      \"sku\": {\n        \"name\": \"Standard_GRS\",\n        \"tier\": \"Standard\"\n      },\n      \"tags\": {\n        \"key1\": \"value1\",\n        \"key2\": \"value2\"\n      },\n      \"type\": \"Microsoft.Storage/storageAccounts\"\n    },\n    {\n      \"id\": \"/subscriptions/{subscription-id}/resourceGroups/testcmk3/providers/Microsoft.Storage/storageAccounts/sto9174\",\n      \"identity\": {\n        \"principalId\": \"933e3ddf-1802-4a51-9469-18a33b576f88\",\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\n        \"type\": \"SystemAssigned\"\n      },\n      \"kind\": \"Storage\",\n      \"location\": \"eastus2euap\",\n      \"name\": \"sto9174\",\n      \"properties\": {\n        \"creationTime\": \"2017-05-24T09:46:19.6556989Z\",\n        \"primaryEndpoints\": {\n          \"blob\": \"https://sto9174.blob.core.windows.net/\",\n          \"file\": \"https://sto9174.file.core.windows.net/\",\n          \"queue\": \"https://sto9174.queue.core.windows.net/\",\n          \"table\": \"https://sto9174.table.core.windows.net/\"\n        },\n        \"primaryLocation\": \"eastus2euap\",\n        \"provisioningState\": \"Succeeded\",\n        \"secondaryLocation\": \"centraluseuap\",\n        \"statusOfPrimary\": \"available\",\n        \"statusOfSecondary\": \"available\",\n        \"supportsHttpsTrafficOnly\": false\n      },\n      \"sku\": {\n        \"name\": \"Standard_GRS\",\n        \"tier\": \"Standard\"\n      },\n      \"tags\": {\n        \"key1\": \"value1\",\n        \"key2\": \"value2\"\n      },\n      \"type\": \"Microsoft.Storage/storageAccounts\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4711cf00-40df-4809-9c20-9a323e9630da",
+          "name": "Azure Storage Accounts Storage Accounts_ List by Resource Group",
+          "request": {
+            "name": "Azure Storage Accounts Storage Accounts_ List by Resource Group",
+            "description": {
+              "content": "Lists all the storage accounts available under the given resource group. Note that storage keys are not returned; use the ListKeys operation for this.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Storage",
+                "storageAccounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "<string>",
+                  "description": "(Required) The API version to use for this operation."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af9f36ca-be03-4d7c-8433-85f2639a7ff0",
+              "name": "OK -- List of storage accounts in the given resource group retrieved and returned successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Storage",
+                    "storageAccounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2019-06-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"id\": \"/subscriptions/{subscription-id}/resourceGroups/res6117/providers/Microsoft.Storage/storageAccounts/sto4036\",\n      \"kind\": \"Storage\",\n      \"location\": \"eastus2euap\",\n      \"name\": \"sto4036\",\n      \"properties\": {\n        \"creationTime\": \"2017-05-24T13:24:47.818801Z\",\n        \"isHnsEnabled\": true,\n        \"primaryEndpoints\": {\n          \"blob\": \"https://sto4036.blob.core.windows.net/\",\n          \"dfs\": \"https://sto4036.dfs.core.windows.net/\",\n          \"file\": \"https://sto4036.file.core.windows.net/\",\n          \"queue\": \"https://sto4036.queue.core.windows.net/\",\n          \"table\": \"https://sto4036.table.core.windows.net/\",\n          \"web\": \"https://sto4036.web.core.windows.net/\"\n        },\n        \"primaryLocation\": \"eastus2euap\",\n        \"provisioningState\": \"Succeeded\",\n        \"secondaryLocation\": \"centraluseuap\",\n        \"statusOfPrimary\": \"available\",\n        \"statusOfSecondary\": \"available\",\n        \"supportsHttpsTrafficOnly\": false\n      },\n      \"sku\": {\n        \"name\": \"Standard_GRS\",\n        \"tier\": \"Standard\"\n      },\n      \"tags\": {\n        \"key1\": \"value1\",\n        \"key2\": \"value2\"\n      },\n      \"type\": \"Microsoft.Storage/storageAccounts\"\n    },\n    {\n      \"id\": \"/subscriptions/{subscription-id}/resourceGroups/res6117/providers/Microsoft.Storage/storageAccounts/sto4452\",\n      \"kind\": \"Storage\",\n      \"location\": \"eastus2euap\",\n      \"name\": \"sto4452\",\n      \"properties\": {\n        \"creationTime\": \"2017-05-24T13:24:15.7068366Z\",\n        \"primaryEndpoints\": {\n          \"blob\": \"https://sto4452.blob.core.windows.net/\",\n          \"file\": \"https://sto4452.file.core.windows.net/\",\n          \"queue\": \"https://sto4452.queue.core.windows.net/\",\n          \"table\": \"https://sto4452.table.core.windows.net/\"\n        },\n        \"primaryLocation\": \"eastus2euap\",\n        \"provisioningState\": \"Succeeded\",\n        \"secondaryLocation\": \"centraluseuap\",\n        \"statusOfPrimary\": \"available\",\n        \"statusOfSecondary\": \"available\",\n        \"supportsHttpsTrafficOnly\": false\n      },\n      \"sku\": {\n        \"name\": \"Standard_GRS\",\n        \"tier\": \"Standard\"\n      },\n      \"tags\": {\n        \"key1\": \"value1\",\n        \"key2\": \"value2\"\n      },\n      \"type\": \"Microsoft.Storage/storageAccounts\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ca6a4a78-2393-42bd-9e25-f6a920b365d9",
+          "name": "Azure Storage Accounts Storage Accounts_ Delete",
+          "request": {
+            "name": "Azure Storage Accounts Storage Accounts_ Delete",
+            "description": {
+              "content": "Deletes a storage account in Microsoft Azure.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Storage",
+                "storageAccounts",
+                ":accountName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "<string>",
+                  "description": "(Required) The API version to use for this operation."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountName",
+                  "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7d201b8f-2f02-4c7a-b146-b34ba8e27b0d",
+              "name": "OK -- storage account deleted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Storage",
+                    "storageAccounts",
+                    ":accountName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2019-06-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountName",
+                      "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3cca7d13-b255-4aab-a030-02a5692b4ad0",
+              "name": "NoContent -- account does not exist in the subscription.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Storage",
+                    "storageAccounts",
+                    ":accountName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2019-06-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountName",
+                      "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e5bb4e87-066d-439c-aa4b-761c95eb730d",
+          "name": "Azure Storage Accounts Storage Accounts_ Get Properties",
+          "request": {
+            "name": "Azure Storage Accounts Storage Accounts_ Get Properties",
+            "description": {
+              "content": "Returns the properties for the specified storage account including but not limited to name, SKU name, location, and account status. The ListKeys operation should be used to retrieve storage keys.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Storage",
+                "storageAccounts",
+                ":accountName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "<string>",
+                  "description": "(Required) The API version to use for this operation."
+                },
+                {
+                  "disabled": false,
+                  "key": "$expand",
+                  "value": "<string>",
+                  "description": "May be used to expand the properties within account's properties. By default, data is not included when fetching properties. Currently we only support geoReplicationStats and blobRestoreStatus."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountName",
+                  "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fb18ef90-bd1c-4311-a21f-74b8ee7e416e",
+              "name": "OK -- properties retrieved successfully for the storage account.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Storage",
+                    "storageAccounts",
+                    ":accountName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2019-06-01"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountName",
+                      "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"/subscriptions/{subscription-id}/resourceGroups/res9407/providers/Microsoft.Storage/storageAccounts/sto8596\",\n  \"kind\": \"Storage\",\n  \"location\": \"eastus2(stage)\",\n  \"name\": \"sto8596\",\n  \"properties\": {\n    \"creationTime\": \"2017-06-01T02:42:41.7633306Z\",\n    \"encryption\": {\n      \"keySource\": \"Microsoft.Storage\",\n      \"services\": {\n        \"blob\": {\n          \"enabled\": true,\n          \"keyType\": \"Account\",\n          \"lastEnabledTime\": \"2019-12-11T20:49:31.7036140Z\"\n        },\n        \"file\": {\n          \"enabled\": true,\n          \"keyType\": \"Account\",\n          \"lastEnabledTime\": \"2019-12-11T20:49:31.7036140Z\"\n        }\n      }\n    },\n    \"geoReplicationStats\": {\n      \"canFailover\": true,\n      \"lastSyncTime\": \"2018-10-30T00:25:34Z\",\n      \"status\": \"Live\"\n    },\n    \"isHnsEnabled\": true,\n    \"networkAcls\": {\n      \"bypass\": \"AzureServices\",\n      \"defaultAction\": \"Allow\",\n      \"ipRules\": [],\n      \"virtualNetworkRules\": []\n    },\n    \"primaryEndpoints\": {\n      \"blob\": \"https://sto8596.blob.core.windows.net/\",\n      \"dfs\": \"https://sto8596.dfs.core.windows.net/\",\n      \"file\": \"https://sto8596.file.core.windows.net/\",\n      \"internetEndpoints\": {\n        \"blob\": \"https://sto8596-internetrouting.blob.core.windows.net/\",\n        \"dfs\": \"https://sto8596-internetrouting.dfs.core.windows.net/\",\n        \"file\": \"https://sto8596-internetrouting.file.core.windows.net/\",\n        \"web\": \"https://sto8596-internetrouting.web.core.windows.net/\"\n      },\n      \"microsoftEndpoints\": {\n        \"blob\": \"https://sto8596-microsoftrouting.blob.core.windows.net/\",\n        \"dfs\": \"https://sto8596-microsoftrouting.dfs.core.windows.net/\",\n        \"file\": \"https://sto8596-microsoftrouting.file.core.windows.net/\",\n        \"queue\": \"https://sto8596-microsoftrouting.queue.core.windows.net/\",\n        \"table\": \"https://sto8596-microsoftrouting.table.core.windows.net/\",\n        \"web\": \"https://sto8596-microsoftrouting.web.core.windows.net/\"\n      },\n      \"queue\": \"https://sto8596.queue.core.windows.net/\",\n      \"table\": \"https://sto8596.table.core.windows.net/\",\n      \"web\": \"https://sto8596.web.core.windows.net/\"\n    },\n    \"primaryLocation\": \"eastus2(stage)\",\n    \"provisioningState\": \"Succeeded\",\n    \"routingPreference\": {\n      \"publishInternetEndpoints\": true,\n      \"publishMicrosoftEndpoints\": true,\n      \"routingChoice\": \"MicrosoftRouting\"\n    },\n    \"secondaryLocation\": \"northcentralus(stage)\",\n    \"statusOfPrimary\": \"available\",\n    \"statusOfSecondary\": \"available\",\n    \"supportsHttpsTrafficOnly\": false\n  },\n  \"sku\": {\n    \"name\": \"Standard_GRS\",\n    \"tier\": \"Standard\"\n  },\n  \"tags\": {\n    \"key1\": \"value1\",\n    \"key2\": \"value2\"\n  },\n  \"type\": \"Microsoft.Storage/storageAccounts\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ae2ed80-cf0d-4349-9b8f-0a8692fec1d5",
+          "name": "Azure Storage Accounts Storage Accounts_ Update",
+          "request": {
+            "name": "Azure Storage Accounts Storage Accounts_ Update",
+            "description": {
+              "content": "The update operation can be used to update the SKU, encryption, access tier, or tags for a storage account. It can also be used to map the account to a custom domain. Only one custom domain is supported per storage account; the replacement/change of custom domain is not supported. In order to replace an old custom domain, the old value must be cleared/unregistered before a new value can be set. The update of multiple properties is supported. This call does not change the storage keys for the account. If you want to change the storage account keys, use the regenerate keys operation. The location and name of the storage account cannot be changed after creation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Storage",
+                "storageAccounts",
+                ":accountName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "<string>",
+                  "description": "(Required) The API version to use for this operation."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountName",
+                  "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"identity\": {\n    \"type\": \"<string>\"\n  },\n  \"kind\": \"<string>\",\n  \"properties\": {\n    \"accessTier\": \"<string>\",\n    \"azureFilesIdentityBasedAuthentication\": {\n      \"directoryServiceOptions\": \"<string>\",\n      \"activeDirectoryProperties\": {\n        \"domainName\": \"<string>\",\n        \"netBiosDomainName\": \"<string>\",\n        \"forestName\": \"<string>\",\n        \"domainGuid\": \"<string>\",\n        \"domainSid\": \"<string>\",\n        \"azureStorageSid\": \"<string>\"\n      }\n    },\n    \"customDomain\": {\n      \"name\": \"<string>\",\n      \"useSubDomainName\": \"<boolean>\"\n    },\n    \"encryption\": {\n      \"keySource\": \"Microsoft.Storage\",\n      \"keyvaultproperties\": {\n        \"keyname\": \"<string>\",\n        \"keyvaulturi\": \"<string>\",\n        \"keyversion\": \"<string>\"\n      },\n      \"services\": {\n        \"blob\": {\n          \"enabled\": \"<boolean>\",\n          \"keyType\": \"<string>\"\n        },\n        \"file\": {\n          \"enabled\": \"<boolean>\",\n          \"keyType\": \"<string>\"\n        },\n        \"queue\": {\n          \"enabled\": \"<boolean>\",\n          \"keyType\": \"<string>\"\n        },\n        \"table\": {\n          \"enabled\": \"<boolean>\",\n          \"keyType\": \"<string>\"\n        }\n      }\n    },\n    \"largeFileSharesState\": \"<string>\",\n    \"networkAcls\": {\n      \"defaultAction\": \"Allow\",\n      \"bypass\": \"AzureServices\",\n      \"ipRules\": [\n        {\n          \"value\": \"<string>\",\n          \"action\": \"Allow\"\n        },\n        {\n          \"value\": \"<string>\",\n          \"action\": \"Allow\"\n        }\n      ],\n      \"virtualNetworkRules\": [\n        {\n          \"id\": \"<string>\",\n          \"action\": \"Allow\",\n          \"state\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"action\": \"Allow\",\n          \"state\": \"<string>\"\n        }\n      ]\n    },\n    \"routingPreference\": {\n      \"publishInternetEndpoints\": \"<boolean>\",\n      \"publishMicrosoftEndpoints\": \"<boolean>\",\n      \"routingChoice\": \"<string>\"\n    },\n    \"supportsHttpsTrafficOnly\": \"<boolean>\"\n  },\n  \"sku\": {\n    \"name\": \"<string>\"\n  },\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9c206400-cc30-467b-8a0c-54325b3b827d",
+              "name": "OK -- storage account properties updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Storage",
+                    "storageAccounts",
+                    ":accountName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2019-06-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountName",
+                      "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identity\": {\n    \"type\": \"<string>\"\n  },\n  \"kind\": \"<string>\",\n  \"properties\": {\n    \"accessTier\": \"<string>\",\n    \"azureFilesIdentityBasedAuthentication\": {\n      \"directoryServiceOptions\": \"<string>\",\n      \"activeDirectoryProperties\": {\n        \"domainName\": \"<string>\",\n        \"netBiosDomainName\": \"<string>\",\n        \"forestName\": \"<string>\",\n        \"domainGuid\": \"<string>\",\n        \"domainSid\": \"<string>\",\n        \"azureStorageSid\": \"<string>\"\n      }\n    },\n    \"customDomain\": {\n      \"name\": \"<string>\",\n      \"useSubDomainName\": \"<boolean>\"\n    },\n    \"encryption\": {\n      \"keySource\": \"Microsoft.Storage\",\n      \"keyvaultproperties\": {\n        \"keyname\": \"<string>\",\n        \"keyvaulturi\": \"<string>\",\n        \"keyversion\": \"<string>\"\n      },\n      \"services\": {\n        \"blob\": {\n          \"enabled\": \"<boolean>\",\n          \"keyType\": \"<string>\"\n        },\n        \"file\": {\n          \"enabled\": \"<boolean>\",\n          \"keyType\": \"<string>\"\n        },\n        \"queue\": {\n          \"enabled\": \"<boolean>\",\n          \"keyType\": \"<string>\"\n        },\n        \"table\": {\n          \"enabled\": \"<boolean>\",\n          \"keyType\": \"<string>\"\n        }\n      }\n    },\n    \"largeFileSharesState\": \"<string>\",\n    \"networkAcls\": {\n      \"defaultAction\": \"Allow\",\n      \"bypass\": \"AzureServices\",\n      \"ipRules\": [\n        {\n          \"value\": \"<string>\",\n          \"action\": \"Allow\"\n        },\n        {\n          \"value\": \"<string>\",\n          \"action\": \"Allow\"\n        }\n      ],\n      \"virtualNetworkRules\": [\n        {\n          \"id\": \"<string>\",\n          \"action\": \"Allow\",\n          \"state\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"action\": \"Allow\",\n          \"state\": \"<string>\"\n        }\n      ]\n    },\n    \"routingPreference\": {\n      \"publishInternetEndpoints\": \"<boolean>\",\n      \"publishMicrosoftEndpoints\": \"<boolean>\",\n      \"routingChoice\": \"<string>\"\n    },\n    \"supportsHttpsTrafficOnly\": \"<boolean>\"\n  },\n  \"sku\": {\n    \"name\": \"<string>\"\n  },\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"/subscriptions/{subscription-id}/resourceGroups/res9407/providers/Microsoft.Storage/storageAccounts/sto8596\",\n  \"kind\": \"Storage\",\n  \"location\": \"eastus2(stage)\",\n  \"name\": \"sto8596\",\n  \"properties\": {\n    \"azureFilesIdentityBasedAuthentication\": {\n      \"activeDirectoryProperties\": {\n        \"azureStorageSid\": \"S-1-5-21-2400535526-2334094090-2402026252-0012\",\n        \"domainGuid\": \"aebfc118-9fa9-4732-a21f-d98e41a77ae1\",\n        \"domainName\": \"adtest.com\",\n        \"domainSid\": \"S-1-5-21-2400535526-2334094090-2402026252\",\n        \"forestName\": \"adtest.com\",\n        \"netBiosDomainName\": \"adtest.com\"\n      },\n      \"directoryServiceOptions\": \"AD\"\n    },\n    \"creationTime\": \"2017-06-01T02:42:41.7633306Z\",\n    \"primaryEndpoints\": {\n      \"blob\": \"https://sto8596.blob.core.windows.net/\",\n      \"dfs\": \"https://sto8596.dfs.core.windows.net/\",\n      \"file\": \"https://sto8596.file.core.windows.net/\",\n      \"queue\": \"https://sto8596.queue.core.windows.net/\",\n      \"table\": \"https://sto8596.table.core.windows.net/\",\n      \"web\": \"https://sto8596.web.core.windows.net/\"\n    },\n    \"primaryLocation\": \"eastus2(stage)\",\n    \"provisioningState\": \"Succeeded\",\n    \"secondaryLocation\": \"northcentralus(stage)\",\n    \"statusOfPrimary\": \"available\",\n    \"statusOfSecondary\": \"available\",\n    \"supportsHttpsTrafficOnly\": false\n  },\n  \"sku\": {\n    \"name\": \"Standard_GRS\",\n    \"tier\": \"Standard\"\n  },\n  \"tags\": {\n    \"key1\": \"value1\",\n    \"key2\": \"value2\"\n  },\n  \"type\": \"Microsoft.Storage/storageAccounts\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9c8d4b7c-e546-4904-8350-bf49d5018304",
+          "name": "Azure Storage Accounts Storage Accounts_ Create",
+          "request": {
+            "name": "Azure Storage Accounts Storage Accounts_ Create",
+            "description": {
+              "content": "Asynchronously creates a new storage account with the specified parameters. If an account is already created and a subsequent create request is issued with different properties, the account properties will be updated. If an account is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Storage",
+                "storageAccounts",
+                ":accountName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "<string>",
+                  "description": "(Required) The API version to use for this operation."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountName",
+                  "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sku\": {\n    \"name\": \"<string>\"\n  },\n  \"kind\": \"<string>\",\n  \"location\": \"<string>\",\n  \"identity\": {\n    \"type\": \"<string>\"\n  },\n  \"properties\": {\n    \"accessTier\": \"<string>\",\n    \"azureFilesIdentityBasedAuthentication\": {\n      \"directoryServiceOptions\": \"<string>\",\n      \"activeDirectoryProperties\": {\n        \"domainName\": \"<string>\",\n        \"netBiosDomainName\": \"<string>\",\n        \"forestName\": \"<string>\",\n        \"domainGuid\": \"<string>\",\n        \"domainSid\": \"<string>\",\n        \"azureStorageSid\": \"<string>\"\n      }\n    },\n    \"customDomain\": {\n      \"name\": \"<string>\",\n      \"useSubDomainName\": \"<boolean>\"\n    },\n    \"encryption\": {\n      \"keySource\": \"Microsoft.Storage\",\n      \"keyvaultproperties\": {\n        \"keyname\": \"<string>\",\n        \"keyvaulturi\": \"<string>\",\n        \"keyversion\": \"<string>\"\n      },\n      \"services\": {\n        \"blob\": {\n          \"enabled\": \"<boolean>\",\n          \"keyType\": \"<string>\"\n        },\n        \"file\": {\n          \"enabled\": \"<boolean>\",\n          \"keyType\": \"<string>\"\n        },\n        \"queue\": {\n          \"enabled\": \"<boolean>\",\n          \"keyType\": \"<string>\"\n        },\n        \"table\": {\n          \"enabled\": \"<boolean>\",\n          \"keyType\": \"<string>\"\n        }\n      }\n    },\n    \"isHnsEnabled\": \"<boolean>\",\n    \"largeFileSharesState\": \"<string>\",\n    \"networkAcls\": {\n      \"defaultAction\": \"Allow\",\n      \"bypass\": \"AzureServices\",\n      \"ipRules\": [\n        {\n          \"value\": \"<string>\",\n          \"action\": \"Allow\"\n        },\n        {\n          \"value\": \"<string>\",\n          \"action\": \"Allow\"\n        }\n      ],\n      \"virtualNetworkRules\": [\n        {\n          \"id\": \"<string>\",\n          \"action\": \"Allow\",\n          \"state\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"action\": \"Allow\",\n          \"state\": \"<string>\"\n        }\n      ]\n    },\n    \"routingPreference\": {\n      \"publishInternetEndpoints\": \"<boolean>\",\n      \"publishMicrosoftEndpoints\": \"<boolean>\",\n      \"routingChoice\": \"<string>\"\n    },\n    \"supportsHttpsTrafficOnly\": \"<boolean>\"\n  },\n  \"tags\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "10c0470a-ff59-4abc-94f6-f0c782346a99",
+              "name": "OK -- returned when the storage account was already created from a previous request with the same properties specified in the request body.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Storage",
+                    "storageAccounts",
+                    ":accountName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2019-06-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountName",
+                      "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sku\": {\n    \"name\": \"<string>\"\n  },\n  \"kind\": \"<string>\",\n  \"location\": \"<string>\",\n  \"identity\": {\n    \"type\": \"<string>\"\n  },\n  \"properties\": {\n    \"accessTier\": \"<string>\",\n    \"azureFilesIdentityBasedAuthentication\": {\n      \"directoryServiceOptions\": \"<string>\",\n      \"activeDirectoryProperties\": {\n        \"domainName\": \"<string>\",\n        \"netBiosDomainName\": \"<string>\",\n        \"forestName\": \"<string>\",\n        \"domainGuid\": \"<string>\",\n        \"domainSid\": \"<string>\",\n        \"azureStorageSid\": \"<string>\"\n      }\n    },\n    \"customDomain\": {\n      \"name\": \"<string>\",\n      \"useSubDomainName\": \"<boolean>\"\n    },\n    \"encryption\": {\n      \"keySource\": \"Microsoft.Storage\",\n      \"keyvaultproperties\": {\n        \"keyname\": \"<string>\",\n        \"keyvaulturi\": \"<string>\",\n        \"keyversion\": \"<string>\"\n      },\n      \"services\": {\n        \"blob\": {\n          \"enabled\": \"<boolean>\",\n          \"keyType\": \"<string>\"\n        },\n        \"file\": {\n          \"enabled\": \"<boolean>\",\n          \"keyType\": \"<string>\"\n        },\n        \"queue\": {\n          \"enabled\": \"<boolean>\",\n          \"keyType\": \"<string>\"\n        },\n        \"table\": {\n          \"enabled\": \"<boolean>\",\n          \"keyType\": \"<string>\"\n        }\n      }\n    },\n    \"isHnsEnabled\": \"<boolean>\",\n    \"largeFileSharesState\": \"<string>\",\n    \"networkAcls\": {\n      \"defaultAction\": \"Allow\",\n      \"bypass\": \"AzureServices\",\n      \"ipRules\": [\n        {\n          \"value\": \"<string>\",\n          \"action\": \"Allow\"\n        },\n        {\n          \"value\": \"<string>\",\n          \"action\": \"Allow\"\n        }\n      ],\n      \"virtualNetworkRules\": [\n        {\n          \"id\": \"<string>\",\n          \"action\": \"Allow\",\n          \"state\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"action\": \"Allow\",\n          \"state\": \"<string>\"\n        }\n      ]\n    },\n    \"routingPreference\": {\n      \"publishInternetEndpoints\": \"<boolean>\",\n      \"publishMicrosoftEndpoints\": \"<boolean>\",\n      \"routingChoice\": \"<string>\"\n    },\n    \"supportsHttpsTrafficOnly\": \"<boolean>\"\n  },\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"/subscriptions/{subscription-id}/resourceGroups/res9101/providers/Microsoft.Storage/storageAccounts/sto4445\",\n  \"kind\": \"Storage\",\n  \"location\": \"eastus2euap\",\n  \"name\": \"sto4445\",\n  \"properties\": {\n    \"creationTime\": \"2017-05-24T13:25:33.4863236Z\",\n    \"encryption\": {\n      \"keySource\": \"Microsoft.Storage\",\n      \"services\": {\n        \"blob\": {\n          \"enabled\": true,\n          \"keyType\": \"Account\",\n          \"lastEnabledTime\": \"2019-12-11T20:49:31.7036140Z\"\n        },\n        \"file\": {\n          \"enabled\": true,\n          \"keyType\": \"Account\",\n          \"lastEnabledTime\": \"2019-12-11T20:49:31.7036140Z\"\n        }\n      }\n    },\n    \"isHnsEnabled\": true,\n    \"primaryEndpoints\": {\n      \"blob\": \"https://sto4445.blob.core.windows.net/\",\n      \"dfs\": \"https://sto4445.dfs.core.windows.net/\",\n      \"file\": \"https://sto4445.file.core.windows.net/\",\n      \"internetEndpoints\": {\n        \"blob\": \"https://sto4445-internetrouting.blob.core.windows.net/\",\n        \"dfs\": \"https://sto4445-internetrouting.dfs.core.windows.net/\",\n        \"file\": \"https://sto4445-internetrouting.file.core.windows.net/\",\n        \"web\": \"https://sto4445-internetrouting.web.core.windows.net/\"\n      },\n      \"microsoftEndpoints\": {\n        \"blob\": \"https://sto4445-microsoftrouting.blob.core.windows.net/\",\n        \"dfs\": \"https://sto4445-microsoftrouting.dfs.core.windows.net/\",\n        \"file\": \"https://sto4445-microsoftrouting.file.core.windows.net/\",\n        \"queue\": \"https://sto4445-microsoftrouting.queue.core.windows.net/\",\n        \"table\": \"https://sto4445-microsoftrouting.table.core.windows.net/\",\n        \"web\": \"https://sto4445-microsoftrouting.web.core.windows.net/\"\n      },\n      \"queue\": \"https://sto4445.queue.core.windows.net/\",\n      \"table\": \"https://sto4445.table.core.windows.net/\",\n      \"web\": \"https://sto4445.web.core.windows.net/\"\n    },\n    \"primaryLocation\": \"eastus2euap\",\n    \"provisioningState\": \"Succeeded\",\n    \"routingPreference\": {\n      \"publishInternetEndpoints\": true,\n      \"publishMicrosoftEndpoints\": true,\n      \"routingChoice\": \"MicrosoftRouting\"\n    },\n    \"secondaryLocation\": \"centraluseuap\",\n    \"statusOfPrimary\": \"available\",\n    \"statusOfSecondary\": \"available\",\n    \"supportsHttpsTrafficOnly\": true\n  },\n  \"sku\": {\n    \"name\": \"Standard_GRS\",\n    \"tier\": \"Standard\"\n  },\n  \"tags\": {\n    \"key1\": \"value1\",\n    \"key2\": \"value2\"\n  },\n  \"type\": \"Microsoft.Storage/storageAccounts\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6377c97-19d1-4db6-b639-669affdc7e61",
+              "name": "Accepted -- Create or update request accepted; operation will complete asynchronously.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Storage",
+                    "storageAccounts",
+                    ":accountName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2019-06-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountName",
+                      "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sku\": {\n    \"name\": \"<string>\"\n  },\n  \"kind\": \"<string>\",\n  \"location\": \"<string>\",\n  \"identity\": {\n    \"type\": \"<string>\"\n  },\n  \"properties\": {\n    \"accessTier\": \"<string>\",\n    \"azureFilesIdentityBasedAuthentication\": {\n      \"directoryServiceOptions\": \"<string>\",\n      \"activeDirectoryProperties\": {\n        \"domainName\": \"<string>\",\n        \"netBiosDomainName\": \"<string>\",\n        \"forestName\": \"<string>\",\n        \"domainGuid\": \"<string>\",\n        \"domainSid\": \"<string>\",\n        \"azureStorageSid\": \"<string>\"\n      }\n    },\n    \"customDomain\": {\n      \"name\": \"<string>\",\n      \"useSubDomainName\": \"<boolean>\"\n    },\n    \"encryption\": {\n      \"keySource\": \"Microsoft.Storage\",\n      \"keyvaultproperties\": {\n        \"keyname\": \"<string>\",\n        \"keyvaulturi\": \"<string>\",\n        \"keyversion\": \"<string>\"\n      },\n      \"services\": {\n        \"blob\": {\n          \"enabled\": \"<boolean>\",\n          \"keyType\": \"<string>\"\n        },\n        \"file\": {\n          \"enabled\": \"<boolean>\",\n          \"keyType\": \"<string>\"\n        },\n        \"queue\": {\n          \"enabled\": \"<boolean>\",\n          \"keyType\": \"<string>\"\n        },\n        \"table\": {\n          \"enabled\": \"<boolean>\",\n          \"keyType\": \"<string>\"\n        }\n      }\n    },\n    \"isHnsEnabled\": \"<boolean>\",\n    \"largeFileSharesState\": \"<string>\",\n    \"networkAcls\": {\n      \"defaultAction\": \"Allow\",\n      \"bypass\": \"AzureServices\",\n      \"ipRules\": [\n        {\n          \"value\": \"<string>\",\n          \"action\": \"Allow\"\n        },\n        {\n          \"value\": \"<string>\",\n          \"action\": \"Allow\"\n        }\n      ],\n      \"virtualNetworkRules\": [\n        {\n          \"id\": \"<string>\",\n          \"action\": \"Allow\",\n          \"state\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"action\": \"Allow\",\n          \"state\": \"<string>\"\n        }\n      ]\n    },\n    \"routingPreference\": {\n      \"publishInternetEndpoints\": \"<boolean>\",\n      \"publishMicrosoftEndpoints\": \"<boolean>\",\n      \"routingChoice\": \"<string>\"\n    },\n    \"supportsHttpsTrafficOnly\": \"<boolean>\"\n  },\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "77428540-2890-42ec-81f4-7142d6147c1e",
+          "name": "Azure Storage Accounts Storage Accounts_ List Account S a S",
+          "request": {
+            "name": "Azure Storage Accounts Storage Accounts_ List Account S a S",
+            "description": {
+              "content": "List SAS credentials of a storage account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Storage",
+                "storageAccounts",
+                ":accountName",
+                "ListAccountSas"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "<string>",
+                  "description": "(Required) The API version to use for this operation."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountName",
+                  "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"signedServices\": \"<string>\",\n  \"signedResourceTypes\": \"<string>\",\n  \"signedPermission\": \"<string>\",\n  \"signedExpiry\": \"<dateTime>\",\n  \"keyToSign\": \"<string>\",\n  \"signedIp\": \"<string>\",\n  \"signedProtocol\": \"<string>\",\n  \"signedStart\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dff39d3a-7557-4b90-8693-9a434802d719",
+              "name": "OK -- returned the account SAS created for the storage account requested.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Storage",
+                    "storageAccounts",
+                    ":accountName",
+                    "ListAccountSas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2019-06-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountName",
+                      "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"signedServices\": \"<string>\",\n  \"signedResourceTypes\": \"<string>\",\n  \"signedPermission\": \"<string>\",\n  \"signedExpiry\": \"<dateTime>\",\n  \"keyToSign\": \"<string>\",\n  \"signedIp\": \"<string>\",\n  \"signedProtocol\": \"<string>\",\n  \"signedStart\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountSasToken\": \"sv=2015-04-05&ss=b&srt=s&sp=r&st=2017-05-24T10%3A42%3A03Z&se=2017-05-24T11%3A42%3A03Z&spr=https,http&sig=Z0I%2BEpM%2BPPlTC8ApfUf%2BcffO2aahMgZim3U0iArqsS0%3D\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7965e6c5-8112-40bc-bb3f-251cec042cf7",
+          "name": "Azure Storage Accounts Storage Accounts_ List Service S a S",
+          "request": {
+            "name": "Azure Storage Accounts Storage Accounts_ List Service S a S",
+            "description": {
+              "content": "List service SAS credentials of a specific resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Storage",
+                "storageAccounts",
+                ":accountName",
+                "ListServiceSas"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "<string>",
+                  "description": "(Required) The API version to use for this operation."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountName",
+                  "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"canonicalizedResource\": \"<string>\",\n  \"endPk\": \"<string>\",\n  \"endRk\": \"<string>\",\n  \"keyToSign\": \"<string>\",\n  \"rscc\": \"<string>\",\n  \"rscd\": \"<string>\",\n  \"rsce\": \"<string>\",\n  \"rscl\": \"<string>\",\n  \"rsct\": \"<string>\",\n  \"signedExpiry\": \"<dateTime>\",\n  \"signedIdentifier\": \"<string>\",\n  \"signedIp\": \"<string>\",\n  \"signedPermission\": \"<string>\",\n  \"signedProtocol\": \"<string>\",\n  \"signedResource\": \"<string>\",\n  \"signedStart\": \"<dateTime>\",\n  \"startPk\": \"<string>\",\n  \"startRk\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8e5bb993-10bd-4873-84c2-bf0a8f9275b6",
+              "name": "OK -- returned the service SAS created for the storage service requested.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Storage",
+                    "storageAccounts",
+                    ":accountName",
+                    "ListServiceSas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2019-06-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountName",
+                      "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"canonicalizedResource\": \"<string>\",\n  \"endPk\": \"<string>\",\n  \"endRk\": \"<string>\",\n  \"keyToSign\": \"<string>\",\n  \"rscc\": \"<string>\",\n  \"rscd\": \"<string>\",\n  \"rsce\": \"<string>\",\n  \"rscl\": \"<string>\",\n  \"rsct\": \"<string>\",\n  \"signedExpiry\": \"<dateTime>\",\n  \"signedIdentifier\": \"<string>\",\n  \"signedIp\": \"<string>\",\n  \"signedPermission\": \"<string>\",\n  \"signedProtocol\": \"<string>\",\n  \"signedResource\": \"<string>\",\n  \"signedStart\": \"<dateTime>\",\n  \"startPk\": \"<string>\",\n  \"startRk\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"serviceSasToken\": \"sv=2015-04-05&sr=c&se=2017-05-24T11%3A32%3A48Z&sp=l&sig=PoF8yBUGixsjzwroLmw7vG3VbGz4KB2woZC2D4C2oio%3D\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "220694b1-8dfe-4d71-ad12-664d8d722a12",
+          "name": "Azure Storage Accounts Storage Accounts_ Failover",
+          "request": {
+            "name": "Azure Storage Accounts Storage Accounts_ Failover",
+            "description": {
+              "content": "Failover request can be triggered for a storage account in case of availability issues. The failover occurs from the storage account's primary cluster to secondary cluster for RA-GRS accounts. The secondary cluster will become primary after failover.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Storage",
+                "storageAccounts",
+                ":accountName",
+                "failover"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "<string>",
+                  "description": "(Required) The API version to use for this operation."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountName",
+                  "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7976cdbd-5a84-4ed6-b5bf-d33e9b3a8261",
+              "name": "OK -- Returned when the storage account failover is completed, and the secondary cluster has become primary.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Storage",
+                    "storageAccounts",
+                    ":accountName",
+                    "failover"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2019-06-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountName",
+                      "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4c606b47-2908-4a49-ac58-6661c37f356e",
+              "name": "Accepted -- Failover request accepted; operation will complete asynchronously.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Storage",
+                    "storageAccounts",
+                    ":accountName",
+                    "failover"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2019-06-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountName",
+                      "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b935dfa-2977-4f8c-89fd-47df4fac6d65",
+          "name": "Azure Storage Accounts Storage Accounts_ List Keys",
+          "request": {
+            "name": "Azure Storage Accounts Storage Accounts_ List Keys",
+            "description": {
+              "content": "Lists the access keys or Kerberos keys (if active directory enabled) for the specified storage account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Storage",
+                "storageAccounts",
+                ":accountName",
+                "listKeys"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "<string>",
+                  "description": "(Required) The API version to use for this operation."
+                },
+                {
+                  "disabled": false,
+                  "key": "$expand",
+                  "value": "<string>",
+                  "description": "Specifies type of the key to be listed. Possible value is kerb."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountName",
+                  "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "39667c8a-cd06-4cb5-9094-0e16f59c9a5b",
+              "name": "OK -- list of keys retrieved and returned successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Storage",
+                    "storageAccounts",
+                    ":accountName",
+                    "listKeys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2019-06-01"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountName",
+                      "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"keys\": [\n    {\n      \"keyName\": \"key1\",\n      \"permissions\": \"Full\",\n      \"value\": \"nVF7aKIvr9mV/RM5lOD0sYoi8ThXTRHQP7o66hvUmjCDkPKR3qxPu/otJcNciz2aQdqPuzJH3ECG4TU2yZjQ7Q==\"\n    },\n    {\n      \"keyName\": \"key2\",\n      \"permissions\": \"Full\",\n      \"value\": \"dNJvKnULO586Ji3nFzB7987TJs4ovnGZhyGXeiVQ75HZGPhBmBfe8lXrI7EfyATff6S5ucxffCoEAQOWbmPK/Q==\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd7a8b2d-b092-4ecf-be38-104d968cc833",
+          "name": "Azure Storage Accounts Storage Accounts_ Regenerate Key",
+          "request": {
+            "name": "Azure Storage Accounts Storage Accounts_ Regenerate Key",
+            "description": {
+              "content": "Regenerates one of the access keys or Kerberos keys for the specified storage account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Storage",
+                "storageAccounts",
+                ":accountName",
+                "regenerateKey"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "<string>",
+                  "description": "(Required) The API version to use for this operation."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountName",
+                  "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"keyName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d5d1838d-ba0b-4faf-b02d-f37b40fc28a1",
+              "name": "OK -- specified key regenerated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Storage",
+                    "storageAccounts",
+                    ":accountName",
+                    "regenerateKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2019-06-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountName",
+                      "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"keyName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"keys\": [\n    {\n      \"keyName\": \"key1\",\n      \"permissions\": \"Full\",\n      \"value\": \"7xl+yQ4MrVpZCHspveCfy4f8jgTY1wv42gHO8k4bAX+EPvN4hY5uPau/bpofgeye+K9FtgvjkadkLISPfOxlMw==\"\n    },\n    {\n      \"keyName\": \"key2\",\n      \"permissions\": \"Full\",\n      \"value\": \"uC+kyJ9/gT81E/+9I1Go4xtOe8sW5rdIm3n6PNIyQ5kGO5OpFq69aWnrn3jLeFIyItzpln9P392U0353RYKvbg==\"\n    },\n    {\n      \"keyName\": \"kerb1\",\n      \"permissions\": \"Full\",\n      \"value\": \"34EzDQuCw1lYBXCGioUybN9dCWSLLzQPdAbYRcLhM957Fy/6IlO/SkaeR9QXKhVgCt8anDq4wYmDcaZ5VXr2Tg==\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a3533d92-c42b-4938-8338-a6b0a8b95f27",
+          "name": "Azure Storage Accounts Storage Accounts_ Restore Blob Ranges",
+          "request": {
+            "name": "Azure Storage Accounts Storage Accounts_ Restore Blob Ranges",
+            "description": {
+              "content": "Restore blobs in the specified blob ranges",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Storage",
+                "storageAccounts",
+                ":accountName",
+                "restoreBlobRanges"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "<string>",
+                  "description": "(Required) The API version to use for this operation."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountName",
+                  "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"timeToRestore\": \"<dateTime>\",\n  \"blobRanges\": [\n    {\n      \"startRange\": \"<string>\",\n      \"endRange\": \"<string>\"\n    },\n    {\n      \"startRange\": \"<string>\",\n      \"endRange\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e8ba853e-d67b-4205-8736-e38607ca23e0",
+              "name": "OK -- returned when blob ranges are restored completely with the same properties specified in the request body.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Storage",
+                    "storageAccounts",
+                    ":accountName",
+                    "restoreBlobRanges"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2019-06-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountName",
+                      "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"timeToRestore\": \"<dateTime>\",\n  \"blobRanges\": [\n    {\n      \"startRange\": \"<string>\",\n      \"endRange\": \"<string>\"\n    },\n    {\n      \"startRange\": \"<string>\",\n      \"endRange\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"parameters\": {\n    \"blobRanges\": [\n      {\n        \"endRange\": \"container/blobpath2\",\n        \"startRange\": \"container/blobpath1\"\n      },\n      {\n        \"endRange\": \"\",\n        \"startRange\": \"container2/blobpath3\"\n      }\n    ],\n    \"timeToRestore\": \"2019-04-20T15:30:00.0000000Z\"\n  },\n  \"restoreId\": \"{restore_id}\",\n  \"status\": \"InProgress\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3405758f-63e3-431f-8079-0bdbb6bd1c41",
+              "name": "Accepted -- Blob restore request accepted; operation will complete asynchronously.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Storage",
+                    "storageAccounts",
+                    ":accountName",
+                    "restoreBlobRanges"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2019-06-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountName",
+                      "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"timeToRestore\": \"<dateTime>\",\n  \"blobRanges\": [\n    {\n      \"startRange\": \"<string>\",\n      \"endRange\": \"<string>\"\n    },\n    {\n      \"startRange\": \"<string>\",\n      \"endRange\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"parameters\": {\n    \"blobRanges\": [\n      {\n        \"endRange\": \"container/blobpath2\",\n        \"startRange\": \"container/blobpath1\"\n      },\n      {\n        \"endRange\": \"\",\n        \"startRange\": \"container2/blobpath3\"\n      }\n    ],\n    \"timeToRestore\": \"2019-04-20T15:30:00.0000000Z\"\n  },\n  \"restoreId\": \"{restore_id}\",\n  \"status\": \"InProgress\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de233bbf-7bbf-4453-96ac-2ec8d73d0b4f",
+          "name": "Azure Storage Accounts Storage Accounts_ Revoke User Delegation Keys",
+          "request": {
+            "name": "Azure Storage Accounts Storage Accounts_ Revoke User Delegation Keys",
+            "description": {
+              "content": "Revoke user delegation keys.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Storage",
+                "storageAccounts",
+                ":accountName",
+                "revokeUserDelegationKeys"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "<string>",
+                  "description": "(Required) The API version to use for this operation."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountName",
+                  "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1cae06aa-44c0-4c0b-8c0b-96db3f30f733",
+              "name": "OK -- revoke user delegation keys succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Storage",
+                    "storageAccounts",
+                    ":accountName",
+                    "revokeUserDelegationKeys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2019-06-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group within the user's subscription. The name is case insensitive."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountName",
+                      "description": "(Required) The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://management.azure.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "user_impersonation"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "implicit"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "64519934-eb5c-473c-83ce-30909733b4bf",
+    "name": "StorageManagementClient BlobContainers StorageAccounts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Azure Storage Management API.",
+      "type": "text/plain"
+    }
+  }
+}

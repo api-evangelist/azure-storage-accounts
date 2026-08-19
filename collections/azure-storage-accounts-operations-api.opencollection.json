@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "StorageManagementClient BlobContainers Operations API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Operations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Azure Storage Accounts Operations_ List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/providers/Microsoft.Storage/operations",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "2019-06-01",
+                "type": "query",
+                "description": "The API version to use for this operation."
+              }
+            ]
+          },
+          "docs": "Lists all of the available Storage Rest API operations."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
