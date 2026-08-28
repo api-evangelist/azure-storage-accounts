@@ -3,6 +3,18 @@ name: Azure Storage Accounts
 description: Azure Storage is Microsoft's cloud storage solution for modern data storage scenarios offering highly available,
   massively scalable, durable, and secure storage for blobs, files, queues, tables, and disks.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
