@@ -150,7 +150,7 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
   baseURL: https://{accountName}.blob.core.windows.net
   tags:
-  - SKUs
+  - Skus
   tags_raw:
   - Skus
   properties:
