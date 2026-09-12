@@ -1,4 +1,4 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   description: The Azure Storage Management API.
   title: StorageManagementClient BlobContainers Skus API
@@ -16,13 +16,8 @@ info:
   x-tags:
   - Azure
   - Microsoft
-host: management.azure.com
-schemes:
-- https
-consumes:
-- application/json
-produces:
-- application/json
+servers:
+- url: https://management.azure.com
 security:
 - azure_auth:
   - user_impersonation
@@ -36,23 +31,27 @@ paths:
       parameters:
       - description: The API version to use for this operation.
         in: query
-        minLength: 1
         name: api-version
         required: true
-        type: string
         example: '2019-06-01'
+        schema:
+          type: string
+          minLength: 1
       - description: The ID of the target subscription.
         in: path
-        minLength: 1
         name: subscriptionId
         required: true
-        type: string
         example: 00000000-0000-0000-0000-000000000000
+        schema:
+          type: string
+          minLength: 1
       responses:
         '200':
           description: OK -- List of storage SKUs in the given subscription retrieved and returned successfully.
-          schema:
-            $ref: '#/definitions/StorageSkuListResult'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StorageSkuListResult'
       tags:
       - Skus
       x-ms-examples:
@@ -3786,118 +3785,120 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
-definitions:
-  SKUCapability:
-    description: The capability information in the specified SKU, including file encryption, network ACLs, change notification, etc.
-    properties:
-      name:
-        description: The name of capability, The capability information in the specified SKU, including file encryption, network ACLs, change notification, etc.
-        readOnly: true
-        type: string
-      value:
-        description: A string value to indicate states of given capability. Possibly 'true' or 'false'.
-        readOnly: true
-        type: string
-  SkuInformation:
-    description: Storage SKU and its properties
-    properties:
-      capabilities:
-        description: The capability information in the specified SKU, including file encryption, network ACLs, change notification, etc.
-        items:
-          $ref: '#/definitions/SKUCapability'
-        readOnly: true
-        type: array
-      kind:
-        description: Indicates the type of storage account.
-        enum:
-        - Storage
-        - StorageV2
-        - BlobStorage
-        - FileStorage
-        - BlockBlobStorage
-        readOnly: true
-        type: string
-        x-ms-enum:
-          modelAsString: true
-          name: Kind
-      locations:
-        description: The set of locations that the SKU is available. This will be supported and registered Azure Geo Regions (e.g. West US, East US, Southeast Asia, etc.).
-        items:
+components:
+  schemas:
+    SkuInformation:
+      description: Storage SKU and its properties
+      properties:
+        capabilities:
+          description: The capability information in the specified SKU, including file encryption, network ACLs, change notification, etc.
+          items:
+            $ref: '#/components/schemas/SKUCapability'
+          readOnly: true
+          type: array
+        kind:
+          description: Indicates the type of storage account.
+          enum:
+          - Storage
+          - StorageV2
+          - BlobStorage
+          - FileStorage
+          - BlockBlobStorage
+          readOnly: true
           type: string
-        readOnly: true
-        type: array
-      name:
-        description: The SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType.
-        enum:
-        - Standard_LRS
-        - Standard_GRS
-        - Standard_RAGRS
-        - Standard_ZRS
-        - Premium_LRS
-        - Premium_ZRS
-        - Standard_GZRS
-        - Standard_RAGZRS
-        type: string
-        x-ms-enum:
-          modelAsString: true
-          name: SkuName
-      resourceType:
-        description: The type of the resource, usually it is 'storageAccounts'.
-        readOnly: true
-        type: string
-      restrictions:
-        description: The restrictions because of which SKU cannot be used. This is empty if there are no restrictions.
-        items:
-          $ref: '#/definitions/Restriction'
-        type: array
-      tier:
-        description: The SKU tier. This is based on the SKU name.
-        enum:
-        - Standard
-        - Premium
-        readOnly: true
-        type: string
-        x-ms-enum:
-          modelAsString: false
-          name: SkuTier
-    required:
-    - name
-  Restriction:
-    description: The restriction because of which SKU cannot be used.
-    properties:
-      reasonCode:
-        description: The reason for the restriction. As of now this can be "QuotaId" or "NotAvailableForSubscription". Quota Id is set when the SKU has requiredQuotas parameter as the subscription does not belong to that quota. The "NotAvailableForSubscription" is related to capacity at DC.
-        enum:
-        - QuotaId
-        - NotAvailableForSubscription
-        type: string
-        x-ms-enum:
-          modelAsString: true
-          name: ReasonCode
-      type:
-        description: The type of restrictions. As of now only possible value for this is location.
-        readOnly: true
-        type: string
-      values:
-        description: The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted.
-        items:
+          x-ms-enum:
+            modelAsString: true
+            name: Kind
+        locations:
+          description: The set of locations that the SKU is available. This will be supported and registered Azure Geo Regions (e.g. West US, East US, Southeast Asia, etc.).
+          items:
+            type: string
+          readOnly: true
+          type: array
+        name:
+          description: The SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType.
+          enum:
+          - Standard_LRS
+          - Standard_GRS
+          - Standard_RAGRS
+          - Standard_ZRS
+          - Premium_LRS
+          - Premium_ZRS
+          - Standard_GZRS
+          - Standard_RAGZRS
           type: string
-        readOnly: true
-        type: array
-  StorageSkuListResult:
-    description: The response from the List Storage SKUs operation.
-    properties:
-      value:
-        description: Get the list result of storage SKUs and their properties.
-        items:
-          $ref: '#/definitions/SkuInformation'
-        readOnly: true
-        type: array
-securityDefinitions:
-  azure_auth:
-    authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
-    description: Azure Active Directory OAuth2 Flow
-    flow: implicit
-    scopes:
-      user_impersonation: impersonate your user account
-    type: oauth2
+          x-ms-enum:
+            modelAsString: true
+            name: SkuName
+        resourceType:
+          description: The type of the resource, usually it is 'storageAccounts'.
+          readOnly: true
+          type: string
+        restrictions:
+          description: The restrictions because of which SKU cannot be used. This is empty if there are no restrictions.
+          items:
+            $ref: '#/components/schemas/Restriction'
+          type: array
+        tier:
+          description: The SKU tier. This is based on the SKU name.
+          enum:
+          - Standard
+          - Premium
+          readOnly: true
+          type: string
+          x-ms-enum:
+            modelAsString: false
+            name: SkuTier
+      required:
+      - name
+    SKUCapability:
+      description: The capability information in the specified SKU, including file encryption, network ACLs, change notification, etc.
+      properties:
+        name:
+          description: The name of capability, The capability information in the specified SKU, including file encryption, network ACLs, change notification, etc.
+          readOnly: true
+          type: string
+        value:
+          description: A string value to indicate states of given capability. Possibly 'true' or 'false'.
+          readOnly: true
+          type: string
+    Restriction:
+      description: The restriction because of which SKU cannot be used.
+      properties:
+        reasonCode:
+          description: The reason for the restriction. As of now this can be "QuotaId" or "NotAvailableForSubscription". Quota Id is set when the SKU has requiredQuotas parameter as the subscription does not belong to that quota. The "NotAvailableForSubscription" is related to capacity at DC.
+          enum:
+          - QuotaId
+          - NotAvailableForSubscription
+          type: string
+          x-ms-enum:
+            modelAsString: true
+            name: ReasonCode
+        type:
+          description: The type of restrictions. As of now only possible value for this is location.
+          readOnly: true
+          type: string
+        values:
+          description: The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted.
+          items:
+            type: string
+          readOnly: true
+          type: array
+    StorageSkuListResult:
+      description: The response from the List Storage SKUs operation.
+      properties:
+        value:
+          description: Get the list result of storage SKUs and their properties.
+          items:
+            $ref: '#/components/schemas/SkuInformation'
+          readOnly: true
+          type: array
+  securitySchemes:
+    azure_auth:
+      type: oauth2
+      flows:
+        implicit:
+          scopes:
+            user_impersonation: impersonate your user account
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
+      description: Azure Active Directory OAuth2 Flow

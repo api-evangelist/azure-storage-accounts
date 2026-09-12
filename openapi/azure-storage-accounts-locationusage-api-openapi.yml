@@ -1,7 +1,7 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   description: The Azure Storage Management API.
-  title: StorageManagementClient BlobContainers LocationUsage API
+  title: StorageManagementClient BlobContainers Location Usage API
   version: '2.0'
   x-apisguru-categories:
   - cloud
@@ -16,13 +16,8 @@ info:
   x-tags:
   - Azure
   - Microsoft
-host: management.azure.com
-schemes:
-- https
-consumes:
-- application/json
-produces:
-- application/json
+servers:
+- url: https://management.azure.com
 security:
 - azure_auth:
   - user_impersonation
@@ -36,29 +31,34 @@ paths:
       parameters:
       - description: The API version to use for this operation.
         in: query
-        minLength: 1
         name: api-version
         required: true
-        type: string
         example: '2019-06-01'
+        schema:
+          type: string
+          minLength: 1
       - description: The ID of the target subscription.
         in: path
-        minLength: 1
         name: subscriptionId
         required: true
-        type: string
         example: 00000000-0000-0000-0000-000000000000
+        schema:
+          type: string
+          minLength: 1
       - description: The location of the Azure Storage resource.
         in: path
         name: location
         required: true
-        type: string
         example: example-value
+        schema:
+          type: string
       responses:
         '200':
           description: OK -- current usage count and limit retrieved and returned successfully.
-          schema:
-            $ref: '#/definitions/UsageListResult'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageListResult'
       tags:
       - LocationUsage
       x-ms-examples:
@@ -83,62 +83,64 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
-definitions:
-  Usage:
-    description: Describes Storage Resource Usage.
-    properties:
-      currentValue:
-        description: Gets the current count of the allocated resources in the subscription.
-        format: int32
-        readOnly: true
-        type: integer
-      limit:
-        description: Gets the maximum count of the resources that can be allocated in the subscription.
-        format: int32
-        readOnly: true
-        type: integer
-      name:
-        $ref: '#/definitions/UsageName'
-        description: Gets the name of the type of usage.
-        readOnly: true
-      unit:
-        description: Gets the unit of measurement.
-        enum:
-        - Count
-        - Bytes
-        - Seconds
-        - Percent
-        - CountsPerSecond
-        - BytesPerSecond
-        readOnly: true
-        type: string
-        x-ms-enum:
-          modelAsString: false
-          name: UsageUnit
-  UsageListResult:
-    description: The response from the List Usages operation.
-    properties:
-      value:
-        description: Gets or sets the list of Storage Resource Usages.
-        items:
-          $ref: '#/definitions/Usage'
-        type: array
-  UsageName:
-    description: The usage names that can be used; currently limited to StorageAccount.
-    properties:
-      localizedValue:
-        description: Gets a localized string describing the resource name.
-        readOnly: true
-        type: string
-      value:
-        description: Gets a string describing the resource name.
-        readOnly: true
-        type: string
-securityDefinitions:
-  azure_auth:
-    authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
-    description: Azure Active Directory OAuth2 Flow
-    flow: implicit
-    scopes:
-      user_impersonation: impersonate your user account
-    type: oauth2
+components:
+  schemas:
+    Usage:
+      description: Describes Storage Resource Usage.
+      properties:
+        currentValue:
+          description: Gets the current count of the allocated resources in the subscription.
+          format: int32
+          readOnly: true
+          type: integer
+        limit:
+          description: Gets the maximum count of the resources that can be allocated in the subscription.
+          format: int32
+          readOnly: true
+          type: integer
+        name:
+          $ref: '#/components/schemas/UsageName'
+          description: Gets the name of the type of usage.
+          readOnly: true
+        unit:
+          description: Gets the unit of measurement.
+          enum:
+          - Count
+          - Bytes
+          - Seconds
+          - Percent
+          - CountsPerSecond
+          - BytesPerSecond
+          readOnly: true
+          type: string
+          x-ms-enum:
+            modelAsString: false
+            name: UsageUnit
+    UsageListResult:
+      description: The response from the List Usages operation.
+      properties:
+        value:
+          description: Gets or sets the list of Storage Resource Usages.
+          items:
+            $ref: '#/components/schemas/Usage'
+          type: array
+    UsageName:
+      description: The usage names that can be used; currently limited to StorageAccount.
+      properties:
+        localizedValue:
+          description: Gets a localized string describing the resource name.
+          readOnly: true
+          type: string
+        value:
+          description: Gets a string describing the resource name.
+          readOnly: true
+          type: string
+  securitySchemes:
+    azure_auth:
+      type: oauth2
+      flows:
+        implicit:
+          scopes:
+            user_impersonation: impersonate your user account
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
+      description: Azure Active Directory OAuth2 Flow

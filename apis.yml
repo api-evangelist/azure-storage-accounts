@@ -1,5 +1,6 @@
 aid: azure-storage-accounts
 name: Azure Storage Accounts
+x-parent: microsoft-azure
 description: Azure Storage is Microsoft's cloud storage solution for modern data storage scenarios offering highly available, massively scalable, durable, and secure storage for blobs, files, queues, tables, and disks.
 type: Index
 deliveryModel:
@@ -36,7 +37,7 @@ tags:
 - Queue Storage
 - Storage
 - Table Storage
-url: https://raw.githubusercontent.com/api-evangelist/azure-storage-accounts/refs/heads/main/apis.yml
+url: https://learn.microsoft.com/en-us/azure/storage/
 created: '2024-01-01'
 modified: '2026-05-19'
 specificationVersion: '0.23'

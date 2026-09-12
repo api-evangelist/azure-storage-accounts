@@ -1,7 +1,7 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   description: The Azure Storage Management API.
-  title: StorageManagementClient BlobContainers API
+  title: StorageManagementClient Blob Containers API
   version: '2.0'
   x-apisguru-categories:
   - cloud
@@ -16,13 +16,8 @@ info:
   x-tags:
   - Azure
   - Microsoft
-host: management.azure.com
-schemes:
-- https
-consumes:
-- application/json
-produces:
-- application/json
+servers:
+- url: https://management.azure.com
 security:
 - azure_auth:
   - user_impersonation
@@ -36,52 +31,60 @@ paths:
       parameters:
       - description: The name of the resource group within the user's subscription. The name is case insensitive.
         in: path
-        maxLength: 90
-        minLength: 1
         name: resourceGroupName
-        pattern: ^[-\w\._\(\)]+$
         required: true
-        type: string
         x-ms-parameter-location: method
         example: my-resource-group
+        schema:
+          type: string
+          maxLength: 90
+          minLength: 1
+          pattern: ^[-\w\._\(\)]+$
       - description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
         in: path
-        maxLength: 24
-        minLength: 3
         name: accountName
         required: true
-        type: string
         x-ms-parameter-location: method
         example: example-value
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 3
       - description: The API version to use for this operation.
         in: query
-        minLength: 1
         name: api-version
         required: true
-        type: string
         example: '2019-06-01'
+        schema:
+          type: string
+          minLength: 1
       - description: The ID of the target subscription.
         in: path
-        minLength: 1
         name: subscriptionId
         required: true
-        type: string
         example: 00000000-0000-0000-0000-000000000000
+        schema:
+          type: string
+          minLength: 1
       - description: Optional. Specified maximum number of containers that can be included in the list.
         in: query
         name: $maxpagesize
-        type: string
         example: example-value
+        schema:
+          type: string
       - description: Optional. When specified, only container names starting with the filter will be listed.
         in: query
         name: $filter
-        type: string
         example: example-value
+        schema:
+          type: string
       responses:
         '200':
           description: OK -- List Container operation completed successfully.
-          schema:
-            $ref: '#/definitions/ListContainerItems'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListContainerItems'
       tags:
       - BlobContainers
       x-ms-examples:
@@ -132,38 +135,42 @@ paths:
       parameters:
       - description: The name of the resource group within the user's subscription. The name is case insensitive.
         in: path
-        maxLength: 90
-        minLength: 1
         name: resourceGroupName
-        pattern: ^[-\w\._\(\)]+$
         required: true
-        type: string
         x-ms-parameter-location: method
         example: my-resource-group
+        schema:
+          type: string
+          maxLength: 90
+          minLength: 1
+          pattern: ^[-\w\._\(\)]+$
       - description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
         in: path
-        maxLength: 24
-        minLength: 3
         name: accountName
         required: true
-        type: string
         x-ms-parameter-location: method
         example: example-value
-      - $ref: '#/parameters/ContainerName'
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 3
+      - $ref: '#/components/parameters/ContainerName'
       - description: The API version to use for this operation.
         in: query
-        minLength: 1
         name: api-version
         required: true
-        type: string
         example: '2019-06-01'
+        schema:
+          type: string
+          minLength: 1
       - description: The ID of the target subscription.
         in: path
-        minLength: 1
         name: subscriptionId
         required: true
-        type: string
         example: 00000000-0000-0000-0000-000000000000
+        schema:
+          type: string
+          minLength: 1
       responses:
         '200':
           description: OK -- Delete Container operation completed successfully.
@@ -193,43 +200,49 @@ paths:
       parameters:
       - description: The name of the resource group within the user's subscription. The name is case insensitive.
         in: path
-        maxLength: 90
-        minLength: 1
         name: resourceGroupName
-        pattern: ^[-\w\._\(\)]+$
         required: true
-        type: string
         x-ms-parameter-location: method
         example: my-resource-group
+        schema:
+          type: string
+          maxLength: 90
+          minLength: 1
+          pattern: ^[-\w\._\(\)]+$
       - description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
         in: path
-        maxLength: 24
-        minLength: 3
         name: accountName
         required: true
-        type: string
         x-ms-parameter-location: method
         example: example-value
-      - $ref: '#/parameters/ContainerName'
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 3
+      - $ref: '#/components/parameters/ContainerName'
       - description: The API version to use for this operation.
         in: query
-        minLength: 1
         name: api-version
         required: true
-        type: string
         example: '2019-06-01'
+        schema:
+          type: string
+          minLength: 1
       - description: The ID of the target subscription.
         in: path
-        minLength: 1
         name: subscriptionId
         required: true
-        type: string
         example: 00000000-0000-0000-0000-000000000000
+        schema:
+          type: string
+          minLength: 1
       responses:
         '200':
           description: OK -- Get Container operation completed successfully.
-          schema:
-            $ref: '#/definitions/BlobContainer'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlobContainer'
       tags:
       - BlobContainers
       x-ms-examples:
@@ -301,51 +314,50 @@ paths:
       parameters:
       - description: The name of the resource group within the user's subscription. The name is case insensitive.
         in: path
-        maxLength: 90
-        minLength: 1
         name: resourceGroupName
-        pattern: ^[-\w\._\(\)]+$
         required: true
-        type: string
         x-ms-parameter-location: method
         example: my-resource-group
+        schema:
+          type: string
+          maxLength: 90
+          minLength: 1
+          pattern: ^[-\w\._\(\)]+$
       - description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
         in: path
-        maxLength: 24
-        minLength: 3
         name: accountName
         required: true
-        type: string
         x-ms-parameter-location: method
         example: example-value
-      - $ref: '#/parameters/ContainerName'
-      - description: Properties to update for the blob container.
-        in: body
-        name: blobContainer
-        required: true
         schema:
-          $ref: '#/definitions/BlobContainer'
-        example: example-value
+          type: string
+          maxLength: 24
+          minLength: 3
+      - $ref: '#/components/parameters/ContainerName'
       - description: The API version to use for this operation.
         in: query
-        minLength: 1
         name: api-version
         required: true
-        type: string
         example: '2019-06-01'
+        schema:
+          type: string
+          minLength: 1
       - description: The ID of the target subscription.
         in: path
-        minLength: 1
         name: subscriptionId
         required: true
-        type: string
         example: 00000000-0000-0000-0000-000000000000
+        schema:
+          type: string
+          minLength: 1
       responses:
         '200':
           description: OK -- Update Container operation completed successfully.
-          schema:
-            $ref: '#/definitions/BlobContainer'
-            description: Properties of the updated blob container.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlobContainer'
+                description: Properties of the updated blob container.
       tags:
       - BlobContainers
       x-ms-examples:
@@ -378,60 +390,68 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BlobContainer'
+        description: Properties to update for the blob container.
+        required: true
     put:
       description: 'Creates a new container under the specified account as described by request body. The container resource includes metadata and properties for that container. It does not include a list of the blobs contained by the container. '
       operationId: BlobContainers_Create
       parameters:
       - description: The name of the resource group within the user's subscription. The name is case insensitive.
         in: path
-        maxLength: 90
-        minLength: 1
         name: resourceGroupName
-        pattern: ^[-\w\._\(\)]+$
         required: true
-        type: string
         x-ms-parameter-location: method
         example: my-resource-group
+        schema:
+          type: string
+          maxLength: 90
+          minLength: 1
+          pattern: ^[-\w\._\(\)]+$
       - description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
         in: path
-        maxLength: 24
-        minLength: 3
         name: accountName
         required: true
-        type: string
         x-ms-parameter-location: method
         example: example-value
-      - $ref: '#/parameters/ContainerName'
-      - description: Properties of the blob container to create.
-        in: body
-        name: blobContainer
-        required: true
         schema:
-          $ref: '#/definitions/BlobContainer'
-        example: example-value
+          type: string
+          maxLength: 24
+          minLength: 3
+      - $ref: '#/components/parameters/ContainerName'
       - description: The API version to use for this operation.
         in: query
-        minLength: 1
         name: api-version
         required: true
-        type: string
         example: '2019-06-01'
+        schema:
+          type: string
+          minLength: 1
       - description: The ID of the target subscription.
         in: path
-        minLength: 1
         name: subscriptionId
         required: true
-        type: string
         example: 00000000-0000-0000-0000-000000000000
+        schema:
+          type: string
+          minLength: 1
       responses:
         '200':
           description: OK -- The Container is already created.
-          schema:
-            $ref: '#/definitions/BlobContainer'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlobContainer'
         '201':
           description: Created -- Create Container operation completed successfully.
-          schema:
-            $ref: '#/definitions/BlobContainer'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlobContainer'
       tags:
       - BlobContainers
       x-ms-examples:
@@ -459,6 +479,13 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BlobContainer'
+        description: Properties of the blob container to create.
+        required: true
   ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/clearLegalHold
   : post:
       description: Clears legal hold tags. Clearing the same or non-existent tag results in an idempotent operation. ClearLegalHold clears out only the specified tags in the request.
@@ -466,50 +493,49 @@ paths:
       parameters:
       - description: The name of the resource group within the user's subscription. The name is case insensitive.
         in: path
-        maxLength: 90
-        minLength: 1
         name: resourceGroupName
-        pattern: ^[-\w\._\(\)]+$
         required: true
-        type: string
         x-ms-parameter-location: method
         example: my-resource-group
+        schema:
+          type: string
+          maxLength: 90
+          minLength: 1
+          pattern: ^[-\w\._\(\)]+$
       - description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
         in: path
-        maxLength: 24
-        minLength: 3
         name: accountName
         required: true
-        type: string
         x-ms-parameter-location: method
         example: example-value
-      - $ref: '#/parameters/ContainerName'
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 3
+      - $ref: '#/components/parameters/ContainerName'
       - description: The API version to use for this operation.
         in: query
-        minLength: 1
         name: api-version
         required: true
-        type: string
         example: '2019-06-01'
+        schema:
+          type: string
+          minLength: 1
       - description: The ID of the target subscription.
         in: path
-        minLength: 1
         name: subscriptionId
         required: true
-        type: string
         example: 00000000-0000-0000-0000-000000000000
-      - description: The LegalHold property that will be clear from a blob container.
-        in: body
-        name: LegalHold
-        required: true
         schema:
-          $ref: '#/definitions/LegalHold'
-        example: example-value
+          type: string
+          minLength: 1
       responses:
         '200':
           description: OK -- Clear legal hold tags for Container completed successfully.
-          schema:
-            $ref: '#/definitions/LegalHold'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LegalHold'
       tags:
       - BlobContainers
       x-ms-examples:
@@ -535,6 +561,13 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LegalHold'
+        description: The LegalHold property that will be clear from a blob container.
+        required: true
   ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default/extend
   : post:
       description: Extends the immutabilityPeriodSinceCreationInDays of a locked immutabilityPolicy. The only action allowed on a Locked policy will be this action. ETag in If-Match is required for this operation.
@@ -542,59 +575,61 @@ paths:
       parameters:
       - description: The name of the resource group within the user's subscription. The name is case insensitive.
         in: path
-        maxLength: 90
-        minLength: 1
         name: resourceGroupName
-        pattern: ^[-\w\._\(\)]+$
         required: true
-        type: string
         x-ms-parameter-location: method
         example: my-resource-group
+        schema:
+          type: string
+          maxLength: 90
+          minLength: 1
+          pattern: ^[-\w\._\(\)]+$
       - description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
         in: path
-        maxLength: 24
-        minLength: 3
         name: accountName
         required: true
-        type: string
         x-ms-parameter-location: method
         example: example-value
-      - $ref: '#/parameters/ContainerName'
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 3
+      - $ref: '#/components/parameters/ContainerName'
       - description: The API version to use for this operation.
         in: query
-        minLength: 1
         name: api-version
         required: true
-        type: string
         example: '2019-06-01'
+        schema:
+          type: string
+          minLength: 1
       - description: The ID of the target subscription.
         in: path
-        minLength: 1
         name: subscriptionId
         required: true
-        type: string
         example: 00000000-0000-0000-0000-000000000000
-      - description: The ImmutabilityPolicy Properties that will be extended for a blob container.
-        in: body
-        name: parameters
         schema:
-          $ref: '#/definitions/ImmutabilityPolicy'
-        example: example-value
+          type: string
+          minLength: 1
       - description: The entity state (ETag) version of the immutability policy to update. A value of "*" can be used to apply the operation only if the immutability policy already exists. If omitted, this operation will always be applied.
         in: header
         name: If-Match
         required: true
-        type: string
         example: example-value
+        schema:
+          type: string
       responses:
         '200':
           description: OK -- Extends container ImmutabilityPolicy operation completed successfully..
           headers:
             ETag:
               description: The ETag HTTP response header. This is an opaque string. You can use it to detect whether the resource has changed between requests. In particular, you can pass the ETag to one of the If-Match or If-None-Match headers.
-              type: string
-          schema:
-            $ref: '#/definitions/ImmutabilityPolicy'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImmutabilityPolicy'
       tags:
       - BlobContainers
       x-ms-examples:
@@ -624,6 +659,12 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImmutabilityPolicy'
+        description: The ImmutabilityPolicy Properties that will be extended for a blob container.
   ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default/lock
   : post:
       description: Sets the ImmutabilityPolicy to Locked state. The only action allowed on a Locked policy is ExtendImmutabilityPolicy action. ETag in If-Match is required for this operation.
@@ -631,53 +672,61 @@ paths:
       parameters:
       - description: The name of the resource group within the user's subscription. The name is case insensitive.
         in: path
-        maxLength: 90
-        minLength: 1
         name: resourceGroupName
-        pattern: ^[-\w\._\(\)]+$
         required: true
-        type: string
         x-ms-parameter-location: method
         example: my-resource-group
+        schema:
+          type: string
+          maxLength: 90
+          minLength: 1
+          pattern: ^[-\w\._\(\)]+$
       - description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
         in: path
-        maxLength: 24
-        minLength: 3
         name: accountName
         required: true
-        type: string
         x-ms-parameter-location: method
         example: example-value
-      - $ref: '#/parameters/ContainerName'
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 3
+      - $ref: '#/components/parameters/ContainerName'
       - description: The API version to use for this operation.
         in: query
-        minLength: 1
         name: api-version
         required: true
-        type: string
         example: '2019-06-01'
+        schema:
+          type: string
+          minLength: 1
       - description: The ID of the target subscription.
         in: path
-        minLength: 1
         name: subscriptionId
         required: true
-        type: string
         example: 00000000-0000-0000-0000-000000000000
+        schema:
+          type: string
+          minLength: 1
       - description: The entity state (ETag) version of the immutability policy to update. A value of "*" can be used to apply the operation only if the immutability policy already exists. If omitted, this operation will always be applied.
         in: header
         name: If-Match
         required: true
-        type: string
         example: example-value
+        schema:
+          type: string
       responses:
         '200':
           description: OK -- Locks container ImmutabilityPolicy operation completed successfully.
           headers:
             ETag:
               description: The ETag HTTP response header. This is an opaque string. You can use it to detect whether the resource has changed between requests. In particular, you can pass the ETag to one of the If-Match or If-None-Match headers.
-              type: string
-          schema:
-            $ref: '#/definitions/ImmutabilityPolicy'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImmutabilityPolicy'
       tags:
       - BlobContainers
       x-ms-examples:
@@ -711,54 +760,62 @@ paths:
       parameters:
       - description: The name of the resource group within the user's subscription. The name is case insensitive.
         in: path
-        maxLength: 90
-        minLength: 1
         name: resourceGroupName
-        pattern: ^[-\w\._\(\)]+$
         required: true
-        type: string
         x-ms-parameter-location: method
         example: my-resource-group
+        schema:
+          type: string
+          maxLength: 90
+          minLength: 1
+          pattern: ^[-\w\._\(\)]+$
       - description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
         in: path
-        maxLength: 24
-        minLength: 3
         name: accountName
         required: true
-        type: string
         x-ms-parameter-location: method
         example: example-value
-      - $ref: '#/parameters/ContainerName'
-      - $ref: '#/parameters/ImmutabilityPolicyName'
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 3
+      - $ref: '#/components/parameters/ContainerName'
+      - $ref: '#/components/parameters/ImmutabilityPolicyName'
       - description: The API version to use for this operation.
         in: query
-        minLength: 1
         name: api-version
         required: true
-        type: string
         example: '2019-06-01'
+        schema:
+          type: string
+          minLength: 1
       - description: The ID of the target subscription.
         in: path
-        minLength: 1
         name: subscriptionId
         required: true
-        type: string
         example: 00000000-0000-0000-0000-000000000000
+        schema:
+          type: string
+          minLength: 1
       - description: The entity state (ETag) version of the immutability policy to update. A value of "*" can be used to apply the operation only if the immutability policy already exists. If omitted, this operation will always be applied.
         in: header
         name: If-Match
         required: true
-        type: string
         example: example-value
+        schema:
+          type: string
       responses:
         '200':
           description: OK -- Deletes container ImmutabilityPolicy operation completed successfully.
           headers:
             ETag:
               description: The ETag HTTP response header. This is an opaque string. You can use it to detect whether the resource has changed between requests. In particular, you can pass the ETag to one of the If-Match or If-None-Match headers.
-              type: string
-          schema:
-            $ref: '#/definitions/ImmutabilityPolicy'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImmutabilityPolicy'
       tags:
       - BlobContainers
       x-ms-examples:
@@ -792,54 +849,62 @@ paths:
       parameters:
       - description: The name of the resource group within the user's subscription. The name is case insensitive.
         in: path
-        maxLength: 90
-        minLength: 1
         name: resourceGroupName
-        pattern: ^[-\w\._\(\)]+$
         required: true
-        type: string
         x-ms-parameter-location: method
         example: my-resource-group
+        schema:
+          type: string
+          maxLength: 90
+          minLength: 1
+          pattern: ^[-\w\._\(\)]+$
       - description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
         in: path
-        maxLength: 24
-        minLength: 3
         name: accountName
         required: true
-        type: string
         x-ms-parameter-location: method
         example: example-value
-      - $ref: '#/parameters/ContainerName'
-      - $ref: '#/parameters/ImmutabilityPolicyName'
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 3
+      - $ref: '#/components/parameters/ContainerName'
+      - $ref: '#/components/parameters/ImmutabilityPolicyName'
       - description: The API version to use for this operation.
         in: query
-        minLength: 1
         name: api-version
         required: true
-        type: string
         example: '2019-06-01'
+        schema:
+          type: string
+          minLength: 1
       - description: The ID of the target subscription.
         in: path
-        minLength: 1
         name: subscriptionId
         required: true
-        type: string
         example: 00000000-0000-0000-0000-000000000000
+        schema:
+          type: string
+          minLength: 1
       - description: The entity state (ETag) version of the immutability policy to update. A value of "*" can be used to apply the operation only if the immutability policy already exists. If omitted, this operation will always be applied.
         in: header
         name: If-Match
         required: false
-        type: string
         example: example-value
+        schema:
+          type: string
       responses:
         '200':
           description: OK -- Gets container ImmutabilityPolicy operation completed successfully.
           headers:
             ETag:
               description: The ETag HTTP response header. This is an opaque string. You can use it to detect whether the resource has changed between requests. In particular, you can pass the ETag to one of the If-Match or If-None-Match headers.
-              type: string
-          schema:
-            $ref: '#/definitions/ImmutabilityPolicy'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImmutabilityPolicy'
       tags:
       - BlobContainers
       x-ms-examples:
@@ -872,60 +937,62 @@ paths:
       parameters:
       - description: The name of the resource group within the user's subscription. The name is case insensitive.
         in: path
-        maxLength: 90
-        minLength: 1
         name: resourceGroupName
-        pattern: ^[-\w\._\(\)]+$
         required: true
-        type: string
         x-ms-parameter-location: method
         example: my-resource-group
+        schema:
+          type: string
+          maxLength: 90
+          minLength: 1
+          pattern: ^[-\w\._\(\)]+$
       - description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
         in: path
-        maxLength: 24
-        minLength: 3
         name: accountName
         required: true
-        type: string
         x-ms-parameter-location: method
         example: example-value
-      - $ref: '#/parameters/ContainerName'
-      - $ref: '#/parameters/ImmutabilityPolicyName'
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 3
+      - $ref: '#/components/parameters/ContainerName'
+      - $ref: '#/components/parameters/ImmutabilityPolicyName'
       - description: The API version to use for this operation.
         in: query
-        minLength: 1
         name: api-version
         required: true
-        type: string
         example: '2019-06-01'
+        schema:
+          type: string
+          minLength: 1
       - description: The ID of the target subscription.
         in: path
-        minLength: 1
         name: subscriptionId
         required: true
-        type: string
         example: 00000000-0000-0000-0000-000000000000
-      - description: The ImmutabilityPolicy Properties that will be created or updated to a blob container.
-        in: body
-        name: parameters
         schema:
-          $ref: '#/definitions/ImmutabilityPolicy'
-        example: example-value
+          type: string
+          minLength: 1
       - description: The entity state (ETag) version of the immutability policy to update. A value of "*" can be used to apply the operation only if the immutability policy already exists. If omitted, this operation will always be applied.
         in: header
         name: If-Match
         required: false
-        type: string
         example: example-value
+        schema:
+          type: string
       responses:
         '200':
           description: OK -- Creates or updates container ImmutabilityPolicy operation completed successfully.
           headers:
             ETag:
               description: The ETag HTTP response header. This is an opaque string. You can use it to detect whether the resource has changed between requests. In particular, you can pass the ETag to one of the If-Match or If-None-Match headers.
-              type: string
-          schema:
-            $ref: '#/definitions/ImmutabilityPolicy'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImmutabilityPolicy'
       tags:
       - BlobContainers
       x-ms-examples:
@@ -955,6 +1022,12 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImmutabilityPolicy'
+        description: The ImmutabilityPolicy Properties that will be created or updated to a blob container.
   ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/lease
   : post:
       description: The Lease Container operation establishes and manages a lock on a container for delete operations. The lock duration can be 15 to 60 seconds, or can be infinite.
@@ -962,49 +1035,49 @@ paths:
       parameters:
       - description: The name of the resource group within the user's subscription. The name is case insensitive.
         in: path
-        maxLength: 90
-        minLength: 1
         name: resourceGroupName
-        pattern: ^[-\w\._\(\)]+$
         required: true
-        type: string
         x-ms-parameter-location: method
         example: my-resource-group
+        schema:
+          type: string
+          maxLength: 90
+          minLength: 1
+          pattern: ^[-\w\._\(\)]+$
       - description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
         in: path
-        maxLength: 24
-        minLength: 3
         name: accountName
         required: true
-        type: string
         x-ms-parameter-location: method
         example: example-value
-      - $ref: '#/parameters/ContainerName'
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 3
+      - $ref: '#/components/parameters/ContainerName'
       - description: The API version to use for this operation.
         in: query
-        minLength: 1
         name: api-version
         required: true
-        type: string
         example: '2019-06-01'
+        schema:
+          type: string
+          minLength: 1
       - description: The ID of the target subscription.
         in: path
-        minLength: 1
         name: subscriptionId
         required: true
-        type: string
         example: 00000000-0000-0000-0000-000000000000
-      - description: Lease Container request body.
-        in: body
-        name: parameters
         schema:
-          $ref: '#/definitions/LeaseContainerRequest'
-        example: example-value
+          type: string
+          minLength: 1
       responses:
         '200':
           description: OK -- Lease Container operation completed successfully.
-          schema:
-            $ref: '#/definitions/LeaseContainerResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeaseContainerResponse'
       tags:
       - BlobContainers
       x-ms-examples:
@@ -1048,6 +1121,12 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LeaseContainerRequest'
+        description: Lease Container request body.
   ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/setLegalHold
   : post:
       description: Sets legal hold tags. Setting the same tag results in an idempotent operation. SetLegalHold follows an append pattern and does not clear out the existing tags that are not specified in the request.
@@ -1055,50 +1134,49 @@ paths:
       parameters:
       - description: The name of the resource group within the user's subscription. The name is case insensitive.
         in: path
-        maxLength: 90
-        minLength: 1
         name: resourceGroupName
-        pattern: ^[-\w\._\(\)]+$
         required: true
-        type: string
         x-ms-parameter-location: method
         example: my-resource-group
+        schema:
+          type: string
+          maxLength: 90
+          minLength: 1
+          pattern: ^[-\w\._\(\)]+$
       - description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
         in: path
-        maxLength: 24
-        minLength: 3
         name: accountName
         required: true
-        type: string
         x-ms-parameter-location: method
         example: example-value
-      - $ref: '#/parameters/ContainerName'
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 3
+      - $ref: '#/components/parameters/ContainerName'
       - description: The API version to use for this operation.
         in: query
-        minLength: 1
         name: api-version
         required: true
-        type: string
         example: '2019-06-01'
+        schema:
+          type: string
+          minLength: 1
       - description: The ID of the target subscription.
         in: path
-        minLength: 1
         name: subscriptionId
         required: true
-        type: string
         example: 00000000-0000-0000-0000-000000000000
-      - description: The LegalHold property that will be set to a blob container.
-        in: body
-        name: LegalHold
-        required: true
         schema:
-          $ref: '#/definitions/LegalHold'
-        example: example-value
+          type: string
+          minLength: 1
       responses:
         '200':
           description: OK -- Set legal hold tags for Container completed successfully.
-          schema:
-            $ref: '#/definitions/LegalHold'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LegalHold'
       tags:
       - BlobContainers
       x-ms-examples:
@@ -1127,367 +1205,378 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
-definitions:
-  ListContainerItems:
-    description: Response schema. Contains list of blobs returned, and if paging is requested or required, a URL to next page of containers.
-    properties:
-      nextLink:
-        description: Request URL that can be used to query next page of containers. Returned when total number of requested containers exceed maximum page size.
-        readOnly: true
-        type: string
-      value:
-        description: List of blobs containers returned.
-        items:
-          $ref: '#/definitions/ListContainerItem'
-        readOnly: true
-        type: array
-  ImmutabilityPolicyProperty:
-    description: The properties of an ImmutabilityPolicy of a blob container.
-    properties:
-      immutabilityPeriodSinceCreationInDays:
-        description: The immutability period for the blobs in the container since the policy creation, in days.
-        type: integer
-      state:
-        description: 'The ImmutabilityPolicy state of a blob container, possible values include: Locked and Unlocked.'
-        enum:
-        - Locked
-        - Unlocked
-        readOnly: true
-        type: string
-        x-ms-enum:
-          modelAsString: true
-          name: ImmutabilityPolicyState
-    required:
-    - immutabilityPeriodSinceCreationInDays
-  ImmutabilityPolicyProperties:
-    description: The properties of an ImmutabilityPolicy of a blob container.
-    properties:
-      etag:
-        description: ImmutabilityPolicy Etag.
-        readOnly: true
-        type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LegalHold'
+        description: The LegalHold property that will be set to a blob container.
+        required: true
+components:
+  schemas:
+    LegalHold:
+      description: The LegalHold property of a blob container.
       properties:
-        $ref: '#/definitions/ImmutabilityPolicyProperty'
-        description: The properties of an ImmutabilityPolicy of a blob container.
-        x-ms-client-flatten: true
-      updateHistory:
-        description: The ImmutabilityPolicy update history of the blob container.
-        items:
-          $ref: '#/definitions/UpdateHistoryProperty'
-        readOnly: true
-        type: array
-  UpdateHistoryProperty:
-    description: An update history of the ImmutabilityPolicy of a blob container.
-    properties:
-      immutabilityPeriodSinceCreationInDays:
-        description: The immutability period for the blobs in the container since the policy creation, in days.
-        readOnly: true
-        type: integer
-      objectIdentifier:
-        description: Returns the Object ID of the user who updated the ImmutabilityPolicy.
-        readOnly: true
-        type: string
-      tenantId:
-        description: Returns the Tenant ID that issued the token for the user who updated the ImmutabilityPolicy.
-        readOnly: true
-        type: string
-      timestamp:
-        description: Returns the date and time the ImmutabilityPolicy was updated.
-        format: date-time
-        readOnly: true
-        type: string
-      update:
-        description: 'The ImmutabilityPolicy update type of a blob container, possible values include: put, lock and extend.'
-        enum:
-        - put
-        - lock
-        - extend
-        readOnly: true
-        type: string
-        x-ms-enum:
-          modelAsString: true
-          name: ImmutabilityPolicyUpdateType
-      upn:
-        description: Returns the User Principal Name of the user who updated the ImmutabilityPolicy.
-        readOnly: true
-        type: string
-  BlobContainer:
-    allOf:
-    - allOf:
-      - properties:
-          id:
-            description: Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-            readOnly: true
+        hasLegalHold:
+          description: The hasLegalHold public property is set to true by SRP if there are at least one existing tag. The hasLegalHold public property is set to false by SRP if all existing legal hold tags are cleared out. There can be a maximum of 1000 blob containers with hasLegalHold=true for a given account.
+          readOnly: true
+          type: boolean
+        tags:
+          description: Each tag should be 3 to 23 alphanumeric characters and is normalized to lower case at SRP.
+          items:
+            maxLength: 23
+            minLength: 3
             type: string
-          name:
-            description: The name of the resource
-            readOnly: true
-            type: string
-          type:
-            description: The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
-            readOnly: true
-            type: string
-        x-ms-azure-resource: true
-      description: The resource model definition for a Azure Resource Manager resource with an etag.
+          type: array
+      required:
+      - tags
+    LeaseContainerResponse:
+      description: Lease Container response schema.
       properties:
-        etag:
-          description: Resource Etag.
+        leaseId:
+          description: Returned unique lease ID that must be included with any request to delete the container, or to renew, change, or release the lease.
+          type: string
+        leaseTimeSeconds:
+          description: Approximate time remaining in the lease period, in seconds.
+          type: string
+    ListContainerItem:
+      allOf:
+      - allOf:
+        - properties:
+            id:
+              description: Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+              readOnly: true
+              type: string
+            name:
+              description: The name of the resource
+              readOnly: true
+              type: string
+            type:
+              description: The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+              readOnly: true
+              type: string
+          x-ms-azure-resource: true
+        description: The resource model definition for a Azure Resource Manager resource with an etag.
+        properties:
+          etag:
+            description: Resource Etag.
+            readOnly: true
+            type: string
+        x-ms-client-name: AzureEntityResource
+      description: The blob container properties be listed out.
+      properties:
+        properties:
+          $ref: '#/components/schemas/ContainerProperties'
+          description: The blob container properties be listed out.
+          x-ms-client-flatten: true
+    UpdateHistoryProperty:
+      description: An update history of the ImmutabilityPolicy of a blob container.
+      properties:
+        immutabilityPeriodSinceCreationInDays:
+          description: The immutability period for the blobs in the container since the policy creation, in days.
+          readOnly: true
+          type: integer
+        objectIdentifier:
+          description: Returns the Object ID of the user who updated the ImmutabilityPolicy.
           readOnly: true
           type: string
-      x-ms-client-name: AzureEntityResource
-    description: Properties of the blob container, including Id, resource name, resource type, Etag.
-    properties:
-      properties:
-        $ref: '#/definitions/ContainerProperties'
-        description: Properties of the blob container.
-        x-ms-client-flatten: true
-        x-ms-client-name: ContainerProperties
-  LeaseContainerRequest:
-    description: Lease Container request schema.
-    properties:
-      action:
-        description: Specifies the lease action. Can be one of the available actions.
-        enum:
-        - Acquire
-        - Renew
-        - Change
-        - Release
-        - Break
-        type: string
-      breakPeriod:
-        description: Optional. For a break action, proposed duration the lease should continue before it is broken, in seconds, between 0 and 60.
-        type: integer
-      leaseDuration:
-        description: Required for acquire. Specifies the duration of the lease, in seconds, or negative one (-1) for a lease that never expires.
-        type: integer
-      leaseId:
-        description: Identifies the lease. Can be specified in any valid GUID string format.
-        type: string
-      proposedLeaseId:
-        description: Optional for acquire, required for change. Proposed lease ID, in a GUID string format.
-        type: string
-    required:
-    - action
-  ListContainerItem:
-    allOf:
-    - allOf:
-      - properties:
-          id:
-            description: Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-            readOnly: true
-            type: string
-          name:
-            description: The name of the resource
-            readOnly: true
-            type: string
-          type:
-            description: The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
-            readOnly: true
-            type: string
-        x-ms-azure-resource: true
-      description: The resource model definition for a Azure Resource Manager resource with an etag.
-      properties:
-        etag:
-          description: Resource Etag.
+        tenantId:
+          description: Returns the Tenant ID that issued the token for the user who updated the ImmutabilityPolicy.
           readOnly: true
           type: string
-      x-ms-client-name: AzureEntityResource
-    description: The blob container properties be listed out.
-    properties:
-      properties:
-        $ref: '#/definitions/ContainerProperties'
-        description: The blob container properties be listed out.
-        x-ms-client-flatten: true
-  LegalHoldProperties:
-    description: The LegalHold property of a blob container.
-    properties:
-      hasLegalHold:
-        description: The hasLegalHold public property is set to true by SRP if there are at least one existing tag. The hasLegalHold public property is set to false by SRP if all existing legal hold tags are cleared out. There can be a maximum of 1000 blob containers with hasLegalHold=true for a given account.
-        readOnly: true
-        type: boolean
-      tags:
-        description: The list of LegalHold tags of a blob container.
-        items:
-          $ref: '#/definitions/TagProperty'
-        type: array
-  ContainerProperties:
-    description: The properties of a container.
-    properties:
-      hasImmutabilityPolicy:
-        description: The hasImmutabilityPolicy public property is set to true by SRP if ImmutabilityPolicy has been created for this container. The hasImmutabilityPolicy public property is set to false by SRP if ImmutabilityPolicy has not been created for this container.
-        readOnly: true
-        type: boolean
-      hasLegalHold:
-        description: The hasLegalHold public property is set to true by SRP if there are at least one existing tag. The hasLegalHold public property is set to false by SRP if all existing legal hold tags are cleared out. There can be a maximum of 1000 blob containers with hasLegalHold=true for a given account.
-        readOnly: true
-        type: boolean
-      immutabilityPolicy:
-        $ref: '#/definitions/ImmutabilityPolicyProperties'
-        description: The ImmutabilityPolicy property of the container.
-        readOnly: true
-        x-ms-client-name: ImmutabilityPolicy
-      lastModifiedTime:
-        description: Returns the date and time the container was last modified.
-        format: date-time
-        readOnly: true
-        type: string
-      leaseDuration:
-        description: Specifies whether the lease on a container is of infinite or fixed duration, only when the container is leased.
-        enum:
-        - Infinite
-        - Fixed
-        readOnly: true
-        type: string
-        x-ms-enum:
-          modelAsString: true
-          name: LeaseDuration
-      leaseState:
-        description: Lease state of the container.
-        enum:
-        - Available
-        - Leased
-        - Expired
-        - Breaking
-        - Broken
-        readOnly: true
-        type: string
-        x-ms-enum:
-          modelAsString: true
-          name: LeaseState
-      leaseStatus:
-        description: The lease status of the container.
-        enum:
-        - Locked
-        - Unlocked
-        readOnly: true
-        type: string
-        x-ms-enum:
-          modelAsString: true
-          name: LeaseStatus
-      legalHold:
-        $ref: '#/definitions/LegalHoldProperties'
-        description: The LegalHold property of the container.
-        readOnly: true
-      metadata:
-        additionalProperties:
-          type: string
-        description: A name-value pair to associate with the container as metadata.
-        type: object
-      publicAccess:
-        description: Specifies whether data in the container may be accessed publicly and the level of access.
-        enum:
-        - Container
-        - Blob
-        - None
-        type: string
-        x-ms-enum:
-          modelAsString: false
-          name: PublicAccess
-  ImmutabilityPolicy:
-    allOf:
-    - allOf:
-      - properties:
-          id:
-            description: Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-            readOnly: true
-            type: string
-          name:
-            description: The name of the resource
-            readOnly: true
-            type: string
-          type:
-            description: The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
-            readOnly: true
-            type: string
-        x-ms-azure-resource: true
-      description: The resource model definition for a Azure Resource Manager resource with an etag.
-      properties:
-        etag:
-          description: Resource Etag.
+        timestamp:
+          description: Returns the date and time the ImmutabilityPolicy was updated.
+          format: date-time
           readOnly: true
           type: string
-      x-ms-client-name: AzureEntityResource
-    description: The ImmutabilityPolicy property of a blob container, including Id, resource name, resource type, Etag.
-    properties:
-      properties:
-        $ref: '#/definitions/ImmutabilityPolicyProperty'
-        description: The properties of an ImmutabilityPolicy of a blob container.
-        x-ms-client-flatten: true
-    required:
-    - properties
-  LeaseContainerResponse:
-    description: Lease Container response schema.
-    properties:
-      leaseId:
-        description: Returned unique lease ID that must be included with any request to delete the container, or to renew, change, or release the lease.
-        type: string
-      leaseTimeSeconds:
-        description: Approximate time remaining in the lease period, in seconds.
-        type: string
-  TagProperty:
-    description: A tag of the LegalHold of a blob container.
-    properties:
-      objectIdentifier:
-        description: Returns the Object ID of the user who added the tag.
-        readOnly: true
-        type: string
-      tag:
-        description: The tag value.
-        readOnly: true
-        type: string
-      tenantId:
-        description: Returns the Tenant ID that issued the token for the user who added the tag.
-        readOnly: true
-        type: string
-      timestamp:
-        description: Returns the date and time the tag was added.
-        format: date-time
-        readOnly: true
-        type: string
-      upn:
-        description: Returns the User Principal Name of the user who added the tag.
-        readOnly: true
-        type: string
-  LegalHold:
-    description: The LegalHold property of a blob container.
-    properties:
-      hasLegalHold:
-        description: The hasLegalHold public property is set to true by SRP if there are at least one existing tag. The hasLegalHold public property is set to false by SRP if all existing legal hold tags are cleared out. There can be a maximum of 1000 blob containers with hasLegalHold=true for a given account.
-        readOnly: true
-        type: boolean
-      tags:
-        description: Each tag should be 3 to 23 alphanumeric characters and is normalized to lower case at SRP.
-        items:
-          maxLength: 23
-          minLength: 3
+        update:
+          description: 'The ImmutabilityPolicy update type of a blob container, possible values include: put, lock and extend.'
+          enum:
+          - put
+          - lock
+          - extend
+          readOnly: true
           type: string
-        type: array
-    required:
-    - tags
-parameters:
-  ContainerName:
-    description: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
-    in: path
-    maxLength: 63
-    minLength: 3
-    name: containerName
-    required: true
-    type: string
-    x-ms-parameter-location: method
-  ImmutabilityPolicyName:
-    description: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
-    enum:
-    - default
-    in: path
-    name: immutabilityPolicyName
-    required: true
-    type: string
-    x-ms-parameter-location: method
-securityDefinitions:
-  azure_auth:
-    authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
-    description: Azure Active Directory OAuth2 Flow
-    flow: implicit
-    scopes:
-      user_impersonation: impersonate your user account
-    type: oauth2
+          x-ms-enum:
+            modelAsString: true
+            name: ImmutabilityPolicyUpdateType
+        upn:
+          description: Returns the User Principal Name of the user who updated the ImmutabilityPolicy.
+          readOnly: true
+          type: string
+    TagProperty:
+      description: A tag of the LegalHold of a blob container.
+      properties:
+        objectIdentifier:
+          description: Returns the Object ID of the user who added the tag.
+          readOnly: true
+          type: string
+        tag:
+          description: The tag value.
+          readOnly: true
+          type: string
+        tenantId:
+          description: Returns the Tenant ID that issued the token for the user who added the tag.
+          readOnly: true
+          type: string
+        timestamp:
+          description: Returns the date and time the tag was added.
+          format: date-time
+          readOnly: true
+          type: string
+        upn:
+          description: Returns the User Principal Name of the user who added the tag.
+          readOnly: true
+          type: string
+    ListContainerItems:
+      description: Response schema. Contains list of blobs returned, and if paging is requested or required, a URL to next page of containers.
+      properties:
+        nextLink:
+          description: Request URL that can be used to query next page of containers. Returned when total number of requested containers exceed maximum page size.
+          readOnly: true
+          type: string
+        value:
+          description: List of blobs containers returned.
+          items:
+            $ref: '#/components/schemas/ListContainerItem'
+          readOnly: true
+          type: array
+    LeaseContainerRequest:
+      description: Lease Container request schema.
+      properties:
+        action:
+          description: Specifies the lease action. Can be one of the available actions.
+          enum:
+          - Acquire
+          - Renew
+          - Change
+          - Release
+          - Break
+          type: string
+        breakPeriod:
+          description: Optional. For a break action, proposed duration the lease should continue before it is broken, in seconds, between 0 and 60.
+          type: integer
+        leaseDuration:
+          description: Required for acquire. Specifies the duration of the lease, in seconds, or negative one (-1) for a lease that never expires.
+          type: integer
+        leaseId:
+          description: Identifies the lease. Can be specified in any valid GUID string format.
+          type: string
+        proposedLeaseId:
+          description: Optional for acquire, required for change. Proposed lease ID, in a GUID string format.
+          type: string
+      required:
+      - action
+    ImmutabilityPolicyProperty:
+      description: The properties of an ImmutabilityPolicy of a blob container.
+      properties:
+        immutabilityPeriodSinceCreationInDays:
+          description: The immutability period for the blobs in the container since the policy creation, in days.
+          type: integer
+        state:
+          description: 'The ImmutabilityPolicy state of a blob container, possible values include: Locked and Unlocked.'
+          enum:
+          - Locked
+          - Unlocked
+          readOnly: true
+          type: string
+          x-ms-enum:
+            modelAsString: true
+            name: ImmutabilityPolicyState
+      required:
+      - immutabilityPeriodSinceCreationInDays
+    BlobContainer:
+      allOf:
+      - allOf:
+        - properties:
+            id:
+              description: Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+              readOnly: true
+              type: string
+            name:
+              description: The name of the resource
+              readOnly: true
+              type: string
+            type:
+              description: The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+              readOnly: true
+              type: string
+          x-ms-azure-resource: true
+        description: The resource model definition for a Azure Resource Manager resource with an etag.
+        properties:
+          etag:
+            description: Resource Etag.
+            readOnly: true
+            type: string
+        x-ms-client-name: AzureEntityResource
+      description: Properties of the blob container, including Id, resource name, resource type, Etag.
+      properties:
+        properties:
+          $ref: '#/components/schemas/ContainerProperties'
+          description: Properties of the blob container.
+          x-ms-client-flatten: true
+          x-ms-client-name: ContainerProperties
+    LegalHoldProperties:
+      description: The LegalHold property of a blob container.
+      properties:
+        hasLegalHold:
+          description: The hasLegalHold public property is set to true by SRP if there are at least one existing tag. The hasLegalHold public property is set to false by SRP if all existing legal hold tags are cleared out. There can be a maximum of 1000 blob containers with hasLegalHold=true for a given account.
+          readOnly: true
+          type: boolean
+        tags:
+          description: The list of LegalHold tags of a blob container.
+          items:
+            $ref: '#/components/schemas/TagProperty'
+          type: array
+    ImmutabilityPolicy:
+      allOf:
+      - allOf:
+        - properties:
+            id:
+              description: Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+              readOnly: true
+              type: string
+            name:
+              description: The name of the resource
+              readOnly: true
+              type: string
+            type:
+              description: The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+              readOnly: true
+              type: string
+          x-ms-azure-resource: true
+        description: The resource model definition for a Azure Resource Manager resource with an etag.
+        properties:
+          etag:
+            description: Resource Etag.
+            readOnly: true
+            type: string
+        x-ms-client-name: AzureEntityResource
+      description: The ImmutabilityPolicy property of a blob container, including Id, resource name, resource type, Etag.
+      properties:
+        properties:
+          $ref: '#/components/schemas/ImmutabilityPolicyProperty'
+          description: The properties of an ImmutabilityPolicy of a blob container.
+          x-ms-client-flatten: true
+      required:
+      - properties
+    ImmutabilityPolicyProperties:
+      description: The properties of an ImmutabilityPolicy of a blob container.
+      properties:
+        etag:
+          description: ImmutabilityPolicy Etag.
+          readOnly: true
+          type: string
+        properties:
+          $ref: '#/components/schemas/ImmutabilityPolicyProperty'
+          description: The properties of an ImmutabilityPolicy of a blob container.
+          x-ms-client-flatten: true
+        updateHistory:
+          description: The ImmutabilityPolicy update history of the blob container.
+          items:
+            $ref: '#/components/schemas/UpdateHistoryProperty'
+          readOnly: true
+          type: array
+    ContainerProperties:
+      description: The properties of a container.
+      properties:
+        hasImmutabilityPolicy:
+          description: The hasImmutabilityPolicy public property is set to true by SRP if ImmutabilityPolicy has been created for this container. The hasImmutabilityPolicy public property is set to false by SRP if ImmutabilityPolicy has not been created for this container.
+          readOnly: true
+          type: boolean
+        hasLegalHold:
+          description: The hasLegalHold public property is set to true by SRP if there are at least one existing tag. The hasLegalHold public property is set to false by SRP if all existing legal hold tags are cleared out. There can be a maximum of 1000 blob containers with hasLegalHold=true for a given account.
+          readOnly: true
+          type: boolean
+        immutabilityPolicy:
+          $ref: '#/components/schemas/ImmutabilityPolicyProperties'
+          description: The ImmutabilityPolicy property of the container.
+          readOnly: true
+          x-ms-client-name: ImmutabilityPolicy
+        lastModifiedTime:
+          description: Returns the date and time the container was last modified.
+          format: date-time
+          readOnly: true
+          type: string
+        leaseDuration:
+          description: Specifies whether the lease on a container is of infinite or fixed duration, only when the container is leased.
+          enum:
+          - Infinite
+          - Fixed
+          readOnly: true
+          type: string
+          x-ms-enum:
+            modelAsString: true
+            name: LeaseDuration
+        leaseState:
+          description: Lease state of the container.
+          enum:
+          - Available
+          - Leased
+          - Expired
+          - Breaking
+          - Broken
+          readOnly: true
+          type: string
+          x-ms-enum:
+            modelAsString: true
+            name: LeaseState
+        leaseStatus:
+          description: The lease status of the container.
+          enum:
+          - Locked
+          - Unlocked
+          readOnly: true
+          type: string
+          x-ms-enum:
+            modelAsString: true
+            name: LeaseStatus
+        legalHold:
+          $ref: '#/components/schemas/LegalHoldProperties'
+          description: The LegalHold property of the container.
+          readOnly: true
+        metadata:
+          additionalProperties:
+            type: string
+          description: A name-value pair to associate with the container as metadata.
+          type: object
+        publicAccess:
+          description: Specifies whether data in the container may be accessed publicly and the level of access.
+          enum:
+          - Container
+          - Blob
+          - None
+          type: string
+          x-ms-enum:
+            modelAsString: false
+            name: PublicAccess
+  parameters:
+    ContainerName:
+      description: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+      in: path
+      name: containerName
+      required: true
+      x-ms-parameter-location: method
+      schema:
+        type: string
+        maxLength: 63
+        minLength: 3
+    ImmutabilityPolicyName:
+      description: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+      in: path
+      name: immutabilityPolicyName
+      required: true
+      x-ms-parameter-location: method
+      schema:
+        type: string
+        enum:
+        - default
+  securitySchemes:
+    azure_auth:
+      type: oauth2
+      flows:
+        implicit:
+          scopes:
+            user_impersonation: impersonate your user account
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
+      description: Azure Active Directory OAuth2 Flow

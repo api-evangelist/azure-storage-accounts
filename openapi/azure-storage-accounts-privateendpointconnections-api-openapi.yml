@@ -1,7 +1,7 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   description: The Azure Storage Management API.
-  title: StorageManagementClient BlobContainers PrivateEndpointConnections API
+  title: StorageManagementClient BlobContainers Private Endpoint Connections API
   version: '2.0'
   x-apisguru-categories:
   - cloud
@@ -16,13 +16,8 @@ info:
   x-tags:
   - Azure
   - Microsoft
-host: management.azure.com
-schemes:
-- https
-consumes:
-- application/json
-produces:
-- application/json
+servers:
+- url: https://management.azure.com
 security:
 - azure_auth:
   - user_impersonation
@@ -34,23 +29,25 @@ paths:
       description: Deletes the specified private endpoint connection associated with the storage account.
       operationId: PrivateEndpointConnections_Delete
       parameters:
-      - $ref: '#/parameters/ResourceGroupName'
-      - $ref: '#/parameters/StorageAccountName'
+      - $ref: '#/components/parameters/ResourceGroupName'
+      - $ref: '#/components/parameters/StorageAccountName'
       - description: The API version to use for this operation.
         in: query
-        minLength: 1
         name: api-version
         required: true
-        type: string
         example: '2019-06-01'
+        schema:
+          type: string
+          minLength: 1
       - description: The ID of the target subscription.
         in: path
-        minLength: 1
         name: subscriptionId
         required: true
-        type: string
         example: 00000000-0000-0000-0000-000000000000
-      - $ref: '#/parameters/PrivateEndpointConnectionName'
+        schema:
+          type: string
+          minLength: 1
+      - $ref: '#/components/parameters/PrivateEndpointConnectionName'
       responses:
         '200':
           description: OK -- Delete the private endpoint connection successfully.
@@ -58,8 +55,10 @@ paths:
           description: No Content -- The private endpoint connection does not exist.
         default:
           description: Error response describing why the operation failed.
-          schema:
-            $ref: '#/definitions/ErrorResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
       tags:
       - PrivateEndpointConnections
       x-ms-examples:
@@ -82,32 +81,38 @@ paths:
       description: Gets the specified private endpoint connection associated with the storage account.
       operationId: PrivateEndpointConnections_Get
       parameters:
-      - $ref: '#/parameters/ResourceGroupName'
-      - $ref: '#/parameters/StorageAccountName'
+      - $ref: '#/components/parameters/ResourceGroupName'
+      - $ref: '#/components/parameters/StorageAccountName'
       - description: The API version to use for this operation.
         in: query
-        minLength: 1
         name: api-version
         required: true
-        type: string
         example: '2019-06-01'
+        schema:
+          type: string
+          minLength: 1
       - description: The ID of the target subscription.
         in: path
-        minLength: 1
         name: subscriptionId
         required: true
-        type: string
         example: 00000000-0000-0000-0000-000000000000
-      - $ref: '#/parameters/PrivateEndpointConnectionName'
+        schema:
+          type: string
+          minLength: 1
+      - $ref: '#/components/parameters/PrivateEndpointConnectionName'
       responses:
         '200':
           description: OK -- Get the private endpoint connection properties successfully.
-          schema:
-            $ref: '#/definitions/PrivateEndpointConnection'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrivateEndpointConnection'
         default:
           description: Error response describing why the operation failed.
-          schema:
-            $ref: '#/definitions/ErrorResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
       tags:
       - PrivateEndpointConnections
       x-ms-examples:
@@ -141,39 +146,38 @@ paths:
       description: Update the state of specified private endpoint connection associated with the storage account.
       operationId: PrivateEndpointConnections_Put
       parameters:
-      - $ref: '#/parameters/ResourceGroupName'
-      - $ref: '#/parameters/StorageAccountName'
+      - $ref: '#/components/parameters/ResourceGroupName'
+      - $ref: '#/components/parameters/StorageAccountName'
       - description: The API version to use for this operation.
         in: query
-        minLength: 1
         name: api-version
         required: true
-        type: string
         example: '2019-06-01'
+        schema:
+          type: string
+          minLength: 1
       - description: The ID of the target subscription.
         in: path
-        minLength: 1
         name: subscriptionId
         required: true
-        type: string
         example: 00000000-0000-0000-0000-000000000000
-      - $ref: '#/parameters/PrivateEndpointConnectionName'
-      - description: The private endpoint connection properties.
-        in: body
-        name: properties
-        required: true
         schema:
-          $ref: '#/definitions/PrivateEndpointConnection'
-        example: example-value
+          type: string
+          minLength: 1
+      - $ref: '#/components/parameters/PrivateEndpointConnectionName'
       responses:
         '200':
           description: OK -- Update the private endpoint connection properties successfully.
-          schema:
-            $ref: '#/definitions/PrivateEndpointConnection'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrivateEndpointConnection'
         default:
           description: Error response describing why the operation failed.
-          schema:
-            $ref: '#/definitions/ErrorResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
       tags:
       - PrivateEndpointConnections
       x-ms-examples:
@@ -208,125 +212,137 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
-definitions:
-  PrivateLinkServiceConnectionState:
-    description: A collection of information about the state of the connection between service consumer and provider.
-    properties:
-      actionRequired:
-        description: A message indicating if changes on the service provider require any updates on the consumer.
-        type: string
-      description:
-        description: The reason for approval/rejection of the connection.
-        type: string
-      status:
-        $ref: '#/definitions/PrivateEndpointServiceConnectionStatus'
-        description: Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-  PrivateEndpoint:
-    description: The Private Endpoint resource.
-    properties:
-      id:
-        description: The ARM identifier for Private Endpoint
-        readOnly: true
-        type: string
-  PrivateEndpointConnectionProvisioningState:
-    description: The current provisioning state.
-    enum:
-    - Succeeded
-    - Creating
-    - Deleting
-    - Failed
-    readOnly: true
-    type: string
-    x-ms-enum:
-      modelAsString: true
-      name: PrivateEndpointConnectionProvisioningState
-  PrivateEndpointConnection:
-    allOf:
-    - properties:
-        id:
-          description: Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-          readOnly: true
-          type: string
-        name:
-          description: The name of the resource
-          readOnly: true
-          type: string
-        type:
-          description: The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
-          readOnly: true
-          type: string
-      x-ms-azure-resource: true
-    description: The Private Endpoint Connection resource.
-    properties:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PrivateEndpointConnection'
+        description: The private endpoint connection properties.
+        required: true
+components:
+  schemas:
+    PrivateEndpointServiceConnectionStatus:
+      description: The private endpoint connection status.
+      enum:
+      - Pending
+      - Approved
+      - Rejected
+      type: string
+      x-ms-enum:
+        modelAsString: true
+        name: PrivateEndpointServiceConnectionStatus
+    PrivateEndpointConnection:
+      allOf:
+      - properties:
+          id:
+            description: Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+            readOnly: true
+            type: string
+          name:
+            description: The name of the resource
+            readOnly: true
+            type: string
+          type:
+            description: The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+            readOnly: true
+            type: string
+        x-ms-azure-resource: true
+      description: The Private Endpoint Connection resource.
       properties:
-        $ref: '#/definitions/PrivateEndpointConnectionProperties'
-        description: Resource properties.
-        x-ms-client-flatten: true
-  ErrorResponse:
-    description: An error response from the storage resource provider.
-    properties:
-      code:
-        description: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
+        properties:
+          $ref: '#/components/schemas/PrivateEndpointConnectionProperties'
+          description: Resource properties.
+          x-ms-client-flatten: true
+    ErrorResponse:
+      description: An error response from the storage resource provider.
+      properties:
+        code:
+          description: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
+          type: string
+        message:
+          description: A message describing the error, intended to be suitable for display in a user interface.
+          type: string
+    PrivateEndpointConnectionProperties:
+      description: Properties of the PrivateEndpointConnectProperties.
+      properties:
+        privateEndpoint:
+          $ref: '#/components/schemas/PrivateEndpoint'
+          description: The resource of private end point.
+        privateLinkServiceConnectionState:
+          $ref: '#/components/schemas/PrivateLinkServiceConnectionState'
+          description: A collection of information about the state of the connection between service consumer and provider.
+        provisioningState:
+          $ref: '#/components/schemas/PrivateEndpointConnectionProvisioningState'
+          description: The provisioning state of the private endpoint connection resource.
+      required:
+      - privateLinkServiceConnectionState
+    PrivateEndpointConnectionProvisioningState:
+      description: The current provisioning state.
+      enum:
+      - Succeeded
+      - Creating
+      - Deleting
+      - Failed
+      readOnly: true
+      type: string
+      x-ms-enum:
+        modelAsString: true
+        name: PrivateEndpointConnectionProvisioningState
+    PrivateLinkServiceConnectionState:
+      description: A collection of information about the state of the connection between service consumer and provider.
+      properties:
+        actionRequired:
+          description: A message indicating if changes on the service provider require any updates on the consumer.
+          type: string
+        description:
+          description: The reason for approval/rejection of the connection.
+          type: string
+        status:
+          $ref: '#/components/schemas/PrivateEndpointServiceConnectionStatus'
+          description: Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+    PrivateEndpoint:
+      description: The Private Endpoint resource.
+      properties:
+        id:
+          description: The ARM identifier for Private Endpoint
+          readOnly: true
+          type: string
+  parameters:
+    StorageAccountName:
+      description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+      in: path
+      name: accountName
+      required: true
+      x-ms-parameter-location: method
+      schema:
         type: string
-      message:
-        description: A message describing the error, intended to be suitable for display in a user interface.
+        maxLength: 24
+        minLength: 3
+    PrivateEndpointConnectionName:
+      description: The name of the private endpoint connection associated with the Storage Account
+      in: path
+      name: privateEndpointConnectionName
+      required: true
+      x-ms-parameter-location: method
+      schema:
         type: string
-  PrivateEndpointServiceConnectionStatus:
-    description: The private endpoint connection status.
-    enum:
-    - Pending
-    - Approved
-    - Rejected
-    type: string
-    x-ms-enum:
-      modelAsString: true
-      name: PrivateEndpointServiceConnectionStatus
-  PrivateEndpointConnectionProperties:
-    description: Properties of the PrivateEndpointConnectProperties.
-    properties:
-      privateEndpoint:
-        $ref: '#/definitions/PrivateEndpoint'
-        description: The resource of private end point.
-      privateLinkServiceConnectionState:
-        $ref: '#/definitions/PrivateLinkServiceConnectionState'
-        description: A collection of information about the state of the connection between service consumer and provider.
-      provisioningState:
-        $ref: '#/definitions/PrivateEndpointConnectionProvisioningState'
-        description: The provisioning state of the private endpoint connection resource.
-    required:
-    - privateLinkServiceConnectionState
-parameters:
-  ResourceGroupName:
-    description: The name of the resource group within the user's subscription. The name is case insensitive.
-    in: path
-    maxLength: 90
-    minLength: 1
-    name: resourceGroupName
-    pattern: ^[-\w\._\(\)]+$
-    required: true
-    type: string
-    x-ms-parameter-location: method
-  StorageAccountName:
-    description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-    in: path
-    maxLength: 24
-    minLength: 3
-    name: accountName
-    required: true
-    type: string
-    x-ms-parameter-location: method
-  PrivateEndpointConnectionName:
-    description: The name of the private endpoint connection associated with the Storage Account
-    in: path
-    name: privateEndpointConnectionName
-    required: true
-    type: string
-    x-ms-parameter-location: method
-securityDefinitions:
-  azure_auth:
-    authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
-    description: Azure Active Directory OAuth2 Flow
-    flow: implicit
-    scopes:
-      user_impersonation: impersonate your user account
-    type: oauth2
+    ResourceGroupName:
+      description: The name of the resource group within the user's subscription. The name is case insensitive.
+      in: path
+      name: resourceGroupName
+      required: true
+      x-ms-parameter-location: method
+      schema:
+        type: string
+        maxLength: 90
+        minLength: 1
+        pattern: ^[-\w\._\(\)]+$
+  securitySchemes:
+    azure_auth:
+      type: oauth2
+      flows:
+        implicit:
+          scopes:
+            user_impersonation: impersonate your user account
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
+      description: Azure Active Directory OAuth2 Flow
