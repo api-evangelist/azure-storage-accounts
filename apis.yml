@@ -86,7 +86,8 @@ apis:
     url: https://learn.microsoft.com/en-us/rest/api/storagerp/
 - aid: azure-storage-accounts:azure-storage-accounts-managementpolicies-api
   name: Azure Storage Accounts ManagementPolicies API
-  description: The ManagementPolicies API from Azure Storage Accounts — 1 operation(s) for managementpolicies.
+  description: >-
+    The ManagementPolicies API from Azure Storage Accounts — 1 operation(s) for managementpolicies.
   humanURL: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
   baseURL: https://{accountName}.blob.core.windows.net
   tags:
@@ -113,23 +114,10 @@ apis:
     url: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
   - type: Documentation
     url: https://learn.microsoft.com/en-us/rest/api/storagerp/
-- aid: azure-storage-accounts:azure-storage-accounts-privateendpointconnections-api
-  name: Azure Storage Accounts PrivateEndpointConnections API
-  description: The PrivateEndpointConnections API from Azure Storage Accounts — 1 operation(s) for privateendpointconnections.
-  humanURL: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
-  baseURL: https://{accountName}.blob.core.windows.net
-  tags:
-  - PrivateEndpointConnections
-  properties:
-  - type: OpenAPI
-    url: openapi/azure-storage-accounts-privateendpointconnections-api-openapi.yml
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/rest/api/storagerp/
 - aid: azure-storage-accounts:azure-storage-accounts-privatelinkresources-api
   name: Azure Storage Accounts PrivateLinkResources API
-  description: The PrivateLinkResources API from Azure Storage Accounts — 1 operation(s) for privatelinkresources.
+  description: >-
+    The PrivateLinkResources API from Azure Storage Accounts — 1 operation(s) for privatelinkresources.
   humanURL: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
   baseURL: https://{accountName}.blob.core.windows.net
   tags:
@@ -159,7 +147,8 @@ apis:
     url: https://learn.microsoft.com/en-us/rest/api/storagerp/
 - aid: azure-storage-accounts:azure-storage-accounts-storageaccounts-api
   name: Azure Storage Accounts StorageAccounts API
-  description: The StorageAccounts API from Azure Storage Accounts — 11 operation(s) for storageaccounts.
+  description: >-
+    The StorageAccounts API from Azure Storage Accounts — 11 operation(s) for storageaccounts.
   humanURL: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
   baseURL: https://{accountName}.blob.core.windows.net
   tags:
@@ -184,7 +173,8 @@ apis:
   - type: Documentation
     url: https://learn.microsoft.com/en-us/azure/storage/blobs/
   - type: Authentication
-    url: https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-requests-to-azure-storage
+    url: >-
+      https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-requests-to-azure-storage
   - type: Documentation
     url: https://learn.microsoft.com/en-us/azure/storage/queues/
   - type: Documentation
@@ -204,7 +194,8 @@ apis:
   - type: Documentation
     url: https://learn.microsoft.com/en-us/azure/storage/blobs/
   - type: Authentication
-    url: https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-requests-to-azure-storage
+    url: >-
+      https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-requests-to-azure-storage
   - type: Documentation
     url: https://learn.microsoft.com/en-us/azure/storage/queues/
   - type: Documentation
@@ -224,7 +215,8 @@ apis:
   - type: Documentation
     url: https://learn.microsoft.com/en-us/azure/storage/blobs/
   - type: Authentication
-    url: https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-requests-to-azure-storage
+    url: >-
+      https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-requests-to-azure-storage
   - type: Documentation
     url: https://learn.microsoft.com/en-us/azure/storage/queues/
   - type: Documentation
@@ -233,7 +225,8 @@ apis:
     url: https://learn.microsoft.com/en-us/azure/storage/files/
 - aid: azure-storage-account:azure-storage-account-managementpolicies-api
   name: Azure Storage Account ManagementPolicies API
-  description: The ManagementPolicies API from Azure Storage Account — 1 operation(s) for managementpolicies.
+  description: >-
+    The ManagementPolicies API from Azure Storage Account — 1 operation(s) for managementpolicies.
   humanURL: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
   baseURL: https://{account}.blob.core.windows.net
   tags:
@@ -244,7 +237,8 @@ apis:
   - type: Documentation
     url: https://learn.microsoft.com/en-us/azure/storage/blobs/
   - type: Authentication
-    url: https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-requests-to-azure-storage
+    url: >-
+      https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-requests-to-azure-storage
   - type: Documentation
     url: https://learn.microsoft.com/en-us/azure/storage/queues/
   - type: Documentation
@@ -265,27 +259,8 @@ apis:
   - type: Documentation
     url: https://learn.microsoft.com/en-us/azure/storage/blobs/
   - type: Authentication
-    url: https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-requests-to-azure-storage
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/azure/storage/queues/
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/azure/storage/tables/
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/azure/storage/files/
-- aid: azure-storage-account:azure-storage-account-privateendpointconnections-api
-  name: Azure Storage Account PrivateEndpointConnections API
-  description: The PrivateEndpointConnections API from Azure Storage Account — 1 operation(s) for privateendpointconnections.
-  humanURL: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
-  baseURL: https://{account}.blob.core.windows.net
-  tags:
-  - PrivateEndpointConnections
-  properties:
-  - type: OpenAPI
-    url: openapi/azure-storage-accounts-privateendpointconnections-api-openapi.yml
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/azure/storage/blobs/
-  - type: Authentication
-    url: https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-requests-to-azure-storage
+    url: >-
+      https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-requests-to-azure-storage
   - type: Documentation
     url: https://learn.microsoft.com/en-us/azure/storage/queues/
   - type: Documentation
@@ -294,7 +269,8 @@ apis:
     url: https://learn.microsoft.com/en-us/azure/storage/files/
 - aid: azure-storage-account:azure-storage-account-privatelinkresources-api
   name: Azure Storage Account PrivateLinkResources API
-  description: The PrivateLinkResources API from Azure Storage Account — 1 operation(s) for privatelinkresources.
+  description: >-
+    The PrivateLinkResources API from Azure Storage Account — 1 operation(s) for privatelinkresources.
   humanURL: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
   baseURL: https://{account}.blob.core.windows.net
   tags:
@@ -305,7 +281,8 @@ apis:
   - type: Documentation
     url: https://learn.microsoft.com/en-us/azure/storage/blobs/
   - type: Authentication
-    url: https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-requests-to-azure-storage
+    url: >-
+      https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-requests-to-azure-storage
   - type: Documentation
     url: https://learn.microsoft.com/en-us/azure/storage/queues/
   - type: Documentation
@@ -327,7 +304,8 @@ apis:
   - type: Documentation
     url: https://learn.microsoft.com/en-us/azure/storage/blobs/
   - type: Authentication
-    url: https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-requests-to-azure-storage
+    url: >-
+      https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-requests-to-azure-storage
   - type: Documentation
     url: https://learn.microsoft.com/en-us/azure/storage/queues/
   - type: Documentation
@@ -336,7 +314,8 @@ apis:
     url: https://learn.microsoft.com/en-us/azure/storage/files/
 - aid: azure-storage-account:azure-storage-account-storageaccounts-api
   name: Azure Storage Account StorageAccounts API
-  description: The StorageAccounts API from Azure Storage Account — 11 operation(s) for storageaccounts.
+  description: >-
+    The StorageAccounts API from Azure Storage Account — 11 operation(s) for storageaccounts.
   humanURL: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
   baseURL: https://{account}.blob.core.windows.net
   tags:
@@ -347,7 +326,35 @@ apis:
   - type: Documentation
     url: https://learn.microsoft.com/en-us/azure/storage/blobs/
   - type: Authentication
-    url: https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-requests-to-azure-storage
+    url: >-
+      https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-requests-to-azure-storage
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/azure/storage/queues/
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/azure/storage/tables/
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/azure/storage/files/
+- aid: azure-storage-accounts:azure-storage-accounts-private-endpoint-connections-api
+  name: Azure Storage Accounts Private Endpoint Connections API
+  description: >-
+    The Private Endpoint Connections API from Azure Storage Accounts — 1 operation(s) for private endpoint
+    connections.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
+  baseURL: https://{accountName}.blob.core.windows.net
+  tags:
+  - Private Endpoint Connections
+  properties:
+  - type: OpenAPI
+    url: openapi/azure-storage-accounts-private-endpoint-connections-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/storagerp/
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/azure/storage/blobs/
+  - type: Authentication
+    url: >-
+      https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-requests-to-azure-storage
   - type: Documentation
     url: https://learn.microsoft.com/en-us/azure/storage/queues/
   - type: Documentation
