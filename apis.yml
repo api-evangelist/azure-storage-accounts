@@ -342,6 +342,8 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
   baseURL: https://{accountName}.blob.core.windows.net
   tags:
+  - PrivateEndpointConnections
+  tags_raw:
   - Private Endpoint Connections
   properties:
   - type: OpenAPI
