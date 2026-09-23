@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   description: The Azure Storage Management API.
   title: StorageManagementClient Blob Containers API
-  version: '2.0'
+  version: '2019-06-01'
   x-apisguru-categories:
   - cloud
   x-logo:
@@ -10,6 +10,7 @@ info:
   x-origin:
   - format: swagger
     url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/storage/resource-manager/Microsoft.Storage/stable/2019-06-01/blob.json
+    version: '2.0'
   x-preferred: false
   x-providerName: azure.com
   x-serviceName: storage-blob
@@ -195,7 +196,7 @@ paths:
         delay: 0
         dispatcher: FALLBACK
     get:
-      description: 'Gets properties of a specified container. '
+      description: Gets properties of a specified container.
       operationId: BlobContainers_Get
       parameters:
       - description: The name of the resource group within the user's subscription. The name is case insensitive.
@@ -309,7 +310,7 @@ paths:
         delay: 0
         dispatcher: FALLBACK
     patch:
-      description: 'Updates container properties as specified in request body. Properties not mentioned in the request will be unchanged. Update fails if the specified container doesn''t already exist. '
+      description: Updates container properties as specified in request body. Properties not mentioned in the request will be unchanged. Update fails if the specified container doesn't already exist.
       operationId: BlobContainers_Update
       parameters:
       - description: The name of the resource group within the user's subscription. The name is case insensitive.
@@ -398,7 +399,7 @@ paths:
         description: Properties to update for the blob container.
         required: true
     put:
-      description: 'Creates a new container under the specified account as described by request body. The container resource includes metadata and properties for that container. It does not include a list of the blobs contained by the container. '
+      description: Creates a new container under the specified account as described by request body. The container resource includes metadata and properties for that container. It does not include a list of the blobs contained by the container.
       operationId: BlobContainers_Create
       parameters:
       - description: The name of the resource group within the user's subscription. The name is case insensitive.
@@ -1214,177 +1215,6 @@ paths:
         required: true
 components:
   schemas:
-    LegalHold:
-      description: The LegalHold property of a blob container.
-      properties:
-        hasLegalHold:
-          description: The hasLegalHold public property is set to true by SRP if there are at least one existing tag. The hasLegalHold public property is set to false by SRP if all existing legal hold tags are cleared out. There can be a maximum of 1000 blob containers with hasLegalHold=true for a given account.
-          readOnly: true
-          type: boolean
-        tags:
-          description: Each tag should be 3 to 23 alphanumeric characters and is normalized to lower case at SRP.
-          items:
-            maxLength: 23
-            minLength: 3
-            type: string
-          type: array
-      required:
-      - tags
-    LeaseContainerResponse:
-      description: Lease Container response schema.
-      properties:
-        leaseId:
-          description: Returned unique lease ID that must be included with any request to delete the container, or to renew, change, or release the lease.
-          type: string
-        leaseTimeSeconds:
-          description: Approximate time remaining in the lease period, in seconds.
-          type: string
-    ListContainerItem:
-      allOf:
-      - allOf:
-        - properties:
-            id:
-              description: Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-              readOnly: true
-              type: string
-            name:
-              description: The name of the resource
-              readOnly: true
-              type: string
-            type:
-              description: The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
-              readOnly: true
-              type: string
-          x-ms-azure-resource: true
-        description: The resource model definition for a Azure Resource Manager resource with an etag.
-        properties:
-          etag:
-            description: Resource Etag.
-            readOnly: true
-            type: string
-        x-ms-client-name: AzureEntityResource
-      description: The blob container properties be listed out.
-      properties:
-        properties:
-          $ref: '#/components/schemas/ContainerProperties'
-          description: The blob container properties be listed out.
-          x-ms-client-flatten: true
-    UpdateHistoryProperty:
-      description: An update history of the ImmutabilityPolicy of a blob container.
-      properties:
-        immutabilityPeriodSinceCreationInDays:
-          description: The immutability period for the blobs in the container since the policy creation, in days.
-          readOnly: true
-          type: integer
-        objectIdentifier:
-          description: Returns the Object ID of the user who updated the ImmutabilityPolicy.
-          readOnly: true
-          type: string
-        tenantId:
-          description: Returns the Tenant ID that issued the token for the user who updated the ImmutabilityPolicy.
-          readOnly: true
-          type: string
-        timestamp:
-          description: Returns the date and time the ImmutabilityPolicy was updated.
-          format: date-time
-          readOnly: true
-          type: string
-        update:
-          description: 'The ImmutabilityPolicy update type of a blob container, possible values include: put, lock and extend.'
-          enum:
-          - put
-          - lock
-          - extend
-          readOnly: true
-          type: string
-          x-ms-enum:
-            modelAsString: true
-            name: ImmutabilityPolicyUpdateType
-        upn:
-          description: Returns the User Principal Name of the user who updated the ImmutabilityPolicy.
-          readOnly: true
-          type: string
-    TagProperty:
-      description: A tag of the LegalHold of a blob container.
-      properties:
-        objectIdentifier:
-          description: Returns the Object ID of the user who added the tag.
-          readOnly: true
-          type: string
-        tag:
-          description: The tag value.
-          readOnly: true
-          type: string
-        tenantId:
-          description: Returns the Tenant ID that issued the token for the user who added the tag.
-          readOnly: true
-          type: string
-        timestamp:
-          description: Returns the date and time the tag was added.
-          format: date-time
-          readOnly: true
-          type: string
-        upn:
-          description: Returns the User Principal Name of the user who added the tag.
-          readOnly: true
-          type: string
-    ListContainerItems:
-      description: Response schema. Contains list of blobs returned, and if paging is requested or required, a URL to next page of containers.
-      properties:
-        nextLink:
-          description: Request URL that can be used to query next page of containers. Returned when total number of requested containers exceed maximum page size.
-          readOnly: true
-          type: string
-        value:
-          description: List of blobs containers returned.
-          items:
-            $ref: '#/components/schemas/ListContainerItem'
-          readOnly: true
-          type: array
-    LeaseContainerRequest:
-      description: Lease Container request schema.
-      properties:
-        action:
-          description: Specifies the lease action. Can be one of the available actions.
-          enum:
-          - Acquire
-          - Renew
-          - Change
-          - Release
-          - Break
-          type: string
-        breakPeriod:
-          description: Optional. For a break action, proposed duration the lease should continue before it is broken, in seconds, between 0 and 60.
-          type: integer
-        leaseDuration:
-          description: Required for acquire. Specifies the duration of the lease, in seconds, or negative one (-1) for a lease that never expires.
-          type: integer
-        leaseId:
-          description: Identifies the lease. Can be specified in any valid GUID string format.
-          type: string
-        proposedLeaseId:
-          description: Optional for acquire, required for change. Proposed lease ID, in a GUID string format.
-          type: string
-      required:
-      - action
-    ImmutabilityPolicyProperty:
-      description: The properties of an ImmutabilityPolicy of a blob container.
-      properties:
-        immutabilityPeriodSinceCreationInDays:
-          description: The immutability period for the blobs in the container since the policy creation, in days.
-          type: integer
-        state:
-          description: 'The ImmutabilityPolicy state of a blob container, possible values include: Locked and Unlocked.'
-          enum:
-          - Locked
-          - Unlocked
-          readOnly: true
-          type: string
-          x-ms-enum:
-            modelAsString: true
-            name: ImmutabilityPolicyState
-      required:
-      - immutabilityPeriodSinceCreationInDays
     BlobContainer:
       allOf:
       - allOf:
@@ -1416,18 +1246,6 @@ components:
           description: Properties of the blob container.
           x-ms-client-flatten: true
           x-ms-client-name: ContainerProperties
-    LegalHoldProperties:
-      description: The LegalHold property of a blob container.
-      properties:
-        hasLegalHold:
-          description: The hasLegalHold public property is set to true by SRP if there are at least one existing tag. The hasLegalHold public property is set to false by SRP if all existing legal hold tags are cleared out. There can be a maximum of 1000 blob containers with hasLegalHold=true for a given account.
-          readOnly: true
-          type: boolean
-        tags:
-          description: The list of LegalHold tags of a blob container.
-          items:
-            $ref: '#/components/schemas/TagProperty'
-          type: array
     ImmutabilityPolicy:
       allOf:
       - allOf:
@@ -1460,23 +1278,6 @@ components:
           x-ms-client-flatten: true
       required:
       - properties
-    ImmutabilityPolicyProperties:
-      description: The properties of an ImmutabilityPolicy of a blob container.
-      properties:
-        etag:
-          description: ImmutabilityPolicy Etag.
-          readOnly: true
-          type: string
-        properties:
-          $ref: '#/components/schemas/ImmutabilityPolicyProperty'
-          description: The properties of an ImmutabilityPolicy of a blob container.
-          x-ms-client-flatten: true
-        updateHistory:
-          description: The ImmutabilityPolicy update history of the blob container.
-          items:
-            $ref: '#/components/schemas/UpdateHistoryProperty'
-          readOnly: true
-          type: array
     ContainerProperties:
       description: The properties of a container.
       properties:
@@ -1550,17 +1351,207 @@ components:
           x-ms-enum:
             modelAsString: false
             name: PublicAccess
+    ListContainerItem:
+      allOf:
+      - allOf:
+        - properties:
+            id:
+              description: Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+              readOnly: true
+              type: string
+            name:
+              description: The name of the resource
+              readOnly: true
+              type: string
+            type:
+              description: The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+              readOnly: true
+              type: string
+          x-ms-azure-resource: true
+        description: The resource model definition for a Azure Resource Manager resource with an etag.
+        properties:
+          etag:
+            description: Resource Etag.
+            readOnly: true
+            type: string
+        x-ms-client-name: AzureEntityResource
+      description: The blob container properties be listed out.
+      properties:
+        properties:
+          $ref: '#/components/schemas/ContainerProperties'
+          description: The blob container properties be listed out.
+          x-ms-client-flatten: true
+    ImmutabilityPolicyProperties:
+      description: The properties of an ImmutabilityPolicy of a blob container.
+      properties:
+        etag:
+          description: ImmutabilityPolicy Etag.
+          readOnly: true
+          type: string
+        properties:
+          $ref: '#/components/schemas/ImmutabilityPolicyProperty'
+          description: The properties of an ImmutabilityPolicy of a blob container.
+          x-ms-client-flatten: true
+        updateHistory:
+          description: The ImmutabilityPolicy update history of the blob container.
+          items:
+            $ref: '#/components/schemas/UpdateHistoryProperty'
+          readOnly: true
+          type: array
+    ImmutabilityPolicyProperty:
+      description: The properties of an ImmutabilityPolicy of a blob container.
+      properties:
+        immutabilityPeriodSinceCreationInDays:
+          description: The immutability period for the blobs in the container since the policy creation, in days.
+          type: integer
+        state:
+          description: 'The ImmutabilityPolicy state of a blob container, possible values include: Locked and Unlocked.'
+          enum:
+          - Locked
+          - Unlocked
+          readOnly: true
+          type: string
+          x-ms-enum:
+            modelAsString: true
+            name: ImmutabilityPolicyState
+      required:
+      - immutabilityPeriodSinceCreationInDays
+    UpdateHistoryProperty:
+      description: An update history of the ImmutabilityPolicy of a blob container.
+      properties:
+        immutabilityPeriodSinceCreationInDays:
+          description: The immutability period for the blobs in the container since the policy creation, in days.
+          readOnly: true
+          type: integer
+        objectIdentifier:
+          description: Returns the Object ID of the user who updated the ImmutabilityPolicy.
+          readOnly: true
+          type: string
+        tenantId:
+          description: Returns the Tenant ID that issued the token for the user who updated the ImmutabilityPolicy.
+          readOnly: true
+          type: string
+        timestamp:
+          description: Returns the date and time the ImmutabilityPolicy was updated.
+          format: date-time
+          readOnly: true
+          type: string
+        update:
+          description: 'The ImmutabilityPolicy update type of a blob container, possible values include: put, lock and extend.'
+          enum:
+          - put
+          - lock
+          - extend
+          readOnly: true
+          type: string
+          x-ms-enum:
+            modelAsString: true
+            name: ImmutabilityPolicyUpdateType
+        upn:
+          description: Returns the User Principal Name of the user who updated the ImmutabilityPolicy.
+          readOnly: true
+          type: string
+    LegalHold:
+      description: The LegalHold property of a blob container.
+      properties:
+        hasLegalHold:
+          description: The hasLegalHold public property is set to true by SRP if there are at least one existing tag. The hasLegalHold public property is set to false by SRP if all existing legal hold tags are cleared out. There can be a maximum of 1000 blob containers with hasLegalHold=true for a given account.
+          readOnly: true
+          type: boolean
+        tags:
+          description: Each tag should be 3 to 23 alphanumeric characters and is normalized to lower case at SRP.
+          items:
+            maxLength: 23
+            minLength: 3
+            type: string
+          type: array
+      required:
+      - tags
+    LeaseContainerRequest:
+      description: Lease Container request schema.
+      properties:
+        action:
+          description: Specifies the lease action. Can be one of the available actions.
+          enum:
+          - Acquire
+          - Renew
+          - Change
+          - Release
+          - Break
+          type: string
+        breakPeriod:
+          description: Optional. For a break action, proposed duration the lease should continue before it is broken, in seconds, between 0 and 60.
+          type: integer
+        leaseDuration:
+          description: Required for acquire. Specifies the duration of the lease, in seconds, or negative one (-1) for a lease that never expires.
+          type: integer
+        leaseId:
+          description: Identifies the lease. Can be specified in any valid GUID string format.
+          type: string
+        proposedLeaseId:
+          description: Optional for acquire, required for change. Proposed lease ID, in a GUID string format.
+          type: string
+      required:
+      - action
+    LegalHoldProperties:
+      description: The LegalHold property of a blob container.
+      properties:
+        hasLegalHold:
+          description: The hasLegalHold public property is set to true by SRP if there are at least one existing tag. The hasLegalHold public property is set to false by SRP if all existing legal hold tags are cleared out. There can be a maximum of 1000 blob containers with hasLegalHold=true for a given account.
+          readOnly: true
+          type: boolean
+        tags:
+          description: The list of LegalHold tags of a blob container.
+          items:
+            $ref: '#/components/schemas/TagProperty'
+          type: array
+    LeaseContainerResponse:
+      description: Lease Container response schema.
+      properties:
+        leaseId:
+          description: Returned unique lease ID that must be included with any request to delete the container, or to renew, change, or release the lease.
+          type: string
+        leaseTimeSeconds:
+          description: Approximate time remaining in the lease period, in seconds.
+          type: string
+    ListContainerItems:
+      description: Response schema. Contains list of blobs returned, and if paging is requested or required, a URL to next page of containers.
+      properties:
+        nextLink:
+          description: Request URL that can be used to query next page of containers. Returned when total number of requested containers exceed maximum page size.
+          readOnly: true
+          type: string
+        value:
+          description: List of blobs containers returned.
+          items:
+            $ref: '#/components/schemas/ListContainerItem'
+          readOnly: true
+          type: array
+    TagProperty:
+      description: A tag of the LegalHold of a blob container.
+      properties:
+        objectIdentifier:
+          description: Returns the Object ID of the user who added the tag.
+          readOnly: true
+          type: string
+        tag:
+          description: The tag value.
+          readOnly: true
+          type: string
+        tenantId:
+          description: Returns the Tenant ID that issued the token for the user who added the tag.
+          readOnly: true
+          type: string
+        timestamp:
+          description: Returns the date and time the tag was added.
+          format: date-time
+          readOnly: true
+          type: string
+        upn:
+          description: Returns the User Principal Name of the user who added the tag.
+          readOnly: true
+          type: string
   parameters:
-    ContainerName:
-      description: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
-      in: path
-      name: containerName
-      required: true
-      x-ms-parameter-location: method
-      schema:
-        type: string
-        maxLength: 63
-        minLength: 3
     ImmutabilityPolicyName:
       description: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
       in: path
@@ -1571,6 +1562,16 @@ components:
         type: string
         enum:
         - default
+    ContainerName:
+      description: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+      in: path
+      name: containerName
+      required: true
+      x-ms-parameter-location: method
+      schema:
+        type: string
+        maxLength: 63
+        minLength: 3
   securitySchemes:
     azure_auth:
       type: oauth2

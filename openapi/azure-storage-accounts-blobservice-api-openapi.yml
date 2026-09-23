@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
   description: The Azure Storage Management API.
-  title: StorageManagementClient BlobContainers Blob Service API
-  version: '2.0'
+  title: StorageManagementClient Blob Service API
+  version: '2019-06-01'
   x-apisguru-categories:
   - cloud
   x-logo:
@@ -10,6 +10,7 @@ info:
   x-origin:
   - format: swagger
     url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/storage/resource-manager/Microsoft.Storage/stable/2019-06-01/blob.json
+    version: '2.0'
   x-preferred: false
   x-providerName: azure.com
   x-serviceName: storage-blob
@@ -272,7 +273,7 @@ paths:
         delay: 0
         dispatcher: FALLBACK
     put:
-      description: 'Sets the properties of a storage account’s Blob service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules. '
+      description: Sets the properties of a storage account’s Blob service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules.
       operationId: BlobServices_SetServiceProperties
       parameters:
       - description: The name of the resource group within the user's subscription. The name is case insensitive.
@@ -452,6 +453,33 @@ paths:
         required: true
 components:
   schemas:
+    RestorePolicyProperties:
+      description: The blob service properties for blob restore policy
+      properties:
+        days:
+          description: how long this blob can be restored. It should be great than zero and less than DeleteRetentionPolicy.days.
+          maximum: 365
+          minimum: 1
+          type: integer
+        enabled:
+          description: Blob restore is enabled if set to true.
+          type: boolean
+      required:
+      - enabled
+    ChangeFeed:
+      description: The blob service properties for change feed events.
+      properties:
+        enabled:
+          description: Indicates whether change feed event logging is enabled for the Blob service.
+          type: boolean
+    BlobServiceItems:
+      properties:
+        value:
+          description: List of blob services returned.
+          items:
+            $ref: '#/components/schemas/BlobServiceProperties'
+          readOnly: true
+          type: array
     BlobServiceProperties:
       allOf:
       - properties:
@@ -574,33 +602,6 @@ components:
                 name: SkuTier
           required:
           - name
-    RestorePolicyProperties:
-      description: The blob service properties for blob restore policy
-      properties:
-        days:
-          description: how long this blob can be restored. It should be great than zero and less than DeleteRetentionPolicy.days.
-          maximum: 365
-          minimum: 1
-          type: integer
-        enabled:
-          description: Blob restore is enabled if set to true.
-          type: boolean
-      required:
-      - enabled
-    ChangeFeed:
-      description: The blob service properties for change feed events.
-      properties:
-        enabled:
-          description: Indicates whether change feed event logging is enabled for the Blob service.
-          type: boolean
-    BlobServiceItems:
-      properties:
-        value:
-          description: List of blob services returned.
-          items:
-            $ref: '#/components/schemas/BlobServiceProperties'
-          readOnly: true
-          type: array
   parameters:
     BlobServicesName:
       description: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'

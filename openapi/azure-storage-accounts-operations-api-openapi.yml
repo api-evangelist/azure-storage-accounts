@@ -1,18 +1,19 @@
 openapi: 3.2.0
 info:
   description: The Azure Storage Management API.
-  title: StorageManagementClient BlobContainers Operations API
-  version: '2.0'
+  title: StorageManagementClient Operations API
+  version: '2019-06-01'
   x-apisguru-categories:
   - cloud
   x-logo:
     url: https://api.apis.guru/v2/cache/logo/https_assets.onestore.ms_cdnfiles_onestorerolling-1606-01000_shell_v3_images_logo_microsoft.png
   x-origin:
   - format: swagger
-    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/storage/resource-manager/Microsoft.Storage/stable/2019-06-01/blob.json
+    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/storage/resource-manager/Microsoft.Storage/stable/2019-06-01/storage.json
+    version: '2.0'
   x-preferred: false
   x-providerName: azure.com
-  x-serviceName: storage-blob
+  x-serviceName: storage
   x-tags:
   - Azure
   - Microsoft
@@ -389,6 +390,23 @@ components:
           items:
             $ref: '#/components/schemas/MetricSpecification'
           type: array
+    Dimension:
+      description: Dimension of blobs, possibly be blob type or access tier.
+      properties:
+        displayName:
+          description: Display name of dimension.
+          type: string
+        name:
+          description: Display name of dimension.
+          type: string
+    OperationListResult:
+      description: Result of the request to list Storage operations. It contains a list of operations and a URL link to get the next set of results.
+      properties:
+        value:
+          description: List of Storage operations supported by the Storage resource provider.
+          items:
+            $ref: '#/components/schemas/Operation'
+          type: array
     OperationProperties:
       description: Properties of operation, include metric specifications.
       properties:
@@ -426,23 +444,6 @@ components:
           type: string
         unit:
           description: Unit could be Bytes or Count.
-          type: string
-    OperationListResult:
-      description: Result of the request to list Storage operations. It contains a list of operations and a URL link to get the next set of results.
-      properties:
-        value:
-          description: List of Storage operations supported by the Storage resource provider.
-          items:
-            $ref: '#/components/schemas/Operation'
-          type: array
-    Dimension:
-      description: Dimension of blobs, possibly be blob type or access tier.
-      properties:
-        displayName:
-          description: Display name of dimension.
-          type: string
-        name:
-          description: Display name of dimension.
           type: string
     Operation:
       description: Storage REST API operation definition.

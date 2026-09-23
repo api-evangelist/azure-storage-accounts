@@ -1,18 +1,19 @@
 openapi: 3.2.0
 info:
   description: The Azure Storage Management API.
-  title: StorageManagementClient BlobContainers Location Usage API
-  version: '2.0'
+  title: StorageManagementClient Location Usage API
+  version: '2019-06-01'
   x-apisguru-categories:
   - cloud
   x-logo:
     url: https://api.apis.guru/v2/cache/logo/https_assets.onestore.ms_cdnfiles_onestorerolling-1606-01000_shell_v3_images_logo_microsoft.png
   x-origin:
   - format: swagger
-    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/storage/resource-manager/Microsoft.Storage/stable/2019-06-01/blob.json
+    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/storage/resource-manager/Microsoft.Storage/stable/2019-06-01/storage.json
+    version: '2.0'
   x-preferred: false
   x-providerName: azure.com
-  x-serviceName: storage-blob
+  x-serviceName: storage
   x-tags:
   - Azure
   - Microsoft

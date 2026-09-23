@@ -1,18 +1,19 @@
 openapi: 3.2.0
 info:
   description: The Azure Storage Management API.
-  title: StorageManagementClient BlobContainers Private Link Resources API
-  version: '2.0'
+  title: StorageManagementClient Private Link Resources API
+  version: '2019-06-01'
   x-apisguru-categories:
   - cloud
   x-logo:
     url: https://api.apis.guru/v2/cache/logo/https_assets.onestore.ms_cdnfiles_onestorerolling-1606-01000_shell_v3_images_logo_microsoft.png
   x-origin:
   - format: swagger
-    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/storage/resource-manager/Microsoft.Storage/stable/2019-06-01/blob.json
+    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/storage/resource-manager/Microsoft.Storage/stable/2019-06-01/storage.json
+    version: '2.0'
   x-preferred: false
   x-providerName: azure.com
-  x-serviceName: storage-blob
+  x-serviceName: storage
   x-tags:
   - Azure
   - Microsoft
@@ -128,28 +129,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    PrivateLinkResource:
-      allOf:
-      - properties:
-          id:
-            description: Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-            readOnly: true
-            type: string
-          name:
-            description: The name of the resource
-            readOnly: true
-            type: string
-          type:
-            description: The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
-            readOnly: true
-            type: string
-        x-ms-azure-resource: true
-      description: A private link resource
-      properties:
-        properties:
-          $ref: '#/components/schemas/PrivateLinkResourceProperties'
-          description: Resource properties.
-          x-ms-client-flatten: true
     PrivateLinkResourceProperties:
       description: Properties of a private link resource.
       properties:
@@ -176,17 +155,29 @@ components:
           items:
             $ref: '#/components/schemas/PrivateLinkResource'
           type: array
+    PrivateLinkResource:
+      allOf:
+      - properties:
+          id:
+            description: Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+            readOnly: true
+            type: string
+          name:
+            description: The name of the resource
+            readOnly: true
+            type: string
+          type:
+            description: The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+            readOnly: true
+            type: string
+        x-ms-azure-resource: true
+      description: A private link resource
+      properties:
+        properties:
+          $ref: '#/components/schemas/PrivateLinkResourceProperties'
+          description: Resource properties.
+          x-ms-client-flatten: true
   parameters:
-    StorageAccountName:
-      description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-      in: path
-      name: accountName
-      required: true
-      x-ms-parameter-location: method
-      schema:
-        type: string
-        maxLength: 24
-        minLength: 3
     ResourceGroupName:
       description: The name of the resource group within the user's subscription. The name is case insensitive.
       in: path
@@ -198,6 +189,16 @@ components:
         maxLength: 90
         minLength: 1
         pattern: ^[-\w\._\(\)]+$
+    StorageAccountName:
+      description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+      in: path
+      name: accountName
+      required: true
+      x-ms-parameter-location: method
+      schema:
+        type: string
+        maxLength: 24
+        minLength: 3
   securitySchemes:
     azure_auth:
       type: oauth2

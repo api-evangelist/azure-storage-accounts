@@ -1,18 +1,19 @@
 openapi: 3.2.0
 info:
   description: The Azure Storage Management API.
-  title: StorageManagementClient BlobContainers Private Endpoint Connections API
-  version: '2.0'
+  title: StorageManagementClient Private Endpoint Connections API
+  version: '2019-06-01'
   x-apisguru-categories:
   - cloud
   x-logo:
     url: https://api.apis.guru/v2/cache/logo/https_assets.onestore.ms_cdnfiles_onestorerolling-1606-01000_shell_v3_images_logo_microsoft.png
   x-origin:
   - format: swagger
-    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/storage/resource-manager/Microsoft.Storage/stable/2019-06-01/blob.json
+    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/storage/resource-manager/Microsoft.Storage/stable/2019-06-01/storage.json
+    version: '2.0'
   x-preferred: false
   x-providerName: azure.com
-  x-serviceName: storage-blob
+  x-serviceName: storage
   x-tags:
   - Azure
   - Microsoft
@@ -22,7 +23,7 @@ security:
 - azure_auth:
   - user_impersonation
 tags:
-- name: PrivateEndpointConnections
+- name: Private Endpoint Connections
 paths:
   ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}
   : delete:
@@ -60,7 +61,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
       tags:
-      - PrivateEndpointConnections
+      - Private Endpoint Connections
       x-ms-examples:
         StorageAccountDeletePrivateEndpointConnection:
           parameters:
@@ -114,7 +115,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
       tags:
-      - PrivateEndpointConnections
+      - Private Endpoint Connections
       x-ms-examples:
         StorageAccountGetPrivateEndpointConnection:
           parameters:
@@ -179,7 +180,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
       tags:
-      - PrivateEndpointConnections
+      - Private Endpoint Connections
       x-ms-examples:
         StorageAccountPutPrivateEndpointConnection:
           parameters:
@@ -221,16 +222,18 @@ paths:
         required: true
 components:
   schemas:
-    PrivateEndpointServiceConnectionStatus:
-      description: The private endpoint connection status.
+    PrivateEndpointConnectionProvisioningState:
+      description: The current provisioning state.
       enum:
-      - Pending
-      - Approved
-      - Rejected
+      - Succeeded
+      - Creating
+      - Deleting
+      - Failed
+      readOnly: true
       type: string
       x-ms-enum:
         modelAsString: true
-        name: PrivateEndpointServiceConnectionStatus
+        name: PrivateEndpointConnectionProvisioningState
     PrivateEndpointConnection:
       allOf:
       - properties:
@@ -253,14 +256,34 @@ components:
           $ref: '#/components/schemas/PrivateEndpointConnectionProperties'
           description: Resource properties.
           x-ms-client-flatten: true
-    ErrorResponse:
-      description: An error response from the storage resource provider.
+    PrivateLinkServiceConnectionState:
+      description: A collection of information about the state of the connection between service consumer and provider.
       properties:
-        code:
-          description: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
+        actionRequired:
+          description: A message indicating if changes on the service provider require any updates on the consumer.
           type: string
-        message:
-          description: A message describing the error, intended to be suitable for display in a user interface.
+        description:
+          description: The reason for approval/rejection of the connection.
+          type: string
+        status:
+          $ref: '#/components/schemas/PrivateEndpointServiceConnectionStatus'
+          description: Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+    PrivateEndpointServiceConnectionStatus:
+      description: The private endpoint connection status.
+      enum:
+      - Pending
+      - Approved
+      - Rejected
+      type: string
+      x-ms-enum:
+        modelAsString: true
+        name: PrivateEndpointServiceConnectionStatus
+    PrivateEndpoint:
+      description: The Private Endpoint resource.
+      properties:
+        id:
+          description: The ARM identifier for Private Endpoint
+          readOnly: true
           type: string
     PrivateEndpointConnectionProperties:
       description: Properties of the PrivateEndpointConnectProperties.
@@ -276,56 +299,16 @@ components:
           description: The provisioning state of the private endpoint connection resource.
       required:
       - privateLinkServiceConnectionState
-    PrivateEndpointConnectionProvisioningState:
-      description: The current provisioning state.
-      enum:
-      - Succeeded
-      - Creating
-      - Deleting
-      - Failed
-      readOnly: true
-      type: string
-      x-ms-enum:
-        modelAsString: true
-        name: PrivateEndpointConnectionProvisioningState
-    PrivateLinkServiceConnectionState:
-      description: A collection of information about the state of the connection between service consumer and provider.
+    ErrorResponse:
+      description: An error response from the storage resource provider.
       properties:
-        actionRequired:
-          description: A message indicating if changes on the service provider require any updates on the consumer.
+        code:
+          description: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
           type: string
-        description:
-          description: The reason for approval/rejection of the connection.
-          type: string
-        status:
-          $ref: '#/components/schemas/PrivateEndpointServiceConnectionStatus'
-          description: Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-    PrivateEndpoint:
-      description: The Private Endpoint resource.
-      properties:
-        id:
-          description: The ARM identifier for Private Endpoint
-          readOnly: true
+        message:
+          description: A message describing the error, intended to be suitable for display in a user interface.
           type: string
   parameters:
-    StorageAccountName:
-      description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-      in: path
-      name: accountName
-      required: true
-      x-ms-parameter-location: method
-      schema:
-        type: string
-        maxLength: 24
-        minLength: 3
-    PrivateEndpointConnectionName:
-      description: The name of the private endpoint connection associated with the Storage Account
-      in: path
-      name: privateEndpointConnectionName
-      required: true
-      x-ms-parameter-location: method
-      schema:
-        type: string
     ResourceGroupName:
       description: The name of the resource group within the user's subscription. The name is case insensitive.
       in: path
@@ -337,6 +320,24 @@ components:
         maxLength: 90
         minLength: 1
         pattern: ^[-\w\._\(\)]+$
+    PrivateEndpointConnectionName:
+      description: The name of the private endpoint connection associated with the Storage Account
+      in: path
+      name: privateEndpointConnectionName
+      required: true
+      x-ms-parameter-location: method
+      schema:
+        type: string
+    StorageAccountName:
+      description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+      in: path
+      name: accountName
+      required: true
+      x-ms-parameter-location: method
+      schema:
+        type: string
+        maxLength: 24
+        minLength: 3
   securitySchemes:
     azure_auth:
       type: oauth2

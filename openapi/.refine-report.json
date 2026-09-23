@@ -1,15 +1,8 @@
 {
   "provider": "azure-storage-accounts",
   "sources": [
-    "azure-storage-accounts-blobcontainers-api-openapi.yml",
-    "azure-storage-accounts-blobservice-api-openapi.yml",
-    "azure-storage-accounts-locationusage-api-openapi.yml",
-    "azure-storage-accounts-managementpolicies-api-openapi.yml",
-    "azure-storage-accounts-operations-api-openapi.yml",
-    "azure-storage-accounts-privateendpointconnections-api-openapi.yml",
-    "azure-storage-accounts-privatelinkresources-api-openapi.yml",
-    "azure-storage-accounts-skus-api-openapi.yml",
-    "azure-storage-accounts-storageaccounts-api-openapi.yml"
+    "_original/azure-storage-accounts-blob-openapi.yaml",
+    "_original/azure-storage-accounts-management-openapi.yaml"
   ],
   "outputs": [
     "azure-storage-accounts-blobcontainers-api-openapi.yml",
@@ -22,9 +15,36 @@
     "azure-storage-accounts-skus-api-openapi.yml",
     "azure-storage-accounts-storageaccounts-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "azure-storage-accounts-blob-openapi.yaml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "azure-storage-accounts-blob-openapi.yaml: declared missing tag: BlobContainers",
+    "azure-storage-accounts-blob-openapi.yaml: declared missing tag: BlobService",
+    "azure-storage-accounts-management-openapi.yaml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "azure-storage-accounts-management-openapi.yaml: declared missing tag: LocationUsage",
+    "azure-storage-accounts-management-openapi.yaml: declared missing tag: ManagementPolicies",
+    "azure-storage-accounts-management-openapi.yaml: declared missing tag: Operations",
+    "azure-storage-accounts-management-openapi.yaml: declared missing tag: PrivateEndpointConnections",
+    "azure-storage-accounts-management-openapi.yaml: declared missing tag: PrivateLinkResources",
+    "azure-storage-accounts-management-openapi.yaml: declared missing tag: Skus",
+    "azure-storage-accounts-management-openapi.yaml: declared missing tag: StorageAccounts",
+    "superseded outputs removed: azure-storage-accounts-private-endpoint-connections-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 17 total)"
+  ],
+  "skipped": [
+    "azure-storage-accounts-blobcontainers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "azure-storage-accounts-blobservice-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "azure-storage-accounts-locationusage-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "azure-storage-accounts-managementpolicies-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "azure-storage-accounts-operations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "azure-storage-accounts-private-endpoint-connections-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "azure-storage-accounts-privatelinkresources-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "azure-storage-accounts-skus-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "azure-storage-accounts-storageaccounts-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

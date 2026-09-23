@@ -1,18 +1,19 @@
 openapi: 3.2.0
 info:
   description: The Azure Storage Management API.
-  title: StorageManagementClient BlobContainers Management Policies API
-  version: '2.0'
+  title: StorageManagementClient Management Policies API
+  version: '2019-06-01'
   x-apisguru-categories:
   - cloud
   x-logo:
     url: https://api.apis.guru/v2/cache/logo/https_assets.onestore.ms_cdnfiles_onestorerolling-1606-01000_shell_v3_images_logo_microsoft.png
   x-origin:
   - format: swagger
-    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/storage/resource-manager/Microsoft.Storage/stable/2019-06-01/blob.json
+    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/storage/resource-manager/Microsoft.Storage/stable/2019-06-01/storage.json
+    version: '2.0'
   x-preferred: false
   x-providerName: azure.com
-  x-serviceName: storage-blob
+  x-serviceName: storage
   x-tags:
   - Azure
   - Microsoft
@@ -253,42 +254,75 @@ paths:
         description: The ManagementPolicy set to a storage account.
         required: true
 components:
-  parameters:
-    StorageAccountName:
-      description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-      in: path
-      name: accountName
-      required: true
-      x-ms-parameter-location: method
-      schema:
-        type: string
-        maxLength: 24
-        minLength: 3
-    ManagementPolicyName:
-      description: The name of the Storage Account Management Policy. It should always be 'default'
-      in: path
-      name: managementPolicyName
-      required: true
-      x-ms-enum:
-        modelAsString: true
-        name: ManagementPolicyName
-      x-ms-parameter-location: method
-      schema:
-        type: string
-        enum:
-        - default
-    ResourceGroupName:
-      description: The name of the resource group within the user's subscription. The name is case insensitive.
-      in: path
-      name: resourceGroupName
-      required: true
-      x-ms-parameter-location: method
-      schema:
-        type: string
-        maxLength: 90
-        minLength: 1
-        pattern: ^[-\w\._\(\)]+$
   schemas:
+    DateAfterCreation:
+      description: Object to define the number of days after creation.
+      properties:
+        daysAfterCreationGreaterThan:
+          description: Value indicating the age in days after creation
+          minimum: 0
+          multipleOf: 1
+          type: number
+      required:
+      - daysAfterCreationGreaterThan
+    ManagementPolicy:
+      allOf:
+      - properties:
+          id:
+            description: Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+            readOnly: true
+            type: string
+          name:
+            description: The name of the resource
+            readOnly: true
+            type: string
+          type:
+            description: The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+            readOnly: true
+            type: string
+        x-ms-azure-resource: true
+      description: The Get Storage Account ManagementPolicies operation response.
+      properties:
+        properties:
+          $ref: '#/components/schemas/ManagementPolicyProperties'
+          description: Returns the Storage Account Data Policies Rules.
+          x-ms-client-flatten: true
+    ManagementPolicySnapShot:
+      description: Management policy action for snapshot.
+      properties:
+        delete:
+          $ref: '#/components/schemas/DateAfterCreation'
+          description: The function to delete the blob snapshot
+    ManagementPolicyAction:
+      description: Actions are applied to the filtered blobs when the execution condition is met.
+      properties:
+        baseBlob:
+          $ref: '#/components/schemas/ManagementPolicyBaseBlob'
+          description: The management policy action for base blob
+        snapshot:
+          $ref: '#/components/schemas/ManagementPolicySnapShot'
+          description: The management policy action for snapshot
+    DateAfterModification:
+      description: Object to define the number of days after last modification.
+      properties:
+        daysAfterModificationGreaterThan:
+          description: Value indicating the age in days after last modification
+          minimum: 0
+          multipleOf: 1
+          type: number
+      required:
+      - daysAfterModificationGreaterThan
+    ManagementPolicyDefinition:
+      description: An object that defines the Lifecycle rule. Each definition is made up with a filters set and an actions set.
+      properties:
+        actions:
+          $ref: '#/components/schemas/ManagementPolicyAction'
+          description: An object that defines the action set.
+        filters:
+          $ref: '#/components/schemas/ManagementPolicyFilter'
+          description: An object that defines the filter set.
+      required:
+      - actions
     ManagementPolicyProperties:
       description: The Storage Account ManagementPolicy properties.
       properties:
@@ -302,26 +336,16 @@ components:
           description: 'The Storage Account ManagementPolicy, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.'
       required:
       - policy
-    ManagementPolicyDefinition:
-      description: An object that defines the Lifecycle rule. Each definition is made up with a filters set and an actions set.
+    ManagementPolicySchema:
+      description: 'The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.'
       properties:
-        actions:
-          $ref: '#/components/schemas/ManagementPolicyAction'
-          description: An object that defines the action set.
-        filters:
-          $ref: '#/components/schemas/ManagementPolicyFilter'
-          description: An object that defines the filter set.
+        rules:
+          description: 'The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.'
+          items:
+            $ref: '#/components/schemas/ManagementPolicyRule'
+          type: array
       required:
-      - actions
-    ManagementPolicyAction:
-      description: Actions are applied to the filtered blobs when the execution condition is met.
-      properties:
-        baseBlob:
-          $ref: '#/components/schemas/ManagementPolicyBaseBlob'
-          description: The management policy action for base blob
-        snapshot:
-          $ref: '#/components/schemas/ManagementPolicySnapShot'
-          description: The management policy action for snapshot
+      - rules
     ManagementPolicyRule:
       description: An object that wraps the Lifecycle rule. Each rule is uniquely defined by name.
       properties:
@@ -346,6 +370,18 @@ components:
       - name
       - type
       - definition
+    ManagementPolicyBaseBlob:
+      description: Management policy action for base blob.
+      properties:
+        delete:
+          $ref: '#/components/schemas/DateAfterModification'
+          description: The function to delete the blob
+        tierToArchive:
+          $ref: '#/components/schemas/DateAfterModification'
+          description: The function to tier blobs to archive storage. Support blobs currently at Hot or Cool tier
+        tierToCool:
+          $ref: '#/components/schemas/DateAfterModification'
+          description: The function to tier blobs to cool storage. Support blobs currently at Hot tier
     ManagementPolicyFilter:
       description: 'Filters limit rule actions to a subset of blobs within the storage account. If multiple filters are defined, a logical AND is performed on all filters. '
       properties:
@@ -361,76 +397,41 @@ components:
           type: array
       required:
       - blobTypes
-    ManagementPolicySnapShot:
-      description: Management policy action for snapshot.
-      properties:
-        delete:
-          $ref: '#/components/schemas/DateAfterCreation'
-          description: The function to delete the blob snapshot
-    ManagementPolicy:
-      allOf:
-      - properties:
-          id:
-            description: Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-            readOnly: true
-            type: string
-          name:
-            description: The name of the resource
-            readOnly: true
-            type: string
-          type:
-            description: The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
-            readOnly: true
-            type: string
-        x-ms-azure-resource: true
-      description: The Get Storage Account ManagementPolicies operation response.
-      properties:
-        properties:
-          $ref: '#/components/schemas/ManagementPolicyProperties'
-          description: Returns the Storage Account Data Policies Rules.
-          x-ms-client-flatten: true
-    DateAfterModification:
-      description: Object to define the number of days after last modification.
-      properties:
-        daysAfterModificationGreaterThan:
-          description: Value indicating the age in days after last modification
-          minimum: 0
-          multipleOf: 1
-          type: number
-      required:
-      - daysAfterModificationGreaterThan
-    ManagementPolicyBaseBlob:
-      description: Management policy action for base blob.
-      properties:
-        delete:
-          $ref: '#/components/schemas/DateAfterModification'
-          description: The function to delete the blob
-        tierToArchive:
-          $ref: '#/components/schemas/DateAfterModification'
-          description: The function to tier blobs to archive storage. Support blobs currently at Hot or Cool tier
-        tierToCool:
-          $ref: '#/components/schemas/DateAfterModification'
-          description: The function to tier blobs to cool storage. Support blobs currently at Hot tier
-    ManagementPolicySchema:
-      description: 'The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.'
-      properties:
-        rules:
-          description: 'The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.'
-          items:
-            $ref: '#/components/schemas/ManagementPolicyRule'
-          type: array
-      required:
-      - rules
-    DateAfterCreation:
-      description: Object to define the number of days after creation.
-      properties:
-        daysAfterCreationGreaterThan:
-          description: Value indicating the age in days after creation
-          minimum: 0
-          multipleOf: 1
-          type: number
-      required:
-      - daysAfterCreationGreaterThan
+  parameters:
+    ManagementPolicyName:
+      description: The name of the Storage Account Management Policy. It should always be 'default'
+      in: path
+      name: managementPolicyName
+      required: true
+      x-ms-enum:
+        modelAsString: true
+        name: ManagementPolicyName
+      x-ms-parameter-location: method
+      schema:
+        type: string
+        enum:
+        - default
+    ResourceGroupName:
+      description: The name of the resource group within the user's subscription. The name is case insensitive.
+      in: path
+      name: resourceGroupName
+      required: true
+      x-ms-parameter-location: method
+      schema:
+        type: string
+        maxLength: 90
+        minLength: 1
+        pattern: ^[-\w\._\(\)]+$
+    StorageAccountName:
+      description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+      in: path
+      name: accountName
+      required: true
+      x-ms-parameter-location: method
+      schema:
+        type: string
+        maxLength: 24
+        minLength: 3
   securitySchemes:
     azure_auth:
       type: oauth2
