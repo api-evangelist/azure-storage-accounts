@@ -222,18 +222,20 @@ paths:
         required: true
 components:
   schemas:
-    PrivateEndpointConnectionProvisioningState:
-      description: The current provisioning state.
-      enum:
-      - Succeeded
-      - Creating
-      - Deleting
-      - Failed
-      readOnly: true
-      type: string
-      x-ms-enum:
-        modelAsString: true
-        name: PrivateEndpointConnectionProvisioningState
+    PrivateEndpointConnectionProperties:
+      description: Properties of the PrivateEndpointConnectProperties.
+      properties:
+        privateEndpoint:
+          $ref: '#/components/schemas/PrivateEndpoint'
+          description: The resource of private end point.
+        privateLinkServiceConnectionState:
+          $ref: '#/components/schemas/PrivateLinkServiceConnectionState'
+          description: A collection of information about the state of the connection between service consumer and provider.
+        provisioningState:
+          $ref: '#/components/schemas/PrivateEndpointConnectionProvisioningState'
+          description: The provisioning state of the private endpoint connection resource.
+      required:
+      - privateLinkServiceConnectionState
     PrivateEndpointConnection:
       allOf:
       - properties:
@@ -268,6 +270,18 @@ components:
         status:
           $ref: '#/components/schemas/PrivateEndpointServiceConnectionStatus'
           description: Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+    PrivateEndpointConnectionProvisioningState:
+      description: The current provisioning state.
+      enum:
+      - Succeeded
+      - Creating
+      - Deleting
+      - Failed
+      readOnly: true
+      type: string
+      x-ms-enum:
+        modelAsString: true
+        name: PrivateEndpointConnectionProvisioningState
     PrivateEndpointServiceConnectionStatus:
       description: The private endpoint connection status.
       enum:
@@ -285,20 +299,6 @@ components:
           description: The ARM identifier for Private Endpoint
           readOnly: true
           type: string
-    PrivateEndpointConnectionProperties:
-      description: Properties of the PrivateEndpointConnectProperties.
-      properties:
-        privateEndpoint:
-          $ref: '#/components/schemas/PrivateEndpoint'
-          description: The resource of private end point.
-        privateLinkServiceConnectionState:
-          $ref: '#/components/schemas/PrivateLinkServiceConnectionState'
-          description: A collection of information about the state of the connection between service consumer and provider.
-        provisioningState:
-          $ref: '#/components/schemas/PrivateEndpointConnectionProvisioningState'
-          description: The provisioning state of the private endpoint connection resource.
-      required:
-      - privateLinkServiceConnectionState
     ErrorResponse:
       description: An error response from the storage resource provider.
       properties:

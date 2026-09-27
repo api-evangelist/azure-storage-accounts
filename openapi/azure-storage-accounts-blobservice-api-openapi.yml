@@ -452,34 +452,24 @@ paths:
         description: The properties of a storage account’s Blob service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules.
         required: true
 components:
+  parameters:
+    BlobServicesName:
+      description: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+      in: path
+      name: BlobServicesName
+      required: true
+      x-ms-parameter-location: method
+      schema:
+        type: string
+        enum:
+        - default
   schemas:
-    RestorePolicyProperties:
-      description: The blob service properties for blob restore policy
-      properties:
-        days:
-          description: how long this blob can be restored. It should be great than zero and less than DeleteRetentionPolicy.days.
-          maximum: 365
-          minimum: 1
-          type: integer
-        enabled:
-          description: Blob restore is enabled if set to true.
-          type: boolean
-      required:
-      - enabled
     ChangeFeed:
       description: The blob service properties for change feed events.
       properties:
         enabled:
           description: Indicates whether change feed event logging is enabled for the Blob service.
           type: boolean
-    BlobServiceItems:
-      properties:
-        value:
-          description: List of blob services returned.
-          items:
-            $ref: '#/components/schemas/BlobServiceProperties'
-          readOnly: true
-          type: array
     BlobServiceProperties:
       allOf:
       - properties:
@@ -602,17 +592,27 @@ components:
                 name: SkuTier
           required:
           - name
-  parameters:
-    BlobServicesName:
-      description: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
-      in: path
-      name: BlobServicesName
-      required: true
-      x-ms-parameter-location: method
-      schema:
-        type: string
-        enum:
-        - default
+    RestorePolicyProperties:
+      description: The blob service properties for blob restore policy
+      properties:
+        days:
+          description: how long this blob can be restored. It should be great than zero and less than DeleteRetentionPolicy.days.
+          maximum: 365
+          minimum: 1
+          type: integer
+        enabled:
+          description: Blob restore is enabled if set to true.
+          type: boolean
+      required:
+      - enabled
+    BlobServiceItems:
+      properties:
+        value:
+          description: List of blob services returned.
+          items:
+            $ref: '#/components/schemas/BlobServiceProperties'
+          readOnly: true
+          type: array
   securitySchemes:
     azure_auth:
       type: oauth2
