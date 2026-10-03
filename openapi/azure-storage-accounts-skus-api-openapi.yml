@@ -3788,6 +3788,17 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    SKUCapability:
+      description: The capability information in the specified SKU, including file encryption, network ACLs, change notification, etc.
+      properties:
+        name:
+          description: The name of capability, The capability information in the specified SKU, including file encryption, network ACLs, change notification, etc.
+          readOnly: true
+          type: string
+        value:
+          description: A string value to indicate states of given capability. Possibly 'true' or 'false'.
+          readOnly: true
+          type: string
     SkuInformation:
       description: Storage SKU and its properties
       properties:
@@ -3852,17 +3863,6 @@ components:
             name: SkuTier
       required:
       - name
-    SKUCapability:
-      description: The capability information in the specified SKU, including file encryption, network ACLs, change notification, etc.
-      properties:
-        name:
-          description: The name of capability, The capability information in the specified SKU, including file encryption, network ACLs, change notification, etc.
-          readOnly: true
-          type: string
-        value:
-          description: A string value to indicate states of given capability. Possibly 'true' or 'false'.
-          readOnly: true
-          type: string
     StorageSkuListResult:
       description: The response from the List Storage SKUs operation.
       properties:

@@ -129,6 +129,24 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    PrivateLinkResourceProperties:
+      description: Properties of a private link resource.
+      properties:
+        groupId:
+          description: The private link resource group id.
+          readOnly: true
+          type: string
+        requiredMembers:
+          description: The private link resource required member names.
+          items:
+            type: string
+          readOnly: true
+          type: array
+        requiredZoneNames:
+          description: The private link resource Private link DNS zone name.
+          items:
+            type: string
+          type: array
     PrivateLinkResourceListResult:
       description: A list of private link resources
       properties:
@@ -159,25 +177,17 @@ components:
           $ref: '#/components/schemas/PrivateLinkResourceProperties'
           description: Resource properties.
           x-ms-client-flatten: true
-    PrivateLinkResourceProperties:
-      description: Properties of a private link resource.
-      properties:
-        groupId:
-          description: The private link resource group id.
-          readOnly: true
-          type: string
-        requiredMembers:
-          description: The private link resource required member names.
-          items:
-            type: string
-          readOnly: true
-          type: array
-        requiredZoneNames:
-          description: The private link resource Private link DNS zone name.
-          items:
-            type: string
-          type: array
   parameters:
+    StorageAccountName:
+      description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+      in: path
+      name: accountName
+      required: true
+      x-ms-parameter-location: method
+      schema:
+        type: string
+        maxLength: 24
+        minLength: 3
     ResourceGroupName:
       description: The name of the resource group within the user's subscription. The name is case insensitive.
       in: path
@@ -189,16 +199,6 @@ components:
         maxLength: 90
         minLength: 1
         pattern: ^[-\w\._\(\)]+$
-    StorageAccountName:
-      description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-      in: path
-      name: accountName
-      required: true
-      x-ms-parameter-location: method
-      schema:
-        type: string
-        maxLength: 24
-        minLength: 3
   securitySchemes:
     azure_auth:
       type: oauth2

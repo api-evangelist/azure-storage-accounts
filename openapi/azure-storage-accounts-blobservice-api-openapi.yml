@@ -452,18 +452,15 @@ paths:
         description: The properties of a storage account’s Blob service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules.
         required: true
 components:
-  parameters:
-    BlobServicesName:
-      description: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
-      in: path
-      name: BlobServicesName
-      required: true
-      x-ms-parameter-location: method
-      schema:
-        type: string
-        enum:
-        - default
   schemas:
+    BlobServiceItems:
+      properties:
+        value:
+          description: List of blob services returned.
+          items:
+            $ref: '#/components/schemas/BlobServiceProperties'
+          readOnly: true
+          type: array
     ChangeFeed:
       description: The blob service properties for change feed events.
       properties:
@@ -605,14 +602,17 @@ components:
           type: boolean
       required:
       - enabled
-    BlobServiceItems:
-      properties:
-        value:
-          description: List of blob services returned.
-          items:
-            $ref: '#/components/schemas/BlobServiceProperties'
-          readOnly: true
-          type: array
+  parameters:
+    BlobServicesName:
+      description: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+      in: path
+      name: BlobServicesName
+      required: true
+      x-ms-parameter-location: method
+      schema:
+        type: string
+        enum:
+        - default
   securitySchemes:
     azure_auth:
       type: oauth2

@@ -94,17 +94,6 @@ components:
           items:
             $ref: '#/components/schemas/Usage'
           type: array
-    UsageName:
-      description: The usage names that can be used; currently limited to StorageAccount.
-      properties:
-        localizedValue:
-          description: Gets a localized string describing the resource name.
-          readOnly: true
-          type: string
-        value:
-          description: Gets a string describing the resource name.
-          readOnly: true
-          type: string
     Usage:
       description: Describes Storage Resource Usage.
       properties:
@@ -136,6 +125,17 @@ components:
           x-ms-enum:
             modelAsString: false
             name: UsageUnit
+    UsageName:
+      description: The usage names that can be used; currently limited to StorageAccount.
+      properties:
+        localizedValue:
+          description: Gets a localized string describing the resource name.
+          readOnly: true
+          type: string
+        value:
+          description: Gets a string describing the resource name.
+          readOnly: true
+          type: string
   securitySchemes:
     azure_auth:
       type: oauth2
