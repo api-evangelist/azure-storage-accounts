@@ -342,6 +342,8 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
   baseURL: https://{accountName}.blob.core.windows.net
   tags:
+  - PrivateEndpointConnections
+  tags_raw:
   - Private Endpoint Connections
   properties:
   - type: OpenAPI
@@ -362,6 +364,9 @@ apis:
   - type: Documentation
     url: https://learn.microsoft.com/en-us/azure/storage/files/
 common:
+- type: CapabilityMap
+  url: capabilities/azure-storage-accounts-capability-edges.yml
+  name: Azure Storage Accounts Business Capability Map
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/azure-storage-accounts/overview
 - type: AgenticAccess
