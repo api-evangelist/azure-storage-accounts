@@ -1330,6 +1330,291 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    KeyVaultProperties:
+      description: Properties of key vault.
+      properties:
+        keyname:
+          description: The name of KeyVault key.
+          type: string
+          x-ms-client-name: KeyName
+        keyvaulturi:
+          description: The Uri of KeyVault.
+          type: string
+          x-ms-client-name: KeyVaultUri
+        keyversion:
+          description: The version of KeyVault key.
+          type: string
+          x-ms-client-name: KeyVersion
+    VirtualNetworkRule:
+      description: Virtual Network rule.
+      properties:
+        action:
+          default: Allow
+          description: The action of virtual network rule.
+          enum:
+          - Allow
+          type: string
+          x-ms-enum:
+            modelAsString: false
+            name: Action
+        id:
+          description: 'Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.'
+          type: string
+          x-ms-client-name: VirtualNetworkResourceId
+        state:
+          description: Gets the state of virtual network rule.
+          enum:
+          - provisioning
+          - deprovisioning
+          - succeeded
+          - failed
+          - networkSourceDeleted
+          type: string
+          x-ms-enum:
+            modelAsString: false
+            name: State
+      required:
+      - id
+    EncryptionServices:
+      description: A list of services that support encryption.
+      properties:
+        blob:
+          $ref: '#/components/schemas/EncryptionService'
+          description: The encryption function of the blob storage service.
+        file:
+          $ref: '#/components/schemas/EncryptionService'
+          description: The encryption function of the file storage service.
+        queue:
+          $ref: '#/components/schemas/EncryptionService'
+          description: The encryption function of the queue storage service.
+        table:
+          $ref: '#/components/schemas/EncryptionService'
+          description: The encryption function of the table storage service.
+    Endpoints:
+      description: The URIs that are used to perform a retrieval of a public blob, queue, table, web or dfs object.
+      properties:
+        blob:
+          description: Gets the blob endpoint.
+          readOnly: true
+          type: string
+        dfs:
+          description: Gets the dfs endpoint.
+          readOnly: true
+          type: string
+        file:
+          description: Gets the file endpoint.
+          readOnly: true
+          type: string
+        internetEndpoints:
+          $ref: '#/components/schemas/StorageAccountInternetEndpoints'
+          description: Gets the internet routing storage endpoints
+          x-ms-client-flatten: false
+        microsoftEndpoints:
+          $ref: '#/components/schemas/StorageAccountMicrosoftEndpoints'
+          description: Gets the microsoft routing storage endpoints.
+          x-ms-client-flatten: false
+        queue:
+          description: Gets the queue endpoint.
+          readOnly: true
+          type: string
+        table:
+          description: Gets the table endpoint.
+          readOnly: true
+          type: string
+        web:
+          description: Gets the web endpoint.
+          readOnly: true
+          type: string
+    ListAccountSasResponse:
+      description: The List SAS credentials operation response.
+      properties:
+        accountSasToken:
+          description: List SAS credentials of storage account.
+          readOnly: true
+          type: string
+    BlobRestoreParameters:
+      description: Blob restore parameters
+      properties:
+        blobRanges:
+          description: Blob ranges to restore.
+          items:
+            $ref: '#/components/schemas/BlobRestoreRange'
+          type: array
+        timeToRestore:
+          description: Restore blob to the specified time.
+          format: date-time
+          type: string
+      required:
+      - timeToRestore
+      - blobRanges
+    PrivateEndpoint:
+      description: The Private Endpoint resource.
+      properties:
+        id:
+          description: The ARM identifier for Private Endpoint
+          readOnly: true
+          type: string
+    IPRule:
+      description: IP rule with specific IP or IP range in CIDR format.
+      properties:
+        action:
+          default: Allow
+          description: The action of IP ACL rule.
+          enum:
+          - Allow
+          type: string
+          x-ms-enum:
+            modelAsString: false
+            name: Action
+        value:
+          description: Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed.
+          type: string
+          x-ms-client-name: IPAddressOrRange
+      required:
+      - value
+    CustomDomain:
+      description: The custom domain assigned to this storage account. This can be set via Update.
+      properties:
+        name:
+          description: Gets or sets the custom domain name assigned to the storage account. Name is the CNAME source.
+          type: string
+        useSubDomainName:
+          description: Indicates whether indirect CName validation is enabled. Default value is false. This should only be set on updates.
+          type: boolean
+      required:
+      - name
+    EncryptionService:
+      description: A service that allows server-side encryption to be used.
+      properties:
+        enabled:
+          description: A boolean indicating whether or not the service encrypts the data as it is stored.
+          type: boolean
+        keyType:
+          description: Encryption key type to be used for the encryption service. 'Account' key type implies that an account-scoped encryption key will be used. 'Service' key type implies that a default service key is used.
+          enum:
+          - Service
+          - Account
+          type: string
+          x-ms-enum:
+            modelAsString: true
+            name: KeyType
+          x-ms-mutability:
+          - create
+          - read
+        lastEnabledTime:
+          description: Gets a rough estimate of the date/time when the encryption was last enabled by the user. Only returned when encryption is enabled. There might be some unencrypted blobs which were written after this time, as it is just a rough estimate.
+          format: date-time
+          readOnly: true
+          type: string
+    NetworkRuleSet:
+      description: Network rule set
+      properties:
+        bypass:
+          default: AzureServices
+          description: Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Possible values are any combination of Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to bypass none of those traffics.
+          enum:
+          - None
+          - Logging
+          - Metrics
+          - AzureServices
+          type: string
+          x-ms-client-name: Bypass
+          x-ms-enum:
+            modelAsString: true
+            name: Bypass
+        defaultAction:
+          default: Allow
+          description: Specifies the default action of allow or deny when no other rules match.
+          enum:
+          - Allow
+          - Deny
+          type: string
+          x-ms-enum:
+            modelAsString: false
+            name: DefaultAction
+        ipRules:
+          description: Sets the IP ACL rules
+          items:
+            $ref: '#/components/schemas/IPRule'
+            description: IP rule with specific IP or IP range in CIDR format.
+          type: array
+        virtualNetworkRules:
+          description: Sets the virtual network rules
+          items:
+            $ref: '#/components/schemas/VirtualNetworkRule'
+            description: Virtual Network rule.
+          type: array
+      required:
+      - defaultAction
+    StorageAccountMicrosoftEndpoints:
+      description: The URIs that are used to perform a retrieval of a public blob, queue, table, web or dfs object via a microsoft routing endpoint.
+      properties:
+        blob:
+          description: Gets the blob endpoint.
+          readOnly: true
+          type: string
+        dfs:
+          description: Gets the dfs endpoint.
+          readOnly: true
+          type: string
+        file:
+          description: Gets the file endpoint.
+          readOnly: true
+          type: string
+        queue:
+          description: Gets the queue endpoint.
+          readOnly: true
+          type: string
+        table:
+          description: Gets the table endpoint.
+          readOnly: true
+          type: string
+        web:
+          description: Gets the web endpoint.
+          readOnly: true
+          type: string
+    ActiveDirectoryProperties:
+      description: Settings properties for Active Directory (AD).
+      properties:
+        azureStorageSid:
+          description: Specifies the security identifier (SID) for Azure Storage.
+          type: string
+        domainGuid:
+          description: Specifies the domain GUID.
+          type: string
+        domainName:
+          description: Specifies the primary domain that the AD DNS server is authoritative for.
+          type: string
+        domainSid:
+          description: Specifies the security identifier (SID).
+          type: string
+        forestName:
+          description: Specifies the Active Directory forest to get.
+          type: string
+        netBiosDomainName:
+          description: Specifies the NetBIOS domain name.
+          type: string
+      required:
+      - domainName
+      - netBiosDomainName
+      - forestName
+      - domainGuid
+      - domainSid
+      - azureStorageSid
+    PrivateEndpointConnectionProperties:
+      description: Properties of the PrivateEndpointConnectProperties.
+      properties:
+        privateEndpoint:
+          $ref: '#/components/schemas/PrivateEndpoint'
+          description: The resource of private end point.
+        privateLinkServiceConnectionState:
+          $ref: '#/components/schemas/PrivateLinkServiceConnectionState'
+          description: A collection of information about the state of the connection between service consumer and provider.
+        provisioningState:
+          $ref: '#/components/schemas/PrivateEndpointConnectionProvisioningState'
+          description: The provisioning state of the private endpoint connection resource.
+      required:
+      - privateLinkServiceConnectionState
     AccountSasParameters:
       description: The parameters to list SAS credentials of a storage account.
       properties:
@@ -1404,336 +1689,27 @@ components:
       - signedResourceTypes
       - signedPermission
       - signedExpiry
-    StorageAccountCheckNameAvailabilityParameters:
-      description: The parameters used to check the availability of the storage account name.
+    StorageAccountKey:
+      description: An access key for the storage account.
       properties:
-        name:
-          description: The storage account name.
+        keyName:
+          description: Name of the key.
+          readOnly: true
           type: string
-        type:
-          description: The type of resource, Microsoft.Storage/storageAccounts
+        permissions:
+          description: Permissions for the key -- read-only or full permissions.
           enum:
-          - Microsoft.Storage/storageAccounts
+          - Read
+          - Full
+          readOnly: true
           type: string
           x-ms-enum:
             modelAsString: false
-            name: Type
-      required:
-      - name
-      - type
-    PrivateLinkServiceConnectionState:
-      description: A collection of information about the state of the connection between service consumer and provider.
-      properties:
-        actionRequired:
-          description: A message indicating if changes on the service provider require any updates on the consumer.
-          type: string
-        description:
-          description: The reason for approval/rejection of the connection.
-          type: string
-        status:
-          $ref: '#/components/schemas/PrivateEndpointServiceConnectionStatus'
-          description: Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-    StorageAccountListResult:
-      description: The response from the List Storage Accounts operation.
-      properties:
-        nextLink:
-          description: Request URL that can be used to query next page of storage accounts. Returned when total number of requested storage accounts exceed maximum page size.
-          readOnly: true
-          type: string
+            name: KeyPermission
         value:
-          description: Gets the list of storage accounts and their properties.
-          items:
-            $ref: '#/components/schemas/StorageAccount'
-          readOnly: true
-          type: array
-    BlobRestoreRange:
-      description: Blob range
-      properties:
-        endRange:
-          description: Blob end range. Empty means account end.
-          type: string
-        startRange:
-          description: Blob start range. Empty means account start.
-          type: string
-      required:
-      - startRange
-      - endRange
-    IPRule:
-      description: IP rule with specific IP or IP range in CIDR format.
-      properties:
-        action:
-          default: Allow
-          description: The action of IP ACL rule.
-          enum:
-          - Allow
-          type: string
-          x-ms-enum:
-            modelAsString: false
-            name: Action
-        value:
-          description: Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed.
-          type: string
-          x-ms-client-name: IPAddressOrRange
-      required:
-      - value
-    BlobRestoreParameters:
-      description: Blob restore parameters
-      properties:
-        blobRanges:
-          description: Blob ranges to restore.
-          items:
-            $ref: '#/components/schemas/BlobRestoreRange'
-          type: array
-        timeToRestore:
-          description: Restore blob to the specified time.
-          format: date-time
-          type: string
-      required:
-      - timeToRestore
-      - blobRanges
-    StorageAccountListKeysResult:
-      description: The response from the ListKeys operation.
-      properties:
-        keys:
-          description: Gets the list of storage account keys and their properties for the specified storage account.
-          items:
-            $ref: '#/components/schemas/StorageAccountKey'
-          readOnly: true
-          type: array
-    ListServiceSasResponse:
-      description: The List service SAS credentials operation response.
-      properties:
-        serviceSasToken:
-          description: List service SAS credentials of specific resource.
+          description: Base 64-encoded value of the key.
           readOnly: true
           type: string
-    GeoReplicationStats:
-      description: Statistics related to replication for storage account's Blob, Table, Queue and File services. It is only available when geo-redundant replication is enabled for the storage account.
-      properties:
-        canFailover:
-          description: A boolean flag which indicates whether or not account failover is supported for the account.
-          readOnly: true
-          type: boolean
-        lastSyncTime:
-          description: All primary writes preceding this UTC date/time value are guaranteed to be available for read operations. Primary writes following this point in time may or may not be available for reads. Element may be default value if value of LastSyncTime is not available, this can happen if secondary is offline or we are in bootstrap.
-          format: date-time
-          readOnly: true
-          type: string
-        status:
-          description: 'The status of the secondary location. Possible values are: - Live: Indicates that the secondary location is active and operational. - Bootstrap: Indicates initial synchronization from the primary location to the secondary location is in progress.This typically occurs when replication is first enabled. - Unavailable: Indicates that the secondary location is temporarily unavailable.'
-          enum:
-          - Live
-          - Bootstrap
-          - Unavailable
-          readOnly: true
-          type: string
-          x-ms-enum:
-            modelAsString: true
-            name: GeoReplicationStatus
-    ListAccountSasResponse:
-      description: The List SAS credentials operation response.
-      properties:
-        accountSasToken:
-          description: List SAS credentials of storage account.
-          readOnly: true
-          type: string
-    Encryption:
-      description: The encryption settings on the storage account.
-      properties:
-        keySource:
-          default: Microsoft.Storage
-          description: 'The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Storage, Microsoft.Keyvault'
-          enum:
-          - Microsoft.Storage
-          - Microsoft.Keyvault
-          type: string
-          x-ms-enum:
-            modelAsString: true
-            name: KeySource
-        keyvaultproperties:
-          $ref: '#/components/schemas/KeyVaultProperties'
-          description: Properties provided by key vault.
-          x-ms-client-name: KeyVaultProperties
-        services:
-          $ref: '#/components/schemas/EncryptionServices'
-          description: List of services which support encryption.
-      required:
-      - keySource
-    CheckNameAvailabilityResult:
-      description: The CheckNameAvailability operation response.
-      properties:
-        message:
-          description: Gets an error message explaining the Reason value in more detail.
-          readOnly: true
-          type: string
-        nameAvailable:
-          description: Gets a boolean value that indicates whether the name is available for you to use. If true, the name is available. If false, the name has already been taken or is invalid and cannot be used.
-          readOnly: true
-          type: boolean
-        reason:
-          description: Gets the reason that a storage account name could not be used. The Reason element is only returned if NameAvailable is false.
-          enum:
-          - AccountNameInvalid
-          - AlreadyExists
-          readOnly: true
-          type: string
-          x-ms-enum:
-            modelAsString: false
-            name: Reason
-    PrivateEndpointConnection:
-      allOf:
-      - properties:
-          id:
-            description: Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-            readOnly: true
-            type: string
-          name:
-            description: The name of the resource
-            readOnly: true
-            type: string
-          type:
-            description: The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
-            readOnly: true
-            type: string
-        x-ms-azure-resource: true
-      description: The Private Endpoint Connection resource.
-      properties:
-        properties:
-          $ref: '#/components/schemas/PrivateEndpointConnectionProperties'
-          description: Resource properties.
-          x-ms-client-flatten: true
-    PrivateEndpointServiceConnectionStatus:
-      description: The private endpoint connection status.
-      enum:
-      - Pending
-      - Approved
-      - Rejected
-      type: string
-      x-ms-enum:
-        modelAsString: true
-        name: PrivateEndpointServiceConnectionStatus
-    StorageAccountInternetEndpoints:
-      description: The URIs that are used to perform a retrieval of a public blob, file, web or dfs object via a internet routing endpoint.
-      properties:
-        blob:
-          description: Gets the blob endpoint.
-          readOnly: true
-          type: string
-        dfs:
-          description: Gets the dfs endpoint.
-          readOnly: true
-          type: string
-        file:
-          description: Gets the file endpoint.
-          readOnly: true
-          type: string
-        web:
-          description: Gets the web endpoint.
-          readOnly: true
-          type: string
-    EncryptionServices:
-      description: A list of services that support encryption.
-      properties:
-        blob:
-          $ref: '#/components/schemas/EncryptionService'
-          description: The encryption function of the blob storage service.
-        file:
-          $ref: '#/components/schemas/EncryptionService'
-          description: The encryption function of the file storage service.
-        queue:
-          $ref: '#/components/schemas/EncryptionService'
-          description: The encryption function of the queue storage service.
-        table:
-          $ref: '#/components/schemas/EncryptionService'
-          description: The encryption function of the table storage service.
-    StorageAccountPropertiesUpdateParameters:
-      description: The parameters used when updating a storage account.
-      properties:
-        accessTier:
-          description: Required for storage accounts where kind = BlobStorage. The access tier used for billing.
-          enum:
-          - Hot
-          - Cool
-          type: string
-          x-ms-enum:
-            modelAsString: false
-            name: AccessTier
-        azureFilesIdentityBasedAuthentication:
-          $ref: '#/components/schemas/AzureFilesIdentityBasedAuthentication'
-          description: Provides the identity based authentication settings for Azure Files.
-        customDomain:
-          $ref: '#/components/schemas/CustomDomain'
-          description: Custom domain assigned to the storage account by the user. Name is the CNAME source. Only one custom domain is supported per storage account at this time. To clear the existing custom domain, use an empty string for the custom domain name property.
-        encryption:
-          $ref: '#/components/schemas/Encryption'
-          description: Provides the encryption settings on the account. The default setting is unencrypted.
-        largeFileSharesState:
-          description: Allow large file shares if sets to Enabled. It cannot be disabled once it is enabled.
-          enum:
-          - Disabled
-          - Enabled
-          type: string
-          x-ms-enum:
-            modelAsString: true
-            name: LargeFileSharesState
-        networkAcls:
-          $ref: '#/components/schemas/NetworkRuleSet'
-          description: Network rule set
-          x-ms-client-name: NetworkRuleSet
-        routingPreference:
-          $ref: '#/components/schemas/RoutingPreference'
-          description: Maintains information about the network routing choice opted by the user for data transfer
-          x-ms-client-name: RoutingPreference
-        supportsHttpsTrafficOnly:
-          description: Allows https traffic only to storage service if sets to true.
-          type: boolean
-          x-ms-client-name: EnableHttpsTrafficOnly
-    StorageAccountPropertiesCreateParameters:
-      description: The parameters used to create the storage account.
-      properties:
-        accessTier:
-          description: Required for storage accounts where kind = BlobStorage. The access tier used for billing.
-          enum:
-          - Hot
-          - Cool
-          type: string
-          x-ms-enum:
-            modelAsString: false
-            name: AccessTier
-        azureFilesIdentityBasedAuthentication:
-          $ref: '#/components/schemas/AzureFilesIdentityBasedAuthentication'
-          description: Provides the identity based authentication settings for Azure Files.
-        customDomain:
-          $ref: '#/components/schemas/CustomDomain'
-          description: User domain assigned to the storage account. Name is the CNAME source. Only one custom domain is supported per storage account at this time. To clear the existing custom domain, use an empty string for the custom domain name property.
-        encryption:
-          $ref: '#/components/schemas/Encryption'
-          description: Not applicable. Azure Storage encryption is enabled for all storage accounts and cannot be disabled.
-        isHnsEnabled:
-          description: Account HierarchicalNamespace enabled if sets to true.
-          type: boolean
-          x-ms-client-name: IsHnsEnabled
-        largeFileSharesState:
-          description: Allow large file shares if sets to Enabled. It cannot be disabled once it is enabled.
-          enum:
-          - Disabled
-          - Enabled
-          type: string
-          x-ms-enum:
-            modelAsString: true
-            name: LargeFileSharesState
-        networkAcls:
-          $ref: '#/components/schemas/NetworkRuleSet'
-          description: Network rule set
-          x-ms-client-name: NetworkRuleSet
-        routingPreference:
-          $ref: '#/components/schemas/RoutingPreference'
-          description: Maintains information about the network routing choice opted by the user for data transfer
-          x-ms-client-name: RoutingPreference
-        supportsHttpsTrafficOnly:
-          description: Allows https traffic only to storage service if sets to true. The default value is true since API version 2019-04-01.
-          type: boolean
-          x-ms-client-name: EnableHttpsTrafficOnly
     RoutingPreference:
       description: Routing preference defines the type of network, either microsoft or internet routing to be used to deliver the user data, the default option is microsoft routing
       properties:
@@ -1752,32 +1728,6 @@ components:
           x-ms-enum:
             modelAsString: true
             name: RoutingChoice
-    BlobRestoreStatus:
-      description: Blob restore status.
-      properties:
-        failureReason:
-          description: Failure reason when blob restore is failed.
-          readOnly: true
-          type: string
-        parameters:
-          $ref: '#/components/schemas/BlobRestoreParameters'
-          description: Blob restore request parameters.
-          readOnly: true
-        restoreId:
-          description: Id for tracking blob restore request.
-          readOnly: true
-          type: string
-        status:
-          description: 'The status of blob restore progress. Possible values are: - InProgress: Indicates that blob restore is ongoing. - Complete: Indicates that blob restore has been completed successfully. - Failed: Indicates that blob restore is failed.'
-          enum:
-          - InProgress
-          - Complete
-          - Failed
-          readOnly: true
-          type: string
-          x-ms-enum:
-            modelAsString: true
-            name: BlobRestoreProgressStatus
     StorageAccountProperties:
       description: Properties of the storage account.
       properties:
@@ -1906,8 +1856,100 @@ components:
           description: Allows https traffic only to storage service if sets to true.
           type: boolean
           x-ms-client-name: EnableHttpsTrafficOnly
-    Endpoints:
-      description: The URIs that are used to perform a retrieval of a public blob, queue, table, web or dfs object.
+    GeoReplicationStats:
+      description: Statistics related to replication for storage account's Blob, Table, Queue and File services. It is only available when geo-redundant replication is enabled for the storage account.
+      properties:
+        canFailover:
+          description: A boolean flag which indicates whether or not account failover is supported for the account.
+          readOnly: true
+          type: boolean
+        lastSyncTime:
+          description: All primary writes preceding this UTC date/time value are guaranteed to be available for read operations. Primary writes following this point in time may or may not be available for reads. Element may be default value if value of LastSyncTime is not available, this can happen if secondary is offline or we are in bootstrap.
+          format: date-time
+          readOnly: true
+          type: string
+        status:
+          description: 'The status of the secondary location. Possible values are: - Live: Indicates that the secondary location is active and operational. - Bootstrap: Indicates initial synchronization from the primary location to the secondary location is in progress.This typically occurs when replication is first enabled. - Unavailable: Indicates that the secondary location is temporarily unavailable.'
+          enum:
+          - Live
+          - Bootstrap
+          - Unavailable
+          readOnly: true
+          type: string
+          x-ms-enum:
+            modelAsString: true
+            name: GeoReplicationStatus
+    StorageAccountRegenerateKeyParameters:
+      description: The parameters used to regenerate the storage account key.
+      properties:
+        keyName:
+          description: The name of storage keys that want to be regenerated, possible values are key1, key2, kerb1, kerb2.
+          type: string
+      required:
+      - keyName
+    AzureFilesIdentityBasedAuthentication:
+      description: Settings for Azure Files identity based authentication.
+      properties:
+        activeDirectoryProperties:
+          $ref: '#/components/schemas/ActiveDirectoryProperties'
+          description: Required if choose AD.
+        directoryServiceOptions:
+          description: Indicates the directory service used.
+          enum:
+          - None
+          - AADDS
+          - AD
+          type: string
+          x-ms-enum:
+            modelAsString: true
+            name: DirectoryServiceOptions
+      required:
+      - directoryServiceOptions
+    Identity:
+      description: Identity for the resource.
+      properties:
+        principalId:
+          description: The principal ID of resource identity.
+          readOnly: true
+          type: string
+        tenantId:
+          description: The tenant ID of resource.
+          readOnly: true
+          type: string
+        type:
+          description: The identity type.
+          enum:
+          - SystemAssigned
+          type: string
+          x-ms-enum:
+            modelAsString: false
+            name: IdentityType
+      required:
+      - type
+    PrivateEndpointConnection:
+      allOf:
+      - properties:
+          id:
+            description: Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+            readOnly: true
+            type: string
+          name:
+            description: The name of the resource
+            readOnly: true
+            type: string
+          type:
+            description: The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+            readOnly: true
+            type: string
+        x-ms-azure-resource: true
+      description: The Private Endpoint Connection resource.
+      properties:
+        properties:
+          $ref: '#/components/schemas/PrivateEndpointConnectionProperties'
+          description: Resource properties.
+          x-ms-client-flatten: true
+    StorageAccountInternetEndpoints:
+      description: The URIs that are used to perform a retrieval of a public blob, file, web or dfs object via a internet routing endpoint.
       properties:
         blob:
           description: Gets the blob endpoint.
@@ -1921,26 +1963,29 @@ components:
           description: Gets the file endpoint.
           readOnly: true
           type: string
-        internetEndpoints:
-          $ref: '#/components/schemas/StorageAccountInternetEndpoints'
-          description: Gets the internet routing storage endpoints
-          x-ms-client-flatten: false
-        microsoftEndpoints:
-          $ref: '#/components/schemas/StorageAccountMicrosoftEndpoints'
-          description: Gets the microsoft routing storage endpoints.
-          x-ms-client-flatten: false
-        queue:
-          description: Gets the queue endpoint.
-          readOnly: true
-          type: string
-        table:
-          description: Gets the table endpoint.
-          readOnly: true
-          type: string
         web:
           description: Gets the web endpoint.
           readOnly: true
           type: string
+    ListServiceSasResponse:
+      description: The List service SAS credentials operation response.
+      properties:
+        serviceSasToken:
+          description: List service SAS credentials of specific resource.
+          readOnly: true
+          type: string
+    PrivateEndpointConnectionProvisioningState:
+      description: The current provisioning state.
+      enum:
+      - Succeeded
+      - Creating
+      - Deleting
+      - Failed
+      readOnly: true
+      type: string
+      x-ms-enum:
+        modelAsString: true
+        name: PrivateEndpointConnectionProvisioningState
     StorageAccountCreateParameters:
       description: The parameters used when creating a storage account.
       properties:
@@ -2005,131 +2050,6 @@ components:
       - sku
       - kind
       - location
-    StorageAccountMicrosoftEndpoints:
-      description: The URIs that are used to perform a retrieval of a public blob, queue, table, web or dfs object via a microsoft routing endpoint.
-      properties:
-        blob:
-          description: Gets the blob endpoint.
-          readOnly: true
-          type: string
-        dfs:
-          description: Gets the dfs endpoint.
-          readOnly: true
-          type: string
-        file:
-          description: Gets the file endpoint.
-          readOnly: true
-          type: string
-        queue:
-          description: Gets the queue endpoint.
-          readOnly: true
-          type: string
-        table:
-          description: Gets the table endpoint.
-          readOnly: true
-          type: string
-        web:
-          description: Gets the web endpoint.
-          readOnly: true
-          type: string
-    ActiveDirectoryProperties:
-      description: Settings properties for Active Directory (AD).
-      properties:
-        azureStorageSid:
-          description: Specifies the security identifier (SID) for Azure Storage.
-          type: string
-        domainGuid:
-          description: Specifies the domain GUID.
-          type: string
-        domainName:
-          description: Specifies the primary domain that the AD DNS server is authoritative for.
-          type: string
-        domainSid:
-          description: Specifies the security identifier (SID).
-          type: string
-        forestName:
-          description: Specifies the Active Directory forest to get.
-          type: string
-        netBiosDomainName:
-          description: Specifies the NetBIOS domain name.
-          type: string
-      required:
-      - domainName
-      - netBiosDomainName
-      - forestName
-      - domainGuid
-      - domainSid
-      - azureStorageSid
-    VirtualNetworkRule:
-      description: Virtual Network rule.
-      properties:
-        action:
-          default: Allow
-          description: The action of virtual network rule.
-          enum:
-          - Allow
-          type: string
-          x-ms-enum:
-            modelAsString: false
-            name: Action
-        id:
-          description: 'Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.'
-          type: string
-          x-ms-client-name: VirtualNetworkResourceId
-        state:
-          description: Gets the state of virtual network rule.
-          enum:
-          - provisioning
-          - deprovisioning
-          - succeeded
-          - failed
-          - networkSourceDeleted
-          type: string
-          x-ms-enum:
-            modelAsString: false
-            name: State
-      required:
-      - id
-    PrivateEndpointConnectionProvisioningState:
-      description: The current provisioning state.
-      enum:
-      - Succeeded
-      - Creating
-      - Deleting
-      - Failed
-      readOnly: true
-      type: string
-      x-ms-enum:
-        modelAsString: true
-        name: PrivateEndpointConnectionProvisioningState
-    PrivateEndpoint:
-      description: The Private Endpoint resource.
-      properties:
-        id:
-          description: The ARM identifier for Private Endpoint
-          readOnly: true
-          type: string
-    StorageAccountKey:
-      description: An access key for the storage account.
-      properties:
-        keyName:
-          description: Name of the key.
-          readOnly: true
-          type: string
-        permissions:
-          description: Permissions for the key -- read-only or full permissions.
-          enum:
-          - Read
-          - Full
-          readOnly: true
-          type: string
-          x-ms-enum:
-            modelAsString: false
-            name: KeyPermission
-        value:
-          description: Base 64-encoded value of the key.
-          readOnly: true
-          type: string
     StorageAccount:
       allOf:
       - allOf:
@@ -2218,64 +2138,236 @@ components:
                 name: SkuTier
           required:
           - name
-    EncryptionService:
-      description: A service that allows server-side encryption to be used.
+    StorageAccountPropertiesCreateParameters:
+      description: The parameters used to create the storage account.
       properties:
-        enabled:
-          description: A boolean indicating whether or not the service encrypts the data as it is stored.
-          type: boolean
-        keyType:
-          description: Encryption key type to be used for the encryption service. 'Account' key type implies that an account-scoped encryption key will be used. 'Service' key type implies that a default service key is used.
+        accessTier:
+          description: Required for storage accounts where kind = BlobStorage. The access tier used for billing.
           enum:
-          - Service
-          - Account
-          type: string
-          x-ms-enum:
-            modelAsString: true
-            name: KeyType
-          x-ms-mutability:
-          - create
-          - read
-        lastEnabledTime:
-          description: Gets a rough estimate of the date/time when the encryption was last enabled by the user. Only returned when encryption is enabled. There might be some unencrypted blobs which were written after this time, as it is just a rough estimate.
-          format: date-time
-          readOnly: true
-          type: string
-    Identity:
-      description: Identity for the resource.
-      properties:
-        principalId:
-          description: The principal ID of resource identity.
-          readOnly: true
-          type: string
-        tenantId:
-          description: The tenant ID of resource.
-          readOnly: true
-          type: string
-        type:
-          description: The identity type.
-          enum:
-          - SystemAssigned
+          - Hot
+          - Cool
           type: string
           x-ms-enum:
             modelAsString: false
-            name: IdentityType
-      required:
-      - type
-    PrivateEndpointConnectionProperties:
-      description: Properties of the PrivateEndpointConnectProperties.
+            name: AccessTier
+        azureFilesIdentityBasedAuthentication:
+          $ref: '#/components/schemas/AzureFilesIdentityBasedAuthentication'
+          description: Provides the identity based authentication settings for Azure Files.
+        customDomain:
+          $ref: '#/components/schemas/CustomDomain'
+          description: User domain assigned to the storage account. Name is the CNAME source. Only one custom domain is supported per storage account at this time. To clear the existing custom domain, use an empty string for the custom domain name property.
+        encryption:
+          $ref: '#/components/schemas/Encryption'
+          description: Not applicable. Azure Storage encryption is enabled for all storage accounts and cannot be disabled.
+        isHnsEnabled:
+          description: Account HierarchicalNamespace enabled if sets to true.
+          type: boolean
+          x-ms-client-name: IsHnsEnabled
+        largeFileSharesState:
+          description: Allow large file shares if sets to Enabled. It cannot be disabled once it is enabled.
+          enum:
+          - Disabled
+          - Enabled
+          type: string
+          x-ms-enum:
+            modelAsString: true
+            name: LargeFileSharesState
+        networkAcls:
+          $ref: '#/components/schemas/NetworkRuleSet'
+          description: Network rule set
+          x-ms-client-name: NetworkRuleSet
+        routingPreference:
+          $ref: '#/components/schemas/RoutingPreference'
+          description: Maintains information about the network routing choice opted by the user for data transfer
+          x-ms-client-name: RoutingPreference
+        supportsHttpsTrafficOnly:
+          description: Allows https traffic only to storage service if sets to true. The default value is true since API version 2019-04-01.
+          type: boolean
+          x-ms-client-name: EnableHttpsTrafficOnly
+    PrivateLinkServiceConnectionState:
+      description: A collection of information about the state of the connection between service consumer and provider.
       properties:
-        privateEndpoint:
-          $ref: '#/components/schemas/PrivateEndpoint'
-          description: The resource of private end point.
-        privateLinkServiceConnectionState:
-          $ref: '#/components/schemas/PrivateLinkServiceConnectionState'
-          description: A collection of information about the state of the connection between service consumer and provider.
-        provisioningState:
-          $ref: '#/components/schemas/PrivateEndpointConnectionProvisioningState'
-          description: The provisioning state of the private endpoint connection resource.
+        actionRequired:
+          description: A message indicating if changes on the service provider require any updates on the consumer.
+          type: string
+        description:
+          description: The reason for approval/rejection of the connection.
+          type: string
+        status:
+          $ref: '#/components/schemas/PrivateEndpointServiceConnectionStatus'
+          description: Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+    StorageAccountCheckNameAvailabilityParameters:
+      description: The parameters used to check the availability of the storage account name.
+      properties:
+        name:
+          description: The storage account name.
+          type: string
+        type:
+          description: The type of resource, Microsoft.Storage/storageAccounts
+          enum:
+          - Microsoft.Storage/storageAccounts
+          type: string
+          x-ms-enum:
+            modelAsString: false
+            name: Type
       required:
-      - privateLinkServiceConnectionState
+      - name
+      - type
+    BlobRestoreStatus:
+      description: Blob restore status.
+      properties:
+        failureReason:
+          description: Failure reason when blob restore is failed.
+          readOnly: true
+          type: string
+        parameters:
+          $ref: '#/components/schemas/BlobRestoreParameters'
+          description: Blob restore request parameters.
+          readOnly: true
+        restoreId:
+          description: Id for tracking blob restore request.
+          readOnly: true
+          type: string
+        status:
+          description: 'The status of blob restore progress. Possible values are: - InProgress: Indicates that blob restore is ongoing. - Complete: Indicates that blob restore has been completed successfully. - Failed: Indicates that blob restore is failed.'
+          enum:
+          - InProgress
+          - Complete
+          - Failed
+          readOnly: true
+          type: string
+          x-ms-enum:
+            modelAsString: true
+            name: BlobRestoreProgressStatus
+    StorageAccountListResult:
+      description: The response from the List Storage Accounts operation.
+      properties:
+        nextLink:
+          description: Request URL that can be used to query next page of storage accounts. Returned when total number of requested storage accounts exceed maximum page size.
+          readOnly: true
+          type: string
+        value:
+          description: Gets the list of storage accounts and their properties.
+          items:
+            $ref: '#/components/schemas/StorageAccount'
+          readOnly: true
+          type: array
+    StorageAccountListKeysResult:
+      description: The response from the ListKeys operation.
+      properties:
+        keys:
+          description: Gets the list of storage account keys and their properties for the specified storage account.
+          items:
+            $ref: '#/components/schemas/StorageAccountKey'
+          readOnly: true
+          type: array
+    StorageAccountPropertiesUpdateParameters:
+      description: The parameters used when updating a storage account.
+      properties:
+        accessTier:
+          description: Required for storage accounts where kind = BlobStorage. The access tier used for billing.
+          enum:
+          - Hot
+          - Cool
+          type: string
+          x-ms-enum:
+            modelAsString: false
+            name: AccessTier
+        azureFilesIdentityBasedAuthentication:
+          $ref: '#/components/schemas/AzureFilesIdentityBasedAuthentication'
+          description: Provides the identity based authentication settings for Azure Files.
+        customDomain:
+          $ref: '#/components/schemas/CustomDomain'
+          description: Custom domain assigned to the storage account by the user. Name is the CNAME source. Only one custom domain is supported per storage account at this time. To clear the existing custom domain, use an empty string for the custom domain name property.
+        encryption:
+          $ref: '#/components/schemas/Encryption'
+          description: Provides the encryption settings on the account. The default setting is unencrypted.
+        largeFileSharesState:
+          description: Allow large file shares if sets to Enabled. It cannot be disabled once it is enabled.
+          enum:
+          - Disabled
+          - Enabled
+          type: string
+          x-ms-enum:
+            modelAsString: true
+            name: LargeFileSharesState
+        networkAcls:
+          $ref: '#/components/schemas/NetworkRuleSet'
+          description: Network rule set
+          x-ms-client-name: NetworkRuleSet
+        routingPreference:
+          $ref: '#/components/schemas/RoutingPreference'
+          description: Maintains information about the network routing choice opted by the user for data transfer
+          x-ms-client-name: RoutingPreference
+        supportsHttpsTrafficOnly:
+          description: Allows https traffic only to storage service if sets to true.
+          type: boolean
+          x-ms-client-name: EnableHttpsTrafficOnly
+    CheckNameAvailabilityResult:
+      description: The CheckNameAvailability operation response.
+      properties:
+        message:
+          description: Gets an error message explaining the Reason value in more detail.
+          readOnly: true
+          type: string
+        nameAvailable:
+          description: Gets a boolean value that indicates whether the name is available for you to use. If true, the name is available. If false, the name has already been taken or is invalid and cannot be used.
+          readOnly: true
+          type: boolean
+        reason:
+          description: Gets the reason that a storage account name could not be used. The Reason element is only returned if NameAvailable is false.
+          enum:
+          - AccountNameInvalid
+          - AlreadyExists
+          readOnly: true
+          type: string
+          x-ms-enum:
+            modelAsString: false
+            name: Reason
+    Encryption:
+      description: The encryption settings on the storage account.
+      properties:
+        keySource:
+          default: Microsoft.Storage
+          description: 'The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Storage, Microsoft.Keyvault'
+          enum:
+          - Microsoft.Storage
+          - Microsoft.Keyvault
+          type: string
+          x-ms-enum:
+            modelAsString: true
+            name: KeySource
+        keyvaultproperties:
+          $ref: '#/components/schemas/KeyVaultProperties'
+          description: Properties provided by key vault.
+          x-ms-client-name: KeyVaultProperties
+        services:
+          $ref: '#/components/schemas/EncryptionServices'
+          description: List of services which support encryption.
+      required:
+      - keySource
+    PrivateEndpointServiceConnectionStatus:
+      description: The private endpoint connection status.
+      enum:
+      - Pending
+      - Approved
+      - Rejected
+      type: string
+      x-ms-enum:
+        modelAsString: true
+        name: PrivateEndpointServiceConnectionStatus
+    BlobRestoreRange:
+      description: Blob range
+      properties:
+        endRange:
+          description: Blob end range. Empty means account end.
+          type: string
+        startRange:
+          description: Blob start range. Empty means account start.
+          type: string
+      required:
+      - startRange
+      - endRange
     ServiceSasParameters:
       description: The parameters to list service SAS credentials of a specific resource.
       properties:
@@ -2380,40 +2472,6 @@ components:
           x-ms-client-name: RowKeyStart
       required:
       - canonicalizedResource
-    KeyVaultProperties:
-      description: Properties of key vault.
-      properties:
-        keyname:
-          description: The name of KeyVault key.
-          type: string
-          x-ms-client-name: KeyName
-        keyvaulturi:
-          description: The Uri of KeyVault.
-          type: string
-          x-ms-client-name: KeyVaultUri
-        keyversion:
-          description: The version of KeyVault key.
-          type: string
-          x-ms-client-name: KeyVersion
-    CustomDomain:
-      description: The custom domain assigned to this storage account. This can be set via Update.
-      properties:
-        name:
-          description: Gets or sets the custom domain name assigned to the storage account. Name is the CNAME source.
-          type: string
-        useSubDomainName:
-          description: Indicates whether indirect CName validation is enabled. Default value is false. This should only be set on updates.
-          type: boolean
-      required:
-      - name
-    StorageAccountRegenerateKeyParameters:
-      description: The parameters used to regenerate the storage account key.
-      properties:
-        keyName:
-          description: The name of storage keys that want to be regenerated, possible values are key1, key2, kerb1, kerb2.
-          type: string
-      required:
-      - keyName
     StorageAccountUpdateParameters:
       description: The parameters that can be provided when updating the storage account properties.
       properties:
@@ -2471,65 +2529,17 @@ components:
             type: string
           description: Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater in length than 128 characters and a value no greater in length than 256 characters.
           type: object
-    AzureFilesIdentityBasedAuthentication:
-      description: Settings for Azure Files identity based authentication.
-      properties:
-        activeDirectoryProperties:
-          $ref: '#/components/schemas/ActiveDirectoryProperties'
-          description: Required if choose AD.
-        directoryServiceOptions:
-          description: Indicates the directory service used.
-          enum:
-          - None
-          - AADDS
-          - AD
-          type: string
-          x-ms-enum:
-            modelAsString: true
-            name: DirectoryServiceOptions
-      required:
-      - directoryServiceOptions
-    NetworkRuleSet:
-      description: Network rule set
-      properties:
-        bypass:
-          default: AzureServices
-          description: Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Possible values are any combination of Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to bypass none of those traffics.
-          enum:
-          - None
-          - Logging
-          - Metrics
-          - AzureServices
-          type: string
-          x-ms-client-name: Bypass
-          x-ms-enum:
-            modelAsString: true
-            name: Bypass
-        defaultAction:
-          default: Allow
-          description: Specifies the default action of allow or deny when no other rules match.
-          enum:
-          - Allow
-          - Deny
-          type: string
-          x-ms-enum:
-            modelAsString: false
-            name: DefaultAction
-        ipRules:
-          description: Sets the IP ACL rules
-          items:
-            $ref: '#/components/schemas/IPRule'
-            description: IP rule with specific IP or IP range in CIDR format.
-          type: array
-        virtualNetworkRules:
-          description: Sets the virtual network rules
-          items:
-            $ref: '#/components/schemas/VirtualNetworkRule'
-            description: Virtual Network rule.
-          type: array
-      required:
-      - defaultAction
   parameters:
+    StorageAccountName:
+      description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+      in: path
+      name: accountName
+      required: true
+      x-ms-parameter-location: method
+      schema:
+        type: string
+        maxLength: 24
+        minLength: 3
     ResourceGroupName:
       description: The name of the resource group within the user's subscription. The name is case insensitive.
       in: path
@@ -2541,16 +2551,6 @@ components:
         maxLength: 90
         minLength: 1
         pattern: ^[-\w\._\(\)]+$
-    StorageAccountName:
-      description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-      in: path
-      name: accountName
-      required: true
-      x-ms-parameter-location: method
-      schema:
-        type: string
-        maxLength: 24
-        minLength: 3
   securitySchemes:
     azure_auth:
       type: oauth2

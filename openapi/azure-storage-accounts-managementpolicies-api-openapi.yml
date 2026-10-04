@@ -255,65 +255,6 @@ paths:
         required: true
 components:
   schemas:
-    ManagementPolicySchema:
-      description: 'The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.'
-      properties:
-        rules:
-          description: 'The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.'
-          items:
-            $ref: '#/components/schemas/ManagementPolicyRule'
-          type: array
-      required:
-      - rules
-    ManagementPolicySnapShot:
-      description: Management policy action for snapshot.
-      properties:
-        delete:
-          $ref: '#/components/schemas/DateAfterCreation'
-          description: The function to delete the blob snapshot
-    DateAfterCreation:
-      description: Object to define the number of days after creation.
-      properties:
-        daysAfterCreationGreaterThan:
-          description: Value indicating the age in days after creation
-          minimum: 0
-          multipleOf: 1
-          type: number
-      required:
-      - daysAfterCreationGreaterThan
-    ManagementPolicyAction:
-      description: Actions are applied to the filtered blobs when the execution condition is met.
-      properties:
-        baseBlob:
-          $ref: '#/components/schemas/ManagementPolicyBaseBlob'
-          description: The management policy action for base blob
-        snapshot:
-          $ref: '#/components/schemas/ManagementPolicySnapShot'
-          description: The management policy action for snapshot
-    ManagementPolicyRule:
-      description: An object that wraps the Lifecycle rule. Each rule is uniquely defined by name.
-      properties:
-        definition:
-          $ref: '#/components/schemas/ManagementPolicyDefinition'
-          description: An object that defines the Lifecycle rule.
-        enabled:
-          description: Rule is enabled if set to true.
-          type: boolean
-        name:
-          description: A rule name can contain any combination of alpha numeric characters. Rule name is case-sensitive. It must be unique within a policy.
-          type: string
-        type:
-          description: The valid value is Lifecycle
-          enum:
-          - Lifecycle
-          type: string
-          x-ms-enum:
-            modelAsString: true
-            name: type
-      required:
-      - name
-      - type
-      - definition
     ManagementPolicyFilter:
       description: 'Filters limit rule actions to a subset of blobs within the storage account. If multiple filters are defined, a logical AND is performed on all filters. '
       properties:
@@ -329,6 +270,21 @@ components:
           type: array
       required:
       - blobTypes
+    ManagementPolicyAction:
+      description: Actions are applied to the filtered blobs when the execution condition is met.
+      properties:
+        baseBlob:
+          $ref: '#/components/schemas/ManagementPolicyBaseBlob'
+          description: The management policy action for base blob
+        snapshot:
+          $ref: '#/components/schemas/ManagementPolicySnapShot'
+          description: The management policy action for snapshot
+    ManagementPolicySnapShot:
+      description: Management policy action for snapshot.
+      properties:
+        delete:
+          $ref: '#/components/schemas/DateAfterCreation'
+          description: The function to delete the blob snapshot
     DateAfterModification:
       description: Object to define the number of days after last modification.
       properties:
@@ -339,19 +295,16 @@ components:
           type: number
       required:
       - daysAfterModificationGreaterThan
-    ManagementPolicyProperties:
-      description: The Storage Account ManagementPolicy properties.
+    DateAfterCreation:
+      description: Object to define the number of days after creation.
       properties:
-        lastModifiedTime:
-          description: Returns the date and time the ManagementPolicies was last modified.
-          format: date-time
-          readOnly: true
-          type: string
-        policy:
-          $ref: '#/components/schemas/ManagementPolicySchema'
-          description: 'The Storage Account ManagementPolicy, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.'
+        daysAfterCreationGreaterThan:
+          description: Value indicating the age in days after creation
+          minimum: 0
+          multipleOf: 1
+          type: number
       required:
-      - policy
+      - daysAfterCreationGreaterThan
     ManagementPolicyDefinition:
       description: An object that defines the Lifecycle rule. Each definition is made up with a filters set and an actions set.
       properties:
@@ -397,17 +350,65 @@ components:
           $ref: '#/components/schemas/ManagementPolicyProperties'
           description: Returns the Storage Account Data Policies Rules.
           x-ms-client-flatten: true
+    ManagementPolicyRule:
+      description: An object that wraps the Lifecycle rule. Each rule is uniquely defined by name.
+      properties:
+        definition:
+          $ref: '#/components/schemas/ManagementPolicyDefinition'
+          description: An object that defines the Lifecycle rule.
+        enabled:
+          description: Rule is enabled if set to true.
+          type: boolean
+        name:
+          description: A rule name can contain any combination of alpha numeric characters. Rule name is case-sensitive. It must be unique within a policy.
+          type: string
+        type:
+          description: The valid value is Lifecycle
+          enum:
+          - Lifecycle
+          type: string
+          x-ms-enum:
+            modelAsString: true
+            name: type
+      required:
+      - name
+      - type
+      - definition
+    ManagementPolicySchema:
+      description: 'The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.'
+      properties:
+        rules:
+          description: 'The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.'
+          items:
+            $ref: '#/components/schemas/ManagementPolicyRule'
+          type: array
+      required:
+      - rules
+    ManagementPolicyProperties:
+      description: The Storage Account ManagementPolicy properties.
+      properties:
+        lastModifiedTime:
+          description: Returns the date and time the ManagementPolicies was last modified.
+          format: date-time
+          readOnly: true
+          type: string
+        policy:
+          $ref: '#/components/schemas/ManagementPolicySchema'
+          description: 'The Storage Account ManagementPolicy, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.'
+      required:
+      - policy
   parameters:
-    StorageAccountName:
-      description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+    ResourceGroupName:
+      description: The name of the resource group within the user's subscription. The name is case insensitive.
       in: path
-      name: accountName
+      name: resourceGroupName
       required: true
       x-ms-parameter-location: method
       schema:
         type: string
-        maxLength: 24
-        minLength: 3
+        maxLength: 90
+        minLength: 1
+        pattern: ^[-\w\._\(\)]+$
     ManagementPolicyName:
       description: The name of the Storage Account Management Policy. It should always be 'default'
       in: path
@@ -421,17 +422,16 @@ components:
         type: string
         enum:
         - default
-    ResourceGroupName:
-      description: The name of the resource group within the user's subscription. The name is case insensitive.
+    StorageAccountName:
+      description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
       in: path
-      name: resourceGroupName
+      name: accountName
       required: true
       x-ms-parameter-location: method
       schema:
         type: string
-        maxLength: 90
-        minLength: 1
-        pattern: ^[-\w\._\(\)]+$
+        maxLength: 24
+        minLength: 3
   securitySchemes:
     azure_auth:
       type: oauth2

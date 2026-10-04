@@ -3788,6 +3788,37 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    Restriction:
+      description: The restriction because of which SKU cannot be used.
+      properties:
+        reasonCode:
+          description: The reason for the restriction. As of now this can be "QuotaId" or "NotAvailableForSubscription". Quota Id is set when the SKU has requiredQuotas parameter as the subscription does not belong to that quota. The "NotAvailableForSubscription" is related to capacity at DC.
+          enum:
+          - QuotaId
+          - NotAvailableForSubscription
+          type: string
+          x-ms-enum:
+            modelAsString: true
+            name: ReasonCode
+        type:
+          description: The type of restrictions. As of now only possible value for this is location.
+          readOnly: true
+          type: string
+        values:
+          description: The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted.
+          items:
+            type: string
+          readOnly: true
+          type: array
+    StorageSkuListResult:
+      description: The response from the List Storage SKUs operation.
+      properties:
+        value:
+          description: Get the list result of storage SKUs and their properties.
+          items:
+            $ref: '#/components/schemas/SkuInformation'
+          readOnly: true
+          type: array
     SKUCapability:
       description: The capability information in the specified SKU, including file encryption, network ACLs, change notification, etc.
       properties:
@@ -3863,37 +3894,6 @@ components:
             name: SkuTier
       required:
       - name
-    StorageSkuListResult:
-      description: The response from the List Storage SKUs operation.
-      properties:
-        value:
-          description: Get the list result of storage SKUs and their properties.
-          items:
-            $ref: '#/components/schemas/SkuInformation'
-          readOnly: true
-          type: array
-    Restriction:
-      description: The restriction because of which SKU cannot be used.
-      properties:
-        reasonCode:
-          description: The reason for the restriction. As of now this can be "QuotaId" or "NotAvailableForSubscription". Quota Id is set when the SKU has requiredQuotas parameter as the subscription does not belong to that quota. The "NotAvailableForSubscription" is related to capacity at DC.
-          enum:
-          - QuotaId
-          - NotAvailableForSubscription
-          type: string
-          x-ms-enum:
-            modelAsString: true
-            name: ReasonCode
-        type:
-          description: The type of restrictions. As of now only possible value for this is location.
-          readOnly: true
-          type: string
-        values:
-          description: The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted.
-          items:
-            type: string
-          readOnly: true
-          type: array
   securitySchemes:
     azure_auth:
       type: oauth2

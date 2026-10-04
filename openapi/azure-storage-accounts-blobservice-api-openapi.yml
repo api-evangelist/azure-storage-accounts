@@ -453,20 +453,25 @@ paths:
         required: true
 components:
   schemas:
-    BlobServiceItems:
-      properties:
-        value:
-          description: List of blob services returned.
-          items:
-            $ref: '#/components/schemas/BlobServiceProperties'
-          readOnly: true
-          type: array
     ChangeFeed:
       description: The blob service properties for change feed events.
       properties:
         enabled:
           description: Indicates whether change feed event logging is enabled for the Blob service.
           type: boolean
+    RestorePolicyProperties:
+      description: The blob service properties for blob restore policy
+      properties:
+        days:
+          description: how long this blob can be restored. It should be great than zero and less than DeleteRetentionPolicy.days.
+          maximum: 365
+          minimum: 1
+          type: integer
+        enabled:
+          description: Blob restore is enabled if set to true.
+          type: boolean
+      required:
+      - enabled
     BlobServiceProperties:
       allOf:
       - properties:
@@ -589,19 +594,14 @@ components:
                 name: SkuTier
           required:
           - name
-    RestorePolicyProperties:
-      description: The blob service properties for blob restore policy
+    BlobServiceItems:
       properties:
-        days:
-          description: how long this blob can be restored. It should be great than zero and less than DeleteRetentionPolicy.days.
-          maximum: 365
-          minimum: 1
-          type: integer
-        enabled:
-          description: Blob restore is enabled if set to true.
-          type: boolean
-      required:
-      - enabled
+        value:
+          description: List of blob services returned.
+          items:
+            $ref: '#/components/schemas/BlobServiceProperties'
+          readOnly: true
+          type: array
   parameters:
     BlobServicesName:
       description: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'

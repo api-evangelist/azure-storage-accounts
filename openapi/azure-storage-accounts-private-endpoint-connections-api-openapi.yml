@@ -222,29 +222,6 @@ paths:
         required: true
 components:
   schemas:
-    PrivateEndpointConnectionProperties:
-      description: Properties of the PrivateEndpointConnectProperties.
-      properties:
-        privateEndpoint:
-          $ref: '#/components/schemas/PrivateEndpoint'
-          description: The resource of private end point.
-        privateLinkServiceConnectionState:
-          $ref: '#/components/schemas/PrivateLinkServiceConnectionState'
-          description: A collection of information about the state of the connection between service consumer and provider.
-        provisioningState:
-          $ref: '#/components/schemas/PrivateEndpointConnectionProvisioningState'
-          description: The provisioning state of the private endpoint connection resource.
-      required:
-      - privateLinkServiceConnectionState
-    ErrorResponse:
-      description: An error response from the storage resource provider.
-      properties:
-        code:
-          description: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
-          type: string
-        message:
-          description: A message describing the error, intended to be suitable for display in a user interface.
-          type: string
     PrivateLinkServiceConnectionState:
       description: A collection of information about the state of the connection between service consumer and provider.
       properties:
@@ -257,6 +234,22 @@ components:
         status:
           $ref: '#/components/schemas/PrivateEndpointServiceConnectionStatus'
           description: Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+    PrivateEndpoint:
+      description: The Private Endpoint resource.
+      properties:
+        id:
+          description: The ARM identifier for Private Endpoint
+          readOnly: true
+          type: string
+    ErrorResponse:
+      description: An error response from the storage resource provider.
+      properties:
+        code:
+          description: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
+          type: string
+        message:
+          description: A message describing the error, intended to be suitable for display in a user interface.
+          type: string
     PrivateEndpointConnection:
       allOf:
       - properties:
@@ -301,24 +294,21 @@ components:
       x-ms-enum:
         modelAsString: true
         name: PrivateEndpointServiceConnectionStatus
-    PrivateEndpoint:
-      description: The Private Endpoint resource.
+    PrivateEndpointConnectionProperties:
+      description: Properties of the PrivateEndpointConnectProperties.
       properties:
-        id:
-          description: The ARM identifier for Private Endpoint
-          readOnly: true
-          type: string
+        privateEndpoint:
+          $ref: '#/components/schemas/PrivateEndpoint'
+          description: The resource of private end point.
+        privateLinkServiceConnectionState:
+          $ref: '#/components/schemas/PrivateLinkServiceConnectionState'
+          description: A collection of information about the state of the connection between service consumer and provider.
+        provisioningState:
+          $ref: '#/components/schemas/PrivateEndpointConnectionProvisioningState'
+          description: The provisioning state of the private endpoint connection resource.
+      required:
+      - privateLinkServiceConnectionState
   parameters:
-    StorageAccountName:
-      description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-      in: path
-      name: accountName
-      required: true
-      x-ms-parameter-location: method
-      schema:
-        type: string
-        maxLength: 24
-        minLength: 3
     ResourceGroupName:
       description: The name of the resource group within the user's subscription. The name is case insensitive.
       in: path
@@ -338,6 +328,16 @@ components:
       x-ms-parameter-location: method
       schema:
         type: string
+    StorageAccountName:
+      description: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+      in: path
+      name: accountName
+      required: true
+      x-ms-parameter-location: method
+      schema:
+        type: string
+        maxLength: 24
+        minLength: 3
   securitySchemes:
     azure_auth:
       type: oauth2
