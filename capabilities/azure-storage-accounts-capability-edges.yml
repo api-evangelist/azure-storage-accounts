@@ -1,0 +1,66 @@
+slug: azure-storage-accounts
+provider: Azure Storage Accounts
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 5
+edges:
+- tag: StorageAccounts
+  spec_file: azure-storage-accounts-storageaccounts-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.9
+  evidence: StorageAccounts_Create, StorageAccounts_Delete, StorageAccounts_Failover, StorageAccounts_RegenerateKey
+  reason: Provisioning and lifecycle of cloud storage accounts including failover and key rotation — clearly
+    compute/storage/cloud infrastructure management.
+- tag: BlobContainers
+  spec_file: azure-storage-accounts-blobcontainers-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: BlobContainers_Create, BlobContainers_Lease, BlobContainers_ClearLegalHold, BlobContainers_CreateOrUpdateImmutabilityPolicy;
+    'The Azure Storage Management API'
+  reason: Management-plane CRUD over cloud blob storage containers plus retention/immutability and legal-hold
+    settings. Squarely cloud storage infrastructure provisioning and configuration, i.e. IT Infrastructure
+    Management. 'Legal Hold' here is a storage retention flag, not a litigation management capability.
+- tag: BlobService
+  spec_file: azure-storage-accounts-blobservice-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.75
+  evidence: BlobServices_GetServiceProperties / BlobServices_SetServiceProperties; schemas BlobServiceProperties,
+    RestorePolicyProperties, ChangeFeed
+  reason: Configuration of the blob storage service properties (restore policy, change feed) on a storage
+    account — cloud storage infrastructure configuration. Maps to IT Infrastructure Management; it is
+    administrative plumbing for a storage platform rather than any business process.
+- tag: LocationUsage
+  spec_file: azure-storage-accounts-locationusage-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: GET .../locations/{location}/usages  Usages_ListByLocation; schemas UsageListResult, Usage
+  reason: Reports cloud storage resource quota/usage per location — cloud infrastructure management telemetry.
+    IT Infrastructure Management is the honest fit; abstaining from anything commercial since this is
+    subscription-quota reporting, not billing.
+- tag: Private Endpoint Connections
+  spec_file: azure-storage-accounts-private-endpoint-connections-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: PrivateEndpointConnections_Put; schemas PrivateLinkServiceConnectionState, PrivateEndpoint
+  reason: Manages private network endpoint connections to storage accounts — cloud network/infrastructure
+    configuration. Security-architecture reading is possible but infrastructure management is the safer,
+    grounded mapping.
