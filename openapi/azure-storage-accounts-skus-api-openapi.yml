@@ -3788,6 +3788,17 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    SKUCapability:
+      description: The capability information in the specified SKU, including file encryption, network ACLs, change notification, etc.
+      properties:
+        name:
+          description: The name of capability, The capability information in the specified SKU, including file encryption, network ACLs, change notification, etc.
+          readOnly: true
+          type: string
+        value:
+          description: A string value to indicate states of given capability. Possibly 'true' or 'false'.
+          readOnly: true
+          type: string
     Restriction:
       description: The restriction because of which SKU cannot be used.
       properties:
@@ -3810,26 +3821,6 @@ components:
             type: string
           readOnly: true
           type: array
-    StorageSkuListResult:
-      description: The response from the List Storage SKUs operation.
-      properties:
-        value:
-          description: Get the list result of storage SKUs and their properties.
-          items:
-            $ref: '#/components/schemas/SkuInformation'
-          readOnly: true
-          type: array
-    SKUCapability:
-      description: The capability information in the specified SKU, including file encryption, network ACLs, change notification, etc.
-      properties:
-        name:
-          description: The name of capability, The capability information in the specified SKU, including file encryption, network ACLs, change notification, etc.
-          readOnly: true
-          type: string
-        value:
-          description: A string value to indicate states of given capability. Possibly 'true' or 'false'.
-          readOnly: true
-          type: string
     SkuInformation:
       description: Storage SKU and its properties
       properties:
@@ -3894,6 +3885,15 @@ components:
             name: SkuTier
       required:
       - name
+    StorageSkuListResult:
+      description: The response from the List Storage SKUs operation.
+      properties:
+        value:
+          description: Get the list result of storage SKUs and their properties.
+          items:
+            $ref: '#/components/schemas/SkuInformation'
+          readOnly: true
+          type: array
   securitySchemes:
     azure_auth:
       type: oauth2

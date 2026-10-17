@@ -382,42 +382,23 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    OperationProperties:
-      description: Properties of operation, include metric specifications.
+    OperationListResult:
+      description: Result of the request to list Storage operations. It contains a list of operations and a URL link to get the next set of results.
       properties:
-        serviceSpecification:
-          $ref: '#/components/schemas/ServiceSpecification'
-          description: One property of operation, include metric specifications.
-    Operation:
-      description: Storage REST API operation definition.
+        value:
+          description: List of Storage operations supported by the Storage resource provider.
+          items:
+            $ref: '#/components/schemas/Operation'
+          type: array
+    Dimension:
+      description: Dimension of blobs, possibly be blob type or access tier.
       properties:
-        display:
-          description: Display metadata associated with the operation.
-          properties:
-            description:
-              description: Description of the operation.
-              type: string
-            operation:
-              description: 'Type of operation: get, read, delete, etc.'
-              type: string
-            provider:
-              description: 'Service provider: Microsoft Storage.'
-              type: string
-            resource:
-              description: Resource on which the operation is performed etc.
-              type: string
+        displayName:
+          description: Display name of dimension.
+          type: string
         name:
-          description: 'Operation name: {provider}/{resource}/{operation}'
+          description: Display name of dimension.
           type: string
-        origin:
-          description: The origin of operations.
-          type: string
-        properties:
-          $ref: '#/components/schemas/OperationProperties'
-          description: Properties of operation, include metric specifications.
-          x-ms-client-flatten: true
-          x-ms-client-name: OperationProperties
-      type: object
     MetricSpecification:
       description: Metric specification of operation.
       properties:
@@ -450,14 +431,36 @@ components:
         unit:
           description: Unit could be Bytes or Count.
           type: string
-    OperationListResult:
-      description: Result of the request to list Storage operations. It contains a list of operations and a URL link to get the next set of results.
+    Operation:
+      description: Storage REST API operation definition.
       properties:
-        value:
-          description: List of Storage operations supported by the Storage resource provider.
-          items:
-            $ref: '#/components/schemas/Operation'
-          type: array
+        display:
+          description: Display metadata associated with the operation.
+          properties:
+            description:
+              description: Description of the operation.
+              type: string
+            operation:
+              description: 'Type of operation: get, read, delete, etc.'
+              type: string
+            provider:
+              description: 'Service provider: Microsoft Storage.'
+              type: string
+            resource:
+              description: Resource on which the operation is performed etc.
+              type: string
+        name:
+          description: 'Operation name: {provider}/{resource}/{operation}'
+          type: string
+        origin:
+          description: The origin of operations.
+          type: string
+        properties:
+          $ref: '#/components/schemas/OperationProperties'
+          description: Properties of operation, include metric specifications.
+          x-ms-client-flatten: true
+          x-ms-client-name: OperationProperties
+      type: object
     ServiceSpecification:
       description: One property of operation, include metric specifications.
       properties:
@@ -466,15 +469,12 @@ components:
           items:
             $ref: '#/components/schemas/MetricSpecification'
           type: array
-    Dimension:
-      description: Dimension of blobs, possibly be blob type or access tier.
+    OperationProperties:
+      description: Properties of operation, include metric specifications.
       properties:
-        displayName:
-          description: Display name of dimension.
-          type: string
-        name:
-          description: Display name of dimension.
-          type: string
+        serviceSpecification:
+          $ref: '#/components/schemas/ServiceSpecification'
+          description: One property of operation, include metric specifications.
   securitySchemes:
     azure_auth:
       type: oauth2
