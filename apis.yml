@@ -30,6 +30,14 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/azure-storage-accounts.png
 tags:
+- Microsoft Azure
+- Blob Storage
+- Cloud Storage
+- File Storage
+- Queue Storage
+- Storage
+- Table Storage
+tags_raw:
 - Azure
 - Blob Storage
 - Cloud Storage
@@ -342,6 +350,8 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api
   baseURL: https://{accountName}.blob.core.windows.net
   tags:
+  - PrivateEndpointConnections
+  tags_raw:
   - Private Endpoint Connections
   properties:
   - type: OpenAPI
