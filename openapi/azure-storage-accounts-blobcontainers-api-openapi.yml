@@ -1581,3 +1581,9 @@ components:
             user_impersonation: impersonate your user account
           authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
       description: Azure Active Directory OAuth2 Flow
+x-provenance:
+  method: harvested
+  publisher: Azure Storage Accounts
+  source: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/storage/resource-manager/Microsoft.Storage/stable/2019-06-01/blob.json
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
